@@ -84,8 +84,8 @@ const {
             </button>
           </div>
 
-          <div class="mt-5 flex items-center justify-between gap-4">
-            <div class="flex gap-2" role="tablist" aria-label="მთავარი ფოტო სლაიდები">
+          <div class="mt-5 px-1 sm:px-2">
+            <div class="flex w-full items-center justify-between gap-2 sm:gap-3" role="tablist" aria-label="მთავარი ფოტო სლაიდები">
               {slides.map((slide, index) => (
                 <button
                   class={`h-2.5 rounded-full bg-ink/20 ${index === 0 ? "w-10 bg-bronze" : "w-2.5"}`}
@@ -95,11 +95,6 @@ const {
                   aria-label={`გადადი ფოტოზე ${index + 1}: ${slide.alt}`}
                 ></button>
               ))}
-            </div>
-            <div class="text-panel-compact hidden items-center gap-3 text-sm text-ink/60 sm:flex">
-              <span data-slider-current>1</span>
-              <span class="h-px w-16 bg-black/10"></span>
-              <span>{slides.length}</span>
             </div>
           </div>
         </div>
@@ -117,7 +112,6 @@ const {
     const track = root.querySelector("[data-slider-track]");
     const slides = Array.from(root.querySelectorAll("[data-slide]"));
     const dots = Array.from(root.querySelectorAll("[data-slider-dot]"));
-    const current = root.querySelector("[data-slider-current]");
     const previous = root.querySelector("[data-slider-prev]");
     const next = root.querySelector("[data-slider-next]");
     let index = 0;
@@ -127,10 +121,6 @@ const {
     const update = (nextIndex) => {
       index = (nextIndex + slides.length) % slides.length;
       track.style.transform = `translateX(-${index * 100}%)`;
-
-      if (current instanceof HTMLElement) {
-        current.textContent = String(index + 1);
-      }
 
       dots.forEach((dot, dotIndex) => {
         dot.classList.toggle("w-10", dotIndex === index);

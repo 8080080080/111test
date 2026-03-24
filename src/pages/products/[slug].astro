@@ -26,17 +26,20 @@ const site = getSiteData();
 const phoneHref = getPhoneHref(site.phone);
 const relatedProducts = getRelatedProducts(product.slug);
 const productPath = `/products/${product.slug}/`;
-const isPliseGallery = product.slug === "plise-jaluzi" && Boolean(product.colorGallery?.length);
-const colorSectionTitle = isPliseGallery ? "გალერეა" : "ფერები";
-const colorDescription = isPliseGallery
-  ? "იხილეთ 25 სურათიანი გალერეა. სურათზე დაჭერით შეგიძლიათ გახსნათ დიდი ხედით და მობილურზე ახლოდან ნახოთ დეტალები."
-  : product.colorCollections?.length
-    ? "ფერები დაჯგუფებულია კოლექციებად, რათა სასურველი ნიმუშების მოძებნა და შემდგომში ახალი ჯგუფების დამატება მარტივი იყოს."
-    : product.colorCatalog?.length
-      ? "ფერის ვარიანტები იხილეთ ქვემოთ მოცემულ კატალოგში."
-      : product.colorGallery?.length
-        ? "ფერის არჩევანი შეგიძლიათ ნახოთ ქვემოთ მოცემულ სლაიდერში."
-        : "";
+const showColorSection = product.slug !== "plise-jaluzi" && Boolean(
+  product.colorCollections?.length ||
+  product.colorCatalog?.length ||
+  product.colorGallery?.length ||
+  product.colors?.length
+);
+const colorSectionTitle = "ფერები";
+const colorDescription = product.colorCollections?.length
+  ? "ფერები დაჯგუფებულია კოლექციებად, რათა სასურველი ნიმუშების მოძებნა და შემდგომში ახალი ჯგუფების დამატება მარტივი იყოს."
+  : product.colorCatalog?.length
+    ? "ფერის ვარიანტები იხილეთ ქვემოთ მოცემულ კატალოგში."
+    : product.colorGallery?.length
+      ? "ფერის არჩევანი შეგიძლიათ ნახოთ ქვემოთ მოცემულ სლაიდერში."
+      : "";
 const breadcrumbs = createBreadcrumbSchema([
   { name: "მთავარი", path: "/" },
   { name: "პროდუქცია", path: "/products/" },
@@ -122,33 +125,27 @@ const schemas = [
     </div>
   </section>
 
-  <section class="py-8 sm:py-10 bg-white/45">
-    <div class="container-shell">
-      <article class="surface-card p-6 sm:p-8">
-        <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
-        {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
-        <div class="mt-6">
-          {product.colorCollections?.length ? (
-            <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
-          ) : product.colorCatalog?.length ? (
-            <ColorCatalog items={product.colorCatalog} id={`catalog-${product.slug}`} />
-          ) : product.colorGallery?.length ? (
-            <ProductGallery
-              images={product.colorGallery}
-              id={`colors-${product.slug}`}
-              compact
-              zoomable
-              showThumbnails={!isPliseGallery}
-              imageFit={isPliseGallery ? "contain" : "cover"}
-              mainAspectClass={isPliseGallery ? "aspect-[6/7]" : undefined}
-            />
-          ) : (
-            <ColorSwatches colors={product.colors} />
-          )}
-        </div>
-      </article>
-    </div>
-  </section>
+  {showColorSection && (
+    <section class="py-8 sm:py-10 bg-white/45">
+      <div class="container-shell">
+        <article class="surface-card p-6 sm:p-8">
+          <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+          {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
+          <div class="mt-6">
+            {product.colorCollections?.length ? (
+              <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
+            ) : product.colorCatalog?.length ? (
+              <ColorCatalog items={product.colorCatalog} id={`catalog-${product.slug}`} />
+            ) : product.colorGallery?.length ? (
+              <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
+            ) : (
+              <ColorSwatches colors={product.colors} />
+            )}
+          </div>
+        </article>
+      </div>
+    </section>
+  )}
 
   <FAQSection compact
     eyebrow="კითხვები"
