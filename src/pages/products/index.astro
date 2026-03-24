@@ -1,0 +1,43 @@
+---
+import ProductCard from "../../components/ProductCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getProducts } from "../../lib/content";
+import { createBreadcrumbSchema } from "../../lib/schema";
+
+const products = getProducts();
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "მთავარი", path: "/" },
+  { name: "პროდუქცია", path: "/products/" }
+]);
+---
+
+<BaseLayout
+  title="პროდუქციის მიმოხილვა"
+  description="იხილეთ Winsome-ის ჟალუზებისა და მწერებისგან დამცავი სისტემების სრული კატალოგი ინდივიდუალური ზომებით და ლოკალური წარმოებით."
+  pathname="/products/"
+  keywords={products.flatMap((product) => product.keywords).slice(0, 18)}
+  schemas={[breadcrumbs]}
+>
+  <section class="section-padding pb-10">
+    <div class="container-shell space-y-8">
+      <nav aria-label="Breadcrumb" class="text-sm text-ink/55">
+        <a href="/" class="hover:text-bronze">მთავარი</a>
+        <span class="mx-2">/</span>
+        <span>პროდუქცია</span>
+      </nav>
+      <SectionHeading
+        eyebrow="პროდუქციის მიმოხილვა"
+        title="ჟალუზების და დამცავი ბადეების სისტემები ქართული სივრცეებისთვის"
+      />
+    </div>
+  </section>
+
+  <section class="pb-20">
+    <div class="container-shell">
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {products.map((product) => <ProductCard product={product} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

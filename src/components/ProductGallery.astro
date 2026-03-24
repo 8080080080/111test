@@ -1,0 +1,526 @@
+---
+import type { ProductImage } from "../types/content";
+
+interface Props {
+  images: ProductImage[];
+  id?: string;
+  compact?: boolean;
+  zoomable?: boolean;
+  showThumbnails?: boolean;
+  imageFit?: "cover" | "contain";
+  mainAspectClass?: string;
+}
+
+const {
+  images,
+  id = "product-gallery",
+  compact = false,
+  zoomable = false,
+  showThumbnails = true,
+  imageFit = "cover",
+  mainAspectClass = compact ? "aspect-[16/10]" : "aspect-[4/3]"
+} = Astro.props;
+const rootClasses = compact ? "mx-auto max-w-4xl space-y-3 sm:space-y-4" : "space-y-4";
+const mainSizes = compact ? "(min-width: 1024px) 56rem, 100vw" : "(min-width: 1024px) 48vw, 100vw";
+const thumbWidth = compact ? 80 : 96;
+const thumbHeight = compact ? 64 : 80;
+const thumbSizeClasses = compact ? "h-14 w-[4.5rem] sm:h-16 sm:w-20" : "h-16 w-20 sm:h-20 sm:w-24";
+const imageFitClass = imageFit === "contain" ? "object-contain" : "object-cover";
+const mainArrowClasses = "absolute top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-ink/88 text-white shadow-[0_20px_44px_rgba(26,25,23,0.32)] backdrop-blur-md transition hover:bg-bronze focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink active:scale-[0.98] sm:h-14 sm:w-14";
+const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-full border border-white/90 bg-white/96 text-ink shadow-[0_24px_54px_rgba(26,25,23,0.28)] backdrop-blur transition hover:bg-bronze hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-white active:scale-[0.98] sm:h-16 sm:w-16";
+---
+
+<div id={id} class={rootClasses} data-gallery>
+  <div class="surface-card relative overflow-hidden">
+    <div class="overflow-hidden">
+      <div class="flex transition-transform duration-500 ease-out" data-gallery-track>
+        {images.map((image, index) => (
+          <figure class="min-w-full" data-gallery-slide>
+            {zoomable ? (
+              <button class="group block w-full text-left" type="button" data-gallery-open data-index={index} aria-label={`გაადიდე სურათი ${index + 1}`}>
+                <div class={`relative overflow-hidden bg-shell ${mainAspectClass}`}>
+                  <img
+                    class={`h-full w-full ${imageFitClass}`}
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    sizes={mainSizes}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    fetchpriority={index === 0 ? "high" : undefined}
+                  />
+                  <span class="absolute bottom-4 right-4 rounded-full bg-ink/80 px-3 py-1.5 text-xs font-semibold text-white shadow-soft backdrop-blur-sm group-hover:bg-bronze">
+                    დააჭირე გასადიდებლად
+                  </span>
+                </div>
+              </button>
+            ) : (
+              <div class={`overflow-hidden bg-shell ${mainAspectClass}`}>
+                <img
+                  class={`h-full w-full ${imageFitClass}`}
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  sizes={mainSizes}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                  fetchpriority={index === 0 ? "high" : undefined}
+                />
+              </div>
+            )}
+          </figure>
+        ))}
+      </div>
+    </div>
+    {images.length > 1 && (
+      <>
+        <button class={`${mainArrowClasses} left-3 sm:left-4`} type="button" data-gallery-prev aria-label="წინა ფოტო">
+          <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"></path>
+          </svg>
+        </button>
+        <button class={`${mainArrowClasses} right-3 sm:right-4`} type="button" data-gallery-next aria-label="შემდეგი ფოტო">
+          <svg aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"></path>
+          </svg>
+        </button>
+      </>
+    )}
+  </div>
+
+  {showThumbnails && images.length > 1 && (
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex flex-wrap gap-3">
+        {images.map((image, index) => (
+          <button
+            class={`overflow-hidden rounded-2xl border ${index === 0 ? "border-ink" : "border-black/10"}`}
+            type="button"
+            data-gallery-thumb
+            data-index={index}
+            aria-label={`სურათი ${index + 1}`}
+          >
+            <img
+              class={`${thumbSizeClasses} ${imageFitClass}`}
+              src={image.src}
+              alt=""
+              width={thumbWidth}
+              height={thumbHeight}
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {zoomable && (
+    <dialog class="w-[min(96vw,84rem)] rounded-4xl border border-black/5 bg-white p-0 shadow-soft backdrop:bg-black/65" data-gallery-dialog>
+      <div class="space-y-4 p-4 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-bronze">ფერის დეტალი</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="button-secondary !px-4 !py-2 disabled:opacity-45" type="button" data-gallery-zoom-out aria-label="დააპატარავე ფოტო">
+              -
+            </button>
+            <button class="button-secondary !px-4 !py-2 disabled:opacity-45" type="button" data-gallery-zoom-in aria-label="გაადიდე ფოტო">
+              +
+            </button>
+            <button class="button-secondary !px-4 !py-2" type="button" data-gallery-close>დახურვა</button>
+          </div>
+        </div>
+
+        <div class="relative overflow-hidden rounded-4xl border border-black/5 bg-shell/70">
+          <div class="pointer-events-none absolute inset-y-0 left-0 z-20 flex items-center pl-2 sm:pl-4">
+            <button class={`${dialogArrowClasses} pointer-events-auto`} type="button" data-gallery-dialog-prev aria-label="წინა ფოტო">
+              <svg aria-hidden="true" class="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="pointer-events-none absolute inset-y-0 right-0 z-20 flex items-center pr-2 sm:pl-4 sm:pr-4">
+            <button class={`${dialogArrowClasses} pointer-events-auto`} type="button" data-gallery-dialog-next aria-label="შემდეგი ფოტო">
+              <svg aria-hidden="true" class="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="max-h-[78vh] overflow-auto overscroll-contain rounded-4xl" data-gallery-stage tabindex="0" style="touch-action: pan-x pan-y pinch-zoom;">
+            {images.map((image, index) => (
+              <figure hidden={index !== 0} class="min-w-full" data-gallery-panel data-index={index}>
+                <div class="flex min-h-[18rem] min-w-full items-center justify-center p-3 sm:p-6" data-gallery-canvas>
+                  <button
+                    class="block shrink-0 cursor-zoom-in rounded-3xl bg-white text-left shadow-[0_18px_42px_rgba(26,25,23,0.16)]"
+                    type="button"
+                    data-gallery-zoom-toggle
+                    data-index={index}
+                    data-width={image.width}
+                    data-height={image.height}
+                    aria-label={`ფოტოს გადიდება ${index + 1}`}
+                  >
+                    <img
+                      class="block h-auto w-full max-w-none rounded-3xl object-contain"
+                      src={image.src}
+                      alt={image.alt}
+                      width={image.width}
+                      height={image.height}
+                      loading="lazy"
+                      decoding="async"
+                      data-gallery-zoom-image
+                    />
+                  </button>
+                </div>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <p class="text-sm text-ink/70" data-gallery-caption></p>
+          <p class="text-xs text-ink/55">ფოტოზე დაჭერით გახსნი დიდ ხედს. მობილურზე ორჯერ დაჭერით შეგიძლია მოაახლოო და გადააადგილო.</p>
+        </div>
+      </div>
+    </dialog>
+  )}
+</div>
+
+<script define:vars={{ galleryId: id, zoomEnabled: zoomable }}>
+  const root = document.getElementById(galleryId);
+
+  if (root) {
+    const track = root.querySelector("[data-gallery-track]");
+    const slides = Array.from(root.querySelectorAll("[data-gallery-slide]"));
+    const thumbs = Array.from(root.querySelectorAll("[data-gallery-thumb]"));
+    const nextButton = root.querySelector("[data-gallery-next]");
+    const prevButton = root.querySelector("[data-gallery-prev]");
+    const dialog = root.querySelector("[data-gallery-dialog]");
+    const panels = Array.from(root.querySelectorAll("[data-gallery-panel]"));
+    const canvases = Array.from(root.querySelectorAll("[data-gallery-canvas]"));
+    const caption = root.querySelector("[data-gallery-caption]");
+    const closeButton = root.querySelector("[data-gallery-close]");
+    const dialogNext = root.querySelector("[data-gallery-dialog-next]");
+    const dialogPrev = root.querySelector("[data-gallery-dialog-prev]");
+    const openButtons = Array.from(root.querySelectorAll("[data-gallery-open]"));
+    const stage = root.querySelector("[data-gallery-stage]");
+    const zoomInButton = root.querySelector("[data-gallery-zoom-in]");
+    const zoomOutButton = root.querySelector("[data-gallery-zoom-out]");
+    const zoomToggles = Array.from(root.querySelectorAll("[data-gallery-zoom-toggle]"));
+    const zoomImages = Array.from(root.querySelectorAll("[data-gallery-zoom-image]"));
+    const zoomLevels = [1, 1.5, 2, 2.5];
+    let index = 0;
+    let zoomIndex = 0;
+    let lastTouchTimestamp = 0;
+    let lastTouchedIndex = -1;
+    let lastTouchInteractionAt = 0;
+
+    const isDialogOpen = () => dialog instanceof HTMLDialogElement && dialog.open;
+
+    const getSourceDimensions = (panelIndex) => {
+      const toggle = zoomToggles[panelIndex];
+      const width = Number(toggle?.getAttribute("data-width") || 0);
+      const height = Number(toggle?.getAttribute("data-height") || 0);
+      return { width, height };
+    };
+
+    const updateThumbs = () => {
+      thumbs.forEach((thumb, thumbIndex) => {
+        thumb.classList.toggle("border-ink", thumbIndex === index);
+        thumb.classList.toggle("border-black/10", thumbIndex !== index);
+      });
+    };
+
+    const updateZoomButtons = () => {
+      if (zoomInButton instanceof HTMLButtonElement) {
+        zoomInButton.disabled = zoomIndex === zoomLevels.length - 1;
+      }
+
+      if (zoomOutButton instanceof HTMLButtonElement) {
+        zoomOutButton.disabled = zoomIndex === 0;
+      }
+    };
+
+    const resetStagePosition = () => {
+      if (stage instanceof HTMLElement) {
+        stage.scrollTop = 0;
+        stage.scrollLeft = 0;
+      }
+    };
+
+    const fitImageToStage = (panelIndex) => {
+      const stageElement = stage instanceof HTMLElement ? stage : null;
+      const canvas = canvases[panelIndex];
+      const toggle = zoomToggles[panelIndex];
+      const image = zoomImages[panelIndex];
+
+      if (!(stageElement instanceof HTMLElement) || !(canvas instanceof HTMLElement) || !(toggle instanceof HTMLElement) || !(image instanceof HTMLElement)) {
+        return;
+      }
+
+      const { width: sourceWidth, height: sourceHeight } = getSourceDimensions(panelIndex);
+
+      if (!sourceWidth || !sourceHeight) {
+        return;
+      }
+
+      const paddingX = window.innerWidth < 640 ? 24 : 48;
+      const paddingY = window.innerWidth < 640 ? 24 : 48;
+      const stageWidth = Math.max(stageElement.clientWidth, 240);
+      const stageHeight = Math.max(stageElement.clientHeight, 240);
+      const availableWidth = Math.max(stageWidth - paddingX, 160);
+      const availableHeight = Math.max(stageHeight - paddingY, 160);
+      const fitScale = Math.min(1, availableWidth / sourceWidth, availableHeight / sourceHeight);
+      const zoomScale = zoomLevels[zoomIndex];
+      const renderedWidth = Math.max(1, Math.round(sourceWidth * fitScale * zoomScale));
+      const renderedHeight = Math.max(1, Math.round(sourceHeight * fitScale * zoomScale));
+
+      toggle.style.width = `${renderedWidth}px`;
+      image.style.width = "100%";
+      image.style.height = "auto";
+      image.style.maxWidth = "none";
+
+      if (zoomScale > 1) {
+        canvas.style.width = `${Math.max(stageWidth, renderedWidth + paddingX)}px`;
+        canvas.style.minHeight = `${Math.max(stageHeight, renderedHeight + paddingY)}px`;
+        canvas.style.alignItems = "flex-start";
+        canvas.style.justifyContent = "flex-start";
+      } else {
+        canvas.style.width = "100%";
+        canvas.style.minHeight = `${Math.max(stageHeight, renderedHeight + paddingY)}px`;
+        canvas.style.alignItems = "center";
+        canvas.style.justifyContent = "center";
+      }
+
+      toggle.classList.toggle("cursor-zoom-in", zoomScale === 1);
+      toggle.classList.toggle("cursor-zoom-out", zoomScale > 1);
+    };
+
+    const applyZoom = () => {
+      if (!isDialogOpen()) {
+        return;
+      }
+
+      panels.forEach((panel, panelIndex) => {
+        const canvas = canvases[panelIndex];
+        const toggle = zoomToggles[panelIndex];
+
+        if (panelIndex !== index) {
+          if (canvas instanceof HTMLElement) {
+            canvas.style.width = "100%";
+            canvas.style.minHeight = "0px";
+            canvas.style.alignItems = "center";
+            canvas.style.justifyContent = "center";
+          }
+
+          if (toggle instanceof HTMLElement) {
+            toggle.style.width = "";
+            toggle.classList.add("cursor-zoom-in");
+            toggle.classList.remove("cursor-zoom-out");
+          }
+
+          return;
+        }
+
+        fitImageToStage(panelIndex);
+      });
+
+      updateZoomButtons();
+    };
+
+    const syncDialog = () => {
+      if (!isDialogOpen()) {
+        return;
+      }
+
+      panels.forEach((panel, panelIndex) => {
+        panel.hidden = panelIndex !== index;
+      });
+
+      if (caption instanceof HTMLElement) {
+        const alt = zoomImages[index] instanceof HTMLImageElement ? zoomImages[index].alt : `სურათი ${index + 1}`;
+        caption.textContent = `${index + 1}/${slides.length} • ${alt}`;
+      }
+
+      applyZoom();
+    };
+
+    const resetZoom = () => {
+      zoomIndex = 0;
+      resetStagePosition();
+      applyZoom();
+    };
+
+    const toggleZoom = () => {
+      zoomIndex = zoomLevels[zoomIndex] === 1 ? 2 : 0;
+
+      if (zoomIndex === 0) {
+        resetStagePosition();
+      }
+
+      applyZoom();
+    };
+
+    const update = (nextIndex) => {
+      index = (nextIndex + slides.length) % slides.length;
+
+      if (track instanceof HTMLElement) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      updateThumbs();
+
+      if (isDialogOpen()) {
+        resetZoom();
+        syncDialog();
+      }
+    };
+
+    const openDialog = () => {
+      if (!zoomEnabled || !(dialog instanceof HTMLDialogElement)) {
+        return;
+      }
+
+      dialog.showModal();
+      window.requestAnimationFrame(() => {
+        resetZoom();
+        syncDialog();
+        if (stage instanceof HTMLElement) {
+          stage.focus();
+        }
+      });
+    };
+
+    const bindStep = (button, step) => {
+      button?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        update(index + step);
+      });
+    };
+
+    bindStep(nextButton, 1);
+    bindStep(prevButton, -1);
+    bindStep(dialogNext, 1);
+    bindStep(dialogPrev, -1);
+
+    closeButton?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      dialog?.close();
+    });
+
+    zoomInButton?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      zoomIndex = Math.min(zoomIndex + 1, zoomLevels.length - 1);
+      applyZoom();
+    });
+
+    zoomOutButton?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      zoomIndex = Math.max(zoomIndex - 1, 0);
+      if (zoomIndex === 0) {
+        resetStagePosition();
+      }
+      applyZoom();
+    });
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => update(Number(thumb.dataset.index)));
+    });
+
+    openButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        update(Number(button.getAttribute("data-index") || index));
+        openDialog();
+      });
+    });
+
+    zoomToggles.forEach((toggle, toggleIndex) => {
+      toggle.addEventListener("touchend", (event) => {
+        lastTouchInteractionAt = Date.now();
+        const now = Date.now();
+        const isDoubleTap = lastTouchedIndex === toggleIndex && now - lastTouchTimestamp < 280;
+        lastTouchedIndex = toggleIndex;
+        lastTouchTimestamp = now;
+
+        if (!isDoubleTap) {
+          return;
+        }
+
+        event.preventDefault();
+        toggleZoom();
+        lastTouchedIndex = -1;
+        lastTouchTimestamp = 0;
+      }, { passive: false });
+
+      toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        if (Date.now() - lastTouchInteractionAt < 350) {
+          return;
+        }
+
+        toggleZoom();
+      });
+    });
+
+    const handleKeydown = (event) => {
+      if (!isDialogOpen()) {
+        return;
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        update(index + 1);
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        update(index - 1);
+      } else if (event.key === "+" || event.key === "=") {
+        event.preventDefault();
+        zoomIndex = Math.min(zoomIndex + 1, zoomLevels.length - 1);
+        applyZoom();
+      } else if (event.key === "-" || event.key === "_") {
+        event.preventDefault();
+        zoomIndex = Math.max(zoomIndex - 1, 0);
+        if (zoomIndex === 0) {
+          resetStagePosition();
+        }
+        applyZoom();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeydown);
+
+    window.addEventListener("resize", () => {
+      if (isDialogOpen()) {
+        applyZoom();
+      }
+    });
+
+    dialog?.addEventListener("click", (event) => {
+      if (!(dialog instanceof HTMLDialogElement) || !(event instanceof MouseEvent)) {
+        return;
+      }
+
+      const bounds = dialog.getBoundingClientRect();
+      const inside =
+        event.clientX >= bounds.left &&
+        event.clientX <= bounds.right &&
+        event.clientY >= bounds.top &&
+        event.clientY <= bounds.bottom;
+
+      if (!inside) {
+        dialog.close();
+      }
+    });
+
+    dialog?.addEventListener("close", () => {
+      zoomIndex = 0;
+      resetStagePosition();
+      lastTouchTimestamp = 0;
+      lastTouchedIndex = -1;
+    });
+
+    updateThumbs();
+  }
+</script>

@@ -1,0 +1,151 @@
+---
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSiteData } from "../lib/content";
+import { createBreadcrumbSchema } from "../lib/schema";
+
+const site = getSiteData();
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "მთავარი", path: "/" },
+  { name: "ნამუშევრები", path: "/gallery/" }
+]);
+---
+
+<BaseLayout
+  title="ნამუშევრები"
+  description="იხილეთ Winsome-ის შესრულებული ნამუშევრების მიმართულებები ბინებისთვის, ოფისებისთვის და კომერციული სივრცეებისთვის თბილისში და საქართველოს მასშტაბით."
+  pathname="/gallery/"
+  schemas={[breadcrumbs]}
+>
+  <section class="section-padding pb-10">
+    <div class="container-shell space-y-8">
+      <nav aria-label="Breadcrumb" class="text-sm text-ink/55">
+        <a href="/" class="hover:text-bronze">მთავარი</a>
+        <span class="mx-2">/</span>
+        <span>ნამუშევრები</span>
+      </nav>
+      <SectionHeading
+        eyebrow="შესრულებული ნამუშევრები"
+        title="გალერეა, რომელიც რეალურ პროექტების არქივს ჰგავს"
+        description="ამ ეტაპზე გამოყენებულია დროებითი სურათები, მაგრამ სტრუქტურა მზადაა რეალური ფოტოებისთვის, alt ტექსტებისთვის, ლოკაციებისთვის და შესაბამის პროდუქტზე ბმულებისთვის."
+      />
+    </div>
+  </section>
+
+  <section class="pb-20">
+    <div class="container-shell">
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {site.gallery.map((item, index) => (
+          <article class="surface-card overflow-hidden">
+            <button
+              class="block w-full text-left"
+              type="button"
+              data-lightbox-trigger
+              data-lightbox-index={index}
+              data-lightbox-alt={item.alt}
+              data-lightbox-title={item.title}
+              data-lightbox-meta={`${item.category} • ${item.location}`}
+              aria-label={`გახსენი სურათი: ${item.title}`}
+            >
+              <div class="aspect-[4/3] overflow-hidden bg-shell">
+                <img
+                  class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
+                  src={item.image}
+                  alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </button>
+            <div class="space-y-3 p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink/50">{item.category} • {item.location}</p>
+              <h2 class="text-2xl">{item.title}</h2>
+              {item.relatedProductSlug && (
+                <a class="text-sm font-semibold text-bronze" href={`/products/${item.relatedProductSlug}/`}>
+                  შესაბამისი პროდუქტი
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <dialog class="w-[min(92vw,70rem)] rounded-4xl border border-black/5 bg-white p-0 shadow-soft backdrop:bg-black/45" data-lightbox>
+    <div class="space-y-4 p-4 sm:p-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-bronze" data-lightbox-meta></p>
+          <h2 class="mt-2 text-3xl" data-lightbox-title></h2>
+        </div>
+        <button class="button-secondary !px-4 !py-2" type="button" data-lightbox-close>დახურვა</button>
+      </div>
+      <div class="overflow-hidden rounded-4xl bg-shell">
+        {site.gallery.map((item, index) => (
+          <figure hidden={index !== 0} data-lightbox-panel data-index={index}>
+            <img
+              class="h-full w-full object-cover"
+              src={item.image}
+              alt={item.alt}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </dialog>
+  <script>
+    const dialog = document.querySelector("[data-lightbox]");
+    const title = dialog?.querySelector("[data-lightbox-title]");
+    const meta = dialog?.querySelector("[data-lightbox-meta]");
+    const closeButton = dialog?.querySelector("[data-lightbox-close]");
+    const panels = Array.from(dialog?.querySelectorAll("[data-lightbox-panel]") || []);
+
+    const setActivePanel = (nextIndex) => {
+      panels.forEach((panel) => {
+        panel.hidden = Number(panel.getAttribute("data-index")) !== nextIndex;
+      });
+    };
+
+    document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        if (!(dialog instanceof HTMLDialogElement)) {
+          return;
+        }
+
+        const nextIndex = Number(trigger.getAttribute("data-lightbox-index") || 0);
+        setActivePanel(nextIndex);
+
+        if (title instanceof HTMLElement) {
+          title.textContent = trigger.getAttribute("data-lightbox-title") || "";
+        }
+
+        if (meta instanceof HTMLElement) {
+          meta.textContent = trigger.getAttribute("data-lightbox-meta") || "";
+        }
+
+        dialog.showModal();
+      });
+    });
+
+    closeButton?.addEventListener("click", () => dialog?.close());
+    dialog?.addEventListener("click", (event) => {
+      if (!(dialog instanceof HTMLDialogElement) || !(event instanceof MouseEvent)) {
+        return;
+      }
+
+      const bounds = dialog.getBoundingClientRect();
+      const inside =
+        event.clientX >= bounds.left &&
+        event.clientX <= bounds.right &&
+        event.clientY >= bounds.top &&
+        event.clientY <= bounds.bottom;
+
+      if (!inside) {
+        dialog.close();
+      }
+    });
+  </script>
+</BaseLayout>

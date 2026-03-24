@@ -1,0 +1,149 @@
+---
+import FAQSection from "../components/FAQSection.astro";
+import HeroSlider from "../components/HeroSlider.astro";
+import ProductCard from "../components/ProductCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPhoneHref, getProducts, getSiteData } from "../lib/content";
+import { createFaqSchema } from "../lib/schema";
+
+const site = getSiteData();
+const products = getProducts();
+const phoneHref = getPhoneHref(site.phone);
+---
+
+<BaseLayout
+  title="ჟალუზები და დამცავი ბადეები თბილისში"
+  description={site.defaultSeo.defaultDescription}
+  pathname="/"
+  keywords={[...site.defaultSeo.georgianKeywords, ...site.defaultSeo.localIntentKeywords]}
+  schemas={[createFaqSchema(site.homeFaqs)]}
+>
+  <HeroSlider
+    eyebrow={site.hero.eyebrow}
+    title={site.hero.title}
+    description={site.hero.description}
+    primaryLabel={site.hero.primaryLabel}
+    primaryHref={site.hero.primaryHref}
+    secondaryLabel={site.hero.secondaryLabel}
+    secondaryHref={site.hero.secondaryHref}
+    slides={site.hero.slides}
+  />
+
+  <section class="pt-6 pb-8 sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-14">
+    <div class="container-shell">
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {products.map((product) => <ProductCard product={product} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white/45 py-10 sm:py-12 lg:py-14">
+    <div class="container-shell space-y-8">
+      <SectionHeading
+        eyebrow="რატომ Winsome"
+        title="ადგილობრივი წარმოება, ზუსტი მორგება და მოწესრიგებული შედეგი"
+        description="ბრენდის პოზიციონირება ეფუძნება ხარისხიან მასალას, სუფთა მონტაჟს და რეალურ პრაქტიკულობას ქართული საცხოვრებელი და სამუშაო სივრცეებისთვის."
+      />
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        {site.whyChooseUs.map((item) => (
+          <article class="surface-card p-6">
+            <h3 class="text-2xl">{item.title}</h3>
+            <p class="mt-3">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 sm:py-12 lg:py-14">
+    <div class="container-shell space-y-8">
+      <SectionHeading
+        eyebrow="პროცესი"
+        title="მარტივი გზა კონსულტაციიდან საბოლოო მონტაჟამდე"
+        description="გამჭვირვალე და მშვიდი პროცესი ბინებისთვის, ოფისებისთვის და კომერციული პროექტებისთვის თბილისში და საქართველოს მასშტაბით."
+      />
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        {site.process.map((step, index) => (
+          <article class="surface-card p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-bronze">0{index + 1}</p>
+            <h3 class="mt-4 text-2xl">{step.title}</h3>
+            <p class="mt-3">{step.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white/45 py-10 sm:py-12 lg:py-14">
+    <div class="container-shell space-y-6 sm:space-y-8">
+      <div class="mx-auto flex max-w-4xl flex-col items-center space-y-4 text-center">
+        <p class="eyebrow text-panel-compact inline-flex w-fit">ნამუშევრები</p>
+        <h2 class="text-panel inline-block text-4xl sm:text-5xl lg:text-[3.2rem]">
+          საცხოვრებელი, კომერციული და ყოველდღიური გამოყენების რეალური მიმართულებები
+        </h2>
+      </div>
+
+      <div class="flex justify-center">
+        <a class="button-secondary" href="/gallery/">სრული გალერეა</a>
+      </div>
+
+      <div class="-mx-4 flex snap-x gap-5 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 xl:grid-cols-3">
+        {site.gallery.map((item) => (
+          <article class="surface-card min-w-[18rem] snap-start overflow-hidden sm:min-w-0">
+            <div class="aspect-[4/3] overflow-hidden bg-shell">
+              <img
+                class="h-full w-full object-cover"
+                src={item.image}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="space-y-3 p-5">
+              <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink/50">
+                <span>{item.category}</span>
+                <span>•</span>
+                <span>{item.location}</span>
+              </div>
+              <h3 class="text-2xl">{item.title}</h3>
+              {item.relatedProductSlug && (
+                <a class="text-sm font-semibold text-bronze" href={`/products/${item.relatedProductSlug}/`}>
+                  შესაბამისი პროდუქტი
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQSection
+    compact
+    eyebrow="კითხვები"
+    title="კითხვები, რომლებსაც მომხმარებლები შეთავაზებამდე ყველაზე ხშირად სვამენ"
+    align="center"
+    stackCta
+    faqs={site.homeFaqs}
+    ctaLabel="ყველა FAQ"
+    ctaHref="/faq/"
+  />
+
+  <section class="pt-2 pb-8 sm:pt-4">
+    <div class="container-shell">
+      <div class="surface-card flex flex-col gap-6 px-6 py-8 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-12">
+        <div class="space-y-2">
+          <p class="eyebrow">პირდაპირი კონტაქტი</p>
+          <h2 class="text-3xl">გჭირდება სწრაფი პასუხი პროდუქტის, ზომების ან მონტაჟის შესახებ?</h2>
+          <p>დაგვირეკე პირდაპირ ან გამოგვიგზავნე მოთხოვნა ოთახის ტიპით, ფოტოებით და მიახლოებითი ზომებით.</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a class="button-primary" href={phoneHref}>დარეკე {site.phone}</a>
+          <a class="button-secondary" href="/contact/">კონტაქტის გვერდი</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

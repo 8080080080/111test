@@ -1,0 +1,41 @@
+---
+import type { Product } from "../types/content";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const primaryImage = product.images[0];
+---
+
+<article class="surface-card group overflow-hidden">
+  <a class="block" href={`/products/${product.slug}/`}>
+    <div class="aspect-[4/3] overflow-hidden bg-shell">
+      <img
+        class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+        src={primaryImage.src}
+        alt={primaryImage.alt}
+        width={primaryImage.width}
+        height={primaryImage.height}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="space-y-4 p-6">
+      <div class="flex flex-wrap gap-2">
+        {product.keywords.slice(0, 2).map((keyword) => (
+          <span class="rounded-full bg-shell px-3 py-1 text-xs font-medium text-ink/70">{keyword}</span>
+        ))}
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-panel inline-block text-2xl">{product.name}</h3>
+        <p class="text-panel">{product.shortDescription}</p>
+      </div>
+      <span class="text-panel-compact inline-flex items-center gap-2 text-sm font-semibold text-bronze">
+        დეტალურად
+        <span aria-hidden="true">→</span>
+      </span>
+    </div>
+  </a>
+</article>

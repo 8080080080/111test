@@ -1,0 +1,53 @@
+---
+import type { FaqItem } from "../types/content";
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  faqs: FaqItem[];
+  ctaLabel?: string;
+  ctaHref?: string;
+  compact?: boolean;
+  align?: "left" | "center";
+  stackCta?: boolean;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  faqs,
+  ctaLabel,
+  ctaHref,
+  compact = false,
+  align = "left",
+  stackCta = false
+} = Astro.props;
+---
+
+<section class={compact ? "py-10 sm:py-12" : "section-padding"}>
+  <div class={`container-shell ${compact ? "space-y-8" : "space-y-10"}`}>
+    <SectionHeading
+      eyebrow={eyebrow}
+      title={title}
+      description={description}
+      align={align}
+      linkLabel={ctaLabel}
+      linkHref={ctaHref}
+      stackLink={stackCta}
+    />
+    <div class="grid gap-4">
+      {faqs.map((faq) => (
+        <details class="surface-card group px-6 py-5 open:bg-white">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold text-ink">
+            <span class="text-panel flex-1">{faq.question}</span>
+            <span class="text-bronze group-open:rotate-45">+</span>
+          </summary>
+          <p class="text-panel mt-4">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

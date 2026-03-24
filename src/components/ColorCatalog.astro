@@ -1,0 +1,251 @@
+---
+import type { ProductImage } from "../types/content";
+
+interface Props {
+  items: ProductImage[];
+  id: string;
+}
+
+const { items, id } = Astro.props;
+const tileSize = 120;
+const tileMargin = 5;
+const previewSize = 240;
+---
+
+<div
+  class="color-catalog"
+  id={id}
+  data-color-catalog
+  style={`--catalog-tile-size:${tileSize}px; --catalog-tile-margin:${tileMargin}px; --catalog-preview-size:${previewSize}px;`}
+>
+  <div class="color-catalog__layout" data-catalog-layout>
+    {items.map((item, index) => (
+      <button
+        type="button"
+        class="color-catalog__tile"
+        data-catalog-tile
+        data-index={index}
+        aria-label={item.alt}
+      >
+        <img
+          src={item.src}
+          alt={item.alt}
+          width={tileSize}
+          height={tileSize}
+          loading="lazy"
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
+      </button>
+    ))}
+
+    <div class="color-catalog__preview" data-catalog-preview aria-hidden="true">
+      {items.map((item, index) => (
+        <div class="color-catalog__preview-item" data-preview-item data-index={index} hidden={index !== 0}>
+          <img
+            src={item.src}
+            alt=""
+            width={previewSize}
+            height={previewSize}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .color-catalog {
+    position: relative;
+  }
+
+  .color-catalog__layout {
+    position: relative;
+    min-height: var(--catalog-tile-size);
+  }
+
+  .color-catalog__tile {
+    position: absolute;
+    width: var(--catalog-tile-size);
+    height: var(--catalog-tile-size);
+    margin: var(--catalog-tile-margin);
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(26, 25, 23, 0.08);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 18px 35px rgba(26, 25, 23, 0.08);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .color-catalog__tile:hover,
+  .color-catalog__tile:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(47, 36, 130, 0.26);
+    box-shadow: 0 24px 42px rgba(26, 25, 23, 0.14);
+  }
+
+  .color-catalog__tile :global(img),
+  .color-catalog__preview-item :global(img) {
+    display: block;
+  }
+
+  .color-catalog__preview {
+    display: none;
+  }
+
+  .color-catalog__preview-item {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .color-catalog__preview {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 30;
+      display: block;
+      width: var(--catalog-preview-size);
+      height: var(--catalog-preview-size);
+      overflow: hidden;
+      border-radius: 1.75rem;
+      border: 1px solid rgba(26, 25, 23, 0.12);
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 34px 58px rgba(26, 25, 23, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate3d(var(--preview-x, 0px), var(--preview-y, 0px), 0) scale(0.98);
+      transform-origin: top left;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .color-catalog__preview.is-visible {
+      opacity: 1;
+      transform: translate3d(var(--preview-x, 0px), var(--preview-y, 0px), 0) scale(1);
+    }
+  }
+</style>
+
+<script is:inline>
+  const desktopQuery = window.matchMedia("(min-width: 768px)");
+
+  for (const root of document.querySelectorAll("[data-color-catalog]")) {
+    const layout = root.querySelector("[data-catalog-layout]");
+    const preview = root.querySelector("[data-catalog-preview]");
+    const tiles = Array.from(root.querySelectorAll("[data-catalog-tile]"));
+    const previewItems = Array.from(root.querySelectorAll("[data-preview-item]"));
+
+    if (!layout || !preview || tiles.length === 0) {
+      continue;
+    }
+
+    const tileSize = 120;
+    const tileMargin = 5;
+    const previewSize = 240;
+    const tileStride = tileSize + tileMargin * 2;
+    let activeIndex = -1;
+
+    const setActivePreview = (index) => {
+      previewItems.forEach((item, itemIndex) => {
+        item.hidden = itemIndex !== index;
+      });
+    };
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const hidePreview = () => {
+      activeIndex = -1;
+      preview.classList.remove("is-visible");
+      preview.setAttribute("aria-hidden", "true");
+    };
+
+    const showPreview = (index) => {
+      if (!desktopQuery.matches) {
+        hidePreview();
+        return;
+      }
+
+      const tile = tiles[index];
+      if (!tile) {
+        return;
+      }
+
+      activeIndex = index;
+      setActivePreview(index);
+
+      const tileLeft = Number(tile.dataset.left || 0);
+      const tileTop = Number(tile.dataset.top || 0);
+      const layoutWidth = layout.clientWidth;
+      const layoutHeight = Math.max(layout.clientHeight, previewSize);
+      const offset = 18;
+
+      let previewX = tileLeft + tileStride + offset;
+      if (previewX + previewSize > layoutWidth) {
+        previewX = tileLeft - previewSize - offset;
+      }
+      previewX = clamp(previewX, 0, Math.max(0, layoutWidth - previewSize));
+
+      const centeredTop = tileTop - Math.round((previewSize - tileSize) / 2);
+      const previewY = clamp(centeredTop, 0, Math.max(0, layoutHeight - previewSize));
+
+      preview.style.setProperty("--preview-x", `${previewX}px`);
+      preview.style.setProperty("--preview-y", `${previewY}px`);
+      preview.classList.add("is-visible");
+      preview.setAttribute("aria-hidden", "false");
+    };
+
+    const updateLayout = () => {
+      const width = layout.clientWidth;
+      const columns = Math.max(1, Math.floor(width / tileStride));
+      const rows = Math.ceil(tiles.length / columns);
+      const gridWidth = columns * tileStride;
+      const startOffset = Math.max(0, Math.floor((width - gridWidth) / 2));
+
+      tiles.forEach((tile, index) => {
+        const column = index % columns;
+        const row = Math.floor(index / columns);
+        const visualLeft = startOffset + column * tileStride;
+        const visualTop = row * tileStride;
+
+        tile.style.left = `${visualLeft - tileMargin}px`;
+        tile.style.top = `${visualTop - tileMargin}px`;
+        tile.dataset.left = `${visualLeft}`;
+        tile.dataset.top = `${visualTop}`;
+      });
+
+      layout.style.height = `${Math.max(rows * tileStride, tileSize)}px`;
+
+      if (activeIndex >= 0) {
+        showPreview(activeIndex);
+      } else {
+        hidePreview();
+      }
+    };
+
+    tiles.forEach((tile, index) => {
+      tile.addEventListener("mouseenter", () => showPreview(index));
+      tile.addEventListener("focus", () => showPreview(index));
+      tile.addEventListener("click", () => showPreview(index));
+      tile.addEventListener("blur", () => {
+        window.setTimeout(() => {
+          if (!root.contains(document.activeElement) && !layout.matches(":hover")) {
+            hidePreview();
+          }
+        }, 0);
+      });
+    });
+
+    layout.addEventListener("mouseleave", () => {
+      if (!root.contains(document.activeElement)) {
+        hidePreview();
+      }
+    });
+
+    desktopQuery.addEventListener("change", updateLayout);
+    window.addEventListener("resize", updateLayout);
+    updateLayout();
+  }
+</script>

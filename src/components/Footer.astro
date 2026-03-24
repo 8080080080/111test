@@ -1,0 +1,115 @@
+---
+import { getPhoneHref, getSiteData, getWhatsAppHref } from "../lib/content";
+
+const site = getSiteData();
+const phoneHref = getPhoneHref(site.phone);
+const whatsappHref = site.socialLinks.whatsapp ? getWhatsAppHref(site.socialLinks.whatsapp) : undefined;
+const socialItems = [
+  site.socialLinks.facebook ? { label: "Facebook", href: site.socialLinks.facebook, icon: "facebook" } : undefined,
+  whatsappHref ? { label: "WhatsApp", href: whatsappHref, icon: "whatsapp" } : undefined
+].filter(Boolean);
+---
+
+<footer class="section-padding pt-10 sm:pt-14">
+  <div class="container-shell space-y-6 sm:space-y-8">
+    <section class="relative overflow-hidden rounded-[2.75rem] bg-ink px-6 py-14 text-center text-white shadow-[0_28px_80px_rgba(0,0,0,0.2)] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+      <div class="pointer-events-none absolute inset-x-[14%] top-[-3.5rem] h-36 rounded-full bg-white/35 blur-[95px] sm:top-[-4.5rem] sm:h-44"></div>
+      <div class="pointer-events-none absolute inset-x-[22%] bottom-[-5rem] h-40 rounded-full bg-bronze/25 blur-[110px]"></div>
+      <div class="relative mx-auto max-w-3xl">
+        <h2 class="font-serif text-3xl tracking-tight text-white sm:text-4xl lg:text-[3.3rem]">{site.footer.ctaTitle}</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">{site.footer.ctaDescription}</p>
+        <a class="mt-8 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-soft hover:-translate-y-0.5 hover:bg-sand" href={site.footer.ctaButtonHref}>
+          {site.footer.ctaButtonLabel}
+        </a>
+      </div>
+    </section>
+
+    <section class="relative overflow-hidden rounded-[2.9rem] border border-black/5 bg-white px-6 py-8 shadow-[0_30px_90px_rgba(26,25,23,0.08)] sm:px-10 sm:py-10 lg:px-12 lg:py-12">
+      <div class="relative">
+        <div class="rounded-[2.4rem] border border-black/8 bg-white/92 p-6 shadow-[0_18px_55px_rgba(26,25,23,0.05)] sm:p-8 lg:p-10">
+          <div class="grid gap-10 lg:grid-cols-[1.45fr_0.8fr_0.8fr_0.8fr]">
+            <div class="max-w-xl">
+              <a class="inline-flex items-center" href="/" aria-label={`Winsome მთავარი გვერდი`}>
+                <img
+                  class="h-auto w-[12rem] object-contain sm:w-[14rem] lg:w-[15.5rem]"
+                  src={site.logoImage}
+                  alt={`Winsome ლოგო`}
+                  width={248}
+                  height={98}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <p class="mt-5 max-w-lg text-sm leading-7 text-ink/68">{site.footer.description}</p>
+              <div class="mt-5 space-y-2 text-sm text-ink/68">
+                <p>{site.address}</p>
+                <a class="block hover:text-bronze" href={phoneHref}>{site.phone}</a>
+                <p>{site.email}</p>
+                <p>მომსახურების ზონა: {site.serviceAreas.join(", ")}</p>
+              </div>
+              <div class="mt-6 flex flex-wrap gap-3">
+                {socialItems.map((item) => (
+                  <a
+                    class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/8 bg-shell/55 text-ink hover:-translate-y-0.5 hover:border-bronze/30 hover:text-bronze"
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={item.label}
+                    title={item.label}
+                  >
+                    {item.icon === "facebook" && (
+                      <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                        <path d="M13.2 20v-7.1h2.4l.4-2.8h-2.8V8.3c0-.8.2-1.4 1.4-1.4h1.5V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4v1.8H7.6v2.8H10V20h3.2Z"></path>
+                      </svg>
+                    )}
+                    {item.icon === "whatsapp" && (
+                      <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                        <path d="M20 11.9a8 8 0 0 1-11.8 7l-4.2 1.1 1.1-4.1A8 8 0 1 1 20 11.9Zm-4.7 2.2c-.3-.1-1.5-.7-1.8-.8-.2-.1-.4-.1-.5.1l-.4.5c-.2.2-.3.2-.6.1-1.5-.7-2.5-2.2-2.6-2.5-.2-.3 0-.4.1-.5l.4-.4c.1-.1.1-.3.2-.4.1-.1 0-.3 0-.4 0-.1-.5-1.3-.7-1.7-.1-.4-.3-.3-.5-.3h-.4c-.1 0-.4.1-.6.3s-.8.7-.8 1.8.8 2.2.9 2.4c.1.2 1.7 2.7 4.2 3.7.6.3 1.1.4 1.4.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.5.2-1 .2-1.1s-.2-.2-.4-.3Z"></path>
+                      </svg>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-ink/48">პროდუქცია</h2>
+              <ul class="mt-5 space-y-3 text-sm text-ink/70">
+                {site.footer.productLinks.map((item) => (
+                  <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-ink/48">სასარგებლო</h2>
+              <ul class="mt-5 space-y-3 text-sm text-ink/70">
+                {site.footer.resourceLinks.map((item) => (
+                  <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-ink/48">კომპანია</h2>
+              <ul class="mt-5 space-y-3 text-sm text-ink/70">
+                {site.footer.companyLinks.map((item) => (
+                  <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-col gap-4 border-t border-black/8 pt-6 text-sm text-ink/56 lg:flex-row lg:items-center lg:justify-between">
+            <p>{site.footer.copyright}</p>
+            <ul class="flex flex-wrap gap-x-6 gap-y-2">
+              {site.footer.bottomLinks.map((item) => (
+                <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</footer>

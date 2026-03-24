@@ -1,0 +1,61 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import SEO from "../components/SEO.astro";
+import { getSiteData } from "../lib/content";
+import { createLocalBusinessSchema } from "../lib/schema";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  pathname?: string;
+  keywords?: string[];
+  noIndex?: boolean;
+  schemas?: unknown[];
+}
+
+const site = getSiteData();
+const {
+  title,
+  description,
+  image,
+  pathname = Astro.url.pathname,
+  keywords = [],
+  noIndex = false,
+  schemas = []
+} = Astro.props;
+const mergedSchemas = [createLocalBusinessSchema(site), ...schemas];
+---
+
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f3ee" />
+    <link rel="icon" href="/assets/images/winsome-favicon.png" type="image/png" sizes="256x256" />
+    <link rel="apple-touch-icon" href="/assets/images/winsome-favicon.png" />
+    <SEO
+      title={title}
+      description={description}
+      pathname={pathname}
+      image={image}
+      keywords={keywords}
+      noIndex={noIndex}
+      schemas={mergedSchemas}
+    />
+  </head>
+  <body>
+    <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-mist" href="#main-content">
+      გადადი ძირითად შინაარსზე
+    </a>
+    <Header currentPath={Astro.url.pathname} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+

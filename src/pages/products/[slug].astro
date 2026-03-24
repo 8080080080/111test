@@ -1,0 +1,176 @@
+---
+import ColorCatalog from "../../components/ColorCatalog.astro";
+import ColorSwatches from "../../components/ColorSwatches.astro";
+import FAQSection from "../../components/FAQSection.astro";
+import GroupedColorCatalog from "../../components/GroupedColorCatalog.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import ProductGallery from "../../components/ProductGallery.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPhoneHref, getProductBySlug, getProducts, getRelatedProducts, getSiteData } from "../../lib/content";
+import { createBreadcrumbSchema, createFaqSchema, createProductSchema } from "../../lib/schema";
+
+export function getStaticPaths() {
+  return getProducts().map((product) => ({
+    params: { slug: product.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const product = slug ? getProductBySlug(slug) : undefined;
+
+if (!product) {
+  throw new Error(`Unknown product slug: ${slug}`);
+}
+
+const site = getSiteData();
+const phoneHref = getPhoneHref(site.phone);
+const relatedProducts = getRelatedProducts(product.slug);
+const productPath = `/products/${product.slug}/`;
+const isPliseGallery = product.slug === "plise-jaluzi" && Boolean(product.colorGallery?.length);
+const colorSectionTitle = isPliseGallery ? "გალერეა" : "ფერები";
+const colorDescription = isPliseGallery
+  ? "იხილეთ 25 სურათიანი გალერეა. სურათზე დაჭერით შეგიძლიათ გახსნათ დიდი ხედით და მობილურზე ახლოდან ნახოთ დეტალები."
+  : product.colorCollections?.length
+    ? "ფერები დაჯგუფებულია კოლექციებად, რათა სასურველი ნიმუშების მოძებნა და შემდგომში ახალი ჯგუფების დამატება მარტივი იყოს."
+    : product.colorCatalog?.length
+      ? "ფერის ვარიანტები იხილეთ ქვემოთ მოცემულ კატალოგში."
+      : product.colorGallery?.length
+        ? "ფერის არჩევანი შეგიძლიათ ნახოთ ქვემოთ მოცემულ სლაიდერში."
+        : "";
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "მთავარი", path: "/" },
+  { name: "პროდუქცია", path: "/products/" },
+  { name: product.name, path: productPath }
+]);
+const schemas = [
+  breadcrumbs,
+  createProductSchema(product, site, productPath),
+  createFaqSchema(product.faqs)
+];
+---
+
+<BaseLayout
+  title={product.seoTitle}
+  description={product.seoDescription}
+  pathname={productPath}
+  image={product.images[0]?.src}
+  keywords={product.keywords}
+  schemas={schemas}
+>
+  <section class="pt-8 pb-8 sm:pt-10 sm:pb-9">
+    <div class="container-shell space-y-6">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/55">
+        <a href="/" class="hover:text-bronze">მთავარი</a>
+        <span class="mx-2">/</span>
+        <a href="/products/" class="hover:text-bronze">პროდუქცია</a>
+        <span class="mx-2">/</span>
+        <span>{product.name}</span>
+      </nav>
+
+      <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+        <ProductGallery images={product.images} id={`gallery-${product.slug}`} />
+
+        <div class="space-y-6">
+          <div class="space-y-4">
+            <p class="eyebrow text-panel-compact inline-flex w-fit">პროდუქტის დეტალები</p>
+            <h1 class="text-panel inline-block text-4xl sm:text-5xl">{product.name}</h1>
+            <p class="text-panel max-w-2xl text-lg">{product.shortDescription}</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            {product.keywords.map((keyword) => (
+              <span class="rounded-full bg-shell px-4 py-2 text-sm font-medium text-ink/72">{keyword}</span>
+            ))}
+          </div>
+
+          <div class="surface-card space-y-5 p-6">
+            <p>{product.fullDescription}</p>
+            <div class="flex flex-wrap gap-3">
+              <a class="button-primary" href="/contact/">მოითხოვე კონსულტაცია</a>
+              <a class="button-secondary" href={phoneHref}>დარეკე Winsome-ში</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-6">
+    <div class="container-shell grid gap-6 lg:grid-cols-2">
+      <article class="surface-card p-6 sm:p-8">
+        <h2 class="text-3xl">მახასიათებლები</h2>
+        <ul class="mt-6 grid gap-4">
+          {product.features.map((feature) => (
+            <li class="flex gap-3 rounded-3xl bg-shell/70 px-4 py-4">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-bronze"></span>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+      <article class="surface-card p-6 sm:p-8">
+        <h2 class="text-3xl">უპირატესობები</h2>
+        <ul class="mt-6 grid gap-4">
+          {product.benefits.map((benefit) => (
+            <li class="flex gap-3 rounded-3xl bg-shell/70 px-4 py-4">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-sage"></span>
+              <span>{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-8 sm:py-10 bg-white/45">
+    <div class="container-shell">
+      <article class="surface-card p-6 sm:p-8">
+        <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+        {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
+        <div class="mt-6">
+          {product.colorCollections?.length ? (
+            <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
+          ) : product.colorCatalog?.length ? (
+            <ColorCatalog items={product.colorCatalog} id={`catalog-${product.slug}`} />
+          ) : product.colorGallery?.length ? (
+            <ProductGallery
+              images={product.colorGallery}
+              id={`colors-${product.slug}`}
+              compact
+              zoomable
+              showThumbnails={!isPliseGallery}
+              imageFit={isPliseGallery ? "contain" : "cover"}
+              mainAspectClass={isPliseGallery ? "aspect-[6/7]" : undefined}
+            />
+          ) : (
+            <ColorSwatches colors={product.colors} />
+          )}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <FAQSection compact
+    eyebrow="კითხვები"
+    title="ხშირად დასმული კითხვები ამ პროდუქტზე"
+    faqs={product.faqs}
+  />
+
+  <section class="pb-6">
+    <div class="container-shell space-y-8">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div class="space-y-3">
+          <p class="eyebrow text-panel-compact inline-flex w-fit">მსგავსი პროდუქცია</p>
+          <h2 class="text-panel inline-block text-3xl sm:text-4xl">იხილე სხვა კატეგორიებიც</h2>
+        </div>
+        <a class="button-secondary" href="/products/">სრული კატალოგი</a>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {relatedProducts.map((relatedProduct) => <ProductCard product={relatedProduct} />)}
+      </div>
+    </div>
+  </section></BaseLayout>
+
+
+
+

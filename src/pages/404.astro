@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="გვერდი ვერ მოიძებნა" description="მოთხოვნილი გვერდი ვერ მოიძებნა." pathname="/404/" noIndex={true}>
+  <section class="section-padding">
+    <div class="container-shell">
+      <div class="surface-card space-y-6 px-6 py-12 text-center sm:px-10 lg:px-16 lg:py-16">
+        <p class="eyebrow">404</p>
+        <h1 class="text-4xl sm:text-5xl">ეს გვერდი არ არსებობს</h1>
+        <p class="mx-auto max-w-2xl">დაბრუნდი მთავარ ნავიგაციაში და გააგრძელე პროდუქციის, ნამუშევრების ან საკონტაქტო გვერდის დათვალიერება.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a class="button-primary" href="/">მთავარ გვერდზე</a>
+          <a class="button-secondary" href="/products/">პროდუქციის ნახვა</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

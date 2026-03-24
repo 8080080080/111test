@@ -1,0 +1,71 @@
+---
+import { getPhoneHref, getSiteData } from "../lib/content";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const site = getSiteData();
+const phoneHref = getPhoneHref(site.phone);
+---
+
+<header class="sticky top-0 z-50 border-b border-black/5 bg-canvas/88 backdrop-blur-xl">
+  <div class="container-shell flex items-center justify-between gap-4 py-4">
+    <a class="flex items-center gap-3" href="/" aria-label={`${site.businessName} მთავარი გვერდი`}>
+      <img
+        class="h-auto w-[8.875rem] object-contain sm:w-[10rem]"
+        src={site.logoImage}
+        alt={`${site.businessName} ლოგო`}
+        width={160}
+        height={63}
+        loading="eager"
+        decoding="async"
+      />
+      <span class="sr-only">{site.businessName}</span>
+    </a>
+
+    <nav class="hidden items-center gap-2 lg:flex" aria-label="მთავარი ნავიგაცია">
+      {site.navigation.map((item) => {
+        const active = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href);
+        return (
+          <a
+            class={`rounded-full px-4 py-2 text-sm font-medium ${active ? "bg-ink text-mist" : "text-ink/72 hover:bg-white/80"}`}
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <div class="hidden items-center gap-3 lg:flex">
+      <a class="text-panel-compact text-sm font-semibold text-ink/72 hover:text-bronze" href={phoneHref}>{site.phone}</a>
+      <a class="button-primary" href="/contact/">კონსულტაციის მიღება</a>
+    </div>
+
+    <details class="group relative lg:hidden">
+      <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-black/10 bg-white/80 text-ink">
+        <span class="sr-only">მენიუს გახსნა</span>
+        <span class="group-open:hidden">☰</span>
+        <span class="hidden group-open:inline">✕</span>
+      </summary>
+      <div class="absolute right-0 mt-3 w-[min(88vw,22rem)] rounded-4xl border border-black/5 bg-white/95 p-4 shadow-soft backdrop-blur">
+        <nav class="flex flex-col gap-2" aria-label="მობილური ნავიგაცია">
+          {site.navigation.map((item) => {
+            const active = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href);
+            return (
+              <a class={`rounded-2xl px-4 py-3 text-sm font-medium ${active ? "bg-shell text-ink" : "text-ink/75 hover:bg-shell/70"}`} href={item.href}>
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
+        <div class="mt-4 flex flex-col gap-3 border-t border-black/5 pt-4">
+          <a class="button-primary w-full" href="/contact/">მოითხოვე შეთავაზება</a>
+          <a class="button-secondary w-full" href={phoneHref}>დარეკე {site.phone}</a>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>

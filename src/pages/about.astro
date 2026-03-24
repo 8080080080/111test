@@ -1,0 +1,72 @@
+---
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSiteData } from "../lib/content";
+import { getImageAsset } from "../lib/imageRegistry";
+import { createBreadcrumbSchema } from "../lib/schema";
+
+const site = getSiteData();
+const aboutFeatureImage = getImageAsset("demo/plants-roller");
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "მთავარი", path: "/" },
+  { name: "ჩვენ შესახებ", path: "/about/" }
+]);
+---
+
+<BaseLayout
+  title="ჩვენ შესახებ"
+  description="გაიგეთ მეტი Winsome-ის მიდგომაზე: ადგილობრივი წარმოება, ინდივიდუალური ზომები, ხარისხიანი მასალები და სუფთა მონტაჟი."
+  pathname="/about/"
+  schemas={[breadcrumbs]}
+>
+  <section class="section-padding pb-10">
+    <div class="container-shell space-y-8">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/55">
+        <a href="/" class="hover:text-bronze">მთავარი</a>
+        <span class="mx-2">/</span>
+        <span>ჩვენ შესახებ</span>
+      </nav>
+      <SectionHeading
+        eyebrow="Winsome"
+        title="ლოკალური წარმოება, მშვიდი დიზაინი და სანდო შესრულება"
+      />
+    </div>
+  </section>
+
+  <section class="pb-10">
+    <div class="container-shell grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <article class="surface-card space-y-5 p-6 sm:p-8">
+        {site.about.story.map((paragraph) => <p class="text-panel">{paragraph}</p>)}
+      </article>
+      <div class="surface-card overflow-hidden">
+        <div class="bg-shell">
+          <img
+            class="block h-auto w-full"
+            src={aboutFeatureImage}
+            alt="Winsome-ის ინტერიერის მიმართულება რეალური დემო ფოტოთი"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-white/45">
+    <div class="container-shell space-y-10">
+      <SectionHeading
+        eyebrow="ღირებულებები"
+        title="ხარისხი, პრაქტიკულობა და ინდივიდუალური მორგება"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {site.about.values.map((value) => (
+          <article class="surface-card p-6">
+            <h2 class="text-panel inline-block text-2xl">{value.title}</h2>
+            <p class="text-panel mt-3">{value.description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="surface-card grid gap-6 p-6 sm:p-8 lg:grid-cols-3">
+      </div>
+    </div>
+  </section></BaseLayout>

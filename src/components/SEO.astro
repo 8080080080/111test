@@ -1,0 +1,40 @@
+---
+import { getSiteData } from "../lib/content";
+import { getCanonicalUrl, getMetaDescription, getMetaKeywords, getMetaTitle, toAbsoluteUrl } from "../lib/seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  pathname?: string;
+  image?: string;
+  keywords?: string[];
+  noIndex?: boolean;
+  schemas?: unknown[];
+}
+
+const { title, description, pathname = "/", image, keywords = [], noIndex = false, schemas = [] } = Astro.props;
+const site = getSiteData();
+const metaTitle = getMetaTitle(title);
+const metaDescription = getMetaDescription(description);
+const canonical = getCanonicalUrl(pathname);
+const metaImage = toAbsoluteUrl(image || site.defaultSeo.defaultImage);
+const metaKeywords = getMetaKeywords(keywords).join(", ");
+---
+
+<title>{metaTitle}</title>
+<meta name="description" content={metaDescription} />
+<meta name="keywords" content={metaKeywords} />
+<meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+<link rel="canonical" href={canonical} />
+<meta property="og:site_name" content={site.businessName} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={metaTitle} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={metaImage} />
+<meta property="og:image:alt" content={site.defaultSeo.ogImageAlt} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={metaTitle} />
+<meta name="twitter:description" content={metaDescription} />
+<meta name="twitter:image" content={metaImage} />
+{schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}

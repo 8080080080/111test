@@ -1,0 +1,39 @@
+---
+import FAQSection from "../components/FAQSection.astro";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getProducts, getSiteData } from "../lib/content";
+import { createBreadcrumbSchema, createFaqSchema } from "../lib/schema";
+
+const site = getSiteData();
+const products = getProducts();
+const faqItems = [...site.homeFaqs, ...products.flatMap((product) => product.faqs)].slice(0, 12);
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "მთავარი", path: "/" },
+  { name: "კითხვები", path: "/faq/" }
+]);
+---
+
+<BaseLayout
+  title="ხშირად დასმული კითხვები"
+  description="ხშირად დასმული კითხვები Winsome-ის ჟალუზებზე, დამცავ ბადეებზე, გაზომვაზე, მონტაჟზე და შეთავაზების მოთხოვნაზე."
+  pathname="/faq/"
+  schemas={[breadcrumbs, createFaqSchema(faqItems)]}
+>
+  <section class="section-padding pb-0">
+    <div class="container-shell">
+      <nav aria-label="Breadcrumb" class="text-sm text-ink/55">
+        <a href="/" class="hover:text-bronze">მთავარი</a>
+        <span class="mx-2">/</span>
+        <span>კითხვები</span>
+      </nav>
+    </div>
+  </section>
+
+  <FAQSection
+    title="ხშირად დასმული კითხვები Winsome-ის პროდუქტებსა და მომსახურებაზე"
+    faqs={faqItems}
+  />
+</BaseLayout>
+
+

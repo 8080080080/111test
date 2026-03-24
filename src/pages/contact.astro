@@ -1,0 +1,94 @@
+---
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPhoneHref, getSiteData, getWhatsAppHref } from "../lib/content";
+import { createBreadcrumbSchema } from "../lib/schema";
+
+const site = getSiteData();
+const phoneHref = getPhoneHref(site.phone);
+const whatsappHref = site.socialLinks.whatsapp ? getWhatsAppHref(site.socialLinks.whatsapp) : "#";
+const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1805.7654576400805!2d44.8998138064013!3d41.68655724435169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440f001ed30a71%3A0x17eabe37a0b662d7!2sWinsome!5e1!3m2!1sen!2sge!4v1774275918208!5m2!1sen!2sge";
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "მთავარი", path: "/" },
+  { name: "კონტაქტი", path: "/contact/" }
+]);
+---
+
+<BaseLayout
+  title="კონტაქტი"
+  description="დაგვირეკეთ პირდაპირ ან მოგვწერეთ WhatsApp-ზე ჟალუზებისა და დამცავი ბადეების პროექტებისთვის თბილისში და საქართველოში."
+  pathname="/contact/"
+  schemas={[breadcrumbs]}
+>
+  <section class="section-padding pb-10">
+    <div class="container-shell space-y-8">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/55">
+        <a href="/" class="hover:text-bronze">მთავარი</a>
+        <span class="mx-2">/</span>
+        <span>კონტაქტი</span>
+      </nav>
+      <SectionHeading
+        eyebrow="კონტაქტი და შეთავაზებები"
+        title="დაიწყე კომუნიკაცია შენს პროექტზე"
+        description="დაგვირეკე პირდაპირ, მოგვწერე WhatsApp-ზე ან გამოიყენე რუკა ადგილზე მოსასვლელად."
+      />
+    </div>
+  </section>
+
+  <section class="pb-10">
+    <div class="container-shell grid gap-6 md:grid-cols-2">
+      <article class="surface-card p-6 sm:p-8">
+        <h2 class="text-panel inline-block text-3xl">საკონტაქტო ინფორმაცია</h2>
+        <ul class="mt-6 space-y-4 text-base text-ink/75">
+          <li><strong>ტელეფონი:</strong> <a class="hover:text-bronze" href={phoneHref}>{site.phone}</a></li>
+          <li><strong>მისამართი:</strong> {site.address}</li>
+          <li><strong>სამუშაო საათები:</strong> {site.contact.hours}</li>
+        </ul>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a class="button-primary" href={phoneHref}>დარეკე ახლავე</a>
+          <a class="button-secondary" href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="surface-card p-6 sm:p-8">
+        <h2 class="text-panel inline-block text-3xl">რა მოგვაწოდო უფრო სწრაფი კონსულტაციისთვის</h2>
+        <ul class="mt-5 grid gap-3">
+          <li class="rounded-3xl bg-shell/70 px-4 py-4">ფანჯრის ან კარის დაახლოებით სიგანე და სიმაღლე</li>
+          <li class="rounded-3xl bg-shell/70 px-4 py-4">სივრცის ან ღიობის ფოტოები</li>
+          <li class="rounded-3xl bg-shell/70 px-4 py-4">სასურველი პროდუქტის ტიპი ან ფუნქციური მიზანი</li>
+          <li class="rounded-3xl bg-shell/70 px-4 py-4">პროექტის მდებარეობა და სასურველი დრო</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="pb-20">
+    <div class="container-shell">
+      <div class="surface-card overflow-hidden">
+        <div class="grid gap-0 lg:grid-cols-[1fr_1.1fr]">
+          <div class="space-y-4 p-6 sm:p-8">
+            <p class="eyebrow text-panel-compact inline-flex w-fit">რუქის ადგილი</p>
+            <h2 class="text-panel inline-block text-3xl">{site.contact.mapPlaceholderTitle}</h2>
+            {site.contact.mapPlaceholderDescription && (
+              <p class="text-panel">{site.contact.mapPlaceholderDescription}</p>
+            )}
+            <p class="text-panel text-sm text-ink/60">იხილეთ ჩვენი მდებარეობა რუკაზე და გამოიყენეთ მიმართულებები ადგილზე მოსასვლელად.</p>
+          </div>
+          <div class="flex items-center justify-center bg-shell p-4 sm:p-5 lg:min-h-[28rem] lg:p-0">
+            <div class="h-full w-full overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-soft lg:rounded-none lg:border-0 lg:bg-transparent lg:shadow-none">
+              <iframe
+                class="block h-[320px] w-full sm:h-[420px] lg:h-full lg:min-h-[28rem]"
+                src={mapEmbedUrl}
+                style="border:0;"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Winsome-ის ლოკაცია Google Maps-ზე"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
