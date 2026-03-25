@@ -42,6 +42,7 @@ const breadcrumbs = createBreadcrumbSchema([
               type="button"
               data-lightbox-trigger
               data-lightbox-index={index}
+              data-lightbox-src={item.image}
               data-lightbox-alt={item.alt}
               data-lightbox-title={item.title}
               data-lightbox-meta={`${item.category} • ${item.location}`}
@@ -49,7 +50,7 @@ const breadcrumbs = createBreadcrumbSchema([
             >
               <div class="aspect-[4/3] overflow-hidden bg-shell">
                 <img
-                  class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
+                  class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
                   src={item.image}
                   alt={item.alt}
                   loading="lazy"
@@ -72,6 +73,13 @@ const breadcrumbs = createBreadcrumbSchema([
     </div>
   </section>
 
+  <!--
+    Lightbox dialog: contains a SINGLE <img> that is updated by JS on open.
+    Previously this had one hidden <figure> per gallery item rendered in the DOM,
+    meaning all gallery images were pre-fetched (even those never viewed).
+    Now only the image being opened gets a src= assigned, so the browser only
+    loads images the user actually requests to view.
+  -->
   <dialog class="w-[min(92vw,70rem)] rounded-4xl border border-black/5 bg-white p-0 shadow-soft backdrop:bg-black/45" data-lightbox>
     <div class="space-y-4 p-4 sm:p-6">
       <div class="flex items-start justify-between gap-4">
@@ -82,32 +90,31 @@ const breadcrumbs = createBreadcrumbSchema([
         <button class="button-secondary !px-4 !py-2" type="button" data-lightbox-close>დახურვა</button>
       </div>
       <div class="overflow-hidden rounded-4xl bg-shell">
-        {site.gallery.map((item, index) => (
-          <figure hidden={index !== 0} data-lightbox-panel data-index={index}>
-            <img
-              class="h-full w-full object-cover"
-              src={item.image}
-              alt={item.alt}
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-        ))}
+        <!--
+          Single shared image element — src/alt are set dynamically on open.
+          No height is forced so the natural image aspect ratio displays,
+          but we constrain with max-height to keep the dialog within the viewport.
+        -->
+        <img
+          class="block h-auto max-h-[70vh] w-full object-contain"
+          data-lightbox-image
+          src=""
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="900"
+        />
       </div>
     </div>
   </dialog>
+
   <script>
     const dialog = document.querySelector("[data-lightbox]");
-    const title = dialog?.querySelector("[data-lightbox-title]");
-    const meta = dialog?.querySelector("[data-lightbox-meta]");
+    const titleEl = dialog?.querySelector("[data-lightbox-title]");
+    const metaEl = dialog?.querySelector("[data-lightbox-meta]");
+    const imageEl = dialog?.querySelector("[data-lightbox-image]");
     const closeButton = dialog?.querySelector("[data-lightbox-close]");
-    const panels = Array.from(dialog?.querySelectorAll("[data-lightbox-panel]") || []);
-
-    const setActivePanel = (nextIndex) => {
-      panels.forEach((panel) => {
-        panel.hidden = Number(panel.getAttribute("data-index")) !== nextIndex;
-      });
-    };
 
     document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
       trigger.addEventListener("click", () => {
@@ -115,22 +122,43 @@ const breadcrumbs = createBreadcrumbSchema([
           return;
         }
 
-        const nextIndex = Number(trigger.getAttribute("data-lightbox-index") || 0);
-        setActivePanel(nextIndex);
+        const src = trigger.getAttribute("data-lightbox-src") || "";
+        const alt = trigger.getAttribute("data-lightbox-alt") || "";
+        const title = trigger.getAttribute("data-lightbox-title") || "";
+        const meta = trigger.getAttribute("data-lightbox-meta") || "";
 
-        if (title instanceof HTMLElement) {
-          title.textContent = trigger.getAttribute("data-lightbox-title") || "";
+        // Set the image before showModal so the browser starts loading immediately
+        if (imageEl instanceof HTMLImageElement) {
+          imageEl.src = src;
+          imageEl.alt = alt;
         }
 
-        if (meta instanceof HTMLElement) {
-          meta.textContent = trigger.getAttribute("data-lightbox-meta") || "";
+        if (titleEl instanceof HTMLElement) {
+          titleEl.textContent = title;
+        }
+
+        if (metaEl instanceof HTMLElement) {
+          metaEl.textContent = meta;
         }
 
         dialog.showModal();
       });
     });
 
-    closeButton?.addEventListener("click", () => dialog?.close());
+    closeButton?.addEventListener("click", () => {
+      if (dialog instanceof HTMLDialogElement) {
+        dialog.close();
+      }
+    });
+
+    // Clear src on close — prevents the stale image flashing on next open
+    dialog?.addEventListener("close", () => {
+      if (imageEl instanceof HTMLImageElement) {
+        imageEl.src = "";
+        imageEl.alt = "";
+      }
+    });
+
     dialog?.addEventListener("click", (event) => {
       if (!(dialog instanceof HTMLDialogElement) || !(event instanceof MouseEvent)) {
         return;

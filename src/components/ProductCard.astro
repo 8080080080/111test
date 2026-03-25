@@ -13,7 +13,7 @@ const primaryImage = product.images[0];
   <a class="block" href={`/products/${product.slug}/`}>
     <div class="aspect-[4/3] overflow-hidden bg-shell">
       <img
-        class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+        class="card-img h-full w-full object-cover"
         src={primaryImage.src}
         alt={primaryImage.alt}
         width={primaryImage.width}
@@ -39,3 +39,18 @@ const primaryImage = product.images[0];
     </div>
   </a>
 </article>
+
+<style>
+  /* Scale is compositor-only (transform). The overflow:hidden parent clips
+     the scaled image without triggering layout. Only enable for users who
+     haven't requested reduced motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    .card-img {
+      transition: transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .group:hover .card-img {
+      transform: scale(1.03);
+    }
+  }
+</style>

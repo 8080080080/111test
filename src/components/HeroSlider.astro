@@ -47,7 +47,12 @@ const {
         <div id={id} class="relative" data-slider>
           <div class="absolute inset-5 rounded-4xl bg-sage/12 blur-3xl"></div>
           <div class="relative overflow-hidden rounded-4xl border border-white/80 bg-white shadow-soft">
-            <div class="flex transition-transform duration-700 ease-out" data-slider-track>
+            <!--
+              slider-track: uses transform (translateX) which is compositor-only — no layout.
+              The CSS transition is defined here so prefers-reduced-motion can suppress it
+              without JavaScript needing to know about it.
+            -->
+            <div class="slider-track flex" data-slider-track>
               {slides.map((slide, index) => (
                 <figure class="min-w-full" data-slide>
                   <div class="aspect-[5/4] overflow-hidden bg-shell">
@@ -55,8 +60,11 @@ const {
                       class="h-full w-full object-cover"
                       src={slide.image}
                       alt={slide.alt}
+                      width={slide.width ?? 800}
+                      height={slide.height ?? 640}
                       loading={index === 0 ? "eager" : "lazy"}
-                      decoding="async"
+                      decoding={index === 0 ? "sync" : "async"}
+                      fetchpriority={index === 0 ? "high" : "low"}
                     />
                   </div>
                 </figure>
@@ -103,6 +111,23 @@ const {
   </div>
 </section>
 
+<!--
+  Slider track CSS: defined in a <style> block so it's scoped and can use
+  @media (prefers-reduced-motion) to kill the transition at the CSS level,
+  independent of the JS logic.
+-->
+<style>
+  .slider-track {
+    transition: transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slider-track {
+      transition: none;
+    }
+  }
+</style>
+
 <script define:vars={{ sliderId: id }}>
   const root = document.getElementById(sliderId);
 
@@ -117,6 +142,9 @@ const {
     let index = 0;
     let timer = 0;
     let isPaused = false;
+
+    // Respect prefers-reduced-motion in JS too: skip autoplay entirely
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const update = (nextIndex) => {
       index = (nextIndex + slides.length) % slides.length;
@@ -138,7 +166,8 @@ const {
     const scheduleNext = () => {
       clearTimer();
 
-      if (isPaused || document.hidden) {
+      // No autoplay for reduced-motion users or when document is hidden
+      if (prefersReduced || isPaused || document.hidden) {
         return;
       }
 

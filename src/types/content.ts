@@ -6,11 +6,15 @@ export interface NavItem {
 export interface RawHeroSlide {
   image: string;
   alt: string;
+  width?: number;
+  height?: number;
 }
 
 export interface HeroSlide {
   image: string;
   alt: string;
+  width?: number;
+  height?: number;
 }
 
 export interface StatItem {

@@ -14,6 +14,12 @@ interface Props {
   keywords?: string[];
   noIndex?: boolean;
   schemas?: unknown[];
+  /**
+   * Optional: src of the LCP image on this page.
+   * Pass the hero/product image URL so the browser can preload it
+   * before render, preventing a late LCP discovery.
+   */
+  lcpImageSrc?: string;
 }
 
 const site = getSiteData();
@@ -24,7 +30,8 @@ const {
   pathname = Astro.url.pathname,
   keywords = [],
   noIndex = false,
-  schemas = []
+  schemas = [],
+  lcpImageSrc
 } = Astro.props;
 const mergedSchemas = [createLocalBusinessSchema(site), ...schemas];
 ---
@@ -35,6 +42,26 @@ const mergedSchemas = [createLocalBusinessSchema(site), ...schemas];
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f6f3ee" />
+
+    <!--
+      DNS-prefetch / preconnect for any third-party origins used.
+      Currently none — kept as comment for when CDN or analytics is added.
+    -->
+
+    <!--
+      LCP image preload: only emitted when the page knows its above-the-fold image.
+      This eliminates the render-blocking "late image discovery" problem for
+      hero slides and product detail pages.
+    -->
+    {lcpImageSrc && (
+      <link
+        rel="preload"
+        as="image"
+        href={lcpImageSrc}
+        fetchpriority="high"
+      />
+    )}
+
     <link rel="icon" href="/assets/images/winsome-favicon.png" type="image/png" sizes="256x256" />
     <link rel="apple-touch-icon" href="/assets/images/winsome-favicon.png" />
     <SEO
@@ -58,4 +85,3 @@ const mergedSchemas = [createLocalBusinessSchema(site), ...schemas];
     <Footer />
   </body>
 </html>
-

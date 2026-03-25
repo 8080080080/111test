@@ -77,7 +77,14 @@ const previewSize = 240;
     border: 1px solid rgba(26, 25, 23, 0.08);
     background: rgba(255, 255, 255, 0.92);
     box-shadow: 0 18px 35px rgba(26, 25, 23, 0.08);
+    /* Only transition compositor-friendly properties */
     transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .color-catalog__tile {
+      transition: none;
+    }
   }
 
   .color-catalog__tile:hover,
@@ -117,9 +124,16 @@ const previewSize = 240;
       box-shadow: 0 34px 58px rgba(26, 25, 23, 0.18);
       opacity: 0;
       pointer-events: none;
+      /* Use translate3d — keeps it on a GPU layer, avoids repaints of surrounding content */
       transform: translate3d(var(--preview-x, 0px), var(--preview-y, 0px), 0) scale(0.98);
       transform-origin: top left;
       transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .color-catalog__preview {
+        transition: none;
+      }
     }
 
     .color-catalog__preview.is-visible {
@@ -129,7 +143,18 @@ const previewSize = 240;
   }
 </style>
 
-<script is:inline>
+<script define:vars={{ catalogId: id }}>
+  // Debounce utility — prevents layout thrashing on every resize event frame.
+  // Without this, updateLayout runs at 60fps while user is resizing, reading
+  // .clientWidth (forced layout) on every frame.
+  function debounce(fn, delay) {
+    let id = 0;
+    return (...args) => {
+      clearTimeout(id);
+      id = window.setTimeout(() => fn(...args), delay);
+    };
+  }
+
   const desktopQuery = window.matchMedia("(min-width: 768px)");
 
   for (const root of document.querySelectorAll("[data-color-catalog]")) {
@@ -244,8 +269,10 @@ const previewSize = 240;
       }
     });
 
-    desktopQuery.addEventListener("change", updateLayout);
-    window.addEventListener("resize", updateLayout);
+    // Debounced: was running at full frame rate before, causing continuous layout reads
+    const debouncedUpdate = debounce(updateLayout, 120);
+    desktopQuery.addEventListener("change", updateLayout); // Breakpoint change — run immediately
+    window.addEventListener("resize", debouncedUpdate);   // Freeform resize — debounced
     updateLayout();
   }
 </script>

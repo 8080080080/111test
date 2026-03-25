@@ -85,6 +85,20 @@ const { collections, id = "grouped-color-catalog" } = Astro.props;
   </dialog>
 </div>
 
+<style>
+  /* Hover animations use transform only — compositor-friendly, no layout.
+     Disabled entirely for prefers-reduced-motion users. */
+  @media (prefers-reduced-motion: reduce) {
+    [data-catalog-item] div {
+      transition: none !important;
+    }
+
+    [data-catalog-item] img {
+      transition: none !important;
+    }
+  }
+</style>
+
 <script define:vars={{ catalogId: id }}>
   const root = document.getElementById(catalogId);
 

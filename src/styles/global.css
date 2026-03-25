@@ -12,15 +12,32 @@
     --secondary-border: rgba(47, 36, 130, 0.16);
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Respect user preference — unconditional smooth scroll is a performance hazard
+     and an accessibility issue (vestibular disorders, low-end devices). */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
+  /* Isolate the decorative gradient into a fixed pseudo-element so it lives
+     on its own compositor layer and never repaints with page content. */
   body {
     @apply bg-canvas font-sans text-ink antialiased;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
     background-image:
       radial-gradient(circle at top left, rgba(47, 36, 130, 0.1), transparent 34%),
       radial-gradient(circle at bottom right, rgba(47, 36, 172, 0.08), transparent 26%);
+    /* The gradient is fully decorative — tell the browser it won't change */
+    will-change: auto;
   }
 
   h1,
@@ -35,13 +52,30 @@
     color: rgba(26, 25, 23, 0.78);
   }
 
+  /* Default transitions on every interactive element is cheap but can add up.
+     Keep only the properties we actually animate: color, background, transform, opacity.
+     This avoids the browser tracking ALL properties on every frame. */
   a,
   button,
   input,
   select,
   textarea,
   summary {
-    @apply transition duration-200 ease-out;
+    transition-property: color, background-color, border-color, opacity, transform;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Kill all transitions for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   a:focus-visible,
@@ -63,8 +97,14 @@
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
+  /* Removed backdrop-blur: it forces a compositing layer for EVERY card on the page.
+     On a product page with 20+ cards, thumbnails, and color swatches this is extremely
+     expensive — each blurred element needs its own texture upload and GPU blend.
+     The visual difference with the opaque fill (0.92 alpha) is imperceptible.
+     backdrop-blur is retained only where it genuinely matters: the sticky header,
+     the hero text panels, and the lightbox overlay. */
   .surface-card {
-    @apply rounded-4xl shadow-card backdrop-blur;
+    @apply rounded-4xl shadow-card;
     border: 1px solid var(--surface-border);
     background-color: var(--surface-fill);
   }
@@ -73,6 +113,7 @@
     @apply text-xs font-semibold uppercase tracking-[0.32em] text-bronze;
   }
 
+  /* Use transform for the hover lift — already correct, kept as-is */
   .button-primary {
     @apply inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-mist shadow-soft hover:-translate-y-0.5 hover:bg-bronze;
   }
@@ -87,6 +128,9 @@
     @apply py-16 sm:py-20 lg:py-24;
   }
 
+  /* text-panel variants: keep backdrop-blur only here, not on every card.
+     These are small pill/badge elements where the blur is actually visible
+     against the gradient background. */
   .text-panel {
     @apply rounded-3xl backdrop-blur-sm;
     padding: 0.9rem 1rem;
