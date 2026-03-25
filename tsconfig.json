@@ -5,6 +5,7 @@
     "resolveJsonModule": true
   },
   "include": [
-    "./worker-configuration.d.ts"
+    "src/**/*",
+    "worker-configuration.d.ts"
   ]
 }
