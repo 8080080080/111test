@@ -7,7 +7,7 @@ const jpgAssetFolders = new Set([
 ]);
 
 const assetExtensions: Record<string, string> = {
-  "branding/winsome-logo": "png"
+  "branding/winsome-logo": "png?v=20260326"
 };
 
 export function getImageAsset(key: string): string {
