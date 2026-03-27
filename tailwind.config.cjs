@@ -13,16 +13,8 @@ module.exports = {
         mist: "#ffffff"
       },
       fontFamily: {
-        sans: ["Noto Sans Georgian", "Avenir Next", "Segoe UI", "Helvetica Neue", "sans-serif"],
-        serif: [
-          "Noto Serif Georgian",
-          "Iowan Old Style",
-          "Palatino Linotype",
-          "Book Antiqua",
-          "Palatino",
-          "URW Palladio L",
-          "serif"
-        ]
+        sans: ["Noto Sans Georgian", "Noto Sans", "Segoe UI", "Helvetica Neue", "Arial", "sans-serif"],
+        serif: ["Noto Sans Georgian", "Noto Sans", "Georgia", "serif"]
       },
       boxShadow: {
         soft: "0 18px 40px -22px rgba(26, 25, 23, 0.18)",

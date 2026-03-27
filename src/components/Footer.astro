@@ -16,7 +16,7 @@ const socialItems = [
       <div class="pointer-events-none absolute inset-x-[14%] top-[-3.5rem] h-36 rounded-full bg-white/35 blur-[95px] sm:top-[-4.5rem] sm:h-44"></div>
       <div class="pointer-events-none absolute inset-x-[22%] bottom-[-5rem] h-40 rounded-full bg-bronze/25 blur-[110px]"></div>
       <div class="relative mx-auto max-w-3xl">
-        <h2 class="font-serif text-3xl tracking-tight text-white sm:text-4xl lg:text-[3.3rem]">{site.footer.ctaTitle}</h2>
+        <h2 class="font-semibold text-3xl text-white sm:text-4xl lg:text-[3.3rem]">{site.footer.ctaTitle}</h2>
         <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">{site.footer.ctaDescription}</p>
         <a class="mt-8 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-soft hover:-translate-y-0.5 hover:bg-sand whitespace-nowrap" href={site.footer.ctaButtonHref}>
           {site.footer.ctaButtonLabel}
@@ -73,7 +73,7 @@ const socialItems = [
             </div>
 
             <div>
-              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-ink/48">პროდუქცია</h2>
+              <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/48">პროდუქცია</h2>
               <ul class="mt-5 space-y-3 text-sm text-ink/70">
                 {site.footer.productLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
@@ -82,7 +82,7 @@ const socialItems = [
             </div>
 
             <div>
-              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-ink/48">სასარგებლო</h2>
+              <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/48">სასარგებლო</h2>
               <ul class="mt-5 space-y-3 text-sm text-ink/70">
                 {site.footer.resourceLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
@@ -91,7 +91,7 @@ const socialItems = [
             </div>
 
             <div>
-              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-ink/48">კომპანია</h2>
+              <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/48">კომპანია</h2>
               <ul class="mt-5 space-y-3 text-sm text-ink/70">
                 {site.footer.companyLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
