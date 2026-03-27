@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        canvas: "#ffffff",
+        canvas: "#cccbd4",
         shell: "#f5f4ff",
         sand: "#e7e4ff",
         bronze: "#2f2482",
@@ -13,8 +13,9 @@ module.exports = {
         mist: "#ffffff"
       },
       fontFamily: {
-        sans: ["Avenir Next", "Segoe UI", "Helvetica Neue", "sans-serif"],
+        sans: ["Noto Sans Georgian", "Avenir Next", "Segoe UI", "Helvetica Neue", "sans-serif"],
         serif: [
+          "Noto Serif Georgian",
           "Iowan Old Style",
           "Palatino Linotype",
           "Book Antiqua",

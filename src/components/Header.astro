@@ -14,7 +14,7 @@ const phoneHref = getPhoneHref(site.phone);
   <div class="container-shell flex items-center justify-between gap-4 py-4">
     <a class="flex items-center gap-3" href="/" aria-label={`${site.businessName} მთავარი გვერდი`}>
       <img
-        class="h-auto w-[8.875rem] object-contain sm:w-[10rem]"
+        class="h-auto w-[12rem] object-contain sm:w-[14rem] lg:w-[15.5rem]"
         src={site.logoImage}
         alt={`${site.businessName} ლოგო`}
         width={160}
@@ -30,7 +30,7 @@ const phoneHref = getPhoneHref(site.phone);
         const active = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href);
         return (
           <a
-            class={`rounded-full px-4 py-2 text-sm font-medium ${active ? "bg-ink text-mist" : "text-ink/72 hover:bg-white/80"}`}
+            class={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium ${active ? "bg-ink text-mist" : "text-ink/72 hover:bg-white/80"}`}
             href={item.href}
           >
             {item.label}
@@ -41,7 +41,7 @@ const phoneHref = getPhoneHref(site.phone);
 
     <div class="hidden items-center gap-3 lg:flex">
       <a class="text-panel-compact whitespace-nowrap text-sm font-semibold text-ink/72 hover:text-bronze" href={phoneHref}>{site.phone}</a>
-      <a class="button-primary" href="/contact/">კონსულტაციის მიღება</a>
+      <a class="button-primary whitespace-nowrap" href="/contact/">კონსულტაციის მიღება</a>
     </div>
 
     <details class="group relative lg:hidden">
@@ -55,15 +55,15 @@ const phoneHref = getPhoneHref(site.phone);
           {site.navigation.map((item) => {
             const active = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href);
             return (
-              <a class={`rounded-2xl px-4 py-3 text-sm font-medium ${active ? "bg-shell text-ink" : "text-ink/75 hover:bg-shell/70"}`} href={item.href}>
+              <a class={`whitespace-nowrap rounded-2xl px-4 py-3 text-sm font-medium ${active ? "bg-shell text-ink" : "text-ink/75 hover:bg-shell/70"}`} href={item.href}>
                 {item.label}
               </a>
             );
           })}
         </nav>
         <div class="mt-4 flex flex-col gap-3 border-t border-black/5 pt-4">
-          <a class="button-primary w-full" href="/contact/">მოითხოვე შეთავაზება</a>
-          <a class="button-secondary w-full" href={phoneHref}>დარეკე {site.phone}</a>
+          <a class="button-primary w-full whitespace-nowrap" href="/contact/">მოითხოვე შეთავაზება</a>
+          <a class="button-secondary w-full whitespace-nowrap" href={phoneHref}>დარეკე {site.phone}</a>
         </div>
       </div>
     </details>
