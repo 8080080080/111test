@@ -41,7 +41,7 @@ const socialItems = [
                 />
               </a>
               <p class="mt-5 max-w-lg text-sm leading-7 text-ink/68">{site.footer.description}</p>
-              <div class="mt-5 space-y-2 text-sm text-ink/68">
+              <div class="mt-5 space-y-2 text-sm text-ink/72">
                 <p>{site.address}</p>
                 <a class="block hover:text-bronze" href={phoneHref}>{site.phone}</a>
                 <p>{site.email}</p>
@@ -73,7 +73,7 @@ const socialItems = [
             </div>
 
             <div>
-              <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/48">პროდუქცია</h2>
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/62">პროდუქცია</h3>
               <ul class="mt-5 space-y-3 text-sm text-ink/70">
                 {site.footer.productLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
@@ -82,7 +82,7 @@ const socialItems = [
             </div>
 
             <div>
-              <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/48">სასარგებლო</h2>
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/62">სასარგებლო</h3>
               <ul class="mt-5 space-y-3 text-sm text-ink/70">
                 {site.footer.resourceLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
@@ -91,7 +91,7 @@ const socialItems = [
             </div>
 
             <div>
-              <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/48">კომპანია</h2>
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/62">კომპანია</h3>
               <ul class="mt-5 space-y-3 text-sm text-ink/70">
                 {site.footer.companyLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
@@ -100,7 +100,7 @@ const socialItems = [
             </div>
           </div>
 
-          <div class="mt-10 flex flex-col gap-4 border-t border-black/10 pt-6 text-sm text-ink/56 lg:flex-row lg:items-center lg:justify-between">
+          <div class="mt-10 flex flex-col gap-4 border-t border-black/10 pt-6 text-sm text-ink/62 lg:flex-row lg:items-center lg:justify-between">
             <p>{site.footer.copyright}</p>
             <ul class="flex flex-wrap gap-x-6 gap-y-2">
               {site.footer.bottomLinks.map((item) => (

@@ -26,8 +26,9 @@ const { site, products, phoneHref } = Astro.props;
   slides={site.hero.slides}
 />
 
-<section class="pt-6 pb-8 sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-14">
+<section class="pt-6 pb-8 sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-14" aria-labelledby="home-products-title">
   <div class="container-shell">
+    <h2 id="home-products-title" class="sr-only">პროდუქციის კატეგორიები</h2>
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {products.map((product) => <ProductCard product={product} />)}
     </div>
@@ -92,12 +93,14 @@ const { site, products, phoneHref } = Astro.props;
               class="h-full w-full object-cover"
               src={item.image}
               alt={item.alt}
+              width="1200"
+              height="900"
               loading="lazy"
               decoding="async"
             />
           </div>
           <div class="space-y-3 p-5">
-            <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink/50">
+            <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink/70">
               <span>{item.category}</span>
               <span>•</span>
               <span>{item.location}</span>

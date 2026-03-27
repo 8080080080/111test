@@ -24,6 +24,7 @@ const {
   slides,
   id = "hero-slider"
 } = Astro.props;
+const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 ---
 
 <section class="section-padding pb-12 pt-10 sm:pb-16 sm:pt-12">
@@ -58,13 +59,15 @@ const {
                   <div class="aspect-[5/4] overflow-hidden bg-shell">
                     <img
                       class="h-full w-full object-cover"
-                      src={slide.image}
+                      src={index === 0 ? slide.image : transparentPixel}
                       alt={slide.alt}
                       width={slide.width ?? 800}
                       height={slide.height ?? 640}
                       loading={index === 0 ? "eager" : "lazy"}
                       decoding={index === 0 ? "sync" : "async"}
                       fetchpriority={index === 0 ? "high" : "low"}
+                      data-slider-image
+                      data-src={index === 0 ? undefined : slide.image}
                     />
                   </div>
                 </figure>
@@ -93,7 +96,7 @@ const {
           </div>
 
           <div class="mt-5 px-1 sm:px-2">
-            <div class="flex w-full items-center justify-between gap-2 sm:gap-3" role="tablist" aria-label="მთავარი ფოტო სლაიდები">
+            <div class="flex w-full items-center justify-between gap-2 sm:gap-3" aria-label="მთავარი ფოტო სლაიდები">
               {slides.map((slide, index) => (
                 <button
                   class={`h-2.5 rounded-full bg-ink/20 ${index === 0 ? "w-10 bg-bronze" : "w-2.5"}`}
@@ -101,6 +104,7 @@ const {
                   data-slider-dot
                   data-index={index}
                   aria-label={`გადადი ფოტოზე ${index + 1}: ${slide.alt}`}
+                  aria-current={index === 0 ? "true" : "false"}
                 ></button>
               ))}
             </div>
@@ -145,9 +149,31 @@ const {
 
     // Respect prefers-reduced-motion in JS too: skip autoplay entirely
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const modulo = (value, length) => (value % length + length) % length;
+
+    const ensureSlideImage = (slideIndex) => {
+      const image = slides[modulo(slideIndex, slides.length)]?.querySelector("[data-slider-image]");
+
+      if (!(image instanceof HTMLImageElement)) {
+        return;
+      }
+
+      const nextSrc = image.dataset.src;
+
+      if (!nextSrc) {
+        return;
+      }
+
+      image.loading = "eager";
+      image.src = nextSrc;
+      delete image.dataset.src;
+    };
 
     const update = (nextIndex) => {
-      index = (nextIndex + slides.length) % slides.length;
+      index = modulo(nextIndex, slides.length);
+      ensureSlideImage(index);
+      ensureSlideImage(index + 1);
+      ensureSlideImage(index - 1);
       track.style.transform = `translateX(-${index * 100}%)`;
 
       dots.forEach((dot, dotIndex) => {
@@ -155,6 +181,7 @@ const {
         dot.classList.toggle("w-2.5", dotIndex !== index);
         dot.classList.toggle("bg-bronze", dotIndex === index);
         dot.classList.toggle("bg-ink/20", dotIndex !== index);
+        dot.setAttribute("aria-current", dotIndex === index ? "true" : "false");
       });
     };
 
@@ -219,6 +246,7 @@ const {
       scheduleNext();
     });
 
+    update(0);
     scheduleNext();
   }
 </script>

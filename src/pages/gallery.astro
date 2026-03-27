@@ -53,13 +53,15 @@ const breadcrumbs = createBreadcrumbSchema([
                   class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
                   src={item.image}
                   alt={item.alt}
+                  width="1200"
+                  height="900"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
             </button>
             <div class="space-y-3 p-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink/50">{item.category} • {item.location}</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink/70">{item.category} • {item.location}</p>
               <h2 class="text-2xl">{item.title}</h2>
               {item.relatedProductSlug && (
                 <a class="text-sm font-semibold text-bronze" href={`/products/${item.relatedProductSlug}/`}>

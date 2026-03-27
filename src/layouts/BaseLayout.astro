@@ -34,6 +34,9 @@ const {
   lcpImageSrc
 } = Astro.props;
 const mergedSchemas = [createLocalBusinessSchema(site), ...schemas];
+const fontStylesheetHref =
+  "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+Georgian:wght@400;600&display=optional";
+const enableFigmaCapture = import.meta.env.DEV || import.meta.env.PUBLIC_ENABLE_FIGMA_CAPTURE === "true";
 ---
 
 <!doctype html>
@@ -44,10 +47,9 @@ const mergedSchemas = [createLocalBusinessSchema(site), ...schemas];
     <meta name="theme-color" content="#cccbd4" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap"
-    />
+    <link rel="preload" as="style" href={fontStylesheetHref} />
+    <link rel="stylesheet" href={fontStylesheetHref} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={fontStylesheetHref} /></noscript>
 
     <!--
       DNS-prefetch / preconnect for any third-party origins used.
@@ -79,7 +81,7 @@ const mergedSchemas = [createLocalBusinessSchema(site), ...schemas];
       noIndex={noIndex}
       schemas={mergedSchemas}
     />
-    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+    {enableFigmaCapture && <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>}
   </head>
   <body>
     <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-mist" href="#main-content">
