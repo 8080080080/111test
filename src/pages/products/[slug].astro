@@ -133,17 +133,17 @@ const schemas = [
           <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
           {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
           <div class="mt-6">
-            {product.colorCollections?.length ? (
-              <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
-            ) : product.colorCatalog?.length ? (
-              <ColorCatalog
-                items={product.colorCatalog}
-                id={`catalog-${product.slug}`}
-                mobileFullscreen={product.slug === "anjamebiani-bade"}
-              />
-            ) : product.colorGallery?.length ? (
-              <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
-            ) : (
+              {product.colorCollections?.length ? (
+                <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
+              ) : product.colorCatalog?.length ? (
+                <ColorCatalog
+                  items={product.colorCatalog}
+                  id={`catalog-${product.slug}`}
+                  mobileFullscreen={Boolean(product.colorCatalog?.length)}
+                />
+              ) : product.colorGallery?.length ? (
+                <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
+              ) : (
               <ColorSwatches colors={product.colors} />
             )}
           </div>
