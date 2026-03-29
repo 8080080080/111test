@@ -11,6 +11,32 @@ const breadcrumbs = createBreadcrumbSchema([
   { name: "მთავარი", path: "/" },
   { name: "ჩვენ შესახებ", path: "/about/" }
 ]);
+const aboutHighlights = [
+  {
+    title: "რას ვაკეთებთ",
+    points: [
+      "ვქმნით ჟალუზებისა და დამცავი ბადეების გადაწყვეტილებებს საცხოვრებელი და კომერციული სივრცეებისთვის.",
+      "ვარჩევთ პროდუქტს ფანჯრის ფორმის, განათების, კონფიდენციალურობისა და ყოველდღიური მოხმარების მიხედვით.",
+      "ვმუშაობთ ისე, რომ საბოლოო შედეგი იყოს სუფთა, პრაქტიკული და ინტერიერთან ბუნებრივად შერწყმული."
+    ]
+  },
+  {
+    title: "როგორ ვმუშაობთ",
+    points: [
+      "ყოველი პროექტი იწყება სივრცის შეფასებით და რეალურ საჭიროებაზე მორგებული რეკომენდაციით.",
+      "ზომები და დეტალები წინასწარ ზუსტდება, რათა მონტაჟის ეტაპზე ყველაფერი გამართულად შესრულდეს.",
+      "კომუნიკაცია მოკლე, გასაგები და დროულია — კონსულტაციიდან დასრულებულ შედეგამდე."
+    ]
+  },
+  {
+    title: "რატომ Winsome",
+    points: [
+      "ლოკალური მიდგომა გვაძლევს მეტ მოქნილობას ზომებში, ვადებსა და ინდივიდუალურ მოთხოვნებში.",
+      "ყურადღებას ვაქცევთ როგორც ვიზუალურ სიმშვიდეს, ისე მასალების გამძლეობასა და მოვლის სიმარტივეს.",
+      "მიზანია პროდუქტი, რომელიც მხოლოდ ლამაზად არ გამოიყურება, არამედ ყოველდღიურ ცხოვრებას რეალურად უმარტივებს მომხმარებელს."
+    ]
+  }
+];
 ---
 
 <BaseLayout
@@ -34,14 +60,37 @@ const breadcrumbs = createBreadcrumbSchema([
   </section>
 
   <section class="pb-10">
-    <div class="container-shell grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-      <article class="surface-card space-y-5 p-6 sm:p-8">
-        {site.about.story.map((paragraph) => <p class="text-panel">{paragraph}</p>)}
+    <div class="container-shell grid gap-6 xl:grid-cols-[1.1fr_0.9fr] xl:items-stretch">
+      <article class="surface-card flex h-full flex-col justify-between gap-6 p-5 sm:gap-8 sm:p-8 lg:p-10">
+        <div class="space-y-3 sm:space-y-4">
+          <p class="eyebrow text-panel-compact inline-flex w-fit">ჩვენი მიდგომა</p>
+          <h2 class="text-panel max-w-3xl text-2xl leading-tight sm:text-4xl">Winsome ქმნის პრაქტიკულ, მშვიდ და ზუსტად მორგებულ გადაწყვეტილებებს თანამედროვე სივრცეებისთვის.</h2>
+          <p class="text-panel max-w-2xl text-sm leading-7 text-ink/72 sm:text-lg sm:leading-8">
+            ვმუშაობთ ისე, რომ პროდუქტი მხოლოდ ვიზუალურად მიმზიდველი არ იყოს — ის რეალურად ამარტივებდეს ყოველდღიურ გამოყენებას,
+            ერგებოდეს ინტერიერს და დიდხანს ინარჩუნებდეს ხარისხს.
+          </p>
+        </div>
+
+        <div class="grid gap-3 sm:gap-5">
+          {aboutHighlights.map((item) => (
+            <article class="rounded-[1.75rem] border border-black/8 bg-shell/75 p-4 sm:rounded-[2rem] sm:p-6">
+              <h3 class="text-panel text-lg leading-tight sm:text-2xl">{item.title}</h3>
+              <ul class="mt-3 grid gap-2.5 sm:mt-4 sm:gap-3">
+                {item.points.map((point) => (
+                  <li class="flex items-start gap-2.5 text-panel text-sm leading-7 text-ink/74 sm:gap-3 sm:text-base sm:leading-8">
+                    <span class="mt-[0.5em] h-2 w-2 shrink-0 rounded-full bg-bronze sm:mt-[0.45em] sm:h-2.5 sm:w-2.5"></span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </article>
       <div class="surface-card overflow-hidden">
-        <div class="bg-shell">
+        <div class="h-full bg-shell">
           <img
-            class="block h-auto w-full"
+            class="block h-full min-h-[320px] w-full object-cover"
             src={aboutFeatureImage}
             alt="Winsome-ის ინტერიერის მიმართულება რეალური დემო ფოტოთი"
             loading="lazy"
@@ -65,8 +114,6 @@ const breadcrumbs = createBreadcrumbSchema([
             <p class="text-panel mt-3">{value.description}</p>
           </article>
         ))}
-      </div>
-      <div class="surface-card grid gap-6 p-6 sm:p-8 lg:grid-cols-3">
       </div>
     </div>
   </section></BaseLayout>

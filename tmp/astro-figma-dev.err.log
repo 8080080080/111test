@@ -1,0 +1,9 @@
+spawn EPERM
+  [1mLocation:[22m
+    [4mD:\Codexgeneratedwebsite\node_modules\vite\dist\node\chunks\config.js:2230:2[24m
+  [1mStack trace:[22m
+[2m    at ChildProcess.spawn (node:internal/child_process:420:11)
+    at Object.execFile (node:child_process:349:17)
+    at optimizeSafeRealPathSync (file:///D:/Codexgeneratedwebsite/node_modules/vite/dist/node/chunks/config.js:2230:2)
+    at getRealPath (file:///D:/Codexgeneratedwebsite/node_modules/vite/dist/node/chunks/config.js:32933:36)
+    at tryCleanFsResolve (file:///D:/Codexgeneratedwebsite/node_modules/vite/dist/node/chunks/config.js:32651:21)[22m

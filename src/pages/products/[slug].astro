@@ -105,8 +105,8 @@ const schemas = [
         <h2 class="text-3xl">მახასიათებლები</h2>
         <ul class="mt-6 grid gap-4">
           {product.features.map((feature) => (
-            <li class="flex gap-3 rounded-3xl bg-shell/70 px-4 py-4">
-              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-bronze"></span>
+            <li class="flex items-start gap-3 rounded-3xl bg-shell/70 px-4 py-4">
+              <span class="mt-[0.45em] h-2.5 w-2.5 shrink-0 rounded-full bg-bronze"></span>
               <span>{feature}</span>
             </li>
           ))}
@@ -116,8 +116,8 @@ const schemas = [
         <h2 class="text-3xl">უპირატესობები</h2>
         <ul class="mt-6 grid gap-4">
           {product.benefits.map((benefit) => (
-            <li class="flex gap-3 rounded-3xl bg-shell/70 px-4 py-4">
-              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-sage"></span>
+            <li class="flex items-start gap-3 rounded-3xl bg-shell/70 px-4 py-4">
+              <span class="mt-[0.45em] h-2.5 w-2.5 shrink-0 rounded-full bg-sage"></span>
               <span>{benefit}</span>
             </li>
           ))}

@@ -22,7 +22,7 @@ const breadcrumbs = createBreadcrumbSchema([
 >
   <section class="section-padding pb-10">
     <div class="container-shell space-y-8">
-      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/55">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex max-w-full flex-wrap items-center text-sm text-ink/55">
         <a href="/" class="hover:text-bronze">მთავარი</a>
         <span class="mx-2">/</span>
         <span>კონტაქტი</span>
@@ -37,8 +37,8 @@ const breadcrumbs = createBreadcrumbSchema([
 
   <section class="pb-10">
     <div class="container-shell grid gap-6 md:grid-cols-2">
-      <article class="surface-card p-6 sm:p-8">
-        <h2 class="text-panel inline-block text-3xl">საკონტაქტო ინფორმაცია</h2>
+      <article class="surface-card min-w-0 p-6 sm:p-8">
+        <h2 class="text-panel block text-3xl">საკონტაქტო ინფორმაცია</h2>
         <ul class="mt-6 space-y-4 text-base text-ink/75">
           <li><strong>ტელეფონი:</strong> <a class="hover:text-bronze" href={phoneHref}>{site.phone}</a></li>
           <li><strong>მისამართი:</strong> {site.address}</li>
@@ -50,8 +50,8 @@ const breadcrumbs = createBreadcrumbSchema([
         </div>
       </article>
 
-      <article class="surface-card p-6 sm:p-8">
-        <h2 class="text-panel inline-block text-3xl">რა მოგვაწოდო უფრო სწრაფი კონსულტაციისთვის</h2>
+      <article class="surface-card min-w-0 p-6 sm:p-8">
+        <h2 class="text-panel block text-2xl sm:text-3xl">რა მოგვაწოდო უფრო სწრაფი კონსულტაციისთვის</h2>
         <ul class="mt-5 grid gap-3">
           <li class="rounded-3xl bg-shell/70 px-4 py-4">ფანჯრის ან კარის დაახლოებით სიგანე და სიმაღლე</li>
           <li class="rounded-3xl bg-shell/70 px-4 py-4">სივრცის ან ღიობის ფოტოები</li>
