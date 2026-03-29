@@ -26,7 +26,7 @@ const site = getSiteData();
 const phoneHref = getPhoneHref(site.phone);
 const relatedProducts = getRelatedProducts(product.slug);
 const productPath = `/products/${product.slug}/`;
-const showColorSection = product.slug !== "plise-jaluzi" && Boolean(
+const showColorSection = !["plise-jaluzi", "romauli-jaluzi", "ficha-jaluzi", "vertikaluri-jaluzi"].includes(product.slug) && Boolean(
   product.colorCollections?.length ||
   product.colorCatalog?.length ||
   product.colorGallery?.length ||
@@ -136,7 +136,11 @@ const schemas = [
             {product.colorCollections?.length ? (
               <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
             ) : product.colorCatalog?.length ? (
-              <ColorCatalog items={product.colorCatalog} id={`catalog-${product.slug}`} />
+              <ColorCatalog
+                items={product.colorCatalog}
+                id={`catalog-${product.slug}`}
+                mobileFullscreen={product.slug === "anjamebiani-bade"}
+              />
             ) : product.colorGallery?.length ? (
               <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
             ) : (
@@ -168,6 +172,4 @@ const schemas = [
       </div>
     </div>
   </section></BaseLayout>
-
-
 

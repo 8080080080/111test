@@ -4,9 +4,10 @@ import type { ProductImage } from "../types/content";
 interface Props {
   items: ProductImage[];
   id: string;
+  mobileFullscreen?: boolean;
 }
 
-const { items, id } = Astro.props;
+const { items, id, mobileFullscreen = false } = Astro.props;
 const tileSize = 120;
 const tileMargin = 5;
 const previewSize = 240;
@@ -16,6 +17,7 @@ const previewSize = 240;
   class="color-catalog"
   id={id}
   data-color-catalog
+  data-mobile-fullscreen={mobileFullscreen ? "true" : "false"}
   style={`--catalog-tile-size:${tileSize}px; --catalog-tile-margin:${tileMargin}px; --catalog-preview-size:${previewSize}px;`}
 >
   <div class="color-catalog__layout" data-catalog-layout>
@@ -55,6 +57,67 @@ const previewSize = 240;
       ))}
     </div>
   </div>
+
+  {mobileFullscreen && (
+    <dialog class="color-catalog__viewer" data-catalog-viewer aria-label="ფერის სრული ეკრანის ხედი">
+      <div class="color-catalog__viewer-shell">
+        <div class="color-catalog__viewer-header">
+          <p class="color-catalog__viewer-count" data-catalog-viewer-count>{`1 / ${items.length}`}</p>
+          <button type="button" class="color-catalog__viewer-close" data-catalog-viewer-close aria-label="დახურე ფერის სრული ეკრანის ხედი">
+            დახურვა
+          </button>
+        </div>
+
+        <div class="color-catalog__viewer-stage">
+          {items.length > 1 && (
+            <>
+              <button
+                type="button"
+                class="color-catalog__viewer-nav color-catalog__viewer-nav--prev"
+                data-catalog-viewer-prev
+                aria-label="წინა ფერი"
+              >
+                <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 18l-6-6 6-6"></path>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="color-catalog__viewer-nav color-catalog__viewer-nav--next"
+                data-catalog-viewer-next
+                aria-label="შემდეგი ფერი"
+              >
+                <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 18l6-6-6-6"></path>
+                </svg>
+              </button>
+            </>
+          )}
+
+          <div class="color-catalog__viewer-track" data-catalog-viewer-track tabindex="0">
+            {items.map((item, index) => (
+              <figure class="color-catalog__viewer-slide" data-catalog-viewer-slide data-index={index}>
+                <div class="color-catalog__viewer-zoom-frame" data-catalog-viewer-zoom-frame data-index={index}>
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    width={item.width}
+                    height={item.height}
+                    loading="lazy"
+                    decoding="async"
+                    class="color-catalog__viewer-image"
+                    data-catalog-viewer-image
+                  />
+                </div>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        <p class="color-catalog__viewer-caption" data-catalog-viewer-caption>{items[0]?.alt ?? ""}</p>
+      </div>
+    </dialog>
+  )}
 </div>
 
 <style>
@@ -108,6 +171,183 @@ const previewSize = 240;
     height: 100%;
   }
 
+  .color-catalog__viewer {
+    width: 100vw;
+    max-width: none;
+    min-width: 100vw;
+    height: 100dvh;
+    min-height: 100dvh;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: rgba(18, 16, 14, 0.98);
+    color: #fff;
+  }
+
+  .color-catalog__viewer::backdrop {
+    background: rgba(18, 16, 14, 0.8);
+  }
+
+  .color-catalog__viewer-shell {
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+    padding: max(1rem, env(safe-area-inset-top, 0px)) 1rem max(1rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .color-catalog__viewer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .color-catalog__viewer-count {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .color-catalog__viewer-close {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+
+  .color-catalog__viewer-stage {
+    position: relative;
+    min-height: 0;
+  }
+
+  .color-catalog__viewer-track {
+    display: flex;
+    height: 100%;
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pinch-zoom;
+  }
+
+  .color-catalog__viewer-track.is-zoomed {
+    overflow-x: hidden;
+    scroll-snap-type: none;
+  }
+
+  .color-catalog__viewer-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .color-catalog__viewer-slide {
+    display: flex;
+    min-width: 100%;
+    flex: 0 0 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5rem 0;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  .color-catalog__viewer-zoom-frame {
+    display: flex;
+    width: 100%;
+    min-height: min(72dvh, 38rem);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    touch-action: pan-x;
+  }
+
+  .color-catalog__viewer-zoom-frame.is-zoomed {
+    touch-action: none;
+  }
+
+  .color-catalog__viewer-zoom-frame.is-dragging {
+    cursor: grabbing;
+  }
+
+  .color-catalog__viewer-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: min(72dvh, 38rem);
+    object-fit: contain;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  .color-catalog__viewer-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.24);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    transform: translateY(-50%);
+    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease, opacity 180ms ease;
+  }
+
+  .color-catalog__viewer-nav:hover,
+  .color-catalog__viewer-nav:focus-visible {
+    background: rgba(255, 255, 255, 0.34);
+    border-color: rgba(255, 255, 255, 0.72);
+  }
+
+  .color-catalog__viewer-nav:disabled {
+    opacity: 0.35;
+  }
+
+  .color-catalog__viewer-nav--prev {
+    left: 0.25rem;
+  }
+
+  .color-catalog__viewer-nav--next {
+    right: 0.25rem;
+  }
+
+  .color-catalog__viewer-caption {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .color-catalog__viewer-close,
+    .color-catalog__viewer-nav {
+      transition: none;
+    }
+
+    .color-catalog__viewer-track {
+      scroll-behavior: auto;
+    }
+  }
+
   @media (min-width: 768px) {
     .color-catalog__preview {
       position: absolute;
@@ -140,10 +380,14 @@ const previewSize = 240;
       opacity: 1;
       transform: translate3d(var(--preview-x, 0px), var(--preview-y, 0px), 0) scale(1);
     }
+
+    .color-catalog__viewer {
+      display: none;
+    }
   }
 </style>
 
-<script define:vars={{ catalogId: id }}>
+<script>
   // Debounce utility — prevents layout thrashing on every resize event frame.
   // Without this, updateLayout runs at 60fps while user is resizing, reading
   // .clientWidth (forced layout) on every frame.
@@ -156,12 +400,24 @@ const previewSize = 240;
   }
 
   const desktopQuery = window.matchMedia("(min-width: 768px)");
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
 
   for (const root of document.querySelectorAll("[data-color-catalog]")) {
     const layout = root.querySelector("[data-catalog-layout]");
     const preview = root.querySelector("[data-catalog-preview]");
     const tiles = Array.from(root.querySelectorAll("[data-catalog-tile]"));
     const previewItems = Array.from(root.querySelectorAll("[data-preview-item]"));
+    const viewerDialog = root.querySelector("[data-catalog-viewer]");
+    const viewerTrack = root.querySelector("[data-catalog-viewer-track]");
+    const viewerCount = root.querySelector("[data-catalog-viewer-count]");
+    const viewerCaption = root.querySelector("[data-catalog-viewer-caption]");
+    const viewerClose = root.querySelector("[data-catalog-viewer-close]");
+    const viewerPrev = root.querySelector("[data-catalog-viewer-prev]");
+    const viewerNext = root.querySelector("[data-catalog-viewer-next]");
+    const viewerSlides = Array.from(root.querySelectorAll("[data-catalog-viewer-slide]"));
+    const viewerZoomFrames = Array.from(root.querySelectorAll("[data-catalog-viewer-zoom-frame]"));
+    const viewerImages = Array.from(root.querySelectorAll("[data-catalog-viewer-image]"));
+    const mobileFullscreenEnabled = root.getAttribute("data-mobile-fullscreen") === "true";
 
     if (!layout || !preview || tiles.length === 0) {
       continue;
@@ -172,6 +428,25 @@ const previewSize = 240;
     const previewSize = 240;
     const tileStride = tileSize + tileMargin * 2;
     let activeIndex = -1;
+    let viewerIndex = 0;
+    let viewerScrollSettleTimer = 0;
+    let viewerProgrammaticReleaseTimer = 0;
+    let viewerProgrammaticScroll = false;
+    let lastFocusedTile = null;
+    const zoomStates = viewerImages.map(() => ({ scale: 1, x: 0, y: 0 }));
+    const zoomInteraction = {
+      index: -1,
+      pointers: new Map(),
+      panPointerId: null,
+      panStartX: 0,
+      panStartY: 0,
+      startX: 0,
+      startY: 0,
+      pinchDistance: 0,
+      pinchScale: 1,
+      pinchStartX: 0,
+      pinchStartY: 0
+    };
 
     const setActivePreview = (index) => {
       previewItems.forEach((item, itemIndex) => {
@@ -180,6 +455,222 @@ const previewSize = 240;
     };
 
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+    const isViewerOpen = () => viewerDialog instanceof HTMLDialogElement && viewerDialog.open;
+    const setTrackZoomed = (zoomed) => {
+      if (viewerTrack instanceof HTMLElement) {
+        viewerTrack.classList.toggle("is-zoomed", zoomed);
+      }
+    };
+
+    const measureImageBase = (index, referenceScale = zoomStates[index]?.scale || 1) => {
+      const frame = viewerZoomFrames[index];
+      const image = viewerImages[index];
+
+      if (!(frame instanceof HTMLElement) || !(image instanceof HTMLImageElement)) {
+        return null;
+      }
+
+      const rect = image.getBoundingClientRect();
+      const safeScale = Math.max(referenceScale, 1);
+
+      return {
+        frameWidth: Math.max(frame.clientWidth, 1),
+        frameHeight: Math.max(frame.clientHeight, 1),
+        baseWidth: rect.width / safeScale,
+        baseHeight: rect.height / safeScale
+      };
+    };
+
+    const clampZoomOffset = (index, x, y, nextScale, referenceScale = zoomStates[index]?.scale || 1) => {
+      const measurement = measureImageBase(index, referenceScale);
+
+      if (!measurement || nextScale <= 1) {
+        return { x: 0, y: 0 };
+      }
+
+      const maxX = Math.max(0, (measurement.baseWidth * nextScale - measurement.frameWidth) / 2);
+      const maxY = Math.max(0, (measurement.baseHeight * nextScale - measurement.frameHeight) / 2);
+
+      return {
+        x: clamp(x, -maxX, maxX),
+        y: clamp(y, -maxY, maxY)
+      };
+    };
+
+    const applyZoomState = (index) => {
+      const frame = viewerZoomFrames[index];
+      const image = viewerImages[index];
+      const state = zoomStates[index];
+
+      if (!(frame instanceof HTMLElement) || !(image instanceof HTMLImageElement) || !state) {
+        return;
+      }
+
+      image.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${state.scale})`;
+      frame.classList.toggle("is-zoomed", state.scale > 1.01);
+      setTrackZoomed(index === viewerIndex && state.scale > 1.01);
+    };
+
+    const resetZoomState = (index) => {
+      const state = zoomStates[index];
+      const frame = viewerZoomFrames[index];
+
+      if (!state) {
+        return;
+      }
+
+      state.scale = 1;
+      state.x = 0;
+      state.y = 0;
+
+      if (frame instanceof HTMLElement) {
+        frame.classList.remove("is-dragging");
+      }
+
+      if (zoomInteraction.index === index) {
+        zoomInteraction.index = -1;
+        zoomInteraction.pointers.clear();
+        zoomInteraction.panPointerId = null;
+        zoomInteraction.pinchDistance = 0;
+      }
+
+      applyZoomState(index);
+    };
+
+    const beginPan = (index, pointId, point) => {
+      const state = zoomStates[index];
+
+      if (!state) {
+        return;
+      }
+
+      zoomInteraction.index = index;
+      zoomInteraction.panPointerId = pointId;
+      zoomInteraction.panStartX = point.x;
+      zoomInteraction.panStartY = point.y;
+      zoomInteraction.startX = state.x;
+      zoomInteraction.startY = state.y;
+    };
+
+    const getPointerPair = () => {
+      const values = Array.from(zoomInteraction.pointers.values());
+      return values.length >= 2 ? [values[0], values[1]] : null;
+    };
+
+    const getNearestViewerIndex = () => {
+      if (!(viewerTrack instanceof HTMLElement) || viewerSlides.length === 0) {
+        return viewerIndex;
+      }
+
+      const trackCenter = viewerTrack.scrollLeft + viewerTrack.clientWidth / 2;
+      let closestIndex = viewerIndex;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      viewerSlides.forEach((slide, slideIndex) => {
+        if (!(slide instanceof HTMLElement)) {
+          return;
+        }
+
+        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+        const distance = Math.abs(trackCenter - slideCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = slideIndex;
+        }
+      });
+
+      return closestIndex;
+    };
+
+    const scrollViewerToIndex = (index, behavior = "auto") => {
+      if (!(viewerTrack instanceof HTMLElement) || viewerSlides.length === 0) {
+        return;
+      }
+
+      const targetSlide = viewerSlides[index];
+
+      if (!(targetSlide instanceof HTMLElement)) {
+        return;
+      }
+
+      viewerProgrammaticScroll = true;
+      window.clearTimeout(viewerProgrammaticReleaseTimer);
+      viewerTrack.scrollTo({ left: targetSlide.offsetLeft, behavior });
+      viewerProgrammaticReleaseTimer = window.setTimeout(() => {
+        viewerProgrammaticScroll = false;
+      }, behavior === "smooth" ? 220 : 80);
+    };
+
+    const setViewerIndex = (index, options = {}) => {
+      if (!mobileFullscreenEnabled || viewerImages.length === 0) {
+        return;
+      }
+
+      const { syncScroll = false, behavior = "auto" } = options;
+      const nextIndex = clamp(index, 0, viewerImages.length - 1);
+
+      if (nextIndex !== viewerIndex) {
+        resetZoomState(viewerIndex);
+      }
+
+      viewerIndex = nextIndex;
+
+      if (viewerCount instanceof HTMLElement) {
+        viewerCount.textContent = `${viewerIndex + 1} / ${viewerImages.length}`;
+      }
+
+      if (viewerCaption instanceof HTMLElement) {
+        const image = viewerImages[viewerIndex];
+        viewerCaption.textContent = image instanceof HTMLImageElement ? image.alt : "";
+      }
+
+      if (viewerPrev instanceof HTMLButtonElement) {
+        viewerPrev.disabled = viewerIndex === 0;
+      }
+
+      if (viewerNext instanceof HTMLButtonElement) {
+        viewerNext.disabled = viewerIndex === viewerImages.length - 1;
+      }
+
+      if (syncScroll) {
+        scrollViewerToIndex(nextIndex, behavior);
+      }
+    };
+
+    const stepViewer = (step) => {
+      resetZoomState(viewerIndex);
+      setViewerIndex(viewerIndex + step, { syncScroll: true, behavior: "auto" });
+    };
+
+    const closeViewer = () => {
+      if (viewerDialog instanceof HTMLDialogElement && viewerDialog.open) {
+        viewerDialog.close();
+      }
+    };
+
+    const openViewer = (index, tile) => {
+      if (
+        !mobileFullscreenEnabled ||
+        !mobileQuery.matches ||
+        !(viewerDialog instanceof HTMLDialogElement) ||
+        !(viewerTrack instanceof HTMLElement)
+      ) {
+        return;
+      }
+
+      lastFocusedTile = tile;
+      setViewerIndex(index);
+
+      if (!viewerDialog.open) {
+        viewerDialog.showModal();
+      }
+
+      window.requestAnimationFrame(() => {
+        setViewerIndex(index, { syncScroll: true, behavior: "auto" });
+        viewerTrack.focus({ preventScroll: true });
+      });
+    };
 
     const hidePreview = () => {
       activeIndex = -1;
@@ -253,7 +744,15 @@ const previewSize = 240;
     tiles.forEach((tile, index) => {
       tile.addEventListener("mouseenter", () => showPreview(index));
       tile.addEventListener("focus", () => showPreview(index));
-      tile.addEventListener("click", () => showPreview(index));
+      tile.addEventListener("click", (event) => {
+        if (mobileFullscreenEnabled && mobileQuery.matches) {
+          event.preventDefault();
+          openViewer(index, tile);
+          return;
+        }
+
+        showPreview(index);
+      });
       tile.addEventListener("blur", () => {
         window.setTimeout(() => {
           if (!root.contains(document.activeElement) && !layout.matches(":hover")) {
@@ -269,10 +768,225 @@ const previewSize = 240;
       }
     });
 
+    if (viewerTrack instanceof HTMLElement) {
+      viewerTrack.addEventListener("scroll", () => {
+        if (!isViewerOpen() || viewerProgrammaticScroll) {
+          return;
+        }
+
+        window.clearTimeout(viewerScrollSettleTimer);
+        viewerScrollSettleTimer = window.setTimeout(() => {
+          setViewerIndex(getNearestViewerIndex());
+        }, 90);
+      }, { passive: true });
+    }
+
+    viewerZoomFrames.forEach((frame, frameIndex) => {
+      const finishPointer = (event) => {
+        if (!(frame instanceof HTMLElement)) {
+          return;
+        }
+
+        zoomInteraction.pointers.delete(event.pointerId);
+
+        if (frame.hasPointerCapture?.(event.pointerId)) {
+          frame.releasePointerCapture(event.pointerId);
+        }
+
+        if (zoomInteraction.pointers.size >= 2) {
+          const pair = getPointerPair();
+
+          if (pair) {
+            const [first, second] = pair;
+            zoomInteraction.pinchDistance = Math.hypot(second.x - first.x, second.y - first.y);
+            zoomInteraction.pinchScale = zoomStates[frameIndex]?.scale || 1;
+            zoomInteraction.pinchStartX = zoomStates[frameIndex]?.x || 0;
+            zoomInteraction.pinchStartY = zoomStates[frameIndex]?.y || 0;
+          }
+
+          return;
+        }
+
+        zoomInteraction.pinchDistance = 0;
+        frame.classList.remove("is-dragging");
+
+        if (zoomInteraction.pointers.size === 1 && (zoomStates[frameIndex]?.scale || 1) > 1.01) {
+          const [pointerId, point] = Array.from(zoomInteraction.pointers.entries())[0];
+          beginPan(frameIndex, pointerId, point);
+          return;
+        }
+
+        zoomInteraction.panPointerId = null;
+
+        if ((zoomStates[frameIndex]?.scale || 1) <= 1.01) {
+          resetZoomState(frameIndex);
+        }
+      };
+
+      frame.addEventListener("pointerdown", (event) => {
+        if (!isViewerOpen() || frameIndex !== viewerIndex) {
+          return;
+        }
+
+        const state = zoomStates[frameIndex];
+
+        if (!state) {
+          return;
+        }
+
+        zoomInteraction.index = frameIndex;
+        zoomInteraction.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        frame.setPointerCapture?.(event.pointerId);
+
+        if (zoomInteraction.pointers.size >= 2) {
+          const pair = getPointerPair();
+
+          if (!pair) {
+            return;
+          }
+
+          const [first, second] = pair;
+          zoomInteraction.pinchDistance = Math.max(1, Math.hypot(second.x - first.x, second.y - first.y));
+          zoomInteraction.pinchScale = state.scale;
+          zoomInteraction.pinchStartX = state.x;
+          zoomInteraction.pinchStartY = state.y;
+          zoomInteraction.panPointerId = null;
+          event.preventDefault();
+          return;
+        }
+
+        if (state.scale > 1.01) {
+          beginPan(frameIndex, event.pointerId, { x: event.clientX, y: event.clientY });
+          frame.classList.add("is-dragging");
+          event.preventDefault();
+        }
+      });
+
+      frame.addEventListener("pointermove", (event) => {
+        if (!isViewerOpen() || frameIndex !== viewerIndex || !zoomInteraction.pointers.has(event.pointerId)) {
+          return;
+        }
+
+        const state = zoomStates[frameIndex];
+
+        if (!state) {
+          return;
+        }
+
+        zoomInteraction.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+        if (zoomInteraction.pointers.size >= 2) {
+          const pair = getPointerPair();
+
+          if (!pair) {
+            return;
+          }
+
+          const [first, second] = pair;
+          const nextDistance = Math.max(1, Math.hypot(second.x - first.x, second.y - first.y));
+          const nextScale = clamp(
+            zoomInteraction.pinchScale * (nextDistance / Math.max(zoomInteraction.pinchDistance, 1)),
+            1,
+            4
+          );
+          const nextOffset = clampZoomOffset(
+            frameIndex,
+            zoomInteraction.pinchStartX,
+            zoomInteraction.pinchStartY,
+            nextScale,
+            zoomInteraction.pinchScale
+          );
+
+          state.scale = nextScale;
+          state.x = nextOffset.x;
+          state.y = nextOffset.y;
+          applyZoomState(frameIndex);
+          event.preventDefault();
+          return;
+        }
+
+        if (zoomInteraction.panPointerId === event.pointerId && state.scale > 1.01) {
+          const nextOffset = clampZoomOffset(
+            frameIndex,
+            zoomInteraction.startX + (event.clientX - zoomInteraction.panStartX),
+            zoomInteraction.startY + (event.clientY - zoomInteraction.panStartY),
+            state.scale
+          );
+
+          state.x = nextOffset.x;
+          state.y = nextOffset.y;
+          applyZoomState(frameIndex);
+          event.preventDefault();
+        }
+      });
+
+      frame.addEventListener("pointerup", finishPointer);
+      frame.addEventListener("pointercancel", finishPointer);
+      frame.addEventListener("pointerleave", (event) => {
+        if (zoomInteraction.pointers.has(event.pointerId)) {
+          finishPointer(event);
+        }
+      });
+    });
+
+    viewerPrev?.addEventListener("click", (event) => {
+      event.preventDefault();
+      stepViewer(-1);
+    });
+    viewerNext?.addEventListener("click", (event) => {
+      event.preventDefault();
+      stepViewer(1);
+    });
+    viewerClose?.addEventListener("click", closeViewer);
+
+    viewerDialog?.addEventListener("click", (event) => {
+      if (event.target === viewerDialog) {
+        closeViewer();
+      }
+    });
+
+    viewerDialog?.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        stepViewer(-1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        stepViewer(1);
+      }
+    });
+
+    viewerDialog?.addEventListener("close", () => {
+      window.clearTimeout(viewerScrollSettleTimer);
+      window.clearTimeout(viewerProgrammaticReleaseTimer);
+      viewerProgrammaticScroll = false;
+
+      resetZoomState(viewerIndex);
+
+      if (lastFocusedTile instanceof HTMLElement) {
+        lastFocusedTile.focus({ preventScroll: true });
+      }
+    });
+
+    const handleBreakpointChange = () => {
+      if (!mobileQuery.matches) {
+        closeViewer();
+      }
+
+      updateLayout();
+    };
+
     // Debounced: was running at full frame rate before, causing continuous layout reads
-    const debouncedUpdate = debounce(updateLayout, 120);
-    desktopQuery.addEventListener("change", updateLayout); // Breakpoint change — run immediately
-    window.addEventListener("resize", debouncedUpdate);   // Freeform resize — debounced
+    const debouncedUpdate = debounce(() => {
+      updateLayout();
+
+      if (isViewerOpen()) {
+        setViewerIndex(viewerIndex, { syncScroll: true, behavior: "auto" });
+      }
+    }, 120);
+
+    desktopQuery.addEventListener("change", handleBreakpointChange);
+    window.addEventListener("resize", debouncedUpdate);
     updateLayout();
+    setViewerIndex(0);
   }
 </script>

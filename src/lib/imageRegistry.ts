@@ -2,6 +2,7 @@ const jpgAssetFolders = new Set([
   "demo",
   "farda-roleti-catalog",
   "gofrirebuli-bade-catalog",
+  "horizontaluri-catalog",
   "plise-catalog",
   "zebra-catalog"
 ]);
