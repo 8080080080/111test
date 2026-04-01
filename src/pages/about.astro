@@ -60,51 +60,59 @@ const aboutHighlights = [
   </section>
 
   <section class="pb-10">
-    <div class="container-shell grid gap-6 xl:grid-cols-[1.1fr_0.9fr] xl:items-stretch">
-      <article class="surface-card flex h-full flex-col justify-between gap-6 p-5 sm:gap-8 sm:p-8 lg:p-10">
-        <div class="space-y-3 sm:space-y-4">
-          <p class="eyebrow text-panel-compact inline-flex w-fit">ჩვენი მიდგომა</p>
-          <h2 class="text-panel max-w-3xl text-2xl leading-tight sm:text-4xl">Winsome ქმნის პრაქტიკულ, მშვიდ და ზუსტად მორგებულ გადაწყვეტილებებს თანამედროვე სივრცეებისთვის.</h2>
-          <p class="text-panel max-w-2xl text-sm leading-7 text-ink/75 sm:text-lg sm:leading-8">
-            ვმუშაობთ ისე, რომ პროდუქტი მხოლოდ ვიზუალურად მიმზიდველი არ იყოს — ის რეალურად ამარტივებდეს ყოველდღიურ გამოყენებას,
-            ერგებოდეს ინტერიერს და დიდხანს ინარჩუნებდეს ხარისხს.
-          </p>
-        </div>
-
-        <div class="grid gap-3 sm:gap-5">
-          {aboutHighlights.map((item) => (
-            <article class="rounded-3xl border border-black/8 bg-shell/75 p-4 sm:p-6">
-              <h3 class="text-panel text-lg leading-tight sm:text-2xl">{item.title}</h3>
-              <ul class="mt-3 grid gap-2.5 sm:mt-4 sm:gap-3">
-                {item.points.map((point) => (
-                  <li class="flex items-start gap-2.5 text-panel text-sm leading-7 text-ink/75 sm:gap-3 sm:text-base sm:leading-8">
-                    <span class="mt-[0.5em] h-2 w-2 shrink-0 rounded-full bg-bronze sm:mt-[0.45em] sm:h-2.5 sm:w-2.5"></span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </article>
+    <div class="container-shell">
       <div class="surface-card overflow-hidden">
-        <div class="h-full bg-shell">
-          <img
-            class="block h-full min-h-[320px] w-full object-cover"
-            src={aboutFeatureImage}
-            alt="Winsome-ის ინტერიერის მიმართულება რეალური დემო ფოტოთი"
-            width={1600}
-            height={1200}
-            loading="lazy"
-            decoding="async"
-          />
+        <div class="grid gap-0 lg:grid-cols-[1fr_1.1fr]">
+          <div class="space-y-4 p-6 sm:p-8">
+            <p class="eyebrow text-panel-compact inline-flex w-fit">ჩვენი მიდგომა</p>
+            <h2 class="text-panel inline-block text-2xl sm:text-3xl">Winsome ქმნის პრაქტიკულ, მშვიდ და ზუსტად მორგებულ გადაწყვეტილებებს თანამედროვე სივრცეებისთვის.</h2>
+            <p class="text-panel text-sm leading-7 text-ink/75 sm:text-base sm:leading-8">
+              ვმუშაობთ ისე, რომ პროდუქტი მხოლოდ ვიზუალურად მიმზიდველი არ იყოს — ის რეალურად ამარტივებდეს ყოველდღიურ გამოყენებას,
+              ერგებოდეს ინტერიერს და დიდხანს ინარჩუნებდეს ხარისხს.
+            </p>
+          </div>
+          <div class="relative min-h-[280px] overflow-hidden bg-shell lg:min-h-0">
+            <img
+              class="absolute inset-0 h-full w-full object-cover"
+              src={aboutFeatureImage}
+              alt="Winsome-ის ინტერიერის მიმართულება რეალური დემო ფოტოთი"
+              width={1600}
+              height={1200}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-padding bg-canvas">
-    <div class="container-shell space-y-10">
+  <section class="py-10 sm:py-12 lg:py-14">
+    <div class="container-shell space-y-8">
+      <SectionHeading
+        eyebrow="მიდგომა"
+        title="რას ვაკეთებთ, როგორ ვმუშაობთ და რატომ Winsome"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {aboutHighlights.map((item) => (
+          <article class="surface-card p-6 sm:p-8">
+            <h3 class="text-panel inline-block text-2xl">{item.title}</h3>
+            <ul class="mt-4 grid gap-3">
+              {item.points.map((point) => (
+                <li class="flex items-start gap-2.5 text-panel text-sm leading-7 text-ink/75 sm:gap-3 sm:text-base sm:leading-8">
+                  <span class="mt-[0.5em] h-2 w-2 shrink-0 rounded-full bg-bronze sm:mt-[0.45em] sm:h-2.5 sm:w-2.5"></span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 sm:py-12 lg:py-14 bg-white/15">
+    <div class="container-shell space-y-8">
       <SectionHeading
         eyebrow="ღირებულებები"
         title="ხარისხი, პრაქტიკულობა და ინდივიდუალური მორგება"
@@ -118,4 +126,5 @@ const aboutHighlights = [
         ))}
       </div>
     </div>
-  </section></BaseLayout>
+  </section>
+</BaseLayout>

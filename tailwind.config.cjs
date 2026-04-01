@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        canvas: "#cccbd4",
+        canvas: "#EEF2F8",
         shell: "#f5f4ff",
         sand: "#e7e4ff",
         bronze: "#2f2482",

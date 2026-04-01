@@ -20,25 +20,17 @@
     }
   }
 
-  /* Isolate the decorative gradient into a fixed pseudo-element so it lives
-     on its own compositor layer and never repaints with page content. */
   body {
-    @apply bg-canvas font-sans text-ink antialiased;
+    @apply font-sans text-ink antialiased;
     line-height: 1.65;
-    position: relative;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
+    background-color: #EEF2F8;
     background-image:
-      radial-gradient(circle at top left, rgba(47, 36, 130, 0.1), transparent 34%),
-      radial-gradient(circle at bottom right, rgba(47, 36, 172, 0.08), transparent 26%);
-    /* The gradient is fully decorative — tell the browser it won't change */
-    will-change: auto;
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' fill='none' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M-20 280 C300 240,650 320,960 280 S1600 240,1940 280' stroke='%23A8B6CE' stroke-width='1' opacity='0.30'/%3E%3Cpath d='M-20 370 C250 330,550 410,960 370 S1650 330,1940 370' stroke='%23A8B6CE' stroke-width='1' opacity='0.27'/%3E%3Cpath d='M-20 460 C350 420,700 500,960 460 S1550 420,1940 460' stroke='%23A8B6CE' stroke-width='1' opacity='0.24'/%3E%3Cpath d='M-20 540 C280 500,600 580,960 540 S1620 500,1940 540' stroke='%23A8B6CE' stroke-width='1' opacity='0.22'/%3E%3Cpath d='M-20 620 C320 580,680 660,960 620 S1580 580,1940 620' stroke='%23A8B6CE' stroke-width='1' opacity='0.20'/%3E%3Cpath d='M-20 700 C260 660,560 740,960 700 S1640 660,1940 700' stroke='%23A8B6CE' stroke-width='1' opacity='0.18'/%3E%3Cpath d='M-20 780 C340 740,700 820,960 780 S1560 740,1940 780' stroke='%23A8B6CE' stroke-width='1' opacity='0.15'/%3E%3C/svg%3E"),
+      radial-gradient(circle at top left, #DCE6FC 0%, #EEF2F8 45%, #F6F8FC 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
   }
 
   h1,
