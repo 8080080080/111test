@@ -21,7 +21,7 @@ const breadcrumbs = createBreadcrumbSchema([
 >
   <section class="section-padding pb-10">
     <div class="container-shell space-y-8">
-      <nav aria-label="Breadcrumb" class="text-sm text-ink/55">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/60">
         <a href="/" class="hover:text-bronze">მთავარი</a>
         <span class="mx-2">/</span>
         <span>პროდუქცია</span>
@@ -33,7 +33,7 @@ const breadcrumbs = createBreadcrumbSchema([
     </div>
   </section>
 
-  <section class="pb-20">
+  <section class="pb-14 sm:pb-16">
     <div class="container-shell">
       <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {products.map((product) => <ProductCard product={product} />)}

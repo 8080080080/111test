@@ -10,7 +10,7 @@ const site = getSiteData();
 const phoneHref = getPhoneHref(site.phone);
 ---
 
-<header class="sticky top-0 z-50 border-b border-black/5 bg-canvas/88 backdrop-blur-xl">
+<header class="sticky top-0 z-50 border-b border-black/8 bg-canvas/88 backdrop-blur-xl">
   <div class="container-shell flex items-center justify-between gap-4 py-4">
     <a class="flex items-center gap-3" href="/" aria-label={`${site.businessName} მთავარი გვერდი`}>
       <img
@@ -30,7 +30,7 @@ const phoneHref = getPhoneHref(site.phone);
         const active = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href);
         return (
           <a
-            class={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold ${active ? "bg-ink text-mist" : "text-ink/72 hover:bg-white/80"}`}
+            class={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold ${active ? "bg-ink text-mist" : "text-ink/75 hover:bg-white/80"}`}
             href={item.href}
           >
             {item.label}
@@ -40,17 +40,21 @@ const phoneHref = getPhoneHref(site.phone);
     </nav>
 
     <div class="hidden items-center gap-3 lg:flex">
-      <a class="text-panel-compact whitespace-nowrap text-sm font-semibold text-ink/72 hover:text-bronze" href={phoneHref}>{site.phone}</a>
+      <a class="text-panel-compact whitespace-nowrap text-sm font-semibold text-ink/75 hover:text-bronze" href={phoneHref}>{site.phone}</a>
       <a class="button-primary whitespace-nowrap" href="/contact/">კონსულტაციის მიღება</a>
     </div>
 
     <details class="group relative lg:hidden">
-      <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-black/10 bg-white/80 text-ink">
+      <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-black/12 bg-white/80 text-ink">
         <span class="sr-only">მენიუს გახსნა</span>
-        <span class="group-open:hidden">☰</span>
-        <span class="hidden group-open:inline">✕</span>
+        <svg class="h-5 w-5 group-open:hidden" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg class="hidden h-5 w-5 group-open:block" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
       </summary>
-      <div class="absolute right-0 mt-3 w-[min(88vw,22rem)] rounded-4xl border border-black/5 bg-white/95 p-4 shadow-soft backdrop-blur">
+      <div class="absolute right-0 mt-3 w-[min(88vw,22rem)] rounded-4xl border border-black/8 bg-white/95 p-4 shadow-soft backdrop-blur">
         <nav class="flex flex-col gap-2" aria-label="მობილური ნავიგაცია">
           {site.navigation.map((item) => {
             const active = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href);
@@ -61,7 +65,7 @@ const phoneHref = getPhoneHref(site.phone);
             );
           })}
         </nav>
-        <div class="mt-4 flex flex-col gap-3 border-t border-black/5 pt-4">
+        <div class="mt-4 flex flex-col gap-3 border-t border-black/8 pt-4">
           <a class="button-primary w-full whitespace-nowrap" href="/contact/">მოითხოვე შეთავაზება</a>
           <a class="button-secondary w-full whitespace-nowrap" href={phoneHref}>დარეკე {site.phone}</a>
         </div>

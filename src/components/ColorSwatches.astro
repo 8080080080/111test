@@ -10,12 +10,12 @@ const { colors } = Astro.props;
 
 <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
   {colors.map((color) => (
-    <div class="rounded-3xl border border-black/5 bg-white/80 p-4">
+    <div class="rounded-3xl border border-black/8 bg-white/80 p-4">
       <div class="flex items-center gap-4">
-        <span class="h-12 w-12 rounded-2xl border border-black/10 shadow-inner" style={`background:${color.hex}`}></span>
+        <span class="h-12 w-12 rounded-2xl border border-black/12 shadow-inner" style={`background:${color.hex}`}></span>
         <div>
           <p class="font-semibold text-ink">{color.name}</p>
-          <p class="text-sm text-ink/55">{color.hex}</p>
+          <p class="text-sm text-ink/60">{color.hex}</p>
         </div>
       </div>
     </div>

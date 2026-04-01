@@ -95,7 +95,7 @@ const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-f
       <div class="flex flex-wrap gap-3">
         {images.map((image, index) => (
           <button
-            class={`overflow-hidden rounded-2xl border ${index === 0 ? "border-ink" : "border-black/10"}`}
+            class={`overflow-hidden rounded-2xl border ${index === 0 ? "border-ink" : "border-black/12"}`}
             type="button"
             data-gallery-thumb
             data-index={index}
@@ -117,7 +117,7 @@ const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-f
   )}
 
   {zoomable && (
-    <dialog class="w-[min(96vw,84rem)] rounded-4xl border border-black/5 bg-white p-0 shadow-soft backdrop:bg-black/65" data-gallery-dialog>
+    <dialog class="w-[min(96vw,84rem)] rounded-4xl border border-black/8 bg-white p-0 shadow-soft backdrop:bg-black/65" data-gallery-dialog>
       <div class="space-y-4 p-4 sm:p-6">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-bronze">ფერის დეტალი</p>
@@ -132,7 +132,7 @@ const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-f
           </div>
         </div>
 
-        <div class="relative overflow-hidden rounded-4xl border border-black/5 bg-shell/70">
+        <div class="relative overflow-hidden rounded-4xl border border-black/8 bg-shell/70">
           <div class="pointer-events-none absolute inset-y-0 left-0 z-20 flex items-center pl-2 sm:pl-4">
             <button class={`${dialogArrowClasses} pointer-events-auto`} type="button" data-gallery-dialog-prev aria-label="წინა ფოტო">
               <svg aria-hidden="true" class="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -179,8 +179,8 @@ const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-f
         </div>
 
         <div class="flex flex-wrap items-center justify-between gap-3">
-          <p class="text-sm text-ink/70" data-gallery-caption></p>
-          <p class="text-xs text-ink/55">ფოტოზე დაჭერით გახსნი დიდ ხედს. მობილურზე ორჯერ დაჭერით შეგიძლია მოაახლოო და გადააადგილო.</p>
+          <p class="text-sm text-ink/75" data-gallery-caption></p>
+          <p class="text-xs text-ink/60">ფოტოზე დაჭერით გახსნი დიდ ხედს. მობილურზე ორჯერ დაჭერით შეგიძლია მოაახლოო და გადააადგილო.</p>
         </div>
       </div>
     </dialog>
@@ -228,7 +228,7 @@ const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-f
     const updateThumbs = () => {
       thumbs.forEach((thumb, thumbIndex) => {
         thumb.classList.toggle("border-ink", thumbIndex === index);
-        thumb.classList.toggle("border-black/10", thumbIndex !== index);
+        thumb.classList.toggle("border-black/12", thumbIndex !== index);
       });
     };
 

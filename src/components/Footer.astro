@@ -12,7 +12,7 @@ const socialItems = [
 
 <footer class="section-padding pt-10 sm:pt-14">
   <div class="container-shell space-y-6 sm:space-y-8">
-    <section class="relative overflow-hidden rounded-[2.75rem] bg-ink px-6 py-14 text-center text-white shadow-[0_28px_80px_rgba(0,0,0,0.2)] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+    <section class="relative overflow-hidden rounded-4xl bg-ink px-6 py-14 text-center text-white shadow-deep sm:px-10 sm:py-16 lg:px-16 lg:py-20">
       <div class="pointer-events-none absolute inset-x-[14%] top-[-3.5rem] h-36 rounded-full bg-white/35 blur-[95px] sm:top-[-4.5rem] sm:h-44"></div>
       <div class="pointer-events-none absolute inset-x-[22%] bottom-[-5rem] h-40 rounded-full bg-bronze/25 blur-[110px]"></div>
       <div class="relative mx-auto max-w-3xl">
@@ -26,7 +26,7 @@ const socialItems = [
 
     <section class="relative">
       <div class="relative">
-        <div class="rounded-[2.4rem] border border-black/10 bg-canvas p-6 shadow-[0_18px_55px_rgba(26,25,23,0.05)] sm:p-8 lg:p-10">
+        <div class="rounded-4xl border border-black/12 bg-canvas p-6 shadow-subtle sm:p-8 lg:p-10">
           <div class="grid gap-10 lg:grid-cols-[1.45fr_0.8fr_0.8fr_0.8fr]">
             <div class="max-w-xl">
               <a class="inline-flex items-center" href="/" aria-label={`Winsome მთავარი გვერდი`}>
@@ -40,7 +40,7 @@ const socialItems = [
                   decoding="async"
                 />
               </a>
-              <p class="mt-5 max-w-lg text-sm leading-7 text-ink/68">{site.footer.description}</p>
+              <p class="mt-5 max-w-lg text-sm leading-7 text-ink/75">{site.footer.description}</p>
               <div class="mt-5 space-y-2 text-sm font-semibold text-black">
                 <p>{site.address}</p>
                 <a class="block font-semibold text-black hover:text-bronze" href={phoneHref}>{site.phone}</a>
@@ -73,8 +73,8 @@ const socialItems = [
             </div>
 
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/62">პროდუქცია</h3>
-              <ul class="mt-5 space-y-3 text-sm text-ink/70">
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">პროდუქცია</h3>
+              <ul class="mt-5 space-y-3 text-sm text-ink/75">
                 {site.footer.productLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
                 ))}
@@ -82,8 +82,8 @@ const socialItems = [
             </div>
 
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/62">სასარგებლო</h3>
-              <ul class="mt-5 space-y-3 text-sm text-ink/70">
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">სასარგებლო</h3>
+              <ul class="mt-5 space-y-3 text-sm text-ink/75">
                 {site.footer.resourceLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
                 ))}
@@ -91,8 +91,8 @@ const socialItems = [
             </div>
 
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/62">კომპანია</h3>
-              <ul class="mt-5 space-y-3 text-sm text-ink/70">
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">კომპანია</h3>
+              <ul class="mt-5 space-y-3 text-sm text-ink/75">
                 {site.footer.companyLinks.map((item) => (
                   <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
                 ))}
@@ -100,7 +100,7 @@ const socialItems = [
             </div>
           </div>
 
-          <div class="mt-10 flex flex-col gap-4 border-t border-black/10 pt-6 text-sm text-ink/62 lg:flex-row lg:items-center lg:justify-between">
+          <div class="mt-10 flex flex-col gap-4 border-t border-black/12 pt-6 text-sm text-ink/60 lg:flex-row lg:items-center lg:justify-between">
             <p>{site.footer.copyright}</p>
             <ul class="flex flex-wrap gap-x-6 gap-y-2">
               {site.footer.bottomLinks.map((item) => (

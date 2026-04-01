@@ -22,7 +22,7 @@ const breadcrumbs = createBreadcrumbSchema([
 >
   <section class="section-padding pb-10">
     <div class="container-shell space-y-8">
-      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex max-w-full flex-wrap items-center text-sm text-ink/55">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex max-w-full flex-wrap items-center text-sm text-ink/60">
         <a href="/" class="hover:text-bronze">მთავარი</a>
         <span class="mx-2">/</span>
         <span>კონტაქტი</span>
@@ -53,16 +53,16 @@ const breadcrumbs = createBreadcrumbSchema([
       <article class="surface-card min-w-0 p-6 sm:p-8">
         <h2 class="text-panel block text-2xl sm:text-3xl">რა მოგვაწოდო უფრო სწრაფი კონსულტაციისთვის</h2>
         <ul class="mt-5 grid gap-3">
-          <li class="rounded-3xl bg-shell/70 px-4 py-4">ფანჯრის ან კარის დაახლოებით სიგანე და სიმაღლე</li>
-          <li class="rounded-3xl bg-shell/70 px-4 py-4">სივრცის ან ღიობის ფოტოები</li>
-          <li class="rounded-3xl bg-shell/70 px-4 py-4">სასურველი პროდუქტის ტიპი ან ფუნქციური მიზანი</li>
-          <li class="rounded-3xl bg-shell/70 px-4 py-4">პროექტის მდებარეობა და სასურველი დრო</li>
+          <li class="rounded-3xl bg-shell/70 px-4 py-4 hover:bg-shell">ფანჯრის ან კარის დაახლოებით სიგანე და სიმაღლე</li>
+          <li class="rounded-3xl bg-shell/70 px-4 py-4 hover:bg-shell">სივრცის ან ღიობის ფოტოები</li>
+          <li class="rounded-3xl bg-shell/70 px-4 py-4 hover:bg-shell">სასურველი პროდუქტის ტიპი ან ფუნქციური მიზანი</li>
+          <li class="rounded-3xl bg-shell/70 px-4 py-4 hover:bg-shell">პროექტის მდებარეობა და სასურველი დრო</li>
         </ul>
       </article>
     </div>
   </section>
 
-  <section class="pb-20">
+  <section class="pb-14 sm:pb-16">
     <div class="container-shell">
       <div class="surface-card overflow-hidden">
         <div class="grid gap-0 lg:grid-cols-[1fr_1.1fr]">
@@ -75,7 +75,7 @@ const breadcrumbs = createBreadcrumbSchema([
             <p class="text-panel text-sm text-ink/60">იხილეთ ჩვენი მდებარეობა რუკაზე და გამოიყენეთ მიმართულებები ადგილზე მოსასვლელად.</p>
           </div>
           <div class="flex items-center justify-center bg-shell p-4 sm:p-5 lg:min-h-[28rem] lg:p-0">
-            <div class="h-full w-full overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-soft lg:rounded-none lg:border-0 lg:bg-transparent lg:shadow-none">
+            <div class="h-full w-full overflow-hidden rounded-4xl border border-black/12 bg-white shadow-soft lg:rounded-none lg:border-0 lg:bg-transparent lg:shadow-none">
               <iframe
                 class="block h-[320px] w-full sm:h-[420px] lg:h-full lg:min-h-[28rem]"
                 src={mapEmbedUrl}

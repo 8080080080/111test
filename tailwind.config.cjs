@@ -18,7 +18,10 @@ module.exports = {
       },
       boxShadow: {
         soft: "0 18px 40px -22px rgba(26, 25, 23, 0.18)",
-        card: "0 18px 30px -18px rgba(26, 25, 23, 0.12)"
+        card: "0 18px 30px -18px rgba(26, 25, 23, 0.12)",
+        "card-hover": "0 24px 40px -16px rgba(26, 25, 23, 0.14)",
+        deep: "0 28px 80px -12px rgba(26, 25, 23, 0.22)",
+        subtle: "0 18px 55px -20px rgba(26, 25, 23, 0.06)"
       },
       borderRadius: {
         "4xl": "2rem"
