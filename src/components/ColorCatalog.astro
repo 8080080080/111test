@@ -424,9 +424,10 @@ const previewSize = 240;
     }
 
     const rootStyle = getComputedStyle(root);
-    const tileSize = parseInt(rootStyle.getPropertyValue("--catalog-tile-size"), 10) || 120;
-    const tileMargin = parseInt(rootStyle.getPropertyValue("--catalog-tile-margin"), 10) || 5;
-    const previewSize = parseInt(rootStyle.getPropertyValue("--catalog-preview-size"), 10) || 240;
+    const parseCSSVar = (name, fallback) => { const v = parseInt(rootStyle.getPropertyValue(name), 10); return Number.isNaN(v) ? fallback : v; };
+    const tileSize = parseCSSVar("--catalog-tile-size", 120);
+    const tileMargin = parseCSSVar("--catalog-tile-margin", 5);
+    const previewSize = parseCSSVar("--catalog-preview-size", 240);
     const tileStride = tileSize + tileMargin * 2;
     let activeIndex = -1;
     let viewerIndex = 0;
