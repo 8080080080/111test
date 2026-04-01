@@ -21,7 +21,7 @@ export function createLocalBusinessSchema(site: SiteData) {
       "@type": "City",
       name: area
     })),
-    sameAs: Object.values(site.socialLinks).filter(Boolean)
+    sameAs: Object.values(site.socialLinks).filter((url) => url && url.length > 0 && !url.endsWith("wa.me/"))
   };
 }
 

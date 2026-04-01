@@ -6,7 +6,7 @@ import { createBreadcrumbSchema } from "../lib/schema";
 
 const site = getSiteData();
 const phoneHref = getPhoneHref(site.phone);
-const whatsappHref = site.socialLinks.whatsapp ? getWhatsAppHref(site.socialLinks.whatsapp) : "#";
+const whatsappHref = site.socialLinks.whatsapp ? getWhatsAppHref(site.socialLinks.whatsapp) : "";
 const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1805.7654576400805!2d44.8998138064013!3d41.68655724435169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440f001ed30a71%3A0x17eabe37a0b662d7!2sWinsome!5e1!3m2!1sen!2sge!4v1774275918208!5m2!1sen!2sge";
 const breadcrumbs = createBreadcrumbSchema([
   { name: "მთავარი", path: "/" },
@@ -46,7 +46,7 @@ const breadcrumbs = createBreadcrumbSchema([
         </ul>
         <div class="mt-6 flex flex-wrap gap-3">
           <a class="button-primary" href={phoneHref}>დარეკე ახლავე</a>
-          <a class="button-secondary" href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a>
+          {whatsappHref && <a class="button-secondary" href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a>}
         </div>
       </article>
 

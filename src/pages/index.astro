@@ -1,11 +1,10 @@
 ---
 import HomepageBodyFromFigma from "../components/HomepageBodyFromFigma.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getPhoneHref, getProducts, getSiteData } from "../lib/content";
+import { getPhoneHref, getSiteData } from "../lib/content";
 import { createFaqSchema } from "../lib/schema";
 
 const site = getSiteData();
-const products = getProducts();
 const phoneHref = getPhoneHref(site.phone);
 const heroLcpImage = site.hero.slides[0]?.image;
 ---
@@ -18,6 +17,6 @@ const heroLcpImage = site.hero.slides[0]?.image;
   schemas={[createFaqSchema(site.homeFaqs)]}
   lcpImageSrc={heroLcpImage}
 >
-  <HomepageBodyFromFigma site={site} products={products} phoneHref={phoneHref} />
+  <HomepageBodyFromFigma site={site} phoneHref={phoneHref} />
 </BaseLayout>
 

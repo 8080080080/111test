@@ -98,9 +98,14 @@ export function getPhoneHref(phone: string): string {
 
 export function getWhatsAppHref(value: string): string {
   if (value.startsWith("http")) {
+    const url = new URL(value);
+    if (!url.pathname || url.pathname === "/") {
+      return "";
+    }
     return value;
   }
 
-  return `https://wa.me/${value.replace(/\D/g, "")}`;
+  const digits = value.replace(/\D/g, "");
+  return digits ? `https://wa.me/${digits}` : "";
 }
 
