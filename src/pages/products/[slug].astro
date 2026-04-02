@@ -26,6 +26,23 @@ const site = getSiteData();
 const phoneHref = getPhoneHref(site.phone);
 const relatedProducts = getRelatedProducts(product.slug);
 const productPath = `/products/${product.slug}/`;
+const mobileColorDropdownSlugs = [
+  "farda-roleti",
+  "zebra-jaluzi",
+  "horizontaluri-jaluzi",
+  "gofrirebuli-bade",
+  "anjamebiani-bade"
+];
+const featuredRelatedHeaderSlugs = [
+  "plise-jaluzi",
+  "farda-roleti",
+  "zebra-jaluzi",
+  "horizontaluri-jaluzi",
+  "gofrirebuli-bade",
+  "anjamebiani-bade"
+];
+const hasMobileColorDropdown = mobileColorDropdownSlugs.includes(product.slug);
+const hasFeaturedRelatedHeader = featuredRelatedHeaderSlugs.includes(product.slug);
 const showColorSection = !["plise-jaluzi", "romauli-jaluzi", "ficha-jaluzi", "vertikaluri-jaluzi"].includes(product.slug) && Boolean(
   product.colorCollections?.length ||
   product.colorCatalog?.length ||
@@ -129,10 +146,69 @@ const schemas = [
   {showColorSection && (
     <section class="py-8 sm:py-10 bg-white/15">
       <div class="container-shell">
-        <article class="surface-card p-6 sm:p-8">
-          <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
-          {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
-          <div class="mt-6">
+        {hasMobileColorDropdown ? (
+          <>
+            <details class="surface-card group p-6 md:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+                <svg
+                  aria-hidden="true"
+                  class="h-5 w-5 shrink-0 text-bronze transition-transform duration-200 group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </summary>
+              <div class="mt-5">
+                {colorDescription && <p class="text-panel max-w-2xl">{colorDescription}</p>}
+                <div class={colorDescription ? "mt-6" : ""}>
+                  {product.colorCollections?.length ? (
+                    <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
+                  ) : product.colorCatalog?.length ? (
+                    <ColorCatalog
+                      items={product.colorCatalog}
+                      id={`catalog-${product.slug}`}
+                      mobileFullscreen={Boolean(product.colorCatalog?.length)}
+                    />
+                  ) : product.colorGallery?.length ? (
+                    <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
+                  ) : (
+                    <ColorSwatches colors={product.colors} />
+                  )}
+                </div>
+              </div>
+            </details>
+
+            <article class="surface-card hidden p-6 md:block md:p-8">
+              <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+              {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
+              <div class="mt-6">
+                {product.colorCollections?.length ? (
+                  <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
+                ) : product.colorCatalog?.length ? (
+                  <ColorCatalog
+                    items={product.colorCatalog}
+                    id={`catalog-${product.slug}`}
+                    mobileFullscreen={Boolean(product.colorCatalog?.length)}
+                  />
+                ) : product.colorGallery?.length ? (
+                  <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
+                ) : (
+                  <ColorSwatches colors={product.colors} />
+                )}
+              </div>
+            </article>
+          </>
+        ) : (
+          <article class="surface-card p-6 sm:p-8">
+            <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+            {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
+            <div class="mt-6">
               {product.colorCollections?.length ? (
                 <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
               ) : product.colorCatalog?.length ? (
@@ -144,10 +220,11 @@ const schemas = [
               ) : product.colorGallery?.length ? (
                 <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
               ) : (
-              <ColorSwatches colors={product.colors} />
-            )}
-          </div>
-        </article>
+                <ColorSwatches colors={product.colors} />
+              )}
+            </div>
+          </article>
+        )}
       </div>
     </section>
   )}
@@ -160,12 +237,18 @@ const schemas = [
 
   <section class="pb-8 sm:pb-10">
     <div class="container-shell space-y-8">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div class="space-y-3">
+      <div class={hasFeaturedRelatedHeader
+        ? "grid gap-4 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-end"
+        : "flex flex-col gap-4 md:flex-row md:items-end md:justify-between"}>
+        <div class={`space-y-3 ${hasFeaturedRelatedHeader ? "md:justify-self-start" : ""}`}>
           <p class="eyebrow text-panel-compact inline-flex w-fit">მსგავსი პროდუქცია</p>
+        </div>
+        <div class={`space-y-3 ${hasFeaturedRelatedHeader ? "text-center md:justify-self-center" : ""}`}>
           <h2 class="text-panel inline-block text-3xl sm:text-4xl">იხილე სხვა კატეგორიებიც</h2>
         </div>
-        <a class="button-secondary" href="/products/">სრული კატალოგი</a>
+        <div class={hasFeaturedRelatedHeader ? "flex md:justify-end" : ""}>
+          <a class={hasFeaturedRelatedHeader ? "button-primary" : "button-secondary"} href="/products/">სრული კატალოგი</a>
+        </div>
       </div>
       <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {relatedProducts.map((relatedProduct) => <ProductCard product={relatedProduct} />)}

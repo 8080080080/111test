@@ -596,6 +596,7 @@ const previewSize = 240;
         return;
       }
 
+      window.clearTimeout(viewerScrollSettleTimer);
       viewerProgrammaticScroll = true;
       window.clearTimeout(viewerProgrammaticReleaseTimer);
       viewerTrack.scrollTo({ left: targetSlide.offsetLeft, behavior });
@@ -642,7 +643,7 @@ const previewSize = 240;
 
     const stepViewer = (step) => {
       resetZoomState(viewerIndex);
-      setViewerIndex(viewerIndex + step, { syncScroll: true, behavior: "auto" });
+      setViewerIndex(viewerIndex + step, { syncScroll: true, behavior: "instant" });
     };
 
     const closeViewer = () => {
@@ -669,7 +670,7 @@ const previewSize = 240;
       }
 
       window.requestAnimationFrame(() => {
-        setViewerIndex(index, { syncScroll: true, behavior: "auto" });
+        setViewerIndex(index, { syncScroll: true, behavior: "instant" });
         viewerTrack.focus({ preventScroll: true });
       });
     };
@@ -778,7 +779,9 @@ const previewSize = 240;
 
         window.clearTimeout(viewerScrollSettleTimer);
         viewerScrollSettleTimer = window.setTimeout(() => {
-          setViewerIndex(getNearestViewerIndex());
+          if (!viewerProgrammaticScroll) {
+            setViewerIndex(getNearestViewerIndex());
+          }
         }, 90);
       }, { passive: true });
     }
@@ -982,7 +985,7 @@ const previewSize = 240;
       updateLayout();
 
       if (isViewerOpen()) {
-        setViewerIndex(viewerIndex, { syncScroll: true, behavior: "auto" });
+        setViewerIndex(viewerIndex, { syncScroll: true, behavior: "instant" });
       }
     }, 120);
 
