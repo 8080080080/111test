@@ -1,16 +1,20 @@
 ---
+import type { Locale } from "../lib/content";
 import type { Product } from "../types/content";
 
 interface Props {
   product: Product;
+  locale?: Locale;
 }
 
-const { product } = Astro.props;
+const { product, locale = "ka" } = Astro.props;
 const primaryImage = product.images[0];
+const prefix = locale === "en" ? "/en" : "";
+const ctaLabel = locale === "en" ? "Details" : "დეტალურად";
 ---
 
 <article class="surface-card group overflow-hidden">
-  <a class="block" href={`/products/${product.slug}/`}>
+  <a class="block" href={`${prefix}/products/${product.slug}/`}>
     <div class="aspect-[4/3] overflow-hidden bg-shell">
       <img
         class="card-img h-full w-full object-cover"
@@ -33,7 +37,7 @@ const primaryImage = product.images[0];
         <p class="text-panel">{product.shortDescription}</p>
       </div>
       <span class="text-panel-compact inline-flex items-center gap-2 text-sm font-semibold text-bronze">
-        დეტალურად
+        {ctaLabel}
         <span aria-hidden="true">→</span>
       </span>
     </div>

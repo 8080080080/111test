@@ -1,0 +1,1938 @@
+[
+  {
+    "id": "plise-001",
+    "name": "Pleated Blinds",
+    "slug": "plise-jaluzi",
+    "shortDescription": "A compact, elegant pleated system for small, medium, and non-standard windows.",
+    "fullDescription": "Pleated blinds are ideal when you want a light look, clean lines, and a precise fit. They work well in homes, offices, and commercial spaces where light control, a minimalist aesthetic, and a solution tailored to each window shape matter. Winsome manufactures pleated blinds to custom measurements so every opening gets a properly fitted, practical solution.",
+    "features": [
+      "Compact folding system",
+      "Made to fit non-standard and narrow windows",
+      "Light visual for modern interiors",
+      "Custom-made to individual sizes"
+    ],
+    "benefits": [
+      "Does not visually clutter the room",
+      "Easily manages light and privacy",
+      "Suits compact spaces well",
+      "Convenient for everyday use"
+    ],
+    "useCases": [
+      "Bedroom",
+      "Kitchen",
+      "Home office",
+      "Skylight windows"
+    ],
+    "colors": [
+      {
+        "name": "თეთრი",
+        "hex": "#F2EEE7"
+      },
+      {
+        "name": "ღია ბეჟი",
+        "hex": "#D9CFC0"
+      },
+      {
+        "name": "გრაფიტი",
+        "hex": "#5B5A57"
+      }
+    ],
+    "materials": [
+      "Pleated fabric",
+      "Dimout fabric",
+      "Double honeycomb structure"
+    ],
+    "images": [
+      {
+        "src": "demo/near-plant",
+        "alt": "პლისე ჟალუზის მსგავსი მსუბუქი ფანჯრის სისტემა მცენარეებიან ინტერიერში",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/palm-blinds",
+        "alt": "კომპაქტური ჟალუზიანი ფანჯარა თანამედროვე ინტერიერის კუთხეში",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Pleated Blinds in Tbilisi and Georgia",
+    "seoDescription": "Custom-made pleated blinds in Tbilisi. Ideal for modern interiors, small and non-standard windows, with precise professional installation.",
+    "faqs": [
+      {
+        "question": "Are pleated blinds suitable for small windows?",
+        "answer": "Yes. Pleated systems are especially practical for small, narrow, and non-standard windows, including skylights or triangular openings. The compact folding mechanism does not take up extra space and keeps small rooms from feeling heavy. Winsome produces pleated blinds to custom measurements, so even unusual windows can be covered cleanly and functionally."
+      },
+      {
+        "question": "Can pleated blinds be made to custom measurements?",
+        "answer": "Yes. Winsome manufactures every order based on accurate on-site measuring—each window is measured individually rather than using stock sizes. Measuring service is available in Tbilisi and major cities across Georgia. Production begins after measurement and is typically completed within several working days. You receive blinds cut to your exact opening for smooth operation and a neat finish."
+      }
+    ],
+    "keywords": [
+      "pleated blinds",
+      "blinds Tbilisi",
+      "pleated blinds Tbilisi"
+    ],
+    "colorGallery": [
+      {
+        "src": "plise-catalog/0",
+        "alt": "პლისე ჟალუზის თეთრი ქსოვილის ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/1",
+        "alt": "პლისე ჟალუზის კრემისფერი ქსოვილის ტექსტურა",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/2",
+        "alt": "პლისე ჟალუზის ღია ნაცრისფერი ქსოვილის ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/3",
+        "alt": "პლისე ჟალუზის ბეჟი ტონის ქსოვილი კატალოგიდან",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/4",
+        "alt": "პლისე ჟალუზის მუქი ნაცრისფერი ტექსტურა",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/5",
+        "alt": "პლისე ჟალუზის ღია ყავისფერი ქსოვილის ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/6",
+        "alt": "პლისე ჟალუზის მუქი ყავისფერი ზედაპირი",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/7",
+        "alt": "პლისე ჟალუზის ანტრაციტის ფერის ქსოვილი",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/8",
+        "alt": "პლისე ჟალუზის სპილოს ძვლისფერი ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/9",
+        "alt": "პლისე ჟალუზის ქარვისფერი ზედაპირი და ტექსტურა",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/10",
+        "alt": "პლისე ჟალუზის ვარდისფერი ქსოვილი",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/11",
+        "alt": "პლისე ჟალუზის ცისფერი ქსოვილის ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/12",
+        "alt": "პლისე ჟალუზის მწვანე ტონის ტექსტურა",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/13",
+        "alt": "პლისე ჟალუზის ლურჯი ქსოვილი კატალოგიდან",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/14",
+        "alt": "პლისე ჟალუზის ტერაკოტის ფერის ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/15",
+        "alt": "პლისე ჟალუზის ნარინჯისფერი ქსოვილი",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/16",
+        "alt": "პლისე ჟალუზის ოქროსფერი ტექსტურის ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/17",
+        "alt": "პლისე ჟალუზის შავი ქსოვილის ტექსტურა",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/18",
+        "alt": "პლისე ჟალუზის ბორდოს ფერის ქსოვილი",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/19",
+        "alt": "პლისე ჟალუზის ზეთისხილისფერი ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/20",
+        "alt": "პლისე ჟალუზის ნეიტრალური ღია ტონის ქსოვილი",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/21",
+        "alt": "პლისე ჟალუზის ორმაგი honeycomb სტრუქტურის თეთრი ნიმუში",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/22",
+        "alt": "პლისე ჟალუზის დიმაუტ ტიპის მუქი ნაცრისფერი ქსოვილი",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/23",
+        "alt": "პლისე ჟალუზის პასტელური ბეჟის ტექსტურა",
+        "width": 670,
+        "height": 778
+      },
+      {
+        "src": "plise-catalog/24",
+        "alt": "პლისე ჟალუზის მუქი მწვანე-ლურჯი ტონის ნიმუში",
+        "width": 670,
+        "height": 778
+      }
+    ]
+  },
+  {
+    "id": "farda-roleti-001",
+    "name": "Roller Blinds",
+    "slug": "farda-roleti",
+    "shortDescription": "A minimalist roller system that suits apartments, offices, and contemporary interiors.",
+    "fullDescription": "Roller blinds are among the most popular choices for modern spaces. The system takes little room, looks clean, and fits both residential and commercial interiors. Winsome manufactures roller blinds to custom sizes with a range of fabric options so you get light and privacy control tailored to how you use the room.",
+    "features": [
+      "Clean, minimalist design",
+      "Custom width and height production",
+      "Choice of light-filtering and blackout fabrics",
+      "Simple, practical everyday operation"
+    ],
+    "benefits": [
+      "Contemporary look in any interior",
+      "Easy to integrate in homes and offices",
+      "Controls light and privacy",
+      "Straightforward to clean and maintain"
+    ],
+    "useCases": [
+      "Living room",
+      "Bedroom",
+      "Office",
+      "Studio apartment"
+    ],
+    "colors": [
+      {
+        "name": "აისვორი",
+        "hex": "#E9E3D7"
+      },
+      {
+        "name": "ტაუპი",
+        "hex": "#C8B8A6"
+      },
+      {
+        "name": "მუქი ნაცრისფერი",
+        "hex": "#595857"
+      }
+    ],
+    "materials": [
+      "Screen fabric",
+      "Polyester",
+      "Blackout fabric"
+    ],
+    "images": [
+      {
+        "src": "demo/roller-living",
+        "alt": "ფარდა როლეტი თანამედროვე საცხოვრებელ ინტერიერში",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/shadow-roller",
+        "alt": "როლეტიანი ფანჯრიდან შემოსული რბილი სინათლე ინტერიერში",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Roller Blinds in Tbilisi and Georgia",
+    "seoDescription": "Roller blinds in Tbilisi. Custom sizing, quality fabrics, neat installation, and solutions matched to modern interiors.",
+    "faqs": [
+      {
+        "question": "Are roller blinds a good choice for bedrooms?",
+        "answer": "Yes. Roller blinds are one of the most popular options for bedrooms. Depending on your needs you can choose light-filtering (dimout) or full blackout fabric. Blackout is especially useful when the window faces a street or when you need complete darkness for children’s rooms or shift workers. During consultation we help you pick the right opacity and colour for sleep quality and daytime comfort."
+      },
+      {
+        "question": "Do you offer a wide range of colours and fabrics?",
+        "answer": "Yes. Winsome’s roller blind catalogue includes more than 70 colours and fabric options—neutral, pastel, and bolder tones. Various textures are available, including smooth, linen-effect, and other finishes. At consultation you can review samples and choose a combination that harmonises with your furniture and wall colours. This makes it easier to match new blinds to an existing renovation or a full redesign."
+      }
+    ],
+    "keywords": [
+      "roller blinds",
+      "blinds Tbilisi",
+      "window roller blinds"
+    ],
+    "colorCatalog": [
+      {
+        "src": "farda-roleti-catalog/001",
+        "alt": "ფარდა როლეტის თეთრი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/002",
+        "alt": "ფარდა როლეტის კრემისფერი ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/003",
+        "alt": "ღია ბეჟი ტონის ფარდა როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/004",
+        "alt": "ბეჟი ნეიტრალური ტონის ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/005",
+        "alt": "ღია ნაცრისფერი ფარდა როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/006",
+        "alt": "მუქი ნაცრისფერი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/007",
+        "alt": "ღია ყავისფერი ტონის ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/008",
+        "alt": "მუქი ყავისფერი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/009",
+        "alt": "ანტრაციტის ტონის ფარდა როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/010",
+        "alt": "სპილოს ძვლისფერი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/011",
+        "alt": "ქარვისფერი ტექსტილი ფარდა როლეტისთვის — ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/012",
+        "alt": "ვარდისფერი ტონის ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/013",
+        "alt": "ცისფერი ფარდა როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/014",
+        "alt": "მწვანე ტონის ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/015",
+        "alt": "ლურჯი ფარდა როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/016",
+        "alt": "ტერაკოტის ფერის ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/017",
+        "alt": "ბორდოს ტონის ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/018",
+        "alt": "ზეთისხილისფერი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/019",
+        "alt": "ოქროსფერი ტონის ფარდა როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/020",
+        "alt": "შავი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/021",
+        "alt": "თაფლისფერი ტონის ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/022",
+        "alt": "ლავანდისფერი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/023",
+        "alt": "პიტნისფერი ტონის ფარდა როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/024",
+        "alt": "შოკოლადისფერი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/025",
+        "alt": "მარსალას ტონის ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/026",
+        "alt": "ინდიგოს ფერის ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/027",
+        "alt": "თეთრი მატი ქსოვილი ფარდა როლეტის ნიმუშად",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/028",
+        "alt": "კრემისფერი პასტელური ტონი — ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/029",
+        "alt": "ღია ბეჟი გლუვი ტექსტილი ფარდა როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/030",
+        "alt": "ბეჟი-კრემის შერეული ტონი ფარდა როლეტის ქსოვილში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/031",
+        "alt": "ღია ნაცრისფერი მატი ზედაპირი — როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/032",
+        "alt": "მუქი ნაცრისფერი ტექსტურირებული ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/033",
+        "alt": "ღია ყავისფერი ნეიტრალური ტონი ფარდა როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/034",
+        "alt": "მუქი ყავისფერი დაბნელების ეფექტის ქსოვილი როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/035",
+        "alt": "ანტრაციტი მკვეთრი ტონი — ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/036",
+        "alt": "სპილოს ძვლისფერი ნაზი ტონი ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/037",
+        "alt": "ქარვისფერი თბილი ტონი ფარდა როლეტის ქსოვილში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/038",
+        "alt": "ვარდისფერი პასტელი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/039",
+        "alt": "ცისფერი ღია ტონი როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/040",
+        "alt": "მწვანე ბუნებრივი ტონი ფარდა როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/041",
+        "alt": "ლურჯი ღრმა ტონი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/042",
+        "alt": "ტერაკოტა თბილი ფერი — ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/043",
+        "alt": "ბორდო სიღრმის ტონი ფარდა როლეტის ქსოვილში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/044",
+        "alt": "ზეთისხილისფერი მიწისეული ტონი როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/045",
+        "alt": "ოქროსფერი ნაზი ბრწყინვალე ეფექტის ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/046",
+        "alt": "შავი სრული დაბნელების ქსოვილი ფარდა როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/047",
+        "alt": "თაფლისფერი თბილი ტონი ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/048",
+        "alt": "ლავანდისფერი პასტელური ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/049",
+        "alt": "პიტნისფერი ნაზი მწვანე-ლურჯი ტონი როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/050",
+        "alt": "შოკოლადისფერი ღრმა ტონი ფარდა როლეტის ქსოვილში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/051",
+        "alt": "მარსალა ღვინისფერი ტონი ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/052",
+        "alt": "ინდიგო ღრმა ლურჯი ტონი როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/053",
+        "alt": "ფარდა როლეტის თეთრი ქსოვილი — სქრინ ტიპის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/054",
+        "alt": "კრემისფერი დიმაუტის ეფექტის ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/055",
+        "alt": "ღია ბეჟი ლინენის ეფექტის ტექსტილი როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/056",
+        "alt": "ბეჟი ქვიშისფერი ტონი ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/057",
+        "alt": "ღია ნაცრისფერი მეტალიკის ეფექტის ქსოვილი როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/058",
+        "alt": "მუქი ნაცრისფერი გრაფიტის ტონი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/059",
+        "alt": "ღია ყავისფერი კაპუჩინოს ტონი ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/060",
+        "alt": "მუქი ყავისფერი ესპრესოს ტონი როლეტის ქსოვილში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/061",
+        "alt": "ანტრაციტი მატი ზედაპირი ფარდა როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/062",
+        "alt": "სპილოს ძვლისფერი ნეიტრალური ბაზა როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/063",
+        "alt": "ქარვისფერი ტექსტურირებული ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/064",
+        "alt": "ვარდისფერი დელიკატური ტონი ფარდა როლეტის ქსოვილში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/065",
+        "alt": "ცისფერი ზაფხულის ტონი როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/066",
+        "alt": "მწვანე მოციკლამენის ტონი ფარდა როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/067",
+        "alt": "ლურჯი ზღვისფერი ტონი ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/068",
+        "alt": "ტერაკოტა ქონდრის ტონი როლეტის ქსოვილი",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/069",
+        "alt": "ბორდო ღვინისფერი აქცენტი ფარდა როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/070",
+        "alt": "ზეთისხილისფერი ორგანული ტონი ფარდა როლეტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/071",
+        "alt": "ოქროსფერი სანდრის ტონი როლეტის ქსოვილში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/072",
+        "alt": "შავი მატი ზედაპირი ფარდა როლეტის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "farda-roleti-catalog/073",
+        "alt": "თაფლისფერი ქარვისთან ახლოს მდგომი ტონი ფარდა როლეტისთვის",
+        "width": 1200,
+        "height": 1200
+      }
+    ]
+  },
+  {
+    "id": "zebra-001",
+    "name": "Zebra Blinds",
+    "slug": "zebra-jaluzi",
+    "shortDescription": "Zebra (day-and-night) blinds for flexible control of light and privacy.",
+    "fullDescription": "Zebra blinds—often called day-night blinds—are ideal if you want both soft light filtering and privacy in one system. Two layers of moving fabric let you change the mood of a room easily during the day. Winsome offers zebra blinds for customers who want a modern, distinctive, practical solution for homes, offices, and commercial spaces.",
+    "features": [
+      "Day-and-night style dual-layer fabric",
+      "Flexible light adjustment",
+      "Several cassette and mechanism options",
+      "Custom sizes for all window types"
+    ],
+    "benefits": [
+      "Adjust light without fully raising the blind",
+      "Decorative, contemporary appearance",
+      "Suits living and work environments",
+      "Pairs well with neutral interiors"
+    ],
+    "useCases": [
+      "Living room",
+      "Kitchen",
+      "Office meeting room",
+      "Showroom"
+    ],
+    "colors": [
+      {
+        "name": "პორცელანი",
+        "hex": "#F0ECE4"
+      },
+      {
+        "name": "გრეიჯი",
+        "hex": "#BCB2A8"
+      },
+      {
+        "name": "მოკა",
+        "hex": "#7A6659"
+      }
+    ],
+    "materials": [
+      "Sheer and opaque fabric layers",
+      "Textured striped fabric",
+      "Polyester-based system"
+    ],
+    "images": [
+      {
+        "src": "demo/warm-roller",
+        "alt": "დღე-ღამის ტიპის ჟალუზის მსგავსი სინათლის მართვის ინტერიერი",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/minimal-roller",
+        "alt": "თანამედროვე ჟალუზიანი ფანჯარა მინიმალისტურ ოთახში",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Zebra Blinds in Tbilisi and Georgia",
+    "seoDescription": "Zebra and day-night blinds in Tbilisi and Georgia. Dual-layer fabric, custom sizes, contemporary design, and quality installation.",
+    "faqs": [
+      {
+        "question": "Are zebra blinds practical for offices?",
+        "answer": "Yes. Zebra (day-night) blinds are very practical in office settings. The dual-layer fabric lets you regulate daylight without fully raising the blind, which helps reduce glare on screens and monitors. The contemporary look fits open-plan offices as well as private meeting rooms. Operation is quick for staff who open and close blinds often during the day. Colour and fabric choice can align with corporate interiors or residential-style studio spaces."
+      },
+      {
+        "question": "What is the difference between zebra blinds and day-night blinds?",
+        "answer": "They are the same product category: alternating sheer and opaque stripes on two layers that slide past each other. “Zebra” refers to the striped look; “day-night” describes how you can switch between softer daylight and stronger privacy in one headrail. At Winsome we size the system to your reveal depth and help you pick stripe scale and fabric opacity for living rooms, kitchens, or bedrooms. Installation is planned so the chain or wand clears handles and sill projections. That way you get smooth operation and a clean stack whether the blind is fully lowered or partially open."
+      }
+    ],
+    "keywords": [
+      "zebra blinds",
+      "day night blinds",
+      "zebra blinds Tbilisi"
+    ],
+    "colorCatalog": [
+      {
+        "src": "zebra-catalog/001",
+        "alt": "ზებრა ჟალუზის თეთრი ორფენიანი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/002",
+        "alt": "დღე-ღამის ჟალუზის კრემისფერი ქსოვილის ნიმუში ზოლებიანი ტექსტურით",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/003",
+        "alt": "ზებრა ჟალუზის ღია ბეჟი ტონის ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/004",
+        "alt": "ზებრა ჟალუზის ღია ნაცრისფერი ქსოვილის ნიმუში დღე-ღამის სისტემისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/005",
+        "alt": "ზებრა ჟალუზის მუქი ნაცრისფერი ორფენიანი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/006",
+        "alt": "ზებრა ჟალუზის ღია ყავისფერი ტონის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/007",
+        "alt": "დღე-ღამის ჟალუზის ანტრაციტისფერი ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/008",
+        "alt": "ზებრა ჟალუზის სპილოს ძვლისფერი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/009",
+        "alt": "ზებრა ჟალუზის ქარვისფერი ორფენიანი ქსოვილის ნიმუში ზოლებით",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/010",
+        "alt": "ზებრა ჟალუზის ცისფერი ტონის დღე-ღამის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/011",
+        "alt": "დღე-ღამის ჟალუზის ლურჯი ორფენიანი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/012",
+        "alt": "ზებრა ჟალუზის მწვანე ქსოვილის ნიმუში ორ ფენად მოძრავი სისტემისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/013",
+        "alt": "ზებრა ჟალუზის ვარდისფერი ტონის ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/014",
+        "alt": "დღე-ღამის ჟალუზის ბორდოსფერი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/015",
+        "alt": "ზებრა ჟალუზის ტერაკოტისფერი ორფენიანი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/016",
+        "alt": "ზებრა ჟალუზის შავი ქსოვილის ნიმუში დღე-ღამის ტიპისთვის",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/017",
+        "alt": "ზებრა ჟალუზის ოქროსფერი ტონის ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/018",
+        "alt": "დღე-ღამის ჟალუზის ზეთისხილისფერი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/019",
+        "alt": "ზებრა ჟალუზის მუქი ყავისფერი ორფენიანი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/020",
+        "alt": "ზებრა ჟალუზის თაფლისფერი ტონის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/021",
+        "alt": "დღე-ღამის ჟალუზის თეთრი და კრემისფერი შერეული ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/022",
+        "alt": "ზებრა ჟალუზის კრემისფერი ნაზი ტექსტურის ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/023",
+        "alt": "ზებრა ჟალუზის ღია ბეჟი გამჭვირვალი ზოლებით — ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/024",
+        "alt": "დღე-ღამის ჟალუზის ღია ნაცრისფერი ნეიტრალური ტონის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/025",
+        "alt": "ზებრა ჟალუზის მუქი ნაცრისფერი მატი ზოლებიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/026",
+        "alt": "ზებრა ჟალუზის ღია ყავისფერი ლატეს ტონის ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/027",
+        "alt": "დღე-ღამის ჟალუზის ანტრაციტისფერი მუქი ზოლების ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/028",
+        "alt": "ზებრა ჟალუზის სპილოს ძვლისფერი ნაზი ზოლებიანი ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/029",
+        "alt": "ზებრა ჟალუზის ქარვისფერი თბილი ტონის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/030",
+        "alt": "დღე-ღამის ჟალუზის ცისფერი ღია ტონის ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/031",
+        "alt": "ზებრა ჟალუზის მუქი ლურჯი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/032",
+        "alt": "ზებრა ჟალუზის მწვანე ზოლებიანი ორფენიანი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/033",
+        "alt": "დღე-ღამის ჟალუზის ვარდისფერი პასტელური ტონის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/034",
+        "alt": "ზებრა ჟალუზის ბორდოსფერი სიღრმის ტონის ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/035",
+        "alt": "ზებრა ჟალუზის ტერაკოტისფერი თბილი ზოლების ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/036",
+        "alt": "დღე-ღამის ჟალუზის შავი მაქსიმალური სიბნელის ეფექტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/037",
+        "alt": "ზებრა ჟალუზის ოქროსფერი მბზინავი ზოლების ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/038",
+        "alt": "ზებრა ჟალუზის ზეთისხილისფერი ნატურალური ტონის ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/039",
+        "alt": "დღე-ღამის ჟალუზის მუქი ყავისფერი ესპრესოს ტონის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/040",
+        "alt": "ზებრა ჟალუზის თაფლისფერი ნაზი გადასვლების ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/041",
+        "alt": "დღე-ღამის ჟალუზის თეთრი მატი ზოლებიანი ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/042",
+        "alt": "ზებრა ჟალუზის კრემისფერი და ღია ბეჟის შერეული ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/043",
+        "alt": "ზებრა ჟალუზის ღია ბეჟი ნეიტრალური ინტერიერისთვის — ქსოვილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/044",
+        "alt": "დღე-ღამის ჟალუზის ღია ნაცრისფერი და თეთრი კონტრასტის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/045",
+        "alt": "ზებრა ჟალუზის მუქი ნაცრისფერი და შავი ზოლების ორფენიანი ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "zebra-catalog/046",
+        "alt": "დღე-ღამის ჟალუზის ნეიტრალური ბეჟი-კრემის შერეული ტონის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      }
+    ]
+  },
+  {
+    "id": "romauli-001",
+    "name": "Roman Blinds",
+    "slug": "romauli-jaluzi",
+    "shortDescription": "Soft, fabric-forward Roman blinds for residential and hospitality spaces.",
+    "fullDescription": "Roman blinds suit anyone who wants a warmer, textile-based, decorative window treatment. The elegant stacked fold adds calm and visual depth to a room. Winsome offers this category for bedrooms, living rooms, hotels, and other spaces where design and everyday practicality matter equally.",
+    "features": [
+      "Soft folding textile system",
+      "Decorative, premium appearance",
+      "Individual fabric and colour selection",
+      "Blackout options available"
+    ],
+    "benefits": [
+      "Adds warmth and calm to interiors",
+      "Especially suited to bedrooms and lounges",
+      "More decorative than a standard roller blind",
+      "Coordinates well with curtains and other textiles"
+    ],
+    "useCases": [
+      "Bedroom",
+      "Living room",
+      "Hotel room",
+      "Boutique interior"
+    ],
+    "colors": [
+      {
+        "name": "ქვიშისფერი",
+        "hex": "#DDD0BF"
+      },
+      {
+        "name": "თიხის ბეჟი",
+        "hex": "#BAA28A"
+      },
+      {
+        "name": "მოლურჯო-მწვანე ტონი",
+        "hex": "#6F7464"
+      }
+    ],
+    "materials": [
+      "Lined fabric",
+      "Linen-effect fabric",
+      "Dimout fabric",
+      "Decorative textiles"
+    ],
+    "images": [
+      {
+        "src": "demo/plants-roller",
+        "alt": "რბილი ტექსტილური ფანჯრის გადაწყვეტა საცხოვრებელ ინტერიერში",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/empty-room-blinds",
+        "alt": "საძინებლის ტიპის ოთახი რბილი სინათლით და ფანჯრის ტექსტილური გადაწყვეტით",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Roman Blinds in Tbilisi and Georgia",
+    "seoDescription": "Roman blinds for homes and hospitality. Premium fabrics, custom fabrication, and precise installation in Tbilisi.",
+    "faqs": [
+      {
+        "question": "Are Roman blinds a good choice for bedrooms?",
+        "answer": "Yes. Roman blinds are an excellent bedroom option when you want a soft, textile-rich, cosy look. Unlike curtains alone, they fold up compactly and do not consume unnecessary wall or stack space. Both translucent and blackout fabrics are available depending on how much morning light you want. The structured fold also gives a tailored, finished appearance that works in both classic and modern bedrooms."
+      },
+      {
+        "question": "Can Roman blinds be made with blackout fabric?",
+        "answer": "Yes. Roman blinds are available with both light-filtering and full blackout fabrics. Blackout is especially useful for bedrooms and children’s rooms where complete darkness improves sleep. Fabric type is chosen during consultation based on orientation, street lighting, and your preferences. Winsome helps you balance aesthetics with the level of shading you need year-round."
+      }
+    ],
+    "keywords": [
+      "Roman blinds",
+      "bedroom blinds",
+      "fabric blinds"
+    ]
+  },
+  {
+    "id": "ficha-001",
+    "name": "Faux Wood Blinds",
+    "slug": "ficha-jaluzi",
+    "shortDescription": "Wide-slat blinds with a wood-grain look for a warmer, more defined interior character.",
+    "fullDescription": "Faux wood blinds are designed for those who like horizontal slats but want a warmer, wood-effect, decorative appearance. They are often used in living rooms, studies, and classic or contemporary interiors where both light control and visual character matter. Winsome offers this range in custom sizes with several colour directions to match trim and furniture.",
+    "features": [
+      "Wood-grain style appearance",
+      "Wide horizontal slats",
+      "Precise tilt for light direction",
+      "Fabrication to your exact window size"
+    ],
+    "benefits": [
+      "Adds a warm, natural feel to the room",
+      "Decorative yet practical",
+      "Suited to studies and living rooms",
+      "Easy light control by tilting the slats"
+    ],
+    "useCases": [
+      "Living room",
+      "Study",
+      "Office",
+      "Classic interior"
+    ],
+    "colors": [
+      {
+        "name": "ღია ხის ტონი",
+        "hex": "#CDAE88"
+      },
+      {
+        "name": "თაფლისფერი",
+        "hex": "#AF8458"
+      },
+      {
+        "name": "მუქი ხის ტონი",
+        "hex": "#6F553D"
+      }
+    ],
+    "materials": [
+      "Wood-effect slats",
+      "Aluminium hardware",
+      "Durable surface finish"
+    ],
+    "images": [
+      {
+        "src": "demo/venetian-white",
+        "alt": "ფიჭა ჟალუზის მსგავსი ჰორიზონტალური ლამელები ნათელ ფანჯარაზე",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/plant-venetian",
+        "alt": "ხის ეფექტის ჟალუზის ატმოსფეროს მსგავსი ფანჯარა მცენარესთან",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Faux Wood Blinds in Tbilisi and Georgia",
+    "seoDescription": "Faux wood blinds for wood-effect interiors. Custom sizes, horizontal slats, and professional installation in Tbilisi and Georgia.",
+    "faqs": [
+      {
+        "question": "Are faux wood blinds an alternative to real wood blinds?",
+        "answer": "Yes. Faux wood blinds deliver a warm look close to natural timber while staying practical and cost-effective. Compared with solid wood, they are typically lighter, need less specialised maintenance, and cope better with humidity in kitchens or bathrooms when specified appropriately. They suit homeowners who love wood aesthetics but prioritise durability and easy cleaning. Winsome can advise on room suitability during measuring."
+      },
+      {
+        "question": "Can faux wood blinds be used in offices?",
+        "answer": "Yes. Faux wood blinds look especially strong in studies, meeting rooms, and representative spaces. Wide slats create a solid, finished impression while tilt adjustment gives precise control over glare and privacy. Offices often choose neutral slat colours that blend with joinery and flooring. Installation is planned around reveal depth and handle clearance so daily operation stays smooth for staff and visitors."
+      }
+    ],
+    "keywords": [
+      "faux wood blinds",
+      "wood effect blinds",
+      "faux wood blinds Tbilisi"
+    ]
+  },
+  {
+    "id": "vertical-001",
+    "name": "Vertical Blinds",
+    "slug": "vertikaluri-jaluzi",
+    "shortDescription": "A practical vertical system for wide and tall glazing.",
+    "fullDescription": "Vertical blinds are especially effective on large windows, in offices, schools, and commercial spaces where you need to manage sun angle and glare. Vertical louvres create an orderly, functional look. Winsome supplies this system for projects that require simple operation, accurate sizing, and durable daily use.",
+    "features": [
+      "Suitable for large and tall windows",
+      "Vertical louvre adjustment",
+      "Practical for office and commercial spaces",
+      "Easy maintenance and alignment"
+    ],
+    "benefits": [
+      "Helps control direct sunlight",
+      "Suits wide glazing and office layouts",
+      "Maintains a neat, structured appearance",
+      "Easy to draw and tilt throughout the day"
+    ],
+    "useCases": [
+      "Office",
+      "Classroom",
+      "Glazed wall",
+      "Retail space"
+    ],
+    "colors": [
+      {
+        "name": "ქვა",
+        "hex": "#D8D4CF"
+      },
+      {
+        "name": "ფერფლი",
+        "hex": "#9C9A96"
+      },
+      {
+        "name": "ნახშირი",
+        "hex": "#4F4F4F"
+      }
+    ],
+    "materials": [
+      "Fabric vanes",
+      "Anti-glare fabric",
+      "Track system"
+    ],
+    "images": [
+      {
+        "src": "demo/vertical-interior",
+        "alt": "ვერტიკალური ჟალუზი დიდ ფანჯარასთან თანამედროვე სივრცეში",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/industrial-roller",
+        "alt": "დიდი ღიობი შიდა მზისგან დამცავი სისტემით",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Vertical Blinds in Tbilisi and Georgia",
+    "seoDescription": "Vertical blinds for offices, curtain walls, and commercial spaces. Custom sizes, robust hardware, and precise installation.",
+    "faqs": [
+      {
+        "question": "Are vertical blinds only for offices?",
+        "answer": "No. While vertical blinds are traditionally popular in offices, they also work well on large home windows, balcony doors, and studio-style layouts. Vertical vanes make it easier to manage light across a wide opening where horizontal systems can be less practical. Fabric and colour choice can be adapted to residential décors as well as corporate palettes. Winsome assesses stack direction and obstructions during the site visit."
+      },
+      {
+        "question": "Can a damaged slat be replaced individually?",
+        "answer": "Yes. One advantage of vertical blinds is that a single damaged vane can often be replaced without replacing the entire system. This saves cost and downtime when one louvre is stained or bent. Winsome can supply a matching replacement vane sized and coloured to your existing track. We recommend keeping a note of fabric batch where possible for the closest colour match over time."
+      }
+    ],
+    "keywords": [
+      "vertical blinds",
+      "office blinds",
+      "vertical blinds Tbilisi"
+    ]
+  },
+  {
+    "id": "horizontal-001",
+    "name": "Horizontal Blinds",
+    "slug": "horizontaluri-jaluzi",
+    "shortDescription": "Classic horizontal blinds with precise control, easy care, and broad applications.",
+    "fullDescription": "Horizontal blinds remain one of the most practical choices when you need precise control of light direction and low-maintenance surfaces. They work well in kitchens, offices, areas near wet zones, and home offices. Winsome supplies horizontal blinds with accurate measuring, several colour options, and robust construction for everyday use.",
+    "features": [
+      "Precise tilt control of slats",
+      "Compact, practical system",
+      "Easy to clean and maintain",
+      "Custom-made to size"
+    ],
+    "benefits": [
+      "Manages daylight effectively",
+      "Suits kitchens and work areas",
+      "No complicated maintenance routine",
+      "Fits both classic and modern interiors"
+    ],
+    "useCases": [
+      "Kitchen",
+      "Window near wet zone",
+      "Office",
+      "Home office"
+    ],
+    "colors": [
+      {
+        "name": "მატე თეთრი",
+        "hex": "#F4F1EA"
+      },
+      {
+        "name": "ქვიშისფერი",
+        "hex": "#C9B8A2"
+      },
+      {
+        "name": "მუქი ბრინჯაო",
+        "hex": "#6B5745"
+      }
+    ],
+    "materials": [
+      "Aluminium slats",
+      "Durable coating",
+      "Moisture-resistant components"
+    ],
+    "images": [
+      {
+        "src": "demo/plant-venetian",
+        "alt": "ჰორიზონტალური ჟალუზი მცენარეებიან ინტერიერში",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/venetian-white",
+        "alt": "ჰორიზონტალური ლამელები თეთრ ფანჯარაზე ახლო ხედით",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Horizontal Blinds in Tbilisi and Georgia",
+    "seoDescription": "Horizontal blinds for kitchens, offices, and daily use. Precise control, durable slats, and installation in Tbilisi.",
+    "faqs": [
+      {
+        "question": "Are horizontal blinds practical for kitchens?",
+        "answer": "Yes. Horizontal blinds are a very practical kitchen choice. Slats can be wiped with a damp cloth, and aluminium or PVC finishes tolerate steam and splashes better than absorbent textiles. Tilting the slats gives fine control over daylight so food prep areas stay comfortably lit without harsh glare. Winsome helps you choose slat width and colour that resist fingerprints and coordinate with cabinets and splashbacks."
+      },
+      {
+        "question": "Can I choose a moisture-resistant option?",
+        "answer": "Yes. Horizontal blinds are available in moisture-resistant aluminium and PVC materials that perform well in kitchens, bathrooms, and other humid areas. During consultation we match slat finish and headrail size to your reveal depth and opening frequency. The right specification extends service life in steamy environments and keeps operation smooth after years of daily use."
+      }
+    ],
+    "keywords": [
+      "horizontal blinds",
+      "kitchen blinds",
+      "horizontal blinds Tbilisi"
+    ],
+    "colorCatalog": [
+      {
+        "src": "horizontaluri-catalog/001",
+        "alt": "ჰორიზონტალური ჟალუზის თეთრი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/002",
+        "alt": "ჰორიზონტალური ჟალუზის კრემისფერი ლამელის ნიმუში",
+        "width": 2559,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/003",
+        "alt": "ჰორიზონტალური ჟალუზის ბეჟი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/004",
+        "alt": "ჰორიზონტალური ჟალუზის ღია ნაცრისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/005",
+        "alt": "ჰორიზონტალური ჟალუზის მუქი ნაცრისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/006",
+        "alt": "ჰორიზონტალური ჟალუზის ღია ყავისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/007",
+        "alt": "ჰორიზონტალური ჟალუზის მუქი ყავისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/008",
+        "alt": "ჰორიზონტალური ჟალუზის ანტრაციტის ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/009",
+        "alt": "ჰორიზონტალური ჟალუზის სპილოს ძვლისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/010",
+        "alt": "ჰორიზონტალური ჟალუზის ქარვისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/011",
+        "alt": "ჰორიზონტალური ჟალუზის ვარდისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/012",
+        "alt": "ჰორიზონტალური ჟალუზის ცისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/013",
+        "alt": "ჰორიზონტალური ჟალუზის მწვანე ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2559
+      },
+      {
+        "src": "horizontaluri-catalog/014",
+        "alt": "ჰორიზონტალური ჟალუზის ლურჯი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/015",
+        "alt": "ჰორიზონტალური ჟალუზის ტერაკოტის ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/016",
+        "alt": "ჰორიზონტალური ჟალუზის ბორდოს ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/017",
+        "alt": "ჰორიზონტალური ჟალუზის ზეთისხილისფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2560
+      },
+      {
+        "src": "horizontaluri-catalog/018",
+        "alt": "ჰორიზონტალური ჟალუზის ოქროსფერი ლამელის ნიმუში",
+        "width": 2560,
+        "height": 2559
+      }
+    ]
+  },
+  {
+    "id": "gofrirebuli-bade-001",
+    "name": "Pleated Insect Screen",
+    "slug": "gofrirebuli-bade",
+    "shortDescription": "A pleated mesh system for doors and windows where you want airflow and insect protection.",
+    "fullDescription": "Pleated insect screens are especially convenient for balcony doors, terraces, and busy exits. The folding side-sliding system saves space and suits modern door profiles. Winsome offers this category for customers who want comfort, neat installation, and reliable insect protection for everyday living.",
+    "features": [
+      "Pleated, side-sliding system",
+      "Suitable for balcony doors and terraces",
+      "Folds compactly when not in use",
+      "Custom-made to size"
+    ],
+    "benefits": [
+      "Keeps insects out while allowing air movement",
+      "Convenient on frequently used doors",
+      "Space-efficient when open",
+      "Works with modern aluminium and uPVC systems"
+    ],
+    "useCases": [
+      "Balcony door",
+      "Terrace",
+      "Garden exit",
+      "Panoramic door"
+    ],
+    "colors": [
+      {
+        "name": "თეთრი ჩარჩო",
+        "hex": "#F1EEE8"
+      },
+      {
+        "name": "ანტრაციტი",
+        "hex": "#55585C"
+      },
+      {
+        "name": "ხისფერი პროფილი",
+        "hex": "#9C7857"
+      }
+    ],
+    "materials": [
+      "Pleated mesh",
+      "Aluminium profile",
+      "Smooth glide hardware"
+    ],
+    "images": [
+      {
+        "src": "demo/window-net",
+        "alt": "მწერებისგან დამცავი ბადის ტიპის ფანჯარა ინტერიერის მხრიდან",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/screen-door",
+        "alt": "კარის ბადის მსგავსი სისტემა საცხოვრებელ შესასვლელში",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Pleated Insect Screen in Tbilisi and Georgia",
+    "seoDescription": "Pleated insect screens for balcony doors, terraces, and exits. Custom sizes and professional installation in Tbilisi.",
+    "faqs": [
+      {
+        "question": "Is a pleated screen suitable for a balcony door?",
+        "answer": "Yes. Pleated screens are among the most practical solutions for balcony and terrace doors where people pass through often. The mesh slides sideways and stacks to one side so it does not block the opening when the door is open. The barrier still keeps flies and mosquitoes out while fresh air circulates. Installation is fitted to the door frame without major structural changes in most cases. Winsome measures to ensure smooth travel along the full width."
+      },
+      {
+        "question": "Does the pleated screen fold to the side?",
+        "answer": "Yes. Side-stacking folding is a key benefit of this system. The mesh gathers compactly at one end and stays out of the way when you need full passage—ideal for busy doorways where a fixed framed screen would be awkward. That makes daily use simpler for families and in commercial entries with frequent traffic. Track and brush seals are adjusted for even closure across the opening."
+      }
+    ],
+    "keywords": [
+      "pleated insect screen",
+      "insect screen Tbilisi",
+      "balcony door insect screen"
+    ],
+    "colorCatalog": [
+      {
+        "src": "gofrirebuli-bade-catalog/001",
+        "alt": "გოფრირებული ბადის თეთრი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/002",
+        "alt": "გოფრირებული ბადის კრემისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/003",
+        "alt": "გოფრირებული ბადის ბეჟი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/004",
+        "alt": "გოფრირებული ბადის ღია ნაცრისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/005",
+        "alt": "გოფრირებული ბადის მუქი ნაცრისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/006",
+        "alt": "გოფრირებული ბადის ღია ყავისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/007",
+        "alt": "გოფრირებული ბადის მუქი ყავისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/008",
+        "alt": "გოფრირებული ბადის ანტრაციტის პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/009",
+        "alt": "გოფრირებული ბადის სპილოს ძვლისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/010",
+        "alt": "გოფრირებული ბადის ქარვისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/011",
+        "alt": "გოფრირებული ბადის ვარდისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/012",
+        "alt": "გოფრირებული ბადის ცისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/013",
+        "alt": "გოფრირებული ბადის მწვანე პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/014",
+        "alt": "გოფრირებული ბადის ლურჯი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/015",
+        "alt": "გოფრირებული ბადის ტერაკოტის პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/016",
+        "alt": "გოფრირებული ბადის ბორდოს პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/017",
+        "alt": "გოფრირებული ბადის ზეთისხილისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/018",
+        "alt": "გოფრირებული ბადის ოქროსფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/019",
+        "alt": "გოფრირებული ბადის შავი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/020",
+        "alt": "გოფრირებული ბადის თაფლისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/021",
+        "alt": "გოფრირებული ბადის ლავანდისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/022",
+        "alt": "გოფრირებული ბადის პიტნისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/023",
+        "alt": "გოფრირებული ბადის შოკოლადისფერი პროფილის ნიმუში",
+        "width": 1200,
+        "height": 1200
+      }
+    ]
+  },
+  {
+    "id": "anjamebiani-bade-001",
+    "name": "Hinged Insect Screen",
+    "slug": "anjamebiani-bade",
+    "shortDescription": "Hinged insect screens for doors and windows where quick open-and-close access matters.",
+    "fullDescription": "Hinged insect screens are a practical choice when you need a simple, fast, reliable opening system. They are especially convenient on garden doors, kitchen doors, and windows that open and close frequently. Winsome manufactures hinged screens to size and frame colour so the system integrates cleanly with your existing joinery.",
+    "features": [
+      "Hinged opening system",
+      "Suitable for doors and busy windows",
+      "Easy to open and close",
+      "Fabrication matched to size and profile"
+    ],
+    "benefits": [
+      "Daily insect protection with minimal fuss",
+      "Simple for family and commercial use",
+      "Durable under frequent opening cycles",
+      "Well suited to garden and kitchen doors"
+    ],
+    "useCases": [
+      "Garden door",
+      "Kitchen door",
+      "Country house window",
+      "Service entrance"
+    ],
+    "colors": [
+      {
+        "name": "თეთრი",
+        "hex": "#F3F1EC"
+      },
+      {
+        "name": "ყავისფერი",
+        "hex": "#7B614B"
+      },
+      {
+        "name": "ანტრაციტი",
+        "hex": "#50555A"
+      }
+    ],
+    "materials": [
+      "Mesh fabric",
+      "Aluminium frame",
+      "Hinges and closing hardware"
+    ],
+    "images": [
+      {
+        "src": "demo/screen-door",
+        "alt": "ანჯამებზე დამაგრებული ბადის ტიპის კარი საცხოვრებელ გარემოში",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/window-net",
+        "alt": "ბადიანი ფანჯრის ჩარჩოს მსგავსი დამცავი სისტემა",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "seoTitle": "Hinged Insect Screen in Tbilisi and Georgia",
+    "seoDescription": "Hinged insect screens for doors and windows. Practical operation, custom sizes, and installation in Tbilisi.",
+    "faqs": [
+      {
+        "question": "Can hinged insect screens be used on doors?",
+        "answer": "Yes. Hinged screens are especially practical on doors with heavy foot traffic. The panel can close magnetically or on hinges and opens easily with one hand when you carry shopping or trays. They work on main entrances as well as balcony openings where you want ventilation without a full barrier in the way. Frame depth and swing direction are checked at survey so handles and locks remain usable."
+      },
+      {
+        "question": "Can I choose the frame colour?",
+        "answer": "Yes. Aluminium frame colours can be selected to match your existing door or window profiles. Standard options include white, brown, anthracite, and other common tones. A coordinated finish helps the screen blend with interior trim or exterior façade. Winsome confirms colour samples against your joinery where possible so the installed screen looks intentional rather than added as an afterthought."
+      }
+    ],
+    "keywords": [
+      "hinged insect screen",
+      "door insect screen Tbilisi",
+      "hinged fly screen"
+    ],
+    "colorCatalog": [
+      {
+        "src": "gofrirebuli-bade-catalog/001",
+        "alt": "ანჯამებიანი ბადის მარსალას ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/002",
+        "alt": "ანჯამებიანი ბადის ინდიგოს ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/003",
+        "alt": "ანჯამებიანი ბადის თეთრი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/004",
+        "alt": "ანჯამებიანი ბადის კრემისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/005",
+        "alt": "ანჯამებიანი ბადის ბეჟი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/006",
+        "alt": "ანჯამებიანი ბადის ღია ნაცრისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/007",
+        "alt": "ანჯამებიანი ბადის მუქი ნაცრისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/008",
+        "alt": "ანჯამებიანი ბადის ღია ყავისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/009",
+        "alt": "ანჯამებიანი ბადის მუქი ყავისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/010",
+        "alt": "ანჯამებიანი ბადის ანტრაციტის ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/011",
+        "alt": "ანჯამებიანი ბადის სპილოს ძვლისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/012",
+        "alt": "ანჯამებიანი ბადის ქარვისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/013",
+        "alt": "ანჯამებიანი ბადის ვარდისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/014",
+        "alt": "ანჯამებიანი ბადის ცისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/015",
+        "alt": "ანჯამებიანი ბადის მწვანე ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/016",
+        "alt": "ანჯამებიანი ბადის ლურჯი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/017",
+        "alt": "ანჯამებიანი ბადის ტერაკოტის ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/018",
+        "alt": "ანჯამებიანი ბადის ბორდოს ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/019",
+        "alt": "ანჯამებიანი ბადის ზეთისხილისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/020",
+        "alt": "ანჯამებიანი ბადის ოქროსფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/021",
+        "alt": "ანჯამებიანი ბადის შავი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/022",
+        "alt": "ანჯამებიანი ბადის თაფლისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      },
+      {
+        "src": "gofrirebuli-bade-catalog/023",
+        "alt": "ანჯამებიანი ბადის ლავანდისფერი ჩარჩოს ნიმუში",
+        "width": 1200,
+        "height": 1200
+      }
+    ]
+  }
+]

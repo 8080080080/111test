@@ -1,5 +1,7 @@
 import productsData from "../data/products.json";
+import productsEnData from "../data/products.en.json";
 import siteData from "../data/site.json";
+import siteEnData from "../data/site.en.json";
 import { getImageAsset } from "./imageRegistry";
 import type {
   Product,
@@ -13,6 +15,8 @@ import type {
   RawSiteData,
   SiteData
 } from "../types/content";
+
+export type Locale = "ka" | "en";
 
 function resolveProductImage(image: RawProductImage): ProductImage {
   return {
@@ -74,22 +78,26 @@ function resolveSiteData(data: RawSiteData): SiteData {
 }
 
 const site = resolveSiteData(siteData as RawSiteData);
+const siteEn = resolveSiteData(siteEnData as RawSiteData);
 const products = (productsData as RawProduct[]).map(resolveProduct);
+const productsEn = (productsEnData as RawProduct[]).map(resolveProduct);
 
-export function getSiteData(): SiteData {
-  return site;
+export function getSiteData(locale: Locale = "ka"): SiteData {
+  return locale === "en" ? siteEn : site;
 }
 
-export function getProducts(): Product[] {
-  return products;
+export function getProducts(locale: Locale = "ka"): Product[] {
+  return locale === "en" ? productsEn : products;
 }
 
-export function getProductBySlug(slug: string): Product | undefined {
-  return products.find((product) => product.slug === slug);
+export function getProductBySlug(slug: string, locale: Locale = "ka"): Product | undefined {
+  const list = locale === "en" ? productsEn : products;
+  return list.find((product) => product.slug === slug);
 }
 
-export function getRelatedProducts(currentSlug: string, limit = 3): Product[] {
-  return products.filter((product) => product.slug !== currentSlug).slice(0, limit);
+export function getRelatedProducts(currentSlug: string, limit = 3, locale: Locale = "ka"): Product[] {
+  const list = locale === "en" ? productsEn : products;
+  return list.filter((product) => product.slug !== currentSlug).slice(0, limit);
 }
 
 export function getPhoneHref(phone: string): string {

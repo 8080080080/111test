@@ -1,0 +1,259 @@
+---
+import ColorCatalog from "../../../components/ColorCatalog.astro";
+import ColorSwatches from "../../../components/ColorSwatches.astro";
+import FAQSection from "../../../components/FAQSection.astro";
+import GroupedColorCatalog from "../../../components/GroupedColorCatalog.astro";
+import ProductCard from "../../../components/ProductCard.astro";
+import ProductGallery from "../../../components/ProductGallery.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getPhoneHref, getProductBySlug, getProducts, getRelatedProducts, getSiteData } from "../../../lib/content";
+import { createBreadcrumbSchema, createFaqSchema, createProductSchema } from "../../../lib/schema";
+
+export function getStaticPaths() {
+  return getProducts("en").map((product) => ({
+    params: { slug: product.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const product = slug ? getProductBySlug(slug, "en") : undefined;
+
+if (!product) {
+  throw new Error(`Unknown product slug: ${slug}`);
+}
+
+const site = getSiteData("en");
+const phoneHref = getPhoneHref(site.phone);
+const relatedProducts = getRelatedProducts(product.slug, 3, "en");
+const productPath = `/en/products/${product.slug}/`;
+const mobileColorDropdownSlugs = [
+  "farda-roleti",
+  "zebra-jaluzi",
+  "horizontaluri-jaluzi",
+  "gofrirebuli-bade",
+  "anjamebiani-bade"
+];
+const featuredRelatedHeaderSlugs = [
+  "plise-jaluzi",
+  "farda-roleti",
+  "zebra-jaluzi",
+  "horizontaluri-jaluzi",
+  "gofrirebuli-bade",
+  "anjamebiani-bade"
+];
+const hasMobileColorDropdown = mobileColorDropdownSlugs.includes(product.slug);
+const hasFeaturedRelatedHeader = featuredRelatedHeaderSlugs.includes(product.slug);
+const showColorSection = !["plise-jaluzi", "romauli-jaluzi", "ficha-jaluzi", "vertikaluri-jaluzi"].includes(product.slug) && Boolean(
+  product.colorCollections?.length ||
+  product.colorCatalog?.length ||
+  product.colorGallery?.length ||
+  product.colors?.length
+);
+const colorSectionTitle = "Colors";
+const colorDescription = product.colorCollections?.length
+  ? "Colors are grouped into collections to make finding the desired samples and adding new groups easy."
+  : product.colorCatalog?.length
+    ? "See the color options in the catalog below."
+    : product.colorGallery?.length
+      ? "You can see the color selection in the slider below."
+      : "";
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "Home", path: "/en/" },
+  { name: "Products", path: "/en/products/" },
+  { name: product.name, path: productPath }
+]);
+const schemas = [
+  breadcrumbs,
+  createProductSchema(product, site, productPath),
+  createFaqSchema(product.faqs)
+];
+---
+
+<BaseLayout
+  title={product.seoTitle}
+  description={product.seoDescription}
+  pathname={productPath}
+  image={product.images[0]?.src}
+  keywords={product.keywords}
+  schemas={schemas}
+  lcpImageSrc={product.images[0]?.src}
+  locale="en"
+>
+  <section class="pt-8 pb-8 sm:pt-10 sm:pb-9">
+    <div class="container-shell space-y-6">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/60">
+        <a href="/en/" class="hover:text-bronze">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/en/products/" class="hover:text-bronze">Products</a>
+        <span class="mx-2">/</span>
+        <span>{product.name}</span>
+      </nav>
+
+      <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+        <ProductGallery images={product.images} id={`gallery-${product.slug}`} />
+
+        <div class="space-y-6">
+          <div class="space-y-4">
+            <p class="eyebrow text-panel-compact inline-flex w-fit">Product Details</p>
+            <h1 class="text-panel inline-block text-4xl sm:text-5xl">{product.name}</h1>
+            <p class="text-panel max-w-2xl text-lg">{product.shortDescription}</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            {product.keywords.map((keyword) => (
+              <span class="rounded-full bg-shell px-4 py-2 text-sm font-semibold text-ink/75">{keyword}</span>
+            ))}
+          </div>
+
+          <div class="surface-card space-y-5 p-6">
+            <p>{product.fullDescription}</p>
+            <div class="flex flex-wrap gap-3">
+              <a class="button-primary" href="/en/contact/">Request Consultation</a>
+              <a class="button-secondary" href={phoneHref}>Call Winsome</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-8 sm:pb-10">
+    <div class="container-shell grid gap-6 lg:grid-cols-2">
+      <article class="surface-card p-6 sm:p-8">
+        <h2 class="text-3xl">Features</h2>
+        <ul class="mt-6 grid gap-4">
+          {product.features.map((feature) => (
+            <li class="flex items-start gap-3 rounded-3xl bg-shell/70 px-4 py-4">
+              <span class="mt-[0.45em] h-2.5 w-2.5 shrink-0 rounded-full bg-bronze"></span>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+      <article class="surface-card p-6 sm:p-8">
+        <h2 class="text-3xl">Benefits</h2>
+        <ul class="mt-6 grid gap-4">
+          {product.benefits.map((benefit) => (
+            <li class="flex items-start gap-3 rounded-3xl bg-shell/70 px-4 py-4">
+              <span class="mt-[0.45em] h-2.5 w-2.5 shrink-0 rounded-full bg-sage"></span>
+              <span>{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  {showColorSection && (
+    <section class="py-8 sm:py-10 bg-white/15">
+      <div class="container-shell">
+        {hasMobileColorDropdown ? (
+          <>
+            <details class="surface-card group p-6 md:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+                <svg
+                  aria-hidden="true"
+                  class="h-5 w-5 shrink-0 text-bronze transition-transform duration-200 group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </summary>
+              <div class="mt-5">
+                {colorDescription && <p class="text-panel max-w-2xl">{colorDescription}</p>}
+                <div class={colorDescription ? "mt-6" : ""}>
+                  {product.colorCollections?.length ? (
+                    <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
+                  ) : product.colorCatalog?.length ? (
+                    <ColorCatalog
+                      items={product.colorCatalog}
+                      id={`catalog-${product.slug}`}
+                      mobileFullscreen={Boolean(product.colorCatalog?.length)}
+                    />
+                  ) : product.colorGallery?.length ? (
+                    <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
+                  ) : (
+                    <ColorSwatches colors={product.colors} />
+                  )}
+                </div>
+              </div>
+            </details>
+
+            <article class="surface-card hidden p-6 md:block md:p-8">
+              <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+              {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
+              <div class="mt-6">
+                {product.colorCollections?.length ? (
+                  <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
+                ) : product.colorCatalog?.length ? (
+                  <ColorCatalog
+                    items={product.colorCatalog}
+                    id={`catalog-${product.slug}`}
+                    mobileFullscreen={Boolean(product.colorCatalog?.length)}
+                  />
+                ) : product.colorGallery?.length ? (
+                  <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
+                ) : (
+                  <ColorSwatches colors={product.colors} />
+                )}
+              </div>
+            </article>
+          </>
+        ) : (
+          <article class="surface-card p-6 sm:p-8">
+            <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+            {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
+            <div class="mt-6">
+              {product.colorCollections?.length ? (
+                <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}`} />
+              ) : product.colorCatalog?.length ? (
+                <ColorCatalog
+                  items={product.colorCatalog}
+                  id={`catalog-${product.slug}`}
+                  mobileFullscreen={Boolean(product.colorCatalog?.length)}
+                />
+              ) : product.colorGallery?.length ? (
+                <ProductGallery images={product.colorGallery} id={`colors-${product.slug}`} compact zoomable />
+              ) : (
+                <ColorSwatches colors={product.colors} />
+              )}
+            </div>
+          </article>
+        )}
+      </div>
+    </section>
+  )}
+
+  <FAQSection compact
+    eyebrow="Questions"
+    title="Frequently asked questions about this product"
+    faqs={product.faqs}
+  />
+
+  <section class="pb-8 sm:pb-10">
+    <div class="container-shell space-y-8">
+      <div class={hasFeaturedRelatedHeader
+        ? "grid gap-4 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-end"
+        : "flex flex-col gap-4 md:flex-row md:items-end md:justify-between"}>
+        <div class={`space-y-3 ${hasFeaturedRelatedHeader ? "md:justify-self-start" : ""}`}>
+          <p class="eyebrow text-panel-compact inline-flex w-fit">Related Products</p>
+        </div>
+        <div class={`space-y-3 ${hasFeaturedRelatedHeader ? "text-center md:justify-self-center" : ""}`}>
+          <h2 class="text-panel inline-block text-3xl sm:text-4xl">Browse other categories</h2>
+        </div>
+        <div class={hasFeaturedRelatedHeader ? "flex md:justify-end" : ""}>
+          <a class={hasFeaturedRelatedHeader ? "button-primary" : "button-secondary"} href="/en/products/">Full Catalog</a>
+        </div>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {relatedProducts.map((relatedProduct) => <ProductCard product={relatedProduct} locale="en" />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,131 @@
+---
+import SectionHeading from "../../components/SectionHeading.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getSiteData } from "../../lib/content";
+import { getImageAsset } from "../../lib/imageRegistry";
+import { createBreadcrumbSchema } from "../../lib/schema";
+
+const site = getSiteData("en");
+const aboutFeatureImage = getImageAsset("demo/plants-roller");
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "Home", path: "/en/" },
+  { name: "About", path: "/en/about/" }
+]);
+const aboutHighlights = [
+  {
+    title: "What We Do",
+    points: [
+      "We create blind and insect screen solutions for residential and commercial spaces.",
+      "We select products based on window shape, lighting, privacy and daily usage.",
+      "We work so that the final result is clean, practical and naturally blended with the interior."
+    ]
+  },
+  {
+    title: "How We Work",
+    points: [
+      "Every project starts with a space assessment and recommendation tailored to real needs.",
+      "Measurements and details are finalized in advance so everything runs smoothly at the installation stage.",
+      "Communication is brief, clear and timely — from consultation to the finished result."
+    ]
+  },
+  {
+    title: "Why Winsome",
+    points: [
+      "A local approach gives us more flexibility in sizes, timelines and individual requirements.",
+      "We pay attention to visual calm as well as material durability and ease of maintenance.",
+      "Our goal is a product that doesn't just look good, but genuinely simplifies everyday life for the customer."
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Winsome | Local Blinds Manufacturer in Tbilisi"
+  description="Winsome locally manufactures and installs custom blinds and insect screens. Precise fit, quality materials, clean installation in Tbilisi and across Georgia."
+  pathname="/en/about/"
+  schemas={[breadcrumbs]}
+  locale="en"
+>
+  <section class="section-padding pb-10">
+    <div class="container-shell space-y-8">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/60">
+        <a href="/en/" class="hover:text-bronze">Home</a>
+        <span class="mx-2">/</span>
+        <span>About</span>
+      </nav>
+      <SectionHeading
+        eyebrow="Winsome"
+        title="Local production, calm design and reliable execution"
+      />
+    </div>
+  </section>
+
+  <section class="pb-10">
+    <div class="container-shell">
+      <div class="surface-card overflow-hidden">
+        <div class="grid gap-0 lg:grid-cols-[1fr_1.1fr]">
+          <div class="space-y-4 p-6 sm:p-8">
+            <p class="eyebrow text-panel-compact inline-flex w-fit">Our Approach</p>
+            <h2 class="text-panel inline-block text-2xl sm:text-3xl">Winsome creates practical, calm and precisely tailored solutions for modern spaces.</h2>
+            <p class="text-panel text-sm leading-7 text-ink/75 sm:text-base sm:leading-8">
+              We work so that the product isn't just visually appealing — it genuinely simplifies everyday use,
+              fits the interior and maintains quality for a long time.
+            </p>
+          </div>
+          <div class="relative min-h-[280px] overflow-hidden bg-shell lg:min-h-0">
+            <img
+              class="absolute inset-0 h-full w-full object-cover"
+              src={aboutFeatureImage}
+              alt="Winsome interior direction with real demo photo"
+              width={1600}
+              height={1200}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 sm:py-12 lg:py-14">
+    <div class="container-shell space-y-8">
+      <SectionHeading
+        eyebrow="Approach"
+        title="What we do, how we work and why Winsome"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {aboutHighlights.map((item) => (
+          <article class="surface-card p-6 sm:p-8">
+            <h3 class="text-panel inline-block text-2xl">{item.title}</h3>
+            <ul class="mt-4 grid gap-3">
+              {item.points.map((point) => (
+                <li class="flex items-start gap-2.5 text-panel text-sm leading-7 text-ink/75 sm:gap-3 sm:text-base sm:leading-8">
+                  <span class="mt-[0.5em] h-2 w-2 shrink-0 rounded-full bg-bronze sm:mt-[0.45em] sm:h-2.5 sm:w-2.5"></span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 sm:py-12 lg:py-14 bg-white/15">
+    <div class="container-shell space-y-8">
+      <SectionHeading
+        eyebrow="Values"
+        title="Quality, practicality and custom fit"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {site.about.values.map((value) => (
+          <article class="surface-card p-6">
+            <h2 class="text-panel inline-block text-2xl">{value.title}</h2>
+            <p class="text-panel mt-3">{value.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

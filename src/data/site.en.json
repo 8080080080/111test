@@ -1,0 +1,373 @@
+{
+  "businessName": "Winsome",
+  "phone": "+995 32 2 472 525",
+  "email": "winsomegeorgia1@gmail.com",
+  "address": "65 Kakheti Hwy, Tbilisi",
+  "city": "Tbilisi",
+  "country": "Georgia",
+  "businessDescription": "Winsome designs and installs custom window blinds and insect screen systems for apartments, houses, offices, and commercial spaces in Tbilisi and across Georgia.",
+  "tagline": "Locally made blinds and protective insect screens for modern spaces.",
+  "serviceAreas": [
+    "თბილისი",
+    "რუსთავი",
+    "მცხეთა",
+    "ბათუმი",
+    "ქუთაისი",
+    "გორი"
+  ],
+  "socialLinks": {
+    "facebook": "https://www.facebook.com/profile.php?id=61555681775197",
+    "whatsapp": "https://wa.me/995322472525"
+  },
+  "defaultSeo": {
+    "siteUrl": "https://winsome.ge",
+    "defaultTitle": "Window Blinds and Insect Screens in Tbilisi | Winsome",
+    "titleTemplate": "%s | Winsome",
+    "defaultDescription": "Premium window blinds and insect screen systems in Tbilisi. Custom sizing, clean installation, modern materials, and locally produced solutions.",
+    "defaultImage": "demo/roller-living",
+    "ogImageAlt": "Winsome demo photo of a living room interior with blinds",
+    "georgianKeywords": [
+      "window blinds",
+      "pleated blinds",
+      "roller blinds",
+      "zebra blinds",
+      "roman blinds",
+      "venetian blinds",
+      "vertical blinds",
+      "horizontal blinds",
+      "insect screens"
+    ],
+    "localIntentKeywords": [
+      "window blinds Tbilisi",
+      "roller blinds Tbilisi",
+      "zebra blinds Tbilisi",
+      "insect screens Tbilisi",
+      "blinds Georgia"
+    ]
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Products",
+      "href": "/products/"
+    },
+    {
+      "label": "Gallery",
+      "href": "/gallery/"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    },
+    {
+      "label": "FAQ",
+      "href": "/faq/"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/"
+    }
+  ],
+  "homeIntro": {
+    "eyebrow": "Made for local spaces",
+    "title": "The right catalog of blinds and insect screens for Georgia",
+    "description": "Choose the right system for your space—from pleated to vertical, roller blinds to insect screens. Every product is made to measure and installed on site.",
+    "stats": [
+      {
+        "value": "9",
+        "label": "Core product categories"
+      },
+      {
+        "value": "100%",
+        "label": "Custom manufacturing"
+      },
+      {
+        "value": "48h",
+        "label": "Typical quote turnaround"
+      }
+    ]
+  },
+  "whyChooseUs": [
+    {
+      "title": "Local manufacturing",
+      "description": "Production in Georgia means flexible timelines, better communication, and a tighter fit for every project."
+    },
+    {
+      "title": "Clean installation",
+      "description": "Each installation is planned to protect your interior and deliver a neat, finished result."
+    },
+    {
+      "title": "Real variety",
+      "description": "Our range combines fabric blinds, slat systems, and insect screens for windows, balcony doors, and high-traffic openings."
+    },
+    {
+      "title": "Precise fit",
+      "description": "Every system is built for the exact window, door, opening, or profile—not pulled from a generic catalog size."
+    }
+  ],
+  "process": [
+    {
+      "title": "Consultation",
+      "description": "We select the right system, material, color, and usage scenario for each room or opening."
+    },
+    {
+      "title": "Measuring",
+      "description": "We take accurate on-site measurements and confirm installation details before production."
+    },
+    {
+      "title": "Production",
+      "description": "Your chosen fabric, mechanism, mesh, and profile are produced locally."
+    },
+    {
+      "title": "Installation",
+      "description": "We complete a clean install, test operation, and share care tips."
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gallery-1",
+      "title": "Roller blinds in a calm residential interior",
+      "location": "ვაკე, თბილისი",
+      "category": "Residential",
+      "image": "demo/roller-living",
+      "alt": "Roller blinds in a modern living room interior",
+      "relatedProductSlug": "farda-roleti"
+    },
+    {
+      "id": "gallery-2",
+      "title": "Zebra blinds in a bright interior",
+      "location": "საბურთალო, თბილისი",
+      "category": "Residential",
+      "image": "demo/warm-roller",
+      "alt": "Modern window system with soft light control",
+      "relatedProductSlug": "zebra-jaluzi"
+    },
+    {
+      "id": "gallery-3",
+      "title": "Vertical system on a wide window",
+      "location": "თბილისის ცენტრი",
+      "category": "Commercial",
+      "image": "demo/vertical-interior",
+      "alt": "Vertical blinds on a large window in the interior",
+      "relatedProductSlug": "vertikaluri-jaluzi"
+    },
+    {
+      "id": "gallery-4",
+      "title": "Roman blinds and a soft textile corner",
+      "location": "ბათუმი",
+      "category": "Hospitality",
+      "image": "demo/plants-roller",
+      "alt": "Soft textile window treatment in a plant-filled interior",
+      "relatedProductSlug": "romauli-jaluzi"
+    },
+    {
+      "id": "gallery-5",
+      "title": "Pleated mesh door for everyday use",
+      "location": "მცხეთა",
+      "category": "Residential",
+      "image": "demo/screen-door",
+      "alt": "Protective mesh door at a residential entrance",
+      "relatedProductSlug": "gofrirebuli-bade"
+    },
+    {
+      "id": "gallery-6",
+      "title": "Classic horizontal blind look",
+      "location": "რუსთავი",
+      "category": "Commercial",
+      "image": "demo/venetian-white",
+      "alt": "Horizontal slats on a bright window",
+      "relatedProductSlug": "horizontaluri-jaluzi"
+    }
+  ],
+  "homeFaqs": [
+    {
+      "question": "Do you manufacture blinds locally in Georgia?",
+      "answer": "Yes. Winsome is positioned as a local manufacturer in Tbilisi, which allows for a more precise fit, flexible timelines, and better control over the final quality. Production reflects the specifics of the Georgian market, and our local approach lets us respond quickly to individual requests. We serve Tbilisi, Batumi, Kutaisi, Rustavi, Gori, and other cities across Georgia."
+    },
+    {
+      "question": "Do you help choose fabric, slat, or mesh systems?",
+      "answer": "Yes. During consultation we review room type, light intensity, privacy needs, profile color, and the system that will be most practical for each opening. For example, a bedroom may benefit from blackout fabric, while a kitchen may need a moisture-resistant, easy-to-clean option. Consultation is free—you can reach us by phone or WhatsApp."
+    },
+    {
+      "question": "Do you offer measuring and installation?",
+      "answer": "Yes. The full process includes consultation, on-site measuring, custom production, and professional installation. Measuring is done on site so every detail—including opening shape, profile type, and installation space—is accounted for. After installation we check system operation and provide care recommendations."
+    }
+  ],
+  "about": {
+    "story": [
+      "Winsome is built around a local Georgian brand idea: calm design, precise fit, and a high-quality finished result.",
+      "The brand balances practicality and premium aesthetics, so the products work well in apartments, offices, hospitality spaces, and on actively used doors and windows."
+    ],
+    "values": [
+      {
+        "title": "Attention to detail",
+        "description": "A careful, precise approach from consultation through final installation."
+      },
+      {
+        "title": "Practical aesthetics",
+        "description": "Products are chosen for visual calm as well as light, air, privacy, and protection."
+      },
+      {
+        "title": "Flexible customization",
+        "description": "Fabric, color, mechanism, profile, and size are chosen for the specific project—not a one-size standard scheme."
+      }
+    ]
+  },
+  "contact": {
+    "hours": "Monday - Saturday, 10:00 - 19:00",
+    "whatsappLabel": "Message us on WhatsApp",
+    "mapPlaceholderTitle": "Studio and measuring visits by appointment",
+    "mapPlaceholderImage": "demo/palm-blinds"
+  },
+  "hero": {
+    "eyebrow": "Local manufacturing",
+    "title": "Blinds and insect screens, made precisely for your space",
+    "description": "Winsome manufactures, measures, and installs blinds and insect screen systems for homes, apartments, and workplaces—locally.",
+    "primaryLabel": "Request a consultation",
+    "primaryHref": "/contact/",
+    "secondaryLabel": "View products",
+    "secondaryHref": "/products/",
+    "slides": [
+      {
+        "image": "demo/roller-living",
+        "alt": "Roller blinds in a modern living room"
+      },
+      {
+        "image": "demo/warm-roller",
+        "alt": "Modern interior with controlled natural light"
+      },
+      {
+        "image": "demo/vertical-interior",
+        "alt": "Vertical system alongside a wide window"
+      },
+      {
+        "image": "demo/plants-roller",
+        "alt": "Window system in a plant-filled interior"
+      },
+      {
+        "image": "demo/venetian-white",
+        "alt": "Horizontal slats on a white window"
+      },
+      {
+        "image": "demo/near-plant",
+        "alt": "Compact blind on a window with natural light"
+      },
+      {
+        "image": "demo/shadow-roller",
+        "alt": "Soft shadows from blinds across the interior"
+      },
+      {
+        "image": "demo/minimal-roller",
+        "alt": "Minimalist room with a clean window treatment"
+      },
+      {
+        "image": "demo/palm-blinds",
+        "alt": "Decorative interior with blinds and plants"
+      },
+      {
+        "image": "demo/screen-door",
+        "alt": "Real residential detail: protective door screen system"
+      }
+    ]
+  },
+  "logoImage": "branding/winsome-logo",
+  "footer": {
+    "ctaTitle": "Ready to refresh your space?",
+    "ctaDescription": "Get in touch and we will help you choose the right blinds, roller shades, or insect screen system for your windows and doors.",
+    "ctaButtonLabel": "Request a consultation",
+    "ctaButtonHref": "/contact/",
+    "description": "Winsome creates calm, practical, precisely fitted solutions for homes, offices, and commercial spaces.",
+    "productLinks": [
+      {
+        "label": "Pleated blinds",
+        "href": "/products/plise-jaluzi/"
+      },
+      {
+        "label": "Roller blinds",
+        "href": "/products/farda-roleti/"
+      },
+      {
+        "label": "Zebra blinds",
+        "href": "/products/zebra-jaluzi/"
+      },
+      {
+        "label": "Roman blinds",
+        "href": "/products/romauli-jaluzi/"
+      },
+      {
+        "label": "Venetian blinds",
+        "href": "/products/ficha-jaluzi/"
+      },
+      {
+        "label": "Vertical blinds",
+        "href": "/products/vertikaluri-jaluzi/"
+      },
+      {
+        "label": "Horizontal blinds",
+        "href": "/products/horizontaluri-jaluzi/"
+      },
+      {
+        "label": "Pleated insect screen",
+        "href": "/products/gofrirebuli-bade/"
+      },
+      {
+        "label": "Frame-mounted insect screens",
+        "href": "/products/anjamebiani-bade/"
+      }
+    ],
+    "resourceLinks": [
+      {
+        "label": "Products",
+        "href": "/products/"
+      },
+      {
+        "label": "Gallery",
+        "href": "/gallery/"
+      },
+      {
+        "label": "FAQ",
+        "href": "/faq/"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact/"
+      }
+    ],
+    "companyLinks": [
+      {
+        "label": "About us",
+        "href": "/about/"
+      },
+      {
+        "label": "Tbilisi and regions",
+        "href": "/contact/"
+      },
+      {
+        "label": "Measuring and installation",
+        "href": "/contact/"
+      },
+      {
+        "label": "WhatsApp consultation",
+        "href": "/contact/"
+      }
+    ],
+    "bottomLinks": [
+      {
+        "label": "Products",
+        "href": "/products/"
+      },
+      {
+        "label": "About",
+        "href": "/about/"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact/"
+      }
+    ],
+    "copyright": "© 2026 Winsome. All rights reserved."
+  }
+}

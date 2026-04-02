@@ -1,3 +1,4 @@
+import type { Locale } from "./content";
 import { getSiteData } from "./content";
 
 const site = getSiteData();
@@ -21,23 +22,25 @@ export function getCanonicalUrl(pathname = "/"): string {
   return new URL(pathname, site.defaultSeo.siteUrl).toString();
 }
 
-export function getMetaTitle(title?: string): string {
+export function getMetaTitle(title?: string, locale: Locale = "ka"): string {
+  const s = getSiteData(locale);
   if (!title) {
-    return site.defaultSeo.defaultTitle;
+    return s.defaultSeo.defaultTitle;
   }
-
-  return site.defaultSeo.titleTemplate.replace("%s", title);
+  return s.defaultSeo.titleTemplate.replace("%s", title);
 }
 
-export function getMetaDescription(description?: string): string {
-  return description || site.defaultSeo.defaultDescription;
+export function getMetaDescription(description?: string, locale: Locale = "ka"): string {
+  const s = getSiteData(locale);
+  return description || s.defaultSeo.defaultDescription;
 }
 
-export function getMetaKeywords(keywords: string[] = []): string[] {
+export function getMetaKeywords(keywords: string[] = [], locale: Locale = "ka"): string[] {
+  const s = getSiteData(locale);
   return Array.from(
     new Set([
-      ...site.defaultSeo.georgianKeywords,
-      ...site.defaultSeo.localIntentKeywords,
+      ...s.defaultSeo.georgianKeywords,
+      ...s.defaultSeo.localIntentKeywords,
       ...keywords
     ])
   );

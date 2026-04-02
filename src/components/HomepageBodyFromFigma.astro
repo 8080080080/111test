@@ -1,18 +1,62 @@
 ---
 import FAQSection from "./FAQSection.astro";
 import HeroSlider from "./HeroSlider.astro";
+import ProductCard from "./ProductCard.astro";
 import SectionHeading from "./SectionHeading.astro";
+import { getProducts } from "../lib/content";
+import type { Locale } from "../lib/content";
 import type { SiteData } from "../types/content";
 
 interface Props {
   site: SiteData;
   phoneHref: string;
+  locale?: Locale;
 }
 
-const { site, phoneHref } = Astro.props;
+const { site, phoneHref, locale = "ka" } = Astro.props;
+const products = getProducts(locale);
+const prefix = locale === "en" ? "/en" : "";
+const t = locale === "en" ? {
+  productsEyebrow: "Products",
+  productsTitle: "Blinds and Insect Screen Systems",
+  productsDescription: "Choose the right system for your space — from pleated to vertical, from roller to insect protection screens.",
+  fullCatalog: "Full Catalog",
+  whyEyebrow: "Why Winsome",
+  whyTitle: "Local production, precise fit and refined results",
+  whyDescription: "Our brand is built on quality materials, clean installation and real practicality for Georgian residential and commercial spaces.",
+  processEyebrow: "Process",
+  processTitle: "A simple path from consultation to final installation",
+  processDescription: "A transparent, smooth process for apartments, offices and commercial projects in Tbilisi and across Georgia.",
+  faqEyebrow: "Questions",
+  faqTitle: "Questions customers ask most before getting a quote",
+  allFaq: "All FAQ",
+  contactEyebrow: "Direct Contact",
+  contactTitle: "Need a quick answer about a product, measurements or installation?",
+  contactDescription: "Call us directly or send a request with room type, photos and approximate measurements.",
+  callBtn: "Call",
+  contactPage: "Contact Page",
+} : {
+  productsEyebrow: "პროდუქცია",
+  productsTitle: "ჟალუზების და დამცავი ბადეების სისტემები",
+  productsDescription: "აირჩიეთ სწორი სისტემა თქვენი სივრცისთვის — პლისედან ვერტიკალურამდე, როლეტიდან მწერებისგან დამცავ ბადემდე.",
+  fullCatalog: "სრული კატალოგი",
+  whyEyebrow: "რატომ Winsome",
+  whyTitle: "ადგილობრივი წარმოება, ზუსტი მორგება და მოწესრიგებული შედეგი",
+  whyDescription: "ბრენდის პოზიციონირება ეფუძნება ხარისხიან მასალას, სუფთა მონტაჟს და რეალურ პრაქტიკულობას ქართული საცხოვრებელი და სამუშაო სივრცეებისთვის.",
+  processEyebrow: "პროცესი",
+  processTitle: "მარტივი გზა კონსულტაციიდან საბოლოო მონტაჟამდე",
+  processDescription: "გამჭვირვალე და მშვიდი პროცესი ბინებისთვის, ოფისებისთვის და კომერციული პროექტებისთვის თბილისში და საქართველოს მასშტაბით.",
+  faqEyebrow: "კითხვები",
+  faqTitle: "კითხვები, რომლებსაც მომხმარებლები შეთავაზებამდე ყველაზე ხშირად სვამენ",
+  allFaq: "ყველა FAQ",
+  contactEyebrow: "პირდაპირი კონტაქტი",
+  contactTitle: "გჭირდება სწრაფი პასუხი პროდუქტის, ზომების ან მონტაჟის შესახებ?",
+  contactDescription: "დაგვირეკე პირდაპირ ან გამოგვიგზავნე მოთხოვნა ოთახის ტიპით, ფოტოებით და მიახლოებითი ზომებით.",
+  callBtn: "დარეკე",
+  contactPage: "კონტაქტის გვერდი",
+};
 ---
 
-<!-- Generated from Figma node 1:3 and adapted to this Astro codebase. -->
 <HeroSlider
   eyebrow={site.hero.eyebrow}
   title={site.hero.title}
@@ -24,12 +68,28 @@ const { site, phoneHref } = Astro.props;
   slides={site.hero.slides}
 />
 
+<section class="py-10 sm:py-12 lg:py-14">
+  <div class="container-shell space-y-8">
+    <SectionHeading
+      eyebrow={t.productsEyebrow}
+      title={t.productsTitle}
+      description={t.productsDescription}
+    />
+    <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+      {products.map((product) => <ProductCard product={product} locale={locale} />)}
+    </div>
+    <div class="flex justify-center">
+      <a class="button-secondary" href={`${prefix}/products/`}>{t.fullCatalog}</a>
+    </div>
+  </div>
+</section>
+
 <section class="bg-white/15 py-10 sm:py-12 lg:py-14">
   <div class="container-shell space-y-8">
     <SectionHeading
-      eyebrow="რატომ Winsome"
-      title="ადგილობრივი წარმოება, ზუსტი მორგება და მოწესრიგებული შედეგი"
-      description="ბრენდის პოზიციონირება ეფუძნება ხარისხიან მასალას, სუფთა მონტაჟს და რეალურ პრაქტიკულობას ქართული საცხოვრებელი და სამუშაო სივრცეებისთვის."
+      eyebrow={t.whyEyebrow}
+      title={t.whyTitle}
+      description={t.whyDescription}
     />
     <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
       {site.whyChooseUs.map((item) => (
@@ -45,9 +105,9 @@ const { site, phoneHref } = Astro.props;
 <section class="py-10 sm:py-12 lg:py-14">
   <div class="container-shell space-y-8">
     <SectionHeading
-      eyebrow="პროცესი"
-      title="მარტივი გზა კონსულტაციიდან საბოლოო მონტაჟამდე"
-      description="გამჭვირვალე და მშვიდი პროცესი ბინებისთვის, ოფისებისთვის და კომერციული პროექტებისთვის თბილისში და საქართველოს მასშტაბით."
+      eyebrow={t.processEyebrow}
+      title={t.processTitle}
+      description={t.processDescription}
     />
     <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
       {site.process.map((step, index) => (
@@ -63,26 +123,26 @@ const { site, phoneHref } = Astro.props;
 
 <FAQSection
   compact
-  eyebrow="კითხვები"
-  title="კითხვები, რომლებსაც მომხმარებლები შეთავაზებამდე ყველაზე ხშირად სვამენ"
+  eyebrow={t.faqEyebrow}
+  title={t.faqTitle}
   align="center"
   stackCta
   faqs={site.homeFaqs}
-  ctaLabel="ყველა FAQ"
-  ctaHref="/faq/"
+  ctaLabel={t.allFaq}
+  ctaHref={`${prefix}/faq/`}
 />
 
 <section class="py-8 sm:py-10">
   <div class="container-shell">
     <div class="surface-card flex flex-col gap-6 px-6 py-8 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-12">
       <div class="space-y-2">
-        <p class="eyebrow">პირდაპირი კონტაქტი</p>
-        <h2 class="text-3xl">გჭირდება სწრაფი პასუხი პროდუქტის, ზომების ან მონტაჟის შესახებ?</h2>
-        <p>დაგვირეკე პირდაპირ ან გამოგვიგზავნე მოთხოვნა ოთახის ტიპით, ფოტოებით და მიახლოებითი ზომებით.</p>
+        <p class="eyebrow">{t.contactEyebrow}</p>
+        <h2 class="text-3xl">{t.contactTitle}</h2>
+        <p>{t.contactDescription}</p>
       </div>
       <div class="flex flex-wrap gap-3">
-        <a class="button-primary" href={phoneHref}>დარეკე {site.phone}</a>
-        <a class="button-secondary" href="/contact/">კონტაქტის გვერდი</a>
+        <a class="button-primary" href={phoneHref}>{t.callBtn} {site.phone}</a>
+        <a class="button-secondary" href={`${prefix}/contact/`}>{t.contactPage}</a>
       </div>
     </div>
   </div>

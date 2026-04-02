@@ -1,0 +1,37 @@
+---
+import FAQSection from "../../components/FAQSection.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getProducts, getSiteData } from "../../lib/content";
+import { createBreadcrumbSchema, createFaqSchema } from "../../lib/schema";
+
+const site = getSiteData("en");
+const products = getProducts("en");
+const faqItems = [...site.homeFaqs, ...products.flatMap((product) => product.faqs)].slice(0, 12);
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "Home", path: "/en/" },
+  { name: "FAQ", path: "/en/faq/" }
+]);
+---
+
+<BaseLayout
+  title="Frequently Asked Questions About Blinds and Installation"
+  description="Answers about blind selection, measurements, colors, installation and maintenance. Winsome — local blinds manufacturer in Tbilisi."
+  pathname="/en/faq/"
+  schemas={[breadcrumbs, createFaqSchema(faqItems)]}
+  locale="en"
+>
+  <section class="section-padding pb-0">
+    <div class="container-shell">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/60">
+        <a href="/en/" class="hover:text-bronze">Home</a>
+        <span class="mx-2">/</span>
+        <span>FAQ</span>
+      </nav>
+    </div>
+  </section>
+
+  <FAQSection
+    title="Frequently Asked Questions About Winsome Products and Services"
+    faqs={faqItems}
+  />
+</BaseLayout>

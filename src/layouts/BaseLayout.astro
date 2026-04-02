@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import SEO from "../components/SEO.astro";
+import type { Locale } from "../lib/content";
 import { getSiteData } from "../lib/content";
 import { createLocalBusinessSchema } from "../lib/schema";
 import "../styles/global.css";
@@ -14,15 +15,10 @@ interface Props {
   keywords?: string[];
   noIndex?: boolean;
   schemas?: unknown[];
-  /**
-   * Optional: src of the LCP image on this page.
-   * Pass the hero/product image URL so the browser can preload it
-   * before render, preventing a late LCP discovery.
-   */
   lcpImageSrc?: string;
+  locale?: Locale;
 }
 
-const site = getSiteData();
 const {
   title,
   description,
@@ -31,16 +27,20 @@ const {
   keywords = [],
   noIndex = false,
   schemas = [],
-  lcpImageSrc
+  lcpImageSrc,
+  locale = "ka"
 } = Astro.props;
+const site = getSiteData(locale);
 const mergedSchemas = [createLocalBusinessSchema(site), ...schemas];
 const fontStylesheetHref =
   "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+Georgian:wght@400;600&display=optional";
 const enableFigmaCapture = import.meta.env.DEV || import.meta.env.PUBLIC_ENABLE_FIGMA_CAPTURE === "true";
+const htmlLang = locale === "en" ? "en" : "ka";
+const skipLabel = locale === "en" ? "Skip to main content" : "გადადი ძირითად შინაარსზე";
 ---
 
 <!doctype html>
-<html lang="ka">
+<html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -51,16 +51,6 @@ const enableFigmaCapture = import.meta.env.DEV || import.meta.env.PUBLIC_ENABLE_
     <link rel="stylesheet" href={fontStylesheetHref} media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href={fontStylesheetHref} /></noscript>
 
-    <!--
-      DNS-prefetch / preconnect for any third-party origins used.
-      Currently none — kept as comment for when CDN or analytics is added.
-    -->
-
-    <!--
-      LCP image preload: only emitted when the page knows its above-the-fold image.
-      This eliminates the render-blocking "late image discovery" problem for
-      hero slides and product detail pages.
-    -->
     {lcpImageSrc && (
       <link
         rel="preload"
@@ -80,17 +70,18 @@ const enableFigmaCapture = import.meta.env.DEV || import.meta.env.PUBLIC_ENABLE_
       keywords={keywords}
       noIndex={noIndex}
       schemas={mergedSchemas}
+      locale={locale}
     />
     {enableFigmaCapture && <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>}
   </head>
   <body>
     <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-mist" href="#main-content">
-      გადადი ძირითად შინაარსზე
+      {skipLabel}
     </a>
-    <Header currentPath={Astro.url.pathname} />
+    <Header currentPath={Astro.url.pathname} locale={locale} />
     <main id="main-content">
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
   </body>
 </html>

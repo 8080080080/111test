@@ -1,4 +1,5 @@
 ---
+import type { Locale } from "../lib/content";
 import { getSiteData } from "../lib/content";
 import { getCanonicalUrl, getMetaDescription, getMetaKeywords, getMetaTitle, toAbsoluteUrl } from "../lib/seo";
 
@@ -10,15 +11,21 @@ interface Props {
   keywords?: string[];
   noIndex?: boolean;
   schemas?: unknown[];
+  locale?: Locale;
 }
 
-const { title, description, pathname = "/", image, keywords = [], noIndex = false, schemas = [] } = Astro.props;
-const site = getSiteData();
-const metaTitle = getMetaTitle(title);
-const metaDescription = getMetaDescription(description);
+const { title, description, pathname = "/", image, keywords = [], noIndex = false, schemas = [], locale = "ka" } = Astro.props;
+const site = getSiteData(locale);
+const metaTitle = getMetaTitle(title, locale);
+const metaDescription = getMetaDescription(description, locale);
 const canonical = getCanonicalUrl(pathname);
 const metaImage = toAbsoluteUrl(image || site.defaultSeo.defaultImage);
-const metaKeywords = getMetaKeywords(keywords).join(", ");
+const metaKeywords = getMetaKeywords(keywords, locale).join(", ");
+
+const kaPath = pathname.startsWith("/en/") ? pathname.replace(/^\/en\//, "/") : pathname;
+const enPath = pathname.startsWith("/en/") ? pathname : `/en${pathname}`;
+const kaUrl = getCanonicalUrl(kaPath);
+const enUrl = getCanonicalUrl(enPath);
 ---
 
 <title>{metaTitle}</title>
@@ -26,8 +33,12 @@ const metaKeywords = getMetaKeywords(keywords).join(", ");
 <meta name="keywords" content={metaKeywords} />
 <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
 <link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang="ka" href={kaUrl} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="x-default" href={kaUrl} />
 <meta property="og:site_name" content={site.businessName} />
 <meta property="og:type" content="website" />
+<meta property="og:locale" content={locale === "en" ? "en_US" : "ka_GE"} />
 <meta property="og:title" content={metaTitle} />
 <meta property="og:description" content={metaDescription} />
 <meta property="og:url" content={canonical} />

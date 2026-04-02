@@ -13,10 +13,22 @@ export function createLocalBusinessSchema(site: SiteData) {
     image: toAbsoluteUrl(site.defaultSeo.defaultImage),
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address,
-      addressLocality: site.city,
-      addressCountry: site.country
+      streetAddress: "65 Kakheti Hwy",
+      addressLocality: "Tbilisi",
+      addressCountry: "GE"
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.6866,
+      longitude: 44.8998
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "10:00",
+      closes: "19:00"
+    },
+    priceRange: "$$",
     areaServed: site.serviceAreas.map((area) => ({
       "@type": "City",
       name: area

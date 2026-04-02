@@ -1,0 +1,22 @@
+---
+import HomepageBodyFromFigma from "../../components/HomepageBodyFromFigma.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPhoneHref, getSiteData } from "../../lib/content";
+import { createFaqSchema } from "../../lib/schema";
+
+const site = getSiteData("en");
+const phoneHref = getPhoneHref(site.phone);
+const heroLcpImage = site.hero.slides[0]?.image;
+---
+
+<BaseLayout
+  title="Blinds and Insect Screens in Tbilisi | Local Production"
+  description="Custom-sized blinds and insect protection screens in Tbilisi. Local production, free consultation, professional installation. Call: 032 2 472 525"
+  pathname="/en/"
+  keywords={[...site.defaultSeo.georgianKeywords, ...site.defaultSeo.localIntentKeywords]}
+  schemas={[createFaqSchema(site.homeFaqs)]}
+  lcpImageSrc={heroLcpImage}
+  locale="en"
+>
+  <HomepageBodyFromFigma site={site} phoneHref={phoneHref} locale="en" />
+</BaseLayout>

@@ -1,8 +1,16 @@
 ---
+import type { Locale } from "../lib/content";
 import { getPhoneHref, getSiteData, getWhatsAppHref } from "../lib/content";
 
-const site = getSiteData();
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "ka" } = Astro.props;
+const site = getSiteData(locale);
 const phoneHref = getPhoneHref(site.phone);
+const homeHref = locale === "en" ? "/en/" : "/";
+const serviceAreaLabel = locale === "en" ? "Service area" : "მომსახურების ზონა";
 const whatsappHref = site.socialLinks.whatsapp ? getWhatsAppHref(site.socialLinks.whatsapp) : undefined;
 const socialItems = [
   site.socialLinks.facebook ? { label: "Facebook", href: site.socialLinks.facebook, icon: "facebook" } : undefined,
@@ -29,7 +37,7 @@ const socialItems = [
         <div class="rounded-4xl border border-black/12 bg-canvas p-6 shadow-subtle sm:p-8 lg:p-10">
           <div class="grid gap-10 lg:grid-cols-[1.45fr_0.8fr_0.8fr_0.8fr]">
             <div class="max-w-xl">
-              <a class="inline-flex items-center" href="/" aria-label={`Winsome მთავარი გვერდი`}>
+              <a class="inline-flex items-center" href={homeHref} aria-label={`Winsome ${locale === "en" ? "Home" : "მთავარი გვერდი"}`}>
                 <img
                   class="h-auto w-[12rem] object-contain sm:w-[14rem] lg:w-[15.5rem]"
                   src={site.logoImage}
@@ -45,7 +53,7 @@ const socialItems = [
                 <p>{site.address}</p>
                 <a class="block font-semibold text-black hover:text-bronze" href={phoneHref}>{site.phone}</a>
                 <p>{site.email}</p>
-                <p>მომსახურების ზონა: {site.serviceAreas.join(", ")}</p>
+                <p>{serviceAreaLabel}: {site.serviceAreas.join(", ")}</p>
               </div>
               <div class="mt-6 flex flex-wrap gap-3">
                 {socialItems.map((item) => (
@@ -73,28 +81,28 @@ const socialItems = [
             </div>
 
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">პროდუქცია</h3>
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">{locale === "en" ? "Products" : "პროდუქცია"}</h3>
               <ul class="mt-5 space-y-3 text-sm text-ink/75">
                 {site.footer.productLinks.map((item) => (
-                  <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
+                  <li><a class="hover:text-bronze" href={locale === "en" ? `/en${item.href}` : item.href}>{item.label}</a></li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">სასარგებლო</h3>
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">{locale === "en" ? "Resources" : "სასარგებლო"}</h3>
               <ul class="mt-5 space-y-3 text-sm text-ink/75">
                 {site.footer.resourceLinks.map((item) => (
-                  <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
+                  <li><a class="hover:text-bronze" href={locale === "en" ? `/en${item.href}` : item.href}>{item.label}</a></li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">კომპანია</h3>
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">{locale === "en" ? "Company" : "კომპანია"}</h3>
               <ul class="mt-5 space-y-3 text-sm text-ink/75">
                 {site.footer.companyLinks.map((item) => (
-                  <li><a class="hover:text-bronze" href={item.href}>{item.label}</a></li>
+                  <li><a class="hover:text-bronze" href={locale === "en" ? `/en${item.href}` : item.href}>{item.label}</a></li>
                 ))}
               </ul>
             </div>

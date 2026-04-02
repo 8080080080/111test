@@ -1,0 +1,44 @@
+---
+import ProductCard from "../../../components/ProductCard.astro";
+import SectionHeading from "../../../components/SectionHeading.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getProducts } from "../../../lib/content";
+import { createBreadcrumbSchema } from "../../../lib/schema";
+
+const products = getProducts("en");
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "Home", path: "/en/" },
+  { name: "Products", path: "/en/products/" }
+]);
+---
+
+<BaseLayout
+  title="Blinds and Insect Screen Catalog | Winsome Tbilisi"
+  description="9 types of blinds and insect screens in custom sizes: pleated, roller, zebra, Roman, honeycomb, vertical, horizontal and insect protection systems."
+  pathname="/en/products/"
+  keywords={products.flatMap((product) => product.keywords).slice(0, 18)}
+  schemas={[breadcrumbs]}
+  locale="en"
+>
+  <section class="section-padding pb-10">
+    <div class="container-shell space-y-8">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/60">
+        <a href="/en/" class="hover:text-bronze">Home</a>
+        <span class="mx-2">/</span>
+        <span>Products</span>
+      </nav>
+      <SectionHeading
+        eyebrow="Product Overview"
+        title="Blind and insect screen systems for Georgian spaces"
+      />
+    </div>
+  </section>
+
+  <section class="pb-14 sm:pb-16">
+    <div class="container-shell">
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {products.map((product) => <ProductCard product={product} locale="en" />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

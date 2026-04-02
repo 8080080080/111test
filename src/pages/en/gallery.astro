@@ -1,0 +1,180 @@
+---
+import SectionHeading from "../../components/SectionHeading.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getSiteData } from "../../lib/content";
+import { createBreadcrumbSchema } from "../../lib/schema";
+
+const site = getSiteData("en");
+const breadcrumbs = createBreadcrumbSchema([
+  { name: "Home", path: "/en/" },
+  { name: "Gallery", path: "/en/gallery/" }
+]);
+---
+
+<BaseLayout
+  title="Gallery"
+  description="See Winsome's completed projects for apartments, offices and commercial spaces in Tbilisi and across Georgia."
+  pathname="/en/gallery/"
+  schemas={[breadcrumbs]}
+  locale="en"
+>
+  <section class="section-padding pb-10">
+    <div class="container-shell space-y-8">
+      <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/60">
+        <a href="/en/" class="hover:text-bronze">Home</a>
+        <span class="mx-2">/</span>
+        <span>Gallery</span>
+      </nav>
+      <SectionHeading
+        eyebrow="Completed Projects"
+        title="A gallery that resembles a real project archive"
+        description="Placeholder images are currently used, but the structure is ready for real photos, alt texts, locations and links to related products."
+      />
+    </div>
+  </section>
+
+  <section class="pb-14 sm:pb-16">
+    <div class="container-shell">
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {site.gallery.map((item, index) => (
+          <article class="surface-card group overflow-hidden">
+            <button
+              class="block w-full text-left"
+              type="button"
+              data-lightbox-trigger
+              data-lightbox-index={index}
+              data-lightbox-src={item.image}
+              data-lightbox-alt={item.alt}
+              data-lightbox-title={item.title}
+              data-lightbox-meta={`${item.category} • ${item.location}`}
+              aria-label={`Open image: ${item.title}`}
+            >
+              <div class="aspect-[4/3] overflow-hidden bg-shell">
+                <img
+                  class="gallery-img h-full w-full object-cover"
+                  src={item.image}
+                  alt={item.alt}
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </button>
+            <div class="space-y-3 p-5 sm:p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink/75">{item.category} • {item.location}</p>
+              <h2 class="text-2xl">{item.title}</h2>
+              {item.relatedProductSlug && (
+                <a class="text-sm font-semibold text-bronze" href={`/en/products/${item.relatedProductSlug}/`}>
+                  Related Product
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <dialog class="w-[min(92vw,70rem)] rounded-4xl border border-black/8 bg-white p-0 shadow-soft backdrop:bg-black/45" data-lightbox>
+    <div class="space-y-4 p-4 sm:p-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-bronze" data-lightbox-meta></p>
+          <h2 class="mt-2 text-3xl" data-lightbox-title></h2>
+        </div>
+        <button class="button-secondary !px-4 !py-2" type="button" data-lightbox-close>Close</button>
+      </div>
+      <div class="overflow-hidden rounded-4xl bg-shell">
+        <img
+          class="block h-auto max-h-[70vh] w-full object-contain"
+          data-lightbox-image
+          src=""
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="900"
+        />
+      </div>
+    </div>
+  </dialog>
+
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .gallery-img {
+        transition: transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .group:hover .gallery-img {
+        transform: scale(1.03);
+      }
+    }
+  </style>
+
+  <script>
+    const dialog = document.querySelector("[data-lightbox]");
+    const titleEl = dialog?.querySelector("[data-lightbox-title]");
+    const metaEl = dialog?.querySelector("[data-lightbox-meta]");
+    const imageEl = dialog?.querySelector("[data-lightbox-image]");
+    const closeButton = dialog?.querySelector("[data-lightbox-close]");
+
+    document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        if (!(dialog instanceof HTMLDialogElement)) {
+          return;
+        }
+
+        const src = trigger.getAttribute("data-lightbox-src") || "";
+        const alt = trigger.getAttribute("data-lightbox-alt") || "";
+        const title = trigger.getAttribute("data-lightbox-title") || "";
+        const meta = trigger.getAttribute("data-lightbox-meta") || "";
+
+        if (imageEl instanceof HTMLImageElement) {
+          imageEl.src = src;
+          imageEl.alt = alt;
+        }
+
+        if (titleEl instanceof HTMLElement) {
+          titleEl.textContent = title;
+        }
+
+        if (metaEl instanceof HTMLElement) {
+          metaEl.textContent = meta;
+        }
+
+        dialog.showModal();
+      });
+    });
+
+    closeButton?.addEventListener("click", () => {
+      if (dialog instanceof HTMLDialogElement) {
+        dialog.close();
+      }
+    });
+
+    dialog?.addEventListener("close", () => {
+      if (imageEl instanceof HTMLImageElement) {
+        imageEl.src = "";
+        imageEl.alt = "";
+      }
+    });
+
+    dialog?.addEventListener("click", (event) => {
+      if (!(dialog instanceof HTMLDialogElement) || !(event instanceof MouseEvent)) {
+        return;
+      }
+
+      const bounds = dialog.getBoundingClientRect();
+      const inside =
+        event.clientX >= bounds.left &&
+        event.clientX <= bounds.right &&
+        event.clientY >= bounds.top &&
+        event.clientY <= bounds.bottom;
+
+      if (!inside) {
+        dialog.close();
+      }
+    });
+  </script>
+</BaseLayout>
