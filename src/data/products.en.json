@@ -44,14 +44,56 @@
     ],
     "images": [
       {
-        "src": "demo/near-plant",
-        "alt": "პლისე ჟალუზის მსგავსი მსუბუქი ფანჯრის სისტემა მცენარეებიან ინტერიერში",
+        "src": "demo/plise-jaluzi-1",
+        "alt": "Pleated blinds in a modern interior — view 1",
         "width": 1600,
         "height": 1200
       },
       {
-        "src": "demo/palm-blinds",
-        "alt": "კომპაქტური ჟალუზიანი ფანჯარა თანამედროვე ინტერიერის კუთხეში",
+        "src": "demo/plise-jaluzi-2",
+        "alt": "Pleated blinds in a modern interior — view 2",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/plise-jaluzi-3",
+        "alt": "Pleated blinds in a modern interior — view 3",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/plise-jaluzi-4",
+        "alt": "Pleated blinds in a modern interior — view 4",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/plise-jaluzi-5",
+        "alt": "Pleated blinds in a modern interior — view 5",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/plise-jaluzi-6",
+        "alt": "Pleated blinds in a modern interior — view 6",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/plise-jaluzi-7",
+        "alt": "Pleated blinds in a modern interior — view 7",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/plise-jaluzi-8",
+        "alt": "Pleated blinds in a modern interior — view 8",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/plise-jaluzi-9",
+        "alt": "Pleated blinds in a modern interior — view 9",
         "width": 1600,
         "height": 1200
       }
@@ -271,14 +313,44 @@
     ],
     "images": [
       {
-        "src": "demo/roller-living",
-        "alt": "ფარდა როლეტი თანამედროვე საცხოვრებელ ინტერიერში",
+        "src": "demo/farda-roleti-1",
+        "alt": "Roller blinds in a modern interior — view 1",
         "width": 1600,
         "height": 1200
       },
       {
-        "src": "demo/shadow-roller",
-        "alt": "როლეტიანი ფანჯრიდან შემოსული რბილი სინათლე ინტერიერში",
+        "src": "demo/farda-roleti-2",
+        "alt": "Roller blinds in a modern interior — view 2",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/farda-roleti-3",
+        "alt": "Roller blinds in a modern interior — view 3",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/farda-roleti-4",
+        "alt": "Roller blinds in a modern interior — view 4",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/farda-roleti-5",
+        "alt": "Roller blinds in a modern interior — view 5",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/farda-roleti-6",
+        "alt": "Roller blinds in a modern interior — view 6",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/farda-roleti-7",
+        "alt": "Roller blinds in a modern interior — view 7",
         "width": 1600,
         "height": 1200
       }
@@ -786,14 +858,44 @@
     ],
     "images": [
       {
-        "src": "demo/warm-roller",
-        "alt": "დღე-ღამის ტიპის ჟალუზის მსგავსი სინათლის მართვის ინტერიერი",
+        "src": "demo/zebra-jaluzi-1",
+        "alt": "Zebra blinds in a modern interior — view 1",
         "width": 1600,
         "height": 1200
       },
       {
-        "src": "demo/minimal-roller",
-        "alt": "თანამედროვე ჟალუზიანი ფანჯარა მინიმალისტურ ოთახში",
+        "src": "demo/zebra-jaluzi-2",
+        "alt": "Zebra blinds in a modern interior — view 2",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/zebra-jaluzi-3",
+        "alt": "Zebra blinds in a modern interior — view 3",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/zebra-jaluzi-4",
+        "alt": "Zebra blinds in a modern interior — view 4",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/zebra-jaluzi-5",
+        "alt": "Zebra blinds in a modern interior — view 5",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/zebra-jaluzi-6",
+        "alt": "Zebra blinds in a modern interior — view 6",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/zebra-jaluzi-7",
+        "alt": "Zebra blinds in a modern interior — view 7",
         "width": 1600,
         "height": 1200
       }
@@ -1140,14 +1242,44 @@
     ],
     "images": [
       {
-        "src": "demo/plants-roller",
-        "alt": "რბილი ტექსტილური ფანჯრის გადაწყვეტა საცხოვრებელ ინტერიერში",
+        "src": "demo/romauli-jaluzi-1",
+        "alt": "Roman blinds in a modern interior — view 1",
         "width": 1600,
         "height": 1200
       },
       {
-        "src": "demo/empty-room-blinds",
-        "alt": "საძინებლის ტიპის ოთახი რბილი სინათლით და ფანჯრის ტექსტილური გადაწყვეტით",
+        "src": "demo/romauli-jaluzi-2",
+        "alt": "Roman blinds in a modern interior — view 2",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/romauli-jaluzi-3",
+        "alt": "Roman blinds in a modern interior — view 3",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/romauli-jaluzi-4",
+        "alt": "Roman blinds in a modern interior — view 4",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/romauli-jaluzi-5",
+        "alt": "Roman blinds in a modern interior — view 5",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/romauli-jaluzi-6",
+        "alt": "Roman blinds in a modern interior — view 6",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/romauli-jaluzi-7",
+        "alt": "Roman blinds in a modern interior — view 7",
         "width": 1600,
         "height": 1200
       }
@@ -1290,14 +1422,50 @@
     ],
     "images": [
       {
-        "src": "demo/vertical-interior",
-        "alt": "ვერტიკალური ჟალუზი დიდ ფანჯარასთან თანამედროვე სივრცეში",
+        "src": "demo/vertikaluri-jaluzi-1",
+        "alt": "Vertical blinds in a modern interior — view 1",
         "width": 1600,
         "height": 1200
       },
       {
-        "src": "demo/industrial-roller",
-        "alt": "დიდი ღიობი შიდა მზისგან დამცავი სისტემით",
+        "src": "demo/vertikaluri-jaluzi-2",
+        "alt": "Vertical blinds in a modern interior — view 2",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/vertikaluri-jaluzi-3",
+        "alt": "Vertical blinds in a modern interior — view 3",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/vertikaluri-jaluzi-4",
+        "alt": "Vertical blinds in a modern interior — view 4",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/vertikaluri-jaluzi-5",
+        "alt": "Vertical blinds in a modern interior — view 5",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/vertikaluri-jaluzi-6",
+        "alt": "Vertical blinds in a modern interior — view 6",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/vertikaluri-jaluzi-7",
+        "alt": "Vertical blinds in a modern interior — view 7",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/vertikaluri-jaluzi-8",
+        "alt": "Vertical blinds in a modern interior — view 8",
         "width": 1600,
         "height": 1200
       }
@@ -1365,14 +1533,20 @@
     ],
     "images": [
       {
-        "src": "demo/plant-venetian",
-        "alt": "ჰორიზონტალური ჟალუზი მცენარეებიან ინტერიერში",
+        "src": "demo/horizontaluri-jaluzi-1",
+        "alt": "Horizontal blinds in a modern interior — view 1",
         "width": 1600,
         "height": 1200
       },
       {
-        "src": "demo/venetian-white",
-        "alt": "ჰორიზონტალური ლამელები თეთრ ფანჯარაზე ახლო ხედით",
+        "src": "demo/horizontaluri-jaluzi-2",
+        "alt": "Horizontal blinds in a modern interior — view 2",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/horizontaluri-jaluzi-3",
+        "alt": "Horizontal blinds in a modern interior — view 3",
         "width": 1600,
         "height": 1200
       }
@@ -1550,14 +1724,38 @@
     ],
     "images": [
       {
-        "src": "demo/window-net",
-        "alt": "მწერებისგან დამცავი ბადის ტიპის ფანჯარა ინტერიერის მხრიდან",
+        "src": "demo/gofrirebuli-bade-1",
+        "alt": "Pleated insect screen in interior — view 1",
         "width": 1600,
         "height": 1200
       },
       {
-        "src": "demo/screen-door",
-        "alt": "კარის ბადის მსგავსი სისტემა საცხოვრებელ შესასვლელში",
+        "src": "demo/gofrirebuli-bade-2",
+        "alt": "Pleated insect screen in interior — view 2",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/gofrirebuli-bade-3",
+        "alt": "Pleated insect screen in interior — view 3",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/gofrirebuli-bade-4",
+        "alt": "Pleated insect screen in interior — view 4",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/gofrirebuli-bade-5",
+        "alt": "Pleated insect screen in interior — view 5",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/gofrirebuli-bade-6",
+        "alt": "Pleated insect screen in interior — view 6",
         "width": 1600,
         "height": 1200
       }
@@ -1765,14 +1963,38 @@
     ],
     "images": [
       {
-        "src": "demo/screen-door",
-        "alt": "ანჯამებზე დამაგრებული ბადის ტიპის კარი საცხოვრებელ გარემოში",
+        "src": "demo/anjamebiani-bade-1",
+        "alt": "Hinged insect screen in interior — view 1",
         "width": 1600,
         "height": 1200
       },
       {
-        "src": "demo/window-net",
-        "alt": "ბადიანი ფანჯრის ჩარჩოს მსგავსი დამცავი სისტემა",
+        "src": "demo/anjamebiani-bade-2",
+        "alt": "Hinged insect screen in interior — view 2",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/anjamebiani-bade-3",
+        "alt": "Hinged insect screen in interior — view 3",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/anjamebiani-bade-4",
+        "alt": "Hinged insect screen in interior — view 4",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/anjamebiani-bade-5",
+        "alt": "Hinged insect screen in interior — view 5",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "demo/anjamebiani-bade-6",
+        "alt": "Hinged insect screen in interior — view 6",
         "width": 1600,
         "height": 1200
       }
