@@ -4,7 +4,8 @@ const jpgAssetFolders = new Set([
   "gofrirebuli-bade-catalog",
   "horizontaluri-catalog",
   "plise-catalog",
-  "zebra-catalog"
+  "zebra-catalog",
+  "zugdidi-hospital"
 ]);
 
 const assetExtensions: Record<string, string> = {

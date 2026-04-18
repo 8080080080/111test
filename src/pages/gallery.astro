@@ -1,4 +1,5 @@
 ---
+import GalleryCarousel from "../components/GalleryCarousel.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSiteData } from "../lib/content";
@@ -18,7 +19,7 @@ const breadcrumbs = createBreadcrumbSchema([
   schemas={[breadcrumbs]}
 >
   <section class="section-padding pb-10">
-    <div class="container-shell space-y-8">
+    <div class="container-shell flex flex-col gap-8">
       <nav aria-label="Breadcrumb" class="text-panel-compact inline-flex flex-wrap items-center text-sm text-ink/60">
         <a href="/" class="hover:text-bronze">მთავარი</a>
         <span class="mx-2">/</span>
@@ -35,34 +36,12 @@ const breadcrumbs = createBreadcrumbSchema([
   <section class="pb-14 sm:pb-16">
     <div class="container-shell">
       <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {site.gallery.map((item, index) => (
+        {site.gallery.map((item) => (
           <article class="surface-card group overflow-hidden">
-            <button
-              class="block w-full text-left"
-              type="button"
-              data-lightbox-trigger
-              data-lightbox-index={index}
-              data-lightbox-src={item.image}
-              data-lightbox-alt={item.alt}
-              data-lightbox-title={item.title}
-              data-lightbox-meta={`${item.category} • ${item.location}`}
-              aria-label={`გახსენი სურათი: ${item.title}`}
-            >
-              <div class="aspect-[4/3] overflow-hidden bg-shell">
-                <img
-                  class="gallery-img h-full w-full object-cover"
-                  src={item.image}
-                  alt={item.alt}
-                  width="1200"
-                  height="900"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </button>
+            <GalleryCarousel item={item} locale="ka" />
             <div class="space-y-3 p-5 sm:p-6">
               <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink/75">{item.category} • {item.location}</p>
-              <h2 class="text-2xl">{item.title}</h2>
+              <h3 class="text-2xl">{item.title}</h3>
               {item.relatedProductSlug && (
                 <a class="text-sm font-semibold text-bronze" href={`/products/${item.relatedProductSlug}/`}>
                   შესაბამისი პროდუქტი
@@ -75,42 +54,6 @@ const breadcrumbs = createBreadcrumbSchema([
     </div>
   </section>
 
-  <!--
-    Lightbox dialog: contains a SINGLE <img> that is updated by JS on open.
-    Previously this had one hidden <figure> per gallery item rendered in the DOM,
-    meaning all gallery images were pre-fetched (even those never viewed).
-    Now only the image being opened gets a src= assigned, so the browser only
-    loads images the user actually requests to view.
-  -->
-  <dialog class="w-[min(92vw,70rem)] rounded-4xl border border-black/8 bg-white p-0 shadow-soft backdrop:bg-black/45" data-lightbox>
-    <div class="space-y-4 p-4 sm:p-6">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-bronze" data-lightbox-meta></p>
-          <h2 class="mt-2 text-3xl" data-lightbox-title></h2>
-        </div>
-        <button class="button-secondary !px-4 !py-2" type="button" data-lightbox-close>დახურვა</button>
-      </div>
-      <div class="overflow-hidden rounded-4xl bg-shell">
-        <!--
-          Single shared image element — src/alt are set dynamically on open.
-          No height is forced so the natural image aspect ratio displays,
-          but we constrain with max-height to keep the dialog within the viewport.
-        -->
-        <img
-          class="block h-auto max-h-[70vh] w-full object-contain"
-          data-lightbox-image
-          src=""
-          alt=""
-          loading="lazy"
-          decoding="async"
-          width="1200"
-          height="900"
-        />
-      </div>
-    </div>
-  </dialog>
-
   <style>
     @media (prefers-reduced-motion: no-preference) {
       .gallery-img {
@@ -122,72 +65,4 @@ const breadcrumbs = createBreadcrumbSchema([
       }
     }
   </style>
-
-  <script>
-    const dialog = document.querySelector("[data-lightbox]");
-    const titleEl = dialog?.querySelector("[data-lightbox-title]");
-    const metaEl = dialog?.querySelector("[data-lightbox-meta]");
-    const imageEl = dialog?.querySelector("[data-lightbox-image]");
-    const closeButton = dialog?.querySelector("[data-lightbox-close]");
-
-    document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
-      trigger.addEventListener("click", () => {
-        if (!(dialog instanceof HTMLDialogElement)) {
-          return;
-        }
-
-        const src = trigger.getAttribute("data-lightbox-src") || "";
-        const alt = trigger.getAttribute("data-lightbox-alt") || "";
-        const title = trigger.getAttribute("data-lightbox-title") || "";
-        const meta = trigger.getAttribute("data-lightbox-meta") || "";
-
-        // Set the image before showModal so the browser starts loading immediately
-        if (imageEl instanceof HTMLImageElement) {
-          imageEl.src = src;
-          imageEl.alt = alt;
-        }
-
-        if (titleEl instanceof HTMLElement) {
-          titleEl.textContent = title;
-        }
-
-        if (metaEl instanceof HTMLElement) {
-          metaEl.textContent = meta;
-        }
-
-        dialog.showModal();
-      });
-    });
-
-    closeButton?.addEventListener("click", () => {
-      if (dialog instanceof HTMLDialogElement) {
-        dialog.close();
-      }
-    });
-
-    // Clear src on close — prevents the stale image flashing on next open
-    dialog?.addEventListener("close", () => {
-      if (imageEl instanceof HTMLImageElement) {
-        imageEl.src = "";
-        imageEl.alt = "";
-      }
-    });
-
-    dialog?.addEventListener("click", (event) => {
-      if (!(dialog instanceof HTMLDialogElement) || !(event instanceof MouseEvent)) {
-        return;
-      }
-
-      const bounds = dialog.getBoundingClientRect();
-      const inside =
-        event.clientX >= bounds.left &&
-        event.clientX <= bounds.right &&
-        event.clientY >= bounds.top &&
-        event.clientY <= bounds.bottom;
-
-      if (!inside) {
-        dialog.close();
-      }
-    });
-  </script>
 </BaseLayout>

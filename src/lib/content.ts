@@ -68,7 +68,8 @@ function resolveSiteData(data: RawSiteData): SiteData {
     },
     gallery: data.gallery.map((item) => ({
       ...item,
-      image: getImageAsset(item.image)
+      image: getImageAsset(item.image),
+      images: item.images?.map(resolveProductImage)
     })),
     contact: {
       ...data.contact,
@@ -116,4 +117,3 @@ export function getWhatsAppHref(value: string): string {
   const digits = value.replace(/\D/g, "");
   return digits ? `https://wa.me/${digits}` : "";
 }
-

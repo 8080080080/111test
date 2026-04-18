@@ -129,12 +129,67 @@
   "gallery": [
     {
       "id": "gallery-1",
-      "title": "ფარდა როლეტი მშვიდ საცხოვრებელ ინტერიერში",
-      "location": "ვაკე, თბილისი",
-      "category": "საცხოვრებელი",
-      "image": "demo/roller-living",
-      "alt": "ფარდა როლეტი თანამედროვე მისაღების ინტერიერში",
-      "relatedProductSlug": "farda-roleti"
+      "title": "ზუგდიდის საავადმყოფო",
+      "location": "ზუგდიდი",
+      "category": "კომერციული",
+      "image": "zugdidi-hospital/001",
+      "alt": "ზუგდიდის საავადმყოფოს დასრულებული პროექტი Winsome-ის სისტემებით",
+      "images": [
+        {
+          "src": "zugdidi-hospital/001",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 1",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/002",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 2",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/003",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 3",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/004",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 4",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/005",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 5",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/006",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 6",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/007",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 7",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/008",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 8",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "src": "zugdidi-hospital/009",
+          "alt": "ზუგდიდის საავადმყოფოს პროექტის ფოტო 9",
+          "width": 1280,
+          "height": 960
+        }
+      ]
     },
     {
       "id": "gallery-2",

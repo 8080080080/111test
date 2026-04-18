@@ -129,12 +129,67 @@
   "gallery": [
     {
       "id": "gallery-1",
-      "title": "Roller blinds in a calm residential interior",
-      "location": "ვაკე, თბილისი",
-      "category": "Residential",
-      "image": "demo/roller-living",
-      "alt": "Roller blinds in a modern living room interior",
-      "relatedProductSlug": "farda-roleti"
+      "title": "Hospital of Zugdidi",
+      "location": "Zugdidi",
+      "category": "Commercial",
+      "image": "zugdidi-hospital/001",
+      "alt": "Completed Hospital of Zugdidi project with Winsome systems",
+      "images": [
+        {
+          "src": "zugdidi-hospital/001",
+          "alt": "Hospital of Zugdidi project photo 1",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/002",
+          "alt": "Hospital of Zugdidi project photo 2",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/003",
+          "alt": "Hospital of Zugdidi project photo 3",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/004",
+          "alt": "Hospital of Zugdidi project photo 4",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/005",
+          "alt": "Hospital of Zugdidi project photo 5",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/006",
+          "alt": "Hospital of Zugdidi project photo 6",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/007",
+          "alt": "Hospital of Zugdidi project photo 7",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "zugdidi-hospital/008",
+          "alt": "Hospital of Zugdidi project photo 8",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "src": "zugdidi-hospital/009",
+          "alt": "Hospital of Zugdidi project photo 9",
+          "width": 1280,
+          "height": 960
+        }
+      ]
     },
     {
       "id": "gallery-2",

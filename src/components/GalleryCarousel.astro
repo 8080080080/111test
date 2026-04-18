@@ -1,0 +1,327 @@
+---
+import type { GalleryItem } from "../types/content";
+
+interface Props {
+  item: GalleryItem;
+  locale?: "ka" | "en";
+}
+
+const { item, locale = "en" } = Astro.props;
+
+const images =
+  item.images && item.images.length > 0
+    ? item.images.map((img) => ({ src: img.src, alt: img.alt, width: img.width, height: img.height }))
+    : [{ src: item.image, alt: item.alt, width: 1200, height: 900 }];
+
+const hasMultiple = images.length > 1;
+const id = item.id;
+
+const labels =
+  locale === "ka"
+    ? { close: "დახურვა", prev: "წინა ფოტო", next: "შემდეგი ფოტო", open: `ფოტოების ნახვა: ${item.title}` }
+    : { close: "Close", prev: "Previous photo", next: "Next photo", open: `View photos: ${item.title}` };
+---
+
+<!-- Card thumbnail -->
+<button
+  class="gallery-thumb block w-full text-left"
+  type="button"
+  data-gallery-trigger={id}
+  aria-haspopup="dialog"
+  aria-label={labels.open}
+>
+  <div class="aspect-[4/3] overflow-hidden bg-shell">
+    <img
+      class="gallery-img h-full w-full object-cover"
+      src={item.image}
+      alt={item.alt}
+      width="1200"
+      height="900"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+</button>
+
+<!-- Lightbox dialog -->
+<dialog
+  class="gallery-dialog m-auto w-[min(94vw,80rem)] max-h-[92dvh] overflow-y-auto rounded-4xl border border-black/8 bg-white p-0 shadow-deep backdrop:bg-black/60"
+  data-gallery-dialog={id}
+>
+  <div class="relative flex flex-col gap-3 p-4 sm:gap-4 sm:p-6">
+
+    <!-- × close — absolutely positioned so it never crowds the title -->
+    <button
+      class="lb-close absolute right-4 top-4 z-20 sm:right-5 sm:top-5"
+      type="button"
+      data-gallery-close
+      aria-label={labels.close}
+    >
+      <svg aria-hidden="true" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Header — full width with right padding to clear the × -->
+    <div class="pr-10 sm:pr-12">
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-bronze">{item.category} • {item.location}</p>
+      <p class="mt-1 text-lg font-semibold leading-snug text-ink sm:mt-1.5 sm:text-2xl">{item.title}</p>
+      {hasMultiple && (
+        <p class="mt-1 text-xs font-medium text-ink/50" data-gallery-count aria-live="polite" aria-atomic="true"></p>
+      )}
+    </div>
+
+    <!-- Carousel -->
+    <div class="relative overflow-hidden rounded-2xl bg-shell sm:rounded-3xl" data-gallery-area>
+      <div class="overflow-hidden" data-gallery-viewport>
+        <div class="flex select-none" data-gallery-container>
+          {images.map((img, i) => (
+            <div
+              class="min-w-0 shrink-0 grow-0 basis-full"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} / ${images.length}`}
+            >
+              <img
+                class="block h-auto max-h-[50vh] w-full object-contain sm:max-h-[66vh]"
+                src={img.src}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {hasMultiple && (
+        <>
+          <button
+            class="lb-nav-btn absolute left-2 top-1/2 z-10 sm:left-3"
+            style="transform:translateY(-50%)"
+            type="button"
+            data-gallery-prev
+            aria-label={labels.prev}
+          >
+            <svg aria-hidden="true" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            class="lb-nav-btn absolute right-2 top-1/2 z-10 sm:right-3"
+            style="transform:translateY(-50%)"
+            type="button"
+            data-gallery-next
+            aria-label={labels.next}
+          >
+            <svg aria-hidden="true" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </>
+      )}
+    </div>
+
+    <!-- Dots -->
+    {hasMultiple && (
+      <div class="flex flex-wrap justify-center gap-2 pb-1" aria-hidden="true">
+        {images.map((_, i) => (
+          <button
+            class="lb-dot"
+            type="button"
+            data-gallery-dot={i}
+            data-active={i === 0 ? "" : undefined}
+          />
+        ))}
+      </div>
+    )}
+
+  </div>
+</dialog>
+
+<style>
+  .gallery-thumb {
+    cursor: zoom-in;
+  }
+
+  /* ── Entry animation (no backdrop-blur — too expensive) ─────────── */
+  @keyframes lb-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97) translateY(10px);
+    }
+  }
+  @keyframes lb-bd-in {
+    from { opacity: 0; }
+  }
+
+  .gallery-dialog[open] {
+    animation: lb-in 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .gallery-dialog::backdrop {
+    animation: lb-bd-in 200ms ease both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-dialog[open],
+    .gallery-dialog::backdrop {
+      animation: none;
+    }
+  }
+
+  /* ── × close button ─────────────────────────────────────────────── */
+  .lb-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    border: 1px solid var(--secondary-border);
+    background-color: var(--secondary-fill);
+    color: #1a1917;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 150ms, transform 150ms;
+  }
+  .lb-close:hover {
+    background-color: rgba(47, 36, 130, 0.1);
+    transform: scale(1.08);
+  }
+
+  /* ── Prev / Next buttons ────────────────────────────────────────── */
+  .lb-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    border: 1px solid var(--secondary-border);
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #1a1917;
+    box-shadow: 0 2px 8px rgba(26, 25, 23, 0.12);
+    cursor: pointer;
+    transition: background-color 150ms, opacity 150ms;
+  }
+  @media (min-width: 640px) {
+    .lb-nav-btn { width: 2.75rem; height: 2.75rem; }
+  }
+  .lb-nav-btn:hover:not(:disabled) {
+    background-color: #ffffff;
+  }
+  .lb-nav-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+
+  /* ── Dots (enlarged touch target via pseudo-element) ────────────── */
+  .lb-dot {
+    position: relative;
+    height: 7px;
+    width: 7px;
+    border-radius: 9999px;
+    background-color: rgba(26, 25, 23, 0.2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: width 220ms cubic-bezier(0.4, 0, 0.2, 1), background-color 220ms;
+  }
+  /* +10px touch area on all sides without affecting layout */
+  .lb-dot::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+  }
+  .lb-dot[data-active] {
+    width: 22px;
+    background-color: #2f2482;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lb-dot, .lb-nav-btn, .lb-close { transition: none; }
+  }
+</style>
+
+<script>
+  import EmblaCarousel from "embla-carousel";
+
+  const emblaMap = new Map<string, ReturnType<typeof EmblaCarousel>>();
+
+  function initCarousel(dialog: HTMLDialogElement, id: string) {
+    // Already initialised — return the cached instance
+    if (emblaMap.has(id)) return emblaMap.get(id)!;
+
+    const viewport = dialog.querySelector<HTMLElement>("[data-gallery-viewport]");
+    if (!viewport) return null;
+
+    const embla = EmblaCarousel(viewport, { loop: false, align: "center" });
+    emblaMap.set(id, embla);
+
+    const prevBtn = dialog.querySelector<HTMLButtonElement>("[data-gallery-prev]");
+    const nextBtn = dialog.querySelector<HTMLButtonElement>("[data-gallery-next]");
+    const countEl = dialog.querySelector<HTMLElement>("[data-gallery-count]");
+    const dots = dialog.querySelectorAll<HTMLButtonElement>("[data-gallery-dot]");
+
+    function updateUI() {
+      const index = embla.selectedScrollSnap();
+      const total = embla.scrollSnapList().length;
+      if (prevBtn) prevBtn.disabled = !embla.canScrollPrev();
+      if (nextBtn) nextBtn.disabled = !embla.canScrollNext();
+      if (countEl) countEl.textContent = total > 1 ? `${index + 1} / ${total}` : "";
+      dots.forEach((dot, i) => {
+        if (i === index) dot.setAttribute("data-active", "");
+        else dot.removeAttribute("data-active");
+      });
+    }
+
+    embla.on("select", updateUI);
+    embla.on("reInit", updateUI);
+
+    prevBtn?.addEventListener("click", () => embla.scrollPrev());
+    nextBtn?.addEventListener("click", () => embla.scrollNext());
+    dots.forEach((dot, i) => dot.addEventListener("click", () => embla.scrollTo(i)));
+
+    dialog.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); embla.scrollPrev(); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); embla.scrollNext(); }
+    });
+
+    // One reInit after first paint so Embla measures the live dialog dimensions
+    requestAnimationFrame(() => { embla.reInit(); updateUI(); });
+
+    updateUI();
+    return embla;
+  }
+
+  document.querySelectorAll<HTMLDialogElement>("[data-gallery-dialog]").forEach((dialog) => {
+    const id = dialog.dataset.galleryDialog!;
+
+    dialog.querySelector("[data-gallery-close]")?.addEventListener("click", () => dialog.close());
+
+    // Backdrop click
+    dialog.addEventListener("click", (e) => {
+      const b = dialog.getBoundingClientRect();
+      if (e.clientX < b.left || e.clientX > b.right || e.clientY < b.top || e.clientY > b.bottom) {
+        dialog.close();
+      }
+    });
+
+    // Reset to first slide on close
+    dialog.addEventListener("close", () => { emblaMap.get(id)?.scrollTo(0, false); });
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-gallery-trigger]").forEach((trigger) => {
+    const id = trigger.dataset.galleryTrigger!;
+    const dialog = document.querySelector<HTMLDialogElement>(`[data-gallery-dialog="${id}"]`);
+    if (!dialog) return;
+
+    trigger.addEventListener("click", () => {
+      dialog.showModal();
+      // initCarousel is idempotent — cheap on repeat opens (just returns cached instance)
+      initCarousel(dialog, id);
+    });
+  });
+</script>

@@ -34,6 +34,7 @@ export interface RawGalleryItem {
   category: string;
   image: string;
   alt: string;
+  images?: RawProductImage[];
   relatedProductSlug?: string;
 }
 
@@ -44,6 +45,7 @@ export interface GalleryItem {
   category: string;
   image: string;
   alt: string;
+  images?: ProductImage[];
   relatedProductSlug?: string;
 }
 
@@ -277,5 +279,4 @@ export interface SiteData {
     mapPlaceholderImage: string;
   };
 }
-
 
