@@ -1,0 +1,29 @@
+---
+import ColorCatalog from "./ColorCatalog.astro";
+import ColorSwatches from "./ColorSwatches.astro";
+import GroupedColorCatalog from "./GroupedColorCatalog.astro";
+import ProductGallery from "./ProductGallery.astro";
+import type { Product } from "../types/content";
+
+interface Props {
+  product: Product;
+  idSuffix?: string;
+}
+
+const { product, idSuffix = "" } = Astro.props;
+const suffix = idSuffix ? `-${idSuffix}` : "";
+---
+
+{product.colorCollections?.length ? (
+  <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}${suffix}`} />
+) : product.colorCatalog?.length ? (
+  <ColorCatalog
+    items={product.colorCatalog}
+    id={`catalog-${product.slug}${suffix}`}
+    mobileFullscreen={Boolean(product.colorCatalog?.length)}
+  />
+) : product.colorGallery?.length ? (
+  <ProductGallery images={product.colorGallery} id={`colors-${product.slug}${suffix}`} compact zoomable />
+) : (
+  <ColorSwatches colors={product.colors} />
+)}

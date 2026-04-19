@@ -30,9 +30,9 @@ const mainArrowClasses = "absolute top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 
 const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-full border border-white/90 bg-white/96 text-ink shadow-[0_24px_54px_rgba(26,25,23,0.28)] backdrop-blur transition hover:bg-bronze hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-white active:scale-[0.98] sm:h-16 sm:w-16";
 ---
 
-<div id={id} class={rootClasses} data-gallery>
+<div id={id} class={rootClasses} data-gallery data-zoom-enabled={zoomable ? "true" : "false"}>
   <div class="surface-card relative overflow-hidden">
-    <div class="overflow-hidden">
+    <div class="overflow-hidden" data-gallery-swipe-area>
       <div class="flex transition-transform duration-500 ease-out" data-gallery-track>
         {images.map((image, index) => (
           <figure class="min-w-full" data-gallery-slide>
@@ -187,28 +187,41 @@ const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-f
   )}
 </div>
 
-<script define:vars={{ galleryId: id, zoomEnabled: zoomable }}>
-  const root = document.getElementById(galleryId);
+<script>
+  import { attachMobileSwipeNavigation } from "../lib/mobileSwipeNavigation";
 
-  if (root) {
-    const track = root.querySelector("[data-gallery-track]");
-    const slides = Array.from(root.querySelectorAll("[data-gallery-slide]"));
-    const thumbs = Array.from(root.querySelectorAll("[data-gallery-thumb]"));
-    const nextButton = root.querySelector("[data-gallery-next]");
-    const prevButton = root.querySelector("[data-gallery-prev]");
-    const dialog = root.querySelector("[data-gallery-dialog]");
-    const panels = Array.from(root.querySelectorAll("[data-gallery-panel]"));
-    const canvases = Array.from(root.querySelectorAll("[data-gallery-canvas]"));
-    const caption = root.querySelector("[data-gallery-caption]");
-    const closeButton = root.querySelector("[data-gallery-close]");
-    const dialogNext = root.querySelector("[data-gallery-dialog-next]");
-    const dialogPrev = root.querySelector("[data-gallery-dialog-prev]");
-    const openButtons = Array.from(root.querySelectorAll("[data-gallery-open]"));
-    const stage = root.querySelector("[data-gallery-stage]");
-    const zoomInButton = root.querySelector("[data-gallery-zoom-in]");
-    const zoomOutButton = root.querySelector("[data-gallery-zoom-out]");
-    const zoomToggles = Array.from(root.querySelectorAll("[data-gallery-zoom-toggle]"));
-    const zoomImages = Array.from(root.querySelectorAll("[data-gallery-zoom-image]"));
+  document.querySelectorAll<HTMLElement>("[data-gallery]").forEach((root) => {
+    if (root.dataset.galleryReady) {
+      return;
+    }
+
+    root.dataset.galleryReady = "true";
+
+    const zoomEnabled = root.dataset.zoomEnabled === "true";
+    const swipeArea = root.querySelector<HTMLElement>("[data-gallery-swipe-area]");
+    const track = root.querySelector<HTMLElement>("[data-gallery-track]");
+    const slides = Array.from(root.querySelectorAll<HTMLElement>("[data-gallery-slide]"));
+    const thumbs = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-gallery-thumb]"));
+    const nextButton = root.querySelector<HTMLButtonElement>("[data-gallery-next]");
+    const prevButton = root.querySelector<HTMLButtonElement>("[data-gallery-prev]");
+    const dialog = root.querySelector<HTMLDialogElement>("[data-gallery-dialog]");
+    const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-gallery-panel]"));
+    const canvases = Array.from(root.querySelectorAll<HTMLElement>("[data-gallery-canvas]"));
+    const caption = root.querySelector<HTMLElement>("[data-gallery-caption]");
+    const closeButton = root.querySelector<HTMLButtonElement>("[data-gallery-close]");
+    const dialogNext = root.querySelector<HTMLButtonElement>("[data-gallery-dialog-next]");
+    const dialogPrev = root.querySelector<HTMLButtonElement>("[data-gallery-dialog-prev]");
+    const openButtons = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-gallery-open]"));
+    const stage = root.querySelector<HTMLElement>("[data-gallery-stage]");
+    const zoomInButton = root.querySelector<HTMLButtonElement>("[data-gallery-zoom-in]");
+    const zoomOutButton = root.querySelector<HTMLButtonElement>("[data-gallery-zoom-out]");
+    const zoomToggles = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-gallery-zoom-toggle]"));
+    const zoomImages = Array.from(root.querySelectorAll<HTMLImageElement>("[data-gallery-zoom-image]"));
+
+    if (!track || slides.length === 0) {
+      return;
+    }
+
     const zoomLevels = [1, 1.5, 2, 2.5];
     let index = 0;
     let zoomIndex = 0;
@@ -404,6 +417,24 @@ const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-f
     bindStep(dialogNext, 1);
     bindStep(dialogPrev, -1);
 
+    attachMobileSwipeNavigation(swipeArea, {
+      isEnabled: () => slides.length > 1 && !isDialogOpen(),
+      onSwipe: (direction) => update(index + direction)
+    });
+
+    attachMobileSwipeNavigation(stage, {
+      touchAction: false,
+      isEnabled: () => slides.length > 1 && isDialogOpen() && zoomIndex === 0,
+      shouldIgnore: (target) =>
+        target instanceof Element &&
+        Boolean(
+          target.closest(
+            "[data-gallery-dialog-prev], [data-gallery-dialog-next], [data-gallery-close], [data-gallery-zoom-in], [data-gallery-zoom-out]"
+          )
+        ),
+      onSwipe: (direction) => update(index + direction)
+    });
+
     closeButton?.addEventListener("click", (event) => {
       event.stopPropagation();
       dialog?.close();
@@ -522,5 +553,5 @@ const dialogArrowClasses = "flex h-14 w-14 items-center justify-center rounded-f
     });
 
     updateThumbs();
-  }
+  });
 </script>

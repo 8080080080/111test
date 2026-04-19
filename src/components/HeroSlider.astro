@@ -47,7 +47,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAA
 
         <div id={id} class="relative" data-slider>
           <div class="absolute inset-5 rounded-4xl bg-sage/12 blur-3xl"></div>
-          <div class="relative overflow-hidden rounded-4xl border border-white/80 bg-white shadow-soft">
+          <div class="relative overflow-hidden rounded-4xl border border-white/80 bg-white shadow-soft" data-slider-swipe-area>
             <!--
               slider-track: uses transform (translateX) which is compositor-only — no layout.
               The CSS transition is defined here so prefers-reduced-motion can suppress it
@@ -132,17 +132,27 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAA
   }
 </style>
 
-<script define:vars={{ sliderId: id }}>
-  const root = document.getElementById(sliderId);
+<script>
+  import { attachMobileSwipeNavigation } from "../lib/mobileSwipeNavigation";
 
-  if (root && !root.dataset.sliderReady) {
+  document.querySelectorAll<HTMLElement>("[data-slider]").forEach((root) => {
+    if (root.dataset.sliderReady) {
+      return;
+    }
+
     root.dataset.sliderReady = "true";
 
-    const track = root.querySelector("[data-slider-track]");
-    const slides = Array.from(root.querySelectorAll("[data-slide]"));
-    const dots = Array.from(root.querySelectorAll("[data-slider-dot]"));
-    const previous = root.querySelector("[data-slider-prev]");
-    const next = root.querySelector("[data-slider-next]");
+    const swipeArea = root.querySelector<HTMLElement>("[data-slider-swipe-area]");
+    const track = root.querySelector<HTMLElement>("[data-slider-track]");
+    const slides = Array.from(root.querySelectorAll<HTMLElement>("[data-slide]"));
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-slider-dot]"));
+    const previous = root.querySelector<HTMLButtonElement>("[data-slider-prev]");
+    const next = root.querySelector<HTMLButtonElement>("[data-slider-next]");
+
+    if (!track || slides.length === 0) {
+      return;
+    }
+
     let index = 0;
     let timer = 0;
     let isPaused = false;
@@ -231,6 +241,17 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAA
       scheduleNext();
     });
 
+    attachMobileSwipeNavigation(swipeArea, {
+      isEnabled: () => slides.length > 1,
+      shouldIgnore: (target) =>
+        target instanceof Element &&
+        Boolean(target.closest("[data-slider-prev], [data-slider-next], [data-slider-dot]")),
+      onSwipe: (direction) => {
+        update(index + direction);
+        scheduleNext();
+      }
+    });
+
     root.addEventListener("mouseenter", pause);
     root.addEventListener("mouseleave", resume);
     root.addEventListener("touchstart", pause, { passive: true });
@@ -248,5 +269,5 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAA
 
     update(0);
     scheduleNext();
-  }
+  });
 </script>

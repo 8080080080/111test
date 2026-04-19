@@ -12,10 +12,12 @@ const phoneHref = getPhoneHref(site.phone);
 const homeHref = locale === "en" ? "/en/" : "/";
 const serviceAreaLabel = locale === "en" ? "Service area" : "მომსახურების ზონა";
 const whatsappHref = site.socialLinks.whatsapp ? getWhatsAppHref(site.socialLinks.whatsapp) : undefined;
+type SocialItem = { label: string; href: string; icon: "facebook" | "whatsapp" };
+const isSocialItem = (item: SocialItem | undefined): item is SocialItem => Boolean(item);
 const socialItems = [
   site.socialLinks.facebook ? { label: "Facebook", href: site.socialLinks.facebook, icon: "facebook" } : undefined,
   whatsappHref ? { label: "WhatsApp", href: whatsappHref, icon: "whatsapp" } : undefined
-].filter(Boolean);
+].filter(isSocialItem);
 ---
 
 <footer class="section-padding pt-10 sm:pt-14">

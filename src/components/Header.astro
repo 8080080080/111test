@@ -17,7 +17,13 @@ const callLabel = locale === "en" ? "Call" : "დარეკე";
 const menuLabel = locale === "en" ? "Open menu" : "მენიუს გახსნა";
 const mobileCtaLabel = locale === "en" ? "Request a Quote" : "მოითხოვე შეთავაზება";
 const altLangLabel = locale === "en" ? "ქარ" : "EN";
-const altLangHref = locale === "en" ? currentPath.replace(/^\/en\//, "/") || "/" : `/en${currentPath}`;
+const normalizedCurrentPath = currentPath.endsWith("/") ? currentPath : `${currentPath}/`;
+const isNotFoundPage = normalizedCurrentPath === "/404/" || normalizedCurrentPath === "/404.html/";
+const altLangHref = isNotFoundPage
+  ? locale === "en" ? "/" : "/en/"
+  : locale === "en"
+    ? currentPath.replace(/^\/en\//, "/") || "/"
+    : `/en${currentPath}`;
 ---
 
 <header class="sticky top-0 z-50 border-b border-black/8 bg-canvas/88 backdrop-blur-xl">

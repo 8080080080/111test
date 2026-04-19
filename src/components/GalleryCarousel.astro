@@ -18,15 +18,31 @@ const id = item.id;
 
 const labels =
   locale === "ka"
-    ? { close: "დახურვა", prev: "წინა ფოტო", next: "შემდეგი ფოტო", open: `ფოტოების ნახვა: ${item.title}` }
-    : { close: "Close", prev: "Previous photo", next: "Next photo", open: `View photos: ${item.title}` };
+    ? {
+        close: "დახურვა",
+        prev: "წინა ფოტო",
+        next: "შემდეგი ფოტო",
+        open: `ფოტოების ნახვა: ${item.title}`,
+        dialog: `პროექტის ფოტოები: ${item.title}`,
+        dot: "ფოტოზე გადასვლა"
+      }
+    : {
+        close: "Close",
+        prev: "Previous photo",
+        next: "Next photo",
+        open: `View photos: ${item.title}`,
+        dialog: `Project photos: ${item.title}`,
+        dot: "Go to photo"
+      };
+
+const titleId = `${id}-viewer-title`;
 ---
 
 <!-- Card thumbnail -->
 <button
   class="gallery-thumb block w-full text-left"
   type="button"
-  data-gallery-trigger={id}
+  data-project-viewer-trigger={id}
   aria-haspopup="dialog"
   aria-label={labels.open}
 >
@@ -43,101 +59,104 @@ const labels =
   </div>
 </button>
 
-<!-- Lightbox dialog -->
+<!-- Opened project viewer -->
 <dialog
-  class="gallery-dialog m-auto w-[min(94vw,80rem)] max-h-[92dvh] overflow-y-auto rounded-4xl border border-black/8 bg-white p-0 shadow-deep backdrop:bg-black/60"
-  data-gallery-dialog={id}
+  class="project-viewer-dialog"
+  data-project-viewer-dialog={id}
+  aria-labelledby={titleId}
+  aria-label={labels.dialog}
 >
-  <div class="relative flex flex-col gap-3 p-4 sm:gap-4 sm:p-6">
+  <div class="project-viewer-shell" data-project-viewer-shell>
+    <div class="project-viewer-panel">
+      <header class="project-viewer-header">
+        <div class="min-w-0">
+          <p class="project-viewer-meta">{item.category} • {item.location}</p>
+          <h2 id={titleId} class="project-viewer-title">{item.title}</h2>
+          <p class="project-viewer-count" data-project-viewer-count aria-live="polite" aria-atomic="true">
+            1 / {images.length}
+          </p>
+        </div>
 
-    <!-- × close — absolutely positioned so it never crowds the title -->
-    <button
-      class="lb-close absolute right-4 top-4 z-20 sm:right-5 sm:top-5"
-      type="button"
-      data-gallery-close
-      aria-label={labels.close}
-    >
-      <svg aria-hidden="true" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 6L6 18M6 6l12 12" />
-      </svg>
-    </button>
+        <button
+          class="project-viewer-close"
+          type="button"
+          data-project-viewer-close
+          aria-label={labels.close}
+        >
+          <svg aria-hidden="true" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </header>
 
-    <!-- Header — full width with right padding to clear the × -->
-    <div class="pr-10 sm:pr-12">
-      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-bronze">{item.category} • {item.location}</p>
-      <p class="mt-1 text-lg font-semibold leading-snug text-ink sm:mt-1.5 sm:text-2xl">{item.title}</p>
-      {hasMultiple && (
-        <p class="mt-1 text-xs font-medium text-ink/50" data-gallery-count aria-live="polite" aria-atomic="true"></p>
-      )}
-    </div>
+      <div class="project-viewer-stage">
+        <div class="project-viewer-viewport" data-project-viewer-viewport>
+          <div class="project-viewer-track" data-project-viewer-track>
+            {images.map((img, index) => (
+              <figure
+                class="project-viewer-slide"
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} / ${images.length}`}
+              >
+                <div class="project-viewer-image-frame" data-project-viewer-zoom-frame>
+                  <img
+                    class="project-viewer-image"
+                    data-project-viewer-zoom-image
+                    src={img.src}
+                    alt={img.alt}
+                    width={img.width}
+                    height={img.height}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                </div>
+              </figure>
+            ))}
+          </div>
+        </div>
 
-    <!-- Carousel -->
-    <div class="relative overflow-hidden rounded-2xl bg-shell sm:rounded-3xl" data-gallery-area>
-      <div class="overflow-hidden" data-gallery-viewport>
-        <div class="flex select-none" data-gallery-container>
-          {images.map((img, i) => (
-            <div
-              class="min-w-0 shrink-0 grow-0 basis-full"
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`${i + 1} / ${images.length}`}
+        {hasMultiple && (
+          <>
+            <button
+              class="project-viewer-nav project-viewer-prev"
+              type="button"
+              data-project-viewer-prev
+              aria-label={labels.prev}
             >
-              <img
-                class="block h-auto max-h-[50vh] w-full object-contain sm:max-h-[66vh]"
-                src={img.src}
-                alt={img.alt}
-                width={img.width}
-                height={img.height}
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+              <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              class="project-viewer-nav project-viewer-next"
+              type="button"
+              data-project-viewer-next
+              aria-label={labels.next}
+            >
+              <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </>
+        )}
+      </div>
+
+      {hasMultiple && (
+        <div class="project-viewer-dots" data-project-viewer-dots>
+          {images.map((_, index) => (
+            <button
+              class="project-viewer-dot"
+              type="button"
+              data-project-viewer-dot={index}
+              data-active={index === 0 ? "" : undefined}
+              aria-label={`${labels.dot} ${index + 1}`}
+              aria-current={index === 0 ? "true" : undefined}
+            />
           ))}
         </div>
-      </div>
-
-      {hasMultiple && (
-        <>
-          <button
-            class="lb-nav-btn absolute left-2 top-1/2 z-10 sm:left-3"
-            style="transform:translateY(-50%)"
-            type="button"
-            data-gallery-prev
-            aria-label={labels.prev}
-          >
-            <svg aria-hidden="true" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button
-            class="lb-nav-btn absolute right-2 top-1/2 z-10 sm:right-3"
-            style="transform:translateY(-50%)"
-            type="button"
-            data-gallery-next
-            aria-label={labels.next}
-          >
-            <svg aria-hidden="true" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </>
       )}
     </div>
-
-    <!-- Dots -->
-    {hasMultiple && (
-      <div class="flex flex-wrap justify-center gap-2 pb-1" aria-hidden="true">
-        {images.map((_, i) => (
-          <button
-            class="lb-dot"
-            type="button"
-            data-gallery-dot={i}
-            data-active={i === 0 ? "" : undefined}
-          />
-        ))}
-      </div>
-    )}
-
   </div>
 </dialog>
 
@@ -146,182 +165,830 @@ const labels =
     cursor: zoom-in;
   }
 
-  /* ── Entry animation (no backdrop-blur — too expensive) ─────────── */
-  @keyframes lb-in {
-    from {
-      opacity: 0;
-      transform: scale(0.97) translateY(10px);
-    }
-  }
-  @keyframes lb-bd-in {
-    from { opacity: 0; }
-  }
-
-  .gallery-dialog[open] {
-    animation: lb-in 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .gallery-dialog::backdrop {
-    animation: lb-bd-in 200ms ease both;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .gallery-dialog[open],
-    .gallery-dialog::backdrop {
-      animation: none;
-    }
-  }
-
-  /* ── × close button ─────────────────────────────────────────────── */
-  .lb-close {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 9999px;
-    border: 1px solid var(--secondary-border);
-    background-color: var(--secondary-fill);
-    color: #1a1917;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background-color 150ms, transform 150ms;
-  }
-  .lb-close:hover {
-    background-color: rgba(47, 36, 130, 0.1);
-    transform: scale(1.08);
-  }
-
-  /* ── Prev / Next buttons ────────────────────────────────────────── */
-  .lb-nav-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 9999px;
-    border: 1px solid var(--secondary-border);
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #1a1917;
-    box-shadow: 0 2px 8px rgba(26, 25, 23, 0.12);
-    cursor: pointer;
-    transition: background-color 150ms, opacity 150ms;
-  }
-  @media (min-width: 640px) {
-    .lb-nav-btn { width: 2.75rem; height: 2.75rem; }
-  }
-  .lb-nav-btn:hover:not(:disabled) {
-    background-color: #ffffff;
-  }
-  .lb-nav-btn:disabled {
-    opacity: 0.25;
-    cursor: not-allowed;
-  }
-
-  /* ── Dots (enlarged touch target via pseudo-element) ────────────── */
-  .lb-dot {
-    position: relative;
-    height: 7px;
-    width: 7px;
-    border-radius: 9999px;
-    background-color: rgba(26, 25, 23, 0.2);
-    border: none;
-    cursor: pointer;
+  .project-viewer-dialog {
+    width: min(94vw, 76rem);
+    max-width: none;
+    max-height: none;
+    margin: auto;
     padding: 0;
-    transition: width 220ms cubic-bezier(0.4, 0, 0.2, 1), background-color 220ms;
+    border: 0;
+    overflow: visible;
+    color: #1a1917;
+    background: transparent;
   }
-  /* +10px touch area on all sides without affecting layout */
-  .lb-dot::before {
+
+  .project-viewer-dialog::backdrop {
+    background: rgba(20, 24, 33, 0.68);
+  }
+
+  .project-viewer-dialog[open] {
+    animation: project-viewer-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .project-viewer-dialog[open]::backdrop {
+    animation: project-viewer-backdrop-in 180ms ease both;
+  }
+
+  .project-viewer-shell {
+    display: flex;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  .project-viewer-panel {
+    display: flex;
+    width: 100%;
+    max-height: min(92dvh, 54rem);
+    min-height: 0;
+    flex-direction: column;
+    gap: clamp(0.85rem, 2vw, 1.25rem);
+    overflow: hidden;
+    border: 1px solid rgba(26, 25, 23, 0.08);
+    border-radius: 2rem;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(249, 250, 255, 0.96)),
+      #ffffff;
+    box-shadow:
+      0 34px 90px -44px rgba(26, 25, 23, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.84);
+    padding: clamp(0.95rem, 2.2vw, 1.55rem);
+  }
+
+  .project-viewer-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .project-viewer-meta {
+    margin: 0;
+    color: #2f2482;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .project-viewer-title {
+    margin-top: 0.25rem;
+    color: #1a1917;
+    font-size: clamp(1.2rem, 1.4vw + 0.9rem, 2rem);
+    line-height: 1.16;
+  }
+
+  .project-viewer-count {
+    margin: 0.35rem 0 0;
+    color: rgba(26, 25, 23, 0.52);
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .project-viewer-close,
+  .project-viewer-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(47, 36, 130, 0.14);
+    border-radius: 9999px;
+    color: #1a1917;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 12px 30px -22px rgba(26, 25, 23, 0.38);
+    cursor: pointer;
+  }
+
+  .project-viewer-close {
+    width: 2.55rem;
+    height: 2.55rem;
+    flex: 0 0 auto;
+  }
+
+  .project-viewer-stage {
+    position: relative;
+    min-height: 0;
+    flex: 1 1 auto;
+  }
+
+  .project-viewer-viewport {
+    height: clamp(20rem, 62dvh, 42rem);
+    overflow: hidden;
+    border: 1px solid rgba(26, 25, 23, 0.06);
+    border-radius: 1.45rem;
+    background: #f4f6fb;
+  }
+
+  .project-viewer-track {
+    display: flex;
+    height: 100%;
+    user-select: none;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .project-viewer-slide {
+    display: flex;
+    min-width: 0;
+    min-height: 100%;
+    flex: 0 0 100%;
+    margin: 0;
+  }
+
+  .project-viewer-image-frame {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: clamp(0.35rem, 1vw, 0.75rem);
+  }
+
+  .project-viewer-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transform: translate3d(var(--zoom-x, 0px), var(--zoom-y, 0px), 0) scale(var(--zoom-scale, 1));
+    transform-origin: center center;
+    transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-viewer-image[data-zoomed] {
+    will-change: transform;
+  }
+
+  .project-viewer-image-frame[data-zoom-gesturing] .project-viewer-image {
+    transition: none;
+  }
+
+  .project-viewer-nav {
+    position: absolute;
+    top: 50%;
+    width: 2.8rem;
+    height: 2.8rem;
+    transform: translateY(-50%);
+  }
+
+  .project-viewer-prev {
+    left: clamp(0.55rem, 1.5vw, 1rem);
+  }
+
+  .project-viewer-next {
+    right: clamp(0.55rem, 1.5vw, 1rem);
+  }
+
+  .project-viewer-close:hover,
+  .project-viewer-nav:hover:not(:disabled) {
+    background: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .project-viewer-nav:hover:not(:disabled) {
+    transform: translateY(calc(-50% - 1px));
+  }
+
+  .project-viewer-close:active {
+    transform: translateY(1px);
+  }
+
+  .project-viewer-nav:active:not(:disabled) {
+    transform: translateY(calc(-50% + 1px));
+  }
+
+  .project-viewer-nav:disabled {
+    opacity: 0.34;
+    cursor: default;
+  }
+
+  .project-viewer-dots {
+    display: flex;
+    min-height: 1.65rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.52rem;
+  }
+
+  .project-viewer-dot {
+    position: relative;
+    width: 0.46rem;
+    height: 0.46rem;
+    padding: 0;
+    border: 0;
+    border-radius: 9999px;
+    background: rgba(26, 25, 23, 0.2);
+    cursor: pointer;
+    transition:
+      width 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-viewer-dot::before {
     content: "";
     position: absolute;
-    inset: -10px;
+    inset: -0.65rem;
   }
-  .lb-dot[data-active] {
-    width: 22px;
-    background-color: #2f2482;
+
+  .project-viewer-dot[data-active] {
+    width: 1.55rem;
+    background: #2f2482;
+  }
+
+  @keyframes project-viewer-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.985);
+    }
+  }
+
+  @keyframes project-viewer-backdrop-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .project-viewer-dialog {
+      width: 100vw;
+      height: 100dvh;
+      margin: 0;
+    }
+
+    .project-viewer-shell {
+      min-height: 100dvh;
+      align-items: stretch;
+      padding: 0;
+    }
+
+    .project-viewer-panel {
+      height: 100dvh;
+      max-height: none;
+      border: 0;
+      border-radius: 0;
+      gap: 0.8rem;
+      padding:
+        calc(0.9rem + env(safe-area-inset-top))
+        1rem
+        calc(0.8rem + env(safe-area-inset-bottom));
+    }
+
+    .project-viewer-header {
+      gap: 0.75rem;
+    }
+
+    .project-viewer-meta {
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+    }
+
+    .project-viewer-title {
+      display: -webkit-box;
+      margin-top: 0.2rem;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      font-size: 1.12rem;
+      line-height: 1.22;
+    }
+
+    .project-viewer-count {
+      margin-top: 0.25rem;
+      font-size: 0.78rem;
+    }
+
+    .project-viewer-close {
+      width: 2.45rem;
+      height: 2.45rem;
+    }
+
+    .project-viewer-stage {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-viewer-viewport {
+      height: 100%;
+      min-height: 0;
+      border-radius: 1.25rem;
+    }
+
+    .project-viewer-image-frame {
+      padding: 0.45rem;
+      touch-action: none;
+    }
+
+    .project-viewer-image-frame[data-zoom-active] {
+      cursor: grab;
+    }
+
+    .project-viewer-nav {
+      width: 2.55rem;
+      height: 2.55rem;
+    }
+
+    .project-viewer-prev {
+      left: 0.55rem;
+    }
+
+    .project-viewer-next {
+      right: 0.55rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .lb-dot, .lb-nav-btn, .lb-close { transition: none; }
+    .project-viewer-dialog[open],
+    .project-viewer-dialog[open]::backdrop {
+      animation: none;
+    }
+
+    .project-viewer-close,
+    .project-viewer-nav,
+    .project-viewer-dot {
+      transition: none;
+    }
   }
 </style>
 
 <script>
   import EmblaCarousel from "embla-carousel";
 
-  const emblaMap = new Map<string, ReturnType<typeof EmblaCarousel>>();
+  interface Point {
+    x: number;
+    y: number;
+  }
 
-  function initCarousel(dialog: HTMLDialogElement, id: string) {
-    // Already initialised — return the cached instance
-    if (emblaMap.has(id)) return emblaMap.get(id)!;
+  interface ZoomSlideState {
+    frame: HTMLElement;
+    image: HTMLImageElement;
+    pointers: Map<number, Point>;
+    scale: number;
+    translateX: number;
+    translateY: number;
+    panStartPoint: Point | null;
+    panStartTranslateX: number;
+    panStartTranslateY: number;
+    pinchStartCenter: Point | null;
+    pinchStartDistance: number;
+    pinchStartScale: number;
+    pinchStartTranslateX: number;
+    pinchStartTranslateY: number;
+    isPanning: boolean;
+    isPinching: boolean;
+  }
 
-    const viewport = dialog.querySelector<HTMLElement>("[data-gallery-viewport]");
+  interface ZoomController {
+    resetAllZoom: (animate?: boolean) => void;
+    isAnyZoomed: () => boolean;
+  }
+
+  interface ViewerState {
+    embla: ReturnType<typeof EmblaCarousel>;
+    trigger?: HTMLElement;
+    updateUi: () => void;
+    resetZoom: (animate?: boolean) => void;
+  }
+
+  const viewerMap = new Map<string, ViewerState>();
+  const mobileZoomQuery = window.matchMedia("(max-width: 639px) and (pointer: coarse)");
+  const maxZoomScale = 3.5;
+  const zoomResetThreshold = 1.02;
+  let scrollLockDepth = 0;
+  let previousBodyOverflow = "";
+  let previousDocumentOverflow = "";
+
+  function isMobileZoomAllowed() {
+    return mobileZoomQuery.matches;
+  }
+
+  function clamp(value: number, min: number, max: number) {
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function getDistance(a: Point, b: Point) {
+    return Math.hypot(a.x - b.x, a.y - b.y);
+  }
+
+  function getCenter(a: Point, b: Point): Point {
+    return {
+      x: (a.x + b.x) / 2,
+      y: (a.y + b.y) / 2
+    };
+  }
+
+  function getRelativePoint(frame: HTMLElement, point: Point): Point {
+    const rect = frame.getBoundingClientRect();
+    return {
+      x: point.x - (rect.left + rect.width / 2),
+      y: point.y - (rect.top + rect.height / 2)
+    };
+  }
+
+  function getPointerPoint(event: PointerEvent): Point {
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  function shouldHandleZoomPointer(event: PointerEvent) {
+    return isMobileZoomAllowed() && event.pointerType === "touch";
+  }
+
+  function stopZoomEvent(event: PointerEvent) {
+    if (event.cancelable) event.preventDefault();
+    event.stopPropagation();
+  }
+
+  function clampZoomTranslation(state: ZoomSlideState, x: number, y: number, scale: number): Point {
+    const frameRect = state.frame.getBoundingClientRect();
+    const imageWidth = state.image.offsetWidth || frameRect.width;
+    const imageHeight = state.image.offsetHeight || frameRect.height;
+    const maxX = Math.max(0, (imageWidth * scale - frameRect.width) / 2);
+    const maxY = Math.max(0, (imageHeight * scale - frameRect.height) / 2);
+
+    return {
+      x: clamp(x, -maxX, maxX),
+      y: clamp(y, -maxY, maxY)
+    };
+  }
+
+  function applyZoom(state: ZoomSlideState, scale: number, x: number, y: number, animate = false) {
+    const nextScale = clamp(scale, 1, maxZoomScale);
+    const nextTranslation = nextScale <= zoomResetThreshold
+      ? { x: 0, y: 0 }
+      : clampZoomTranslation(state, x, y, nextScale);
+
+    state.scale = nextScale <= zoomResetThreshold ? 1 : nextScale;
+    state.translateX = nextTranslation.x;
+    state.translateY = nextTranslation.y;
+    state.image.style.setProperty("--zoom-scale", state.scale.toFixed(4));
+    state.image.style.setProperty("--zoom-x", `${state.translateX.toFixed(2)}px`);
+    state.image.style.setProperty("--zoom-y", `${state.translateY.toFixed(2)}px`);
+
+    if (animate) state.frame.removeAttribute("data-zoom-gesturing");
+
+    const isZoomed = state.scale > 1;
+    state.frame.toggleAttribute("data-zoom-active", isZoomed);
+    state.image.toggleAttribute("data-zoomed", isZoomed);
+  }
+
+  function resetZoomState(state: ZoomSlideState, animate = false) {
+    state.pointers.clear();
+    state.panStartPoint = null;
+    state.pinchStartCenter = null;
+    state.isPanning = false;
+    state.isPinching = false;
+
+    if (!animate) state.frame.setAttribute("data-zoom-gesturing", "");
+    applyZoom(state, 1, 0, 0, animate);
+    if (!animate) state.frame.removeAttribute("data-zoom-gesturing");
+  }
+
+  function captureZoomPointers(state: ZoomSlideState) {
+    state.pointers.forEach((_, pointerId) => {
+      try {
+        state.frame.setPointerCapture(pointerId);
+      } catch {
+        // Pointer capture can fail if the browser has already released it.
+      }
+    });
+  }
+
+  function releaseZoomPointer(state: ZoomSlideState, pointerId: number) {
+    try {
+      state.frame.releasePointerCapture(pointerId);
+    } catch {
+      // The pointer may already be released by the browser.
+    }
+  }
+
+  function getFirstTwoPointers(state: ZoomSlideState): [Point, Point] | null {
+    const points = Array.from(state.pointers.values());
+    if (points.length < 2) return null;
+    return [points[0], points[1]];
+  }
+
+  function startPinch(state: ZoomSlideState) {
+    const points = getFirstTwoPointers(state);
+    if (!points) return;
+
+    const center = getRelativePoint(state.frame, getCenter(points[0], points[1]));
+    state.pinchStartCenter = center;
+    state.pinchStartDistance = Math.max(1, getDistance(points[0], points[1]));
+    state.pinchStartScale = state.scale;
+    state.pinchStartTranslateX = state.translateX;
+    state.pinchStartTranslateY = state.translateY;
+    state.isPinching = true;
+    state.isPanning = false;
+    state.frame.setAttribute("data-zoom-gesturing", "");
+    captureZoomPointers(state);
+  }
+
+  function continuePinch(state: ZoomSlideState) {
+    const points = getFirstTwoPointers(state);
+    if (!points || !state.pinchStartCenter) return;
+
+    const center = getRelativePoint(state.frame, getCenter(points[0], points[1]));
+    const distance = Math.max(1, getDistance(points[0], points[1]));
+    const nextScale = clamp(
+      state.pinchStartScale * (distance / state.pinchStartDistance),
+      1,
+      maxZoomScale
+    );
+    const scaleRatio = nextScale / state.pinchStartScale;
+    const nextX = center.x - (state.pinchStartCenter.x - state.pinchStartTranslateX) * scaleRatio;
+    const nextY = center.y - (state.pinchStartCenter.y - state.pinchStartTranslateY) * scaleRatio;
+
+    applyZoom(state, nextScale, nextX, nextY);
+  }
+
+  function startPan(state: ZoomSlideState, point: Point) {
+    state.panStartPoint = point;
+    state.panStartTranslateX = state.translateX;
+    state.panStartTranslateY = state.translateY;
+    state.isPanning = true;
+    state.isPinching = false;
+    state.frame.setAttribute("data-zoom-gesturing", "");
+  }
+
+  function continuePan(state: ZoomSlideState, point: Point) {
+    if (!state.panStartPoint) return;
+
+    const nextX = state.panStartTranslateX + point.x - state.panStartPoint.x;
+    const nextY = state.panStartTranslateY + point.y - state.panStartPoint.y;
+    applyZoom(state, state.scale, nextX, nextY);
+  }
+
+  function initMobileZoom(dialog: HTMLDialogElement): ZoomController {
+    const states = Array.from(dialog.querySelectorAll<HTMLElement>("[data-project-viewer-zoom-frame]"))
+      .map((frame): ZoomSlideState | null => {
+        const image = frame.querySelector<HTMLImageElement>("[data-project-viewer-zoom-image]");
+        if (!image || !("PointerEvent" in window)) return null;
+
+        const state: ZoomSlideState = {
+          frame,
+          image,
+          pointers: new Map(),
+          scale: 1,
+          translateX: 0,
+          translateY: 0,
+          panStartPoint: null,
+          panStartTranslateX: 0,
+          panStartTranslateY: 0,
+          pinchStartCenter: null,
+          pinchStartDistance: 1,
+          pinchStartScale: 1,
+          pinchStartTranslateX: 0,
+          pinchStartTranslateY: 0,
+          isPanning: false,
+          isPinching: false
+        };
+
+        frame.addEventListener("pointerdown", (event) => {
+          if (!shouldHandleZoomPointer(event)) return;
+
+          const point = getPointerPoint(event);
+          state.pointers.set(event.pointerId, point);
+
+          if (state.pointers.size >= 2) {
+            stopZoomEvent(event);
+            startPinch(state);
+            return;
+          }
+
+          if (state.scale > 1) {
+            stopZoomEvent(event);
+            captureZoomPointers(state);
+            startPan(state, point);
+          }
+        }, { capture: true });
+
+        frame.addEventListener("pointermove", (event) => {
+          if (!shouldHandleZoomPointer(event) || !state.pointers.has(event.pointerId)) return;
+
+          state.pointers.set(event.pointerId, getPointerPoint(event));
+
+          if (state.pointers.size >= 2) {
+            stopZoomEvent(event);
+            if (!state.isPinching) startPinch(state);
+            continuePinch(state);
+            return;
+          }
+
+          if (state.scale > 1 && state.isPanning) {
+            stopZoomEvent(event);
+            continuePan(state, getPointerPoint(event));
+          }
+        }, { capture: true });
+
+        const finishPointer = (event: PointerEvent) => {
+          if (!shouldHandleZoomPointer(event) || !state.pointers.has(event.pointerId)) return;
+
+          const handledZoom = state.isPinching || state.isPanning || state.scale > 1;
+          state.pointers.delete(event.pointerId);
+          releaseZoomPointer(state, event.pointerId);
+
+          if (state.pointers.size >= 2) {
+            startPinch(state);
+          } else if (state.pointers.size === 1 && state.scale > 1) {
+            const [remainingPoint] = Array.from(state.pointers.values());
+            startPan(state, remainingPoint);
+          } else {
+            state.isPinching = false;
+            state.isPanning = false;
+            state.frame.removeAttribute("data-zoom-gesturing");
+            if (state.scale <= zoomResetThreshold) resetZoomState(state, true);
+            else applyZoom(state, state.scale, state.translateX, state.translateY, true);
+          }
+
+          if (handledZoom) stopZoomEvent(event);
+        };
+
+        frame.addEventListener("pointerup", finishPointer, { capture: true });
+        frame.addEventListener("pointercancel", finishPointer, { capture: true });
+        frame.addEventListener("lostpointercapture", (event) => {
+          state.pointers.delete(event.pointerId);
+          if (state.pointers.size === 0) {
+            state.isPinching = false;
+            state.isPanning = false;
+            state.frame.removeAttribute("data-zoom-gesturing");
+          }
+        });
+
+        return state;
+      })
+      .filter((state): state is ZoomSlideState => Boolean(state));
+
+    return {
+      resetAllZoom(animate = false) {
+        states.forEach((state) => resetZoomState(state, animate));
+      },
+      isAnyZoomed() {
+        return states.some((state) => state.scale > 1);
+      }
+    };
+  }
+
+  function lockPageScroll() {
+    if (scrollLockDepth === 0) {
+      previousBodyOverflow = document.body.style.overflow;
+      previousDocumentOverflow = document.documentElement.style.overflow;
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    }
+
+    scrollLockDepth += 1;
+  }
+
+  function unlockPageScroll() {
+    scrollLockDepth = Math.max(0, scrollLockDepth - 1);
+
+    if (scrollLockDepth === 0) {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousDocumentOverflow;
+    }
+  }
+
+  function initViewer(dialog: HTMLDialogElement, id: string): ViewerState | null {
+    const cached = viewerMap.get(id);
+    if (cached) return cached;
+
+    const viewport = dialog.querySelector<HTMLElement>("[data-project-viewer-viewport]");
     if (!viewport) return null;
 
-    const embla = EmblaCarousel(viewport, { loop: false, align: "center" });
-    emblaMap.set(id, embla);
+    let zoomController: ZoomController = {
+      resetAllZoom() {},
+      isAnyZoomed() {
+        return false;
+      }
+    };
 
-    const prevBtn = dialog.querySelector<HTMLButtonElement>("[data-gallery-prev]");
-    const nextBtn = dialog.querySelector<HTMLButtonElement>("[data-gallery-next]");
-    const countEl = dialog.querySelector<HTMLElement>("[data-gallery-count]");
-    const dots = dialog.querySelectorAll<HTMLButtonElement>("[data-gallery-dot]");
+    const embla = EmblaCarousel(viewport, {
+      align: "center",
+      containScroll: "trimSnaps",
+      dragFree: false,
+      loop: false,
+      skipSnaps: false,
+      watchDrag: () => !zoomController.isAnyZoomed()
+    });
 
-    function updateUI() {
-      const index = embla.selectedScrollSnap();
+    const prevButton = dialog.querySelector<HTMLButtonElement>("[data-project-viewer-prev]");
+    const nextButton = dialog.querySelector<HTMLButtonElement>("[data-project-viewer-next]");
+    const count = dialog.querySelector<HTMLElement>("[data-project-viewer-count]");
+    const dots = Array.from(dialog.querySelectorAll<HTMLButtonElement>("[data-project-viewer-dot]"));
+    const slides = Array.from(dialog.querySelectorAll<HTMLElement>(".project-viewer-slide"));
+    zoomController = initMobileZoom(dialog);
+
+    function updateUi() {
+      const selected = embla.selectedScrollSnap();
       const total = embla.scrollSnapList().length;
-      if (prevBtn) prevBtn.disabled = !embla.canScrollPrev();
-      if (nextBtn) nextBtn.disabled = !embla.canScrollNext();
-      if (countEl) countEl.textContent = total > 1 ? `${index + 1} / ${total}` : "";
+
+      if (prevButton) prevButton.disabled = !embla.canScrollPrev();
+      if (nextButton) nextButton.disabled = !embla.canScrollNext();
+      if (count) count.textContent = `${selected + 1} / ${total}`;
+
+      slides.forEach((slide, index) => {
+        slide.toggleAttribute("aria-hidden", index !== selected);
+      });
+
       dots.forEach((dot, i) => {
-        if (i === index) dot.setAttribute("data-active", "");
-        else dot.removeAttribute("data-active");
+        const isActive = i === selected;
+        dot.toggleAttribute("data-active", isActive);
+        if (isActive) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
       });
     }
 
-    embla.on("select", updateUI);
-    embla.on("reInit", updateUI);
-
-    prevBtn?.addEventListener("click", () => embla.scrollPrev());
-    nextBtn?.addEventListener("click", () => embla.scrollNext());
-    dots.forEach((dot, i) => dot.addEventListener("click", () => embla.scrollTo(i)));
-
-    dialog.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") { e.preventDefault(); embla.scrollPrev(); }
-      else if (e.key === "ArrowRight") { e.preventDefault(); embla.scrollNext(); }
+    prevButton?.addEventListener("click", () => embla.scrollPrev());
+    nextButton?.addEventListener("click", () => embla.scrollNext());
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => embla.scrollTo(index));
     });
 
-    // One reInit after first paint so Embla measures the live dialog dimensions
-    requestAnimationFrame(() => { embla.reInit(); updateUI(); });
+    dialog.addEventListener("keydown", (e) => {
+      if (!dialog.open) return;
 
-    updateUI();
-    return embla;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        embla.scrollPrev();
+      }
+
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        embla.scrollNext();
+      }
+    });
+
+    embla.on("select", () => {
+      zoomController.resetAllZoom(false);
+      updateUi();
+    });
+    embla.on("reInit", updateUi);
+
+    const state = {
+      embla,
+      updateUi,
+      resetZoom: zoomController.resetAllZoom
+    };
+    viewerMap.set(id, state);
+    updateUi();
+
+    return state;
   }
 
-  document.querySelectorAll<HTMLDialogElement>("[data-gallery-dialog]").forEach((dialog) => {
-    const id = dialog.dataset.galleryDialog!;
+  document.querySelectorAll<HTMLDialogElement>("[data-project-viewer-dialog]").forEach((dialog) => {
+    const id = dialog.dataset.projectViewerDialog;
+    if (!id) return;
 
-    dialog.querySelector("[data-gallery-close]")?.addEventListener("click", () => dialog.close());
+    dialog.querySelector<HTMLButtonElement>("[data-project-viewer-close]")?.addEventListener("click", () => {
+      dialog.close();
+    });
 
-    // Backdrop click
     dialog.addEventListener("click", (e) => {
-      const b = dialog.getBoundingClientRect();
-      if (e.clientX < b.left || e.clientX > b.right || e.clientY < b.top || e.clientY > b.bottom) {
+      const target = e.target;
+      if (target === dialog || (target instanceof HTMLElement && target.hasAttribute("data-project-viewer-shell"))) {
         dialog.close();
       }
     });
 
-    // Reset to first slide on close
-    dialog.addEventListener("close", () => { emblaMap.get(id)?.scrollTo(0, false); });
+    dialog.addEventListener("close", () => {
+      unlockPageScroll();
+
+      const state = viewerMap.get(id);
+      state?.resetZoom(false);
+      state?.embla.scrollTo(0, true);
+      state?.updateUi();
+      state?.trigger?.focus({ preventScroll: true });
+    });
   });
 
-  document.querySelectorAll<HTMLElement>("[data-gallery-trigger]").forEach((trigger) => {
-    const id = trigger.dataset.galleryTrigger!;
-    const dialog = document.querySelector<HTMLDialogElement>(`[data-gallery-dialog="${id}"]`);
+  document.querySelectorAll<HTMLButtonElement>("[data-project-viewer-trigger]").forEach((trigger) => {
+    const id = trigger.dataset.projectViewerTrigger;
+    if (!id) return;
+
+    const dialog = document.querySelector<HTMLDialogElement>(`[data-project-viewer-dialog="${id}"]`);
     if (!dialog) return;
 
     trigger.addEventListener("click", () => {
-      dialog.showModal();
-      // initCarousel is idempotent — cheap on repeat opens (just returns cached instance)
-      initCarousel(dialog, id);
+      if (!dialog.open) {
+        lockPageScroll();
+        try {
+          dialog.showModal();
+        } catch (error) {
+          unlockPageScroll();
+          throw error;
+        }
+      }
+
+      const state = initViewer(dialog, id);
+      if (!state) return;
+
+      state.trigger = trigger;
+      requestAnimationFrame(() => {
+        state.embla.reInit();
+        state.updateUi();
+      });
     });
   });
 </script>
