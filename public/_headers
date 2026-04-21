@@ -1,4 +1,13 @@
 # Cloudflare Pages _headers file
+# Sitemap / robots — explicit types (helps crawlers and edge caches)
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+
 # Static assets - immutable, long cache (Astro appends content hashes)
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

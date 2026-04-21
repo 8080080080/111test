@@ -1,15 +1,6 @@
 import { getSiteData } from "../lib/content";
 
-const AI_CRAWLERS = [
-  "Amazonbot",
-  "Applebot-Extended",
-  "Bytespider",
-  "CCBot",
-  "ClaudeBot",
-  "Google-Extended",
-  "GPTBot",
-  "meta-externalagent",
-];
+export const prerender = true;
 
 export function GET() {
   const site = getSiteData();
@@ -17,11 +8,6 @@ export function GET() {
     "User-agent: *",
     "Allow: /",
     "",
-    ...AI_CRAWLERS.flatMap((bot) => [
-      `User-agent: ${bot}`,
-      "Disallow: /",
-      "",
-    ]),
     `Sitemap: ${new URL("/sitemap.xml", site.defaultSeo.siteUrl).toString()}`,
   ];
 

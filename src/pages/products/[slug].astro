@@ -72,7 +72,6 @@ const schemas = [
   description={product.seoDescription}
   pathname={productPath}
   image={product.images[0]?.src}
-  keywords={product.keywords}
   schemas={schemas}
   lcpImageSrc={product.images[0]?.src}
 >
@@ -96,11 +95,12 @@ const schemas = [
             <p class="text-panel max-w-2xl text-lg">{product.shortDescription}</p>
           </div>
 
-          <div class="flex flex-wrap gap-2">
-            {product.keywords.map((keyword) => (
-              <span class="rounded-full bg-shell px-4 py-2 text-sm font-semibold text-ink/75">{keyword}</span>
-            ))}
-          </div>
+          {product.useCases.length > 0 && (
+            <p class="text-panel max-w-2xl text-base text-ink/80">
+              <span class="font-semibold text-ink">სად ეხდება:</span>{" "}
+              {product.useCases.slice(0, 3).join(" · ")}
+            </p>
+          )}
 
           <div class="surface-card space-y-5 p-6">
             <p>{product.fullDescription}</p>

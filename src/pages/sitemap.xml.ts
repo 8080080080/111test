@@ -1,6 +1,8 @@
 import productsData from "../data/products.json";
 import siteData from "../data/site.json";
 
+export const prerender = true;
+
 const siteUrl = siteData.defaultSeo.siteUrl;
 const today = new Date().toISOString().split("T")[0];
 

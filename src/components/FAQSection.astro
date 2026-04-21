@@ -12,6 +12,7 @@ interface Props {
   compact?: boolean;
   align?: "left" | "center";
   stackCta?: boolean;
+  titleTag?: "h1" | "h2";
 }
 
 const {
@@ -23,7 +24,8 @@ const {
   ctaHref,
   compact = false,
   align = "left",
-  stackCta = false
+  stackCta = false,
+  titleTag = "h2"
 } = Astro.props;
 ---
 
@@ -37,6 +39,7 @@ const {
       linkLabel={ctaLabel}
       linkHref={ctaHref}
       stackLink={stackCta}
+      titleTag={titleTag}
     />
     <div class="grid gap-4">
       {faqs.map((faq) => (

@@ -7,6 +7,8 @@ interface Props {
   linkLabel?: string;
   linkHref?: string;
   stackLink?: boolean;
+  /** Use h1 for page-level titles (one per page for SEO). */
+  titleTag?: "h1" | "h2";
 }
 
 const {
@@ -16,8 +18,11 @@ const {
   align = "left",
   linkLabel,
   linkHref,
-  stackLink = false
+  stackLink = false,
+  titleTag = "h2"
 } = Astro.props;
+
+const titleClass = `text-panel inline-block ${align === "center" ? "max-w-4xl" : "max-w-3xl"} text-3xl sm:text-4xl lg:text-5xl`;
 
 const alignment =
   align === "center"
@@ -29,7 +34,7 @@ const alignment =
   {eyebrow && <p class="eyebrow text-panel-compact inline-flex w-fit">{eyebrow}</p>}
   <div class={`flex w-full flex-col gap-4 ${stackLink ? "items-center" : "md:flex-row md:items-end md:justify-between"}`}>
     <div class="space-y-4">
-      <h2 class={`text-panel inline-block ${align === "center" ? "max-w-4xl" : "max-w-3xl"} text-3xl sm:text-4xl lg:text-5xl`}>{title}</h2>
+      {titleTag === "h1" ? <h1 class={titleClass}>{title}</h1> : <h2 class={titleClass}>{title}</h2>}
       {description && <p class="text-panel max-w-2xl text-base sm:text-lg">{description}</p>}
     </div>
     {linkLabel && linkHref && (

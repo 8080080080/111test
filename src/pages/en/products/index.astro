@@ -16,7 +16,6 @@ const breadcrumbs = createBreadcrumbSchema([
   title="Blinds and Insect Screen Catalog | Winsome Tbilisi"
   description="9 types of blinds and insect screens in custom sizes: pleated, roller, zebra, Roman, honeycomb, vertical, horizontal and insect protection systems."
   pathname="/en/products/"
-  keywords={products.flatMap((product) => product.keywords).slice(0, 18)}
   schemas={[breadcrumbs]}
   locale="en"
 >
@@ -30,6 +29,7 @@ const breadcrumbs = createBreadcrumbSchema([
       <SectionHeading
         eyebrow="Product Overview"
         title="Blind and insect screen systems for Georgian spaces"
+        titleTag="h1"
       />
     </div>
   </section>
@@ -38,6 +38,37 @@ const breadcrumbs = createBreadcrumbSchema([
     <div class="container-shell">
       <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {products.map((product) => <ProductCard product={product} locale="en" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-black/8 bg-shell/40 pb-16 pt-12 sm:pb-20 sm:pt-16">
+    <div class="container-shell max-w-4xl space-y-8">
+      <h2 class="text-panel text-3xl sm:text-4xl">How to choose blinds or insect screens in Tbilisi</h2>
+      <div class="space-y-5 text-base leading-relaxed text-ink/85">
+        <p>
+          In apartments, houses, and offices across Tbilisi, the right window treatment affects comfort: light control, privacy, energy efficiency, and a clean interior line. At Winsome, every system — including{" "}
+          <strong>pleated blinds</strong>, <strong>roller blinds</strong>, <strong>zebra blinds</strong>, Roman, honeycomb, vertical and horizontal blinds, plus{" "}
+          <strong>insect screens</strong> — is made to measure and installed on site in Georgia.
+        </p>
+        <h3 class="text-xl font-semibold text-ink">Which system fits which scenario</h3>
+        <p>
+          Compact openings and non-standard shapes often suit pleated or roller solutions. Roller and zebra blinds work well in living rooms and bedrooms where you want flexible light tuning. Vertical systems are common on wide glazing or in commercial spaces; horizontal slats suit classic windows where precise shading matters. Pleated insect screens and framed mesh doors are essential for balcony doors and busy entrances.
+        </p>
+        <h3 class="text-xl font-semibold text-ink">Measuring, consultation, and installation</h3>
+        <p>
+          A good result depends on opening width and height, profile type, and interior constraints (curtain rails, handles, radiators). We offer consultation, on-site measuring, and installation — in Tbilisi and other regions where service is available. That reduces error risk and helps the system last longer in daily use.
+        </p>
+        <p>
+          If you are searching for “window blinds Tbilisi”, “roller blinds”, “zebra blinds”, or “insect screens” — browse the category grid above, pick a product line, and contact us by phone or WhatsApp for a free orientation. Local manufacturing means flexible timelines and clearer communication for Georgian building realities.
+        </p>
+        <p>
+          Our service area includes not only Tbilisi but also Rustavi, Mtskheta, Batumi, Kutaisi, and Gori — for larger projects and residences we plan logistics and installation schedules so the process stays transparent from start to finish.
+        </p>
+        <p class="text-ink/70">
+          <a class="font-semibold text-bronze hover:underline" href="/en/contact/">Contact and studio visits</a>
+          {" "}— measuring and installation visits by appointment.
+        </p>
       </div>
     </div>
   </section>

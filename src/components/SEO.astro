@@ -1,26 +1,24 @@
 ---
 import type { Locale } from "../lib/content";
 import { getSiteData } from "../lib/content";
-import { getCanonicalUrl, getMetaDescription, getMetaKeywords, getMetaTitle, toAbsoluteUrl } from "../lib/seo";
+import { getCanonicalUrl, getMetaDescription, getMetaTitle, toAbsoluteUrl } from "../lib/seo";
 
 interface Props {
   title?: string;
   description?: string;
   pathname?: string;
   image?: string;
-  keywords?: string[];
   noIndex?: boolean;
   schemas?: unknown[];
   locale?: Locale;
 }
 
-const { title, description, pathname = "/", image, keywords = [], noIndex = false, schemas = [], locale = "ka" } = Astro.props;
+const { title, description, pathname = "/", image, noIndex = false, schemas = [], locale = "ka" } = Astro.props;
 const site = getSiteData(locale);
 const metaTitle = getMetaTitle(title, locale);
 const metaDescription = getMetaDescription(description, locale);
 const canonical = getCanonicalUrl(pathname);
 const metaImage = toAbsoluteUrl(image || site.defaultSeo.defaultImage);
-const metaKeywords = getMetaKeywords(keywords, locale).join(", ");
 
 const kaPath = pathname.startsWith("/en/") ? pathname.replace(/^\/en\//, "/") : pathname;
 const enPath = pathname.startsWith("/en/") ? pathname : `/en${pathname}`;
@@ -30,7 +28,6 @@ const enUrl = getCanonicalUrl(enPath);
 
 <title>{metaTitle}</title>
 <meta name="description" content={metaDescription} />
-<meta name="keywords" content={metaKeywords} />
 <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
 <link rel="canonical" href={canonical} />
 <link rel="alternate" hreflang="ka" href={kaUrl} />

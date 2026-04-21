@@ -1,4 +1,5 @@
 ---
+import { getWebpVariantUrl } from "../lib/imageRegistry";
 import type { ProductColorCollection } from "../types/content";
 
 interface Props {
@@ -7,6 +8,8 @@ interface Props {
 }
 
 const { collections, id = "grouped-color-catalog" } = Astro.props;
+const srcSetFor = (item: { src: string; width: number }) => `${item.src} ${item.width}w`;
+const gridSizes = "(min-width: 1280px) 22vw, (min-width: 640px) 33vw, 50vw";
 ---
 
 <div id={id} class="space-y-8 sm:space-y-10" data-grouped-color-catalog>
@@ -34,7 +37,9 @@ const { collections, id = "grouped-color-catalog" } = Astro.props;
         </div>
 
         <div class={gridClasses}>
-          {collection.items.map((item, itemIndex) => (
+          {collection.items.map((item, itemIndex) => {
+            const webp = getWebpVariantUrl(item.src);
+            return (
             <button
               type="button"
               class="group space-y-2 text-left"
@@ -47,20 +52,26 @@ const { collections, id = "grouped-color-catalog" } = Astro.props;
             >
               <div class="rounded-2xl border border-black/8 bg-white p-1.5 shadow-card transition duration-200 group-hover:-translate-y-1 group-hover:shadow-card-hover group-focus-visible:-translate-y-1 group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-bronze">
                 <div class={`overflow-hidden rounded-2xl bg-shell ${frameAspect}`}>
-                  <img
-                    class={`h-full w-full transition duration-300 group-hover:scale-[1.02] ${imageFit}`}
-                    src={item.src}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
-                    loading={collectionIndex === 0 && itemIndex < 3 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
+                  <picture>
+                    {webp && <source srcset={`${webp} ${item.width}w`} type="image/webp" sizes={gridSizes} />}
+                    <img
+                      class={`h-full w-full transition duration-300 group-hover:scale-[1.02] ${imageFit}`}
+                      src={item.src}
+                      srcset={srcSetFor(item)}
+                      sizes={gridSizes}
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      loading={collectionIndex === 0 && itemIndex < 3 ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                  </picture>
                 </div>
               </div>
               <p class="px-1 text-sm font-semibold tracking-[0.08em] text-ink/75">{item.code}</p>
             </button>
-          ))}
+          );
+          })}
         </div>
       </section>
     );

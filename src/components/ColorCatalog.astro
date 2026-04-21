@@ -1,4 +1,5 @@
 ---
+import { getWebpVariantUrl } from "../lib/imageRegistry";
 import type { ProductImage } from "../types/content";
 
 interface Props {
@@ -11,6 +12,9 @@ const { items, id, mobileFullscreen = false } = Astro.props;
 const tileSize = 120;
 const tileMargin = 5;
 const previewSize = 240;
+const tileSizesAttr = `${tileSize}px`;
+const previewSizesAttr = `${previewSize}px`;
+const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
 ---
 
 <div
@@ -21,7 +25,9 @@ const previewSize = 240;
   style={`--catalog-tile-size:${tileSize}px; --catalog-tile-margin:${tileMargin}px; --catalog-preview-size:${previewSize}px;`}
 >
   <div class="color-catalog__layout" data-catalog-layout>
-    {items.map((item, index) => (
+    {items.map((item, index) => {
+      const webp = getWebpVariantUrl(item.src);
+      return (
       <button
         type="button"
         class="color-catalog__tile"
@@ -29,32 +35,46 @@ const previewSize = 240;
         data-index={index}
         aria-label={item.alt}
       >
-        <img
-          src={item.src}
-          alt={item.alt}
-          width={tileSize}
-          height={tileSize}
-          loading="lazy"
-          decoding="async"
-          class="h-full w-full object-cover"
-        />
-      </button>
-    ))}
-
-    <div class="color-catalog__preview" data-catalog-preview aria-hidden="true">
-      {items.map((item, index) => (
-        <div class="color-catalog__preview-item" data-preview-item data-index={index} hidden={index !== 0}>
+        <picture>
+          {webp && <source srcset={`${webp} ${item.width}w`} type="image/webp" sizes={tileSizesAttr} />}
           <img
             src={item.src}
-            alt=""
-            width={previewSize}
-            height={previewSize}
+            srcset={srcSetFor(item)}
+            sizes={tileSizesAttr}
+            alt={item.alt}
+            width={tileSize}
+            height={tileSize}
             loading="lazy"
             decoding="async"
             class="h-full w-full object-cover"
           />
+        </picture>
+      </button>
+    );
+    })}
+
+    <div class="color-catalog__preview" data-catalog-preview aria-hidden="true">
+      {items.map((item, index) => {
+        const webp = getWebpVariantUrl(item.src);
+        return (
+        <div class="color-catalog__preview-item" data-preview-item data-index={index} hidden={index !== 0}>
+          <picture>
+            {webp && <source srcset={`${webp} ${item.width}w`} type="image/webp" sizes={previewSizesAttr} />}
+            <img
+              src={item.src}
+              srcset={srcSetFor(item)}
+              sizes={previewSizesAttr}
+              alt=""
+              width={previewSize}
+              height={previewSize}
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover"
+            />
+          </picture>
         </div>
-      ))}
+      );
+      })}
     </div>
   </div>
 
@@ -95,22 +115,30 @@ const previewSize = 240;
           )}
 
           <div class="color-catalog__viewer-track" data-catalog-viewer-track tabindex="0">
-            {items.map((item, index) => (
+            {items.map((item, index) => {
+              const webp = getWebpVariantUrl(item.src);
+              return (
               <figure class="color-catalog__viewer-slide" data-catalog-viewer-slide data-index={index}>
                 <div class="color-catalog__viewer-zoom-frame" data-catalog-viewer-zoom-frame data-index={index}>
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
-                    loading="lazy"
-                    decoding="async"
-                    class="color-catalog__viewer-image"
-                    data-catalog-viewer-image
-                  />
+                  <picture>
+                    {webp && <source srcset={`${webp} ${item.width}w`} type="image/webp" sizes="100vw" />}
+                    <img
+                      src={item.src}
+                      srcset={srcSetFor(item)}
+                      sizes="100vw"
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      loading="lazy"
+                      decoding="async"
+                      class="color-catalog__viewer-image"
+                      data-catalog-viewer-image
+                    />
+                  </picture>
                 </div>
               </figure>
-            ))}
+            );
+            })}
           </div>
         </div>
 

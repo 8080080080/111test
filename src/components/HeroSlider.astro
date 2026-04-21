@@ -31,15 +31,15 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAA
   <div class="container-shell">
     <div class="surface-card overflow-hidden bg-hero-glow">
       <div class="grid gap-8 px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-12 lg:py-14">
-        <div class="space-y-6">
+        <div class="flex flex-col items-center space-y-6 text-center">
           <span class="text-panel-compact inline-flex text-xs font-semibold uppercase tracking-[0.2em] text-bronze">
             {eyebrow}
           </span>
           <div class="space-y-4">
-            <h1 class="text-panel inline-block max-w-3xl text-4xl sm:text-5xl lg:text-6xl">{title}</h1>
-            <p class="text-panel max-w-2xl text-base sm:text-lg">{description}</p>
+            <h1 class="text-panel mx-auto max-w-3xl text-4xl sm:text-5xl lg:text-6xl">{title}</h1>
+            <p class="text-panel mx-auto max-w-2xl text-base sm:text-lg">{description}</p>
           </div>
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap items-center justify-center gap-3">
             <a class="button-primary" href={primaryHref}>{primaryLabel}</a>
             <a class="button-secondary" href={secondaryHref}>{secondaryLabel}</a>
           </div>
@@ -96,7 +96,7 @@ const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAA
           </div>
 
           <div class="mt-5 px-1 sm:px-2">
-            <div class="flex w-full items-center justify-between gap-2 sm:gap-3" aria-label="მთავარი ფოტო სლაიდები">
+            <div class="flex w-full flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label="მთავარი ფოტო სლაიდები">
               {slides.map((slide, index) => (
                 <button
                   class={`h-2.5 rounded-full bg-ink/20 ${index === 0 ? "w-10 bg-bronze" : "w-2.5"}`}

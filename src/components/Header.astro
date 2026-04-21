@@ -24,30 +24,44 @@ const altLangHref = isNotFoundPage
   : locale === "en"
     ? currentPath.replace(/^\/en\//, "/") || "/"
     : `/en${currentPath}`;
+
+/** English labels are longer — a touch more gap/padding keeps the bar balanced vs Georgian. */
+const navGapClass = locale === "en" ? "gap-2" : "gap-1";
+const navLinkPadClass = locale === "en" ? "px-3.5 py-2" : "px-3 py-2";
+const rightClusterGapClass = locale === "en" ? "gap-3" : "gap-2";
 ---
 
 <header class="sticky top-0 z-50 border-b border-black/8 bg-canvas/88 backdrop-blur-xl">
-  <div class="container-shell flex items-center justify-between gap-4 py-4">
+  <!-- Language: fixed top-right on xl+ only; on mobile the switcher lives inside the hamburger menu. -->
+  <a
+    class="fixed right-3 top-3 z-[60] hidden min-h-11 min-w-11 items-center justify-center rounded-full border border-black/12 bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink/80 shadow-soft backdrop-blur-xl transition hover:bg-white sm:right-4 sm:top-4 xl:inline-flex"
+    href={altLangHref}
+    aria-label={locale === "en" ? "Switch to Georgian" : "Switch to English"}
+  >
+    {altLangLabel}
+  </a>
+  <!-- Extra right padding only when the fixed language control is visible (xl+) -->
+  <div class="container-shell flex items-center justify-between gap-4 py-4 xl:pr-20">
     <a class="flex shrink-0 items-center gap-3" href={homeHref} aria-label={`${site.businessName} ${locale === "en" ? "Home" : "მთავარი გვერდი"}`}>
       <img
         class="h-auto w-[12rem] object-contain sm:w-[14rem] lg:w-[15.5rem]"
         src={site.logoImage}
         alt={`${site.businessName} ლოგო`}
-        width={160}
-        height={63}
+        width={375}
+        height={148}
         loading="eager"
         decoding="async"
       />
       <span class="sr-only">{site.businessName}</span>
     </a>
 
-    <nav class="hidden items-center gap-1 xl:flex" aria-label={locale === "en" ? "Main navigation" : "მთავარი ნავიგაცია"}>
+    <nav class={`hidden items-center ${navGapClass} xl:flex`} aria-label={locale === "en" ? "Main navigation" : "მთავარი ნავიგაცია"}>
       {site.navigation.map((item) => {
         const navHref = locale === "en" ? `/en${item.href}` : item.href;
         const active = item.href === "/" ? currentPath === homeHref : currentPath.startsWith(navHref);
         return (
           <a
-            class={`whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold ${active ? "bg-ink text-mist" : "text-ink/75 hover:bg-white/80"}`}
+            class={`whitespace-nowrap rounded-full text-sm font-semibold ${navLinkPadClass} ${active ? "bg-ink text-mist" : "text-ink/75 hover:bg-white/80"}`}
             href={navHref}
           >
             {item.label}
@@ -56,13 +70,12 @@ const altLangHref = isNotFoundPage
       })}
     </nav>
 
-    <div class="hidden items-center gap-2 xl:flex">
-      <a class="whitespace-nowrap rounded-full border border-black/12 px-3 py-1.5 text-xs font-semibold text-ink/75 hover:bg-white/80" href={altLangHref}>{altLangLabel}</a>
+    <div class={`hidden items-center ${rightClusterGapClass} xl:flex`}>
       <a class="text-panel-compact whitespace-nowrap text-sm font-semibold text-ink/75 hover:text-bronze" href={phoneHref}>{site.phone}</a>
       <a class="button-primary whitespace-nowrap" href={contactHref}>{ctaLabel}</a>
     </div>
 
-    <details class="group relative xl:hidden">
+    <details class="group relative z-[60] xl:hidden">
       <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-black/12 bg-white/80 text-ink">
         <span class="sr-only">{menuLabel}</span>
         <svg class="h-5 w-5 group-open:hidden" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -72,20 +85,27 @@ const altLangHref = isNotFoundPage
           <path d="M18 6L6 18M6 6l12 12"></path>
         </svg>
       </summary>
-      <div class="absolute right-0 mt-3 w-[min(88vw,22rem)] rounded-4xl border border-black/8 bg-white/95 p-4 shadow-soft backdrop-blur">
+      <!-- Fixed + centered so the panel sits in the middle of the viewport on small screens -->
+      <div class="fixed left-1/2 top-[4.75rem] z-[70] mt-2 w-[min(88vw,22rem)] max-w-[22rem] -translate-x-1/2 rounded-4xl border border-black/8 bg-white/95 p-4 text-center shadow-soft backdrop-blur sm:top-[5rem]">
         <nav class="flex flex-col gap-2" aria-label={locale === "en" ? "Mobile navigation" : "მობილური ნავიგაცია"}>
           {site.navigation.map((item) => {
             const navHref = locale === "en" ? `/en${item.href}` : item.href;
             const active = item.href === "/" ? currentPath === homeHref : currentPath.startsWith(navHref);
             return (
-              <a class={`whitespace-nowrap rounded-2xl px-4 py-3 text-sm font-semibold ${active ? "bg-shell text-ink" : "text-ink/75 hover:bg-shell/70"}`} href={navHref}>
+              <a class={`rounded-2xl px-4 py-3 text-sm font-semibold ${active ? "bg-shell text-ink" : "text-ink/75 hover:bg-shell/70"}`} href={navHref}>
                 {item.label}
               </a>
             );
           })}
         </nav>
         <div class="mt-4 flex flex-col gap-3 border-t border-black/8 pt-4">
-          <a class="whitespace-nowrap rounded-2xl px-4 py-3 text-center text-sm font-semibold text-ink/75 hover:bg-shell/70" href={altLangHref}>{altLangLabel}</a>
+          <a
+            class="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-black/12 px-4 py-2.5 text-sm font-semibold text-ink/80 hover:bg-shell/70"
+            href={altLangHref}
+            aria-label={locale === "en" ? "Switch to Georgian" : "Switch to English"}
+          >
+            {altLangLabel}
+          </a>
           <a class="button-primary w-full whitespace-nowrap" href={contactHref}>{mobileCtaLabel}</a>
           <a class="button-secondary w-full whitespace-nowrap" href={phoneHref}>{callLabel} {site.phone}</a>
         </div>

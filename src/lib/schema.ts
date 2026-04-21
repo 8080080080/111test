@@ -5,12 +5,17 @@ export function createLocalBusinessSchema(site: SiteData) {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": `${site.defaultSeo.siteUrl}#localbusiness`,
     name: site.businessName,
     description: site.businessDescription,
     telephone: site.phone,
     email: site.email,
     url: site.defaultSeo.siteUrl,
     image: toAbsoluteUrl(site.defaultSeo.defaultImage),
+    logo: {
+      "@type": "ImageObject",
+      url: toAbsoluteUrl(site.logoImage)
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "65 Kakheti Hwy",
@@ -54,8 +59,10 @@ export function createProductSchema(product: Product, site: SiteData, path: stri
   return {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": `${getCanonicalUrl(path)}#product`,
     name: product.name,
     description: product.seoDescription,
+    sku: product.id,
     image: product.images.map((image) => toAbsoluteUrl(image.src)),
     category: "Window blinds",
     brand: {

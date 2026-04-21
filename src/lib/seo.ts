@@ -19,21 +19,15 @@ export function getMetaTitle(title?: string, locale: Locale = "ka"): string {
   if (!title) {
     return s.defaultSeo.defaultTitle;
   }
-  return s.defaultSeo.titleTemplate.replace("%s", title);
+  const trimmed = title.trim();
+  // Title already includes the brand segment (e.g. "… | Winsome თბილისი" or "Winsome | …"); avoid "… | Winsome | Winsome".
+  if (/\|\s*Winsome/i.test(trimmed) || /^\s*Winsome\s*\|/i.test(trimmed)) {
+    return trimmed;
+  }
+  return s.defaultSeo.titleTemplate.replace("%s", trimmed);
 }
 
 export function getMetaDescription(description?: string, locale: Locale = "ka"): string {
   const s = getSiteData(locale);
   return description || s.defaultSeo.defaultDescription;
-}
-
-export function getMetaKeywords(keywords: string[] = [], locale: Locale = "ka"): string[] {
-  const s = getSiteData(locale);
-  return Array.from(
-    new Set([
-      ...s.defaultSeo.georgianKeywords,
-      ...s.defaultSeo.localIntentKeywords,
-      ...keywords
-    ])
-  );
 }

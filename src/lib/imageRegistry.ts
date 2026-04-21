@@ -9,8 +9,14 @@ const jpgAssetFolders = new Set([
 ]);
 
 const assetExtensions: Record<string, string> = {
-  "branding/winsome-logo": "png?v=20260326"
+  /** Raster logo (pixel-accurate brand asset). Bump ?v= when the file changes. */
+  "branding/winsome-logo": "png?v=20260421"
 };
+
+/** JPG paths (under /assets/images/) known to have a matching .webp alongside (optional pipeline). */
+const jpgKeysWithWebp = new Set<string>([
+  // e.g. "demo/roller-living" after adding roller-living.webp next to .jpg
+]);
 
 export function getImageAsset(key: string): string {
   if (key in assetExtensions) {
@@ -24,4 +30,18 @@ export function getImageAsset(key: string): string {
   }
 
   throw new Error(`Unknown image asset key: ${key}`);
+}
+
+/** WebP sibling URL for a resolved JPG public path, only when listed in jpgKeysWithWebp. */
+export function getWebpVariantUrl(jpgPublicPath: string): string | undefined {
+  const withoutQuery = jpgPublicPath.split("?")[0] ?? jpgPublicPath;
+  const m = withoutQuery.match(/^\/assets\/images\/(.+)\.jpg$/i);
+  if (!m) {
+    return undefined;
+  }
+  const key = m[1];
+  if (!jpgKeysWithWebp.has(key)) {
+    return undefined;
+  }
+  return `/assets/images/${key}.webp`;
 }
