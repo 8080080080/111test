@@ -15,6 +15,8 @@ const previewSize = 240;
 const tileSizesAttr = `${tileSize}px`;
 const previewSizesAttr = `${previewSize}px`;
 const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
+const firstItem = items[0];
+const firstWebp = firstItem ? getWebpVariantUrl(firstItem.src) : "";
 ---
 
 <div
@@ -33,6 +35,12 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
         class="color-catalog__tile"
         data-catalog-tile
         data-index={index}
+        data-src={item.src}
+        data-srcset={srcSetFor(item)}
+        data-webp-srcset={webp ? `${webp} ${item.width}w` : undefined}
+        data-alt={item.alt}
+        data-width={item.width}
+        data-height={item.height}
         aria-label={item.alt}
       >
         <picture>
@@ -54,27 +62,23 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     })}
 
     <div class="color-catalog__preview" data-catalog-preview aria-hidden="true">
-      {items.map((item, index) => {
-        const webp = getWebpVariantUrl(item.src);
-        return (
-        <div class="color-catalog__preview-item" data-preview-item data-index={index} hidden={index !== 0}>
-          <picture>
-            {webp && <source srcset={`${webp} ${item.width}w`} type="image/webp" sizes={previewSizesAttr} />}
-            <img
-              src={item.src}
-              srcset={srcSetFor(item)}
-              sizes={previewSizesAttr}
-              alt=""
-              width={previewSize}
-              height={previewSize}
-              loading="lazy"
-              decoding="async"
-              class="h-full w-full object-cover"
-            />
-          </picture>
-        </div>
-      );
-      })}
+      {firstItem && (
+        <picture>
+          <source data-catalog-preview-source srcset={firstWebp ? `${firstWebp} ${firstItem.width}w` : undefined} type="image/webp" sizes={previewSizesAttr} />
+          <img
+            data-catalog-preview-image
+            src={firstItem.src}
+            srcset={srcSetFor(firstItem)}
+            sizes={previewSizesAttr}
+            alt={firstItem.alt}
+            width={previewSize}
+            height={previewSize}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+        </picture>
+      )}
     </div>
   </div>
 
@@ -115,20 +119,18 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
           )}
 
           <div class="color-catalog__viewer-track" data-catalog-viewer-track tabindex="0">
-            {items.map((item, index) => {
-              const webp = getWebpVariantUrl(item.src);
-              return (
-              <figure class="color-catalog__viewer-slide" data-catalog-viewer-slide data-index={index}>
-                <div class="color-catalog__viewer-zoom-frame" data-catalog-viewer-zoom-frame data-index={index}>
+            {firstItem && (
+              <figure class="color-catalog__viewer-slide" data-catalog-viewer-slide data-index="0">
+                <div class="color-catalog__viewer-zoom-frame" data-catalog-viewer-zoom-frame data-index="0">
                   <picture>
-                    {webp && <source srcset={`${webp} ${item.width}w`} type="image/webp" sizes="100vw" />}
+                    <source data-catalog-viewer-source srcset={firstWebp ? `${firstWebp} ${firstItem.width}w` : undefined} type="image/webp" sizes="100vw" />
                     <img
-                      src={item.src}
-                      srcset={srcSetFor(item)}
+                      src={firstItem.src}
+                      srcset={srcSetFor(firstItem)}
                       sizes="100vw"
-                      alt={item.alt}
-                      width={item.width}
-                      height={item.height}
+                      alt={firstItem.alt}
+                      width={firstItem.width}
+                      height={firstItem.height}
                       loading="lazy"
                       decoding="async"
                       class="color-catalog__viewer-image"
@@ -137,8 +139,7 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
                   </picture>
                 </div>
               </figure>
-            );
-            })}
+            )}
           </div>
         </div>
 
@@ -168,7 +169,6 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     border: 1px solid rgba(26, 25, 23, 0.08);
     background: rgba(255, 255, 255, 0.92);
     box-shadow: 0 18px 35px rgba(26, 25, 23, 0.08);
-    /* Only transition compositor-friendly properties */
     transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
   }
 
@@ -186,7 +186,7 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
   }
 
   .color-catalog__tile :global(img),
-  .color-catalog__preview-item :global(img) {
+  .color-catalog__preview :global(img) {
     display: block;
   }
 
@@ -194,7 +194,8 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     display: none;
   }
 
-  .color-catalog__preview-item {
+  .color-catalog__preview :global(picture) {
+    display: block;
     width: 100%;
     height: 100%;
   }
@@ -261,23 +262,13 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     display: flex;
     height: 100%;
     min-height: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    overflow: hidden;
     overscroll-behavior-x: contain;
     touch-action: pan-x pinch-zoom;
   }
 
   .color-catalog__viewer-track.is-zoomed {
-    overflow-x: hidden;
-    scroll-snap-type: none;
-  }
-
-  .color-catalog__viewer-track::-webkit-scrollbar {
-    display: none;
+    touch-action: none;
   }
 
   .color-catalog__viewer-slide {
@@ -288,8 +279,6 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     justify-content: center;
     margin: 0;
     padding: 0.5rem 0;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
   }
 
   .color-catalog__viewer-zoom-frame {
@@ -370,10 +359,6 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     .color-catalog__viewer-nav {
       transition: none;
     }
-
-    .color-catalog__viewer-track {
-      scroll-behavior: auto;
-    }
   }
 
   @media (min-width: 768px) {
@@ -392,7 +377,6 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
       box-shadow: 0 34px 58px rgba(26, 25, 23, 0.18);
       opacity: 0;
       pointer-events: none;
-      /* Use translate3d — keeps it on a GPU layer, avoids repaints of surrounding content */
       transform: translate3d(var(--preview-x, 0px), var(--preview-y, 0px), 0) scale(0.98);
       transform-origin: top left;
       transition: opacity 180ms ease, transform 180ms ease;
@@ -416,9 +400,6 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
 </style>
 
 <script>
-  // Debounce utility — prevents layout thrashing on every resize event frame.
-  // Without this, updateLayout runs at 60fps while user is resizing, reading
-  // .clientWidth (forced layout) on every frame.
   function debounce(fn, delay) {
     let id = 0;
     return (...args) => {
@@ -433,8 +414,9 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
   for (const root of document.querySelectorAll("[data-color-catalog]")) {
     const layout = root.querySelector("[data-catalog-layout]");
     const preview = root.querySelector("[data-catalog-preview]");
+    const previewSource = root.querySelector("[data-catalog-preview-source]");
+    const previewImage = root.querySelector("[data-catalog-preview-image]");
     const tiles = Array.from(root.querySelectorAll("[data-catalog-tile]"));
-    const previewItems = Array.from(root.querySelectorAll("[data-preview-item]"));
     const viewerDialog = root.querySelector("[data-catalog-viewer]");
     const viewerTrack = root.querySelector("[data-catalog-viewer-track]");
     const viewerCount = root.querySelector("[data-catalog-viewer-count]");
@@ -442,9 +424,10 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     const viewerClose = root.querySelector("[data-catalog-viewer-close]");
     const viewerPrev = root.querySelector("[data-catalog-viewer-prev]");
     const viewerNext = root.querySelector("[data-catalog-viewer-next]");
-    const viewerSlides = Array.from(root.querySelectorAll("[data-catalog-viewer-slide]"));
-    const viewerZoomFrames = Array.from(root.querySelectorAll("[data-catalog-viewer-zoom-frame]"));
-    const viewerImages = Array.from(root.querySelectorAll("[data-catalog-viewer-image]"));
+    const viewerSlide = root.querySelector("[data-catalog-viewer-slide]");
+    const viewerZoomFrame = root.querySelector("[data-catalog-viewer-zoom-frame]");
+    const viewerSource = root.querySelector("[data-catalog-viewer-source]");
+    const viewerImage = root.querySelector("[data-catalog-viewer-image]");
     const mobileFullscreenEnabled = root.getAttribute("data-mobile-fullscreen") === "true";
 
     if (!layout || !preview || tiles.length === 0) {
@@ -452,20 +435,21 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     }
 
     const rootStyle = getComputedStyle(root);
-    const parseCSSVar = (name, fallback) => { const v = parseInt(rootStyle.getPropertyValue(name), 10); return Number.isNaN(v) ? fallback : v; };
+    const parseCSSVar = (name, fallback) => {
+      const value = parseInt(rootStyle.getPropertyValue(name), 10);
+      return Number.isNaN(value) ? fallback : value;
+    };
     const tileSize = parseCSSVar("--catalog-tile-size", 120);
     const tileMargin = parseCSSVar("--catalog-tile-margin", 5);
     const previewSize = parseCSSVar("--catalog-preview-size", 240);
     const tileStride = tileSize + tileMargin * 2;
     let activeIndex = -1;
     let viewerIndex = 0;
-    let viewerScrollSettleTimer = 0;
-    let viewerProgrammaticReleaseTimer = 0;
-    let viewerProgrammaticScroll = false;
     let lastFocusedTile = null;
-    const zoomStates = viewerImages.map(() => ({ scale: 1, x: 0, y: 0 }));
+    let viewerSwipeStart = null;
+    let viewerPointerSwipeStart = null;
+    const zoomState = { scale: 1, x: 0, y: 0 };
     const zoomInteraction = {
-      index: -1,
       pointers: new Map(),
       panPointerId: null,
       panStartX: 0,
@@ -478,41 +462,76 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
       pinchStartY: 0
     };
 
-    const setActivePreview = (index) => {
-      previewItems.forEach((item, itemIndex) => {
-        item.hidden = itemIndex !== index;
-      });
-    };
-
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
     const isViewerOpen = () => viewerDialog instanceof HTMLDialogElement && viewerDialog.open;
+
+    const getTileData = (index) => {
+      const tile = tiles[index];
+      if (!(tile instanceof HTMLElement)) {
+        return null;
+      }
+
+      return {
+        src: tile.dataset.src || "",
+        srcset: tile.dataset.srcset || tile.dataset.src || "",
+        webpSrcset: tile.dataset.webpSrcset || "",
+        alt: tile.dataset.alt || "",
+        width: Number(tile.dataset.width || tileSize),
+        height: Number(tile.dataset.height || tileSize)
+      };
+    };
+
+    const updatePicture = (source, image, data, sizes, dimensions = null) => {
+      if (!data || !(image instanceof HTMLImageElement)) {
+        return;
+      }
+
+      if (source instanceof HTMLSourceElement) {
+        if (data.webpSrcset) {
+          source.setAttribute("srcset", data.webpSrcset);
+        } else {
+          source.removeAttribute("srcset");
+        }
+        source.setAttribute("sizes", sizes);
+      }
+
+      image.src = data.src;
+      image.srcset = data.srcset;
+      image.sizes = sizes;
+      image.alt = data.alt;
+      image.width = dimensions?.width ?? data.width;
+      image.height = dimensions?.height ?? data.height;
+    };
+
+    const setActivePreview = (index) => {
+      const data = getTileData(index);
+      updatePicture(previewSource, previewImage, data, `${previewSize}px`, { width: previewSize, height: previewSize });
+    };
+
     const setTrackZoomed = (zoomed) => {
       if (viewerTrack instanceof HTMLElement) {
         viewerTrack.classList.toggle("is-zoomed", zoomed);
       }
     };
 
-    const measureImageBase = (index, referenceScale = zoomStates[index]?.scale || 1) => {
-      const frame = viewerZoomFrames[index];
-      const image = viewerImages[index];
-
-      if (!(frame instanceof HTMLElement) || !(image instanceof HTMLImageElement)) {
+    const measureImageBase = (referenceScale = zoomState.scale) => {
+      if (!(viewerZoomFrame instanceof HTMLElement) || !(viewerImage instanceof HTMLImageElement)) {
         return null;
       }
 
-      const rect = image.getBoundingClientRect();
+      const rect = viewerImage.getBoundingClientRect();
       const safeScale = Math.max(referenceScale, 1);
 
       return {
-        frameWidth: Math.max(frame.clientWidth, 1),
-        frameHeight: Math.max(frame.clientHeight, 1),
+        frameWidth: Math.max(viewerZoomFrame.clientWidth, 1),
+        frameHeight: Math.max(viewerZoomFrame.clientHeight, 1),
         baseWidth: rect.width / safeScale,
         baseHeight: rect.height / safeScale
       };
     };
 
-    const clampZoomOffset = (index, x, y, nextScale, referenceScale = zoomStates[index]?.scale || 1) => {
-      const measurement = measureImageBase(index, referenceScale);
+    const clampZoomOffset = (x, y, nextScale, referenceScale = zoomState.scale) => {
+      const measurement = measureImageBase(referenceScale);
 
       if (!measurement || nextScale <= 1) {
         return { x: 0, y: 0 };
@@ -527,59 +546,37 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
       };
     };
 
-    const applyZoomState = (index) => {
-      const frame = viewerZoomFrames[index];
-      const image = viewerImages[index];
-      const state = zoomStates[index];
-
-      if (!(frame instanceof HTMLElement) || !(image instanceof HTMLImageElement) || !state) {
+    const applyZoomState = () => {
+      if (!(viewerZoomFrame instanceof HTMLElement) || !(viewerImage instanceof HTMLImageElement)) {
         return;
       }
 
-      image.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${state.scale})`;
-      frame.classList.toggle("is-zoomed", state.scale > 1.01);
-      setTrackZoomed(index === viewerIndex && state.scale > 1.01);
+      viewerImage.style.transform = `translate3d(${zoomState.x}px, ${zoomState.y}px, 0) scale(${zoomState.scale})`;
+      viewerZoomFrame.classList.toggle("is-zoomed", zoomState.scale > 1.01);
+      setTrackZoomed(zoomState.scale > 1.01);
     };
 
-    const resetZoomState = (index) => {
-      const state = zoomStates[index];
-      const frame = viewerZoomFrames[index];
+    const resetZoomState = () => {
+      zoomState.scale = 1;
+      zoomState.x = 0;
+      zoomState.y = 0;
 
-      if (!state) {
-        return;
+      if (viewerZoomFrame instanceof HTMLElement) {
+        viewerZoomFrame.classList.remove("is-dragging");
       }
 
-      state.scale = 1;
-      state.x = 0;
-      state.y = 0;
-
-      if (frame instanceof HTMLElement) {
-        frame.classList.remove("is-dragging");
-      }
-
-      if (zoomInteraction.index === index) {
-        zoomInteraction.index = -1;
-        zoomInteraction.pointers.clear();
-        zoomInteraction.panPointerId = null;
-        zoomInteraction.pinchDistance = 0;
-      }
-
-      applyZoomState(index);
+      zoomInteraction.pointers.clear();
+      zoomInteraction.panPointerId = null;
+      zoomInteraction.pinchDistance = 0;
+      applyZoomState();
     };
 
-    const beginPan = (index, pointId, point) => {
-      const state = zoomStates[index];
-
-      if (!state) {
-        return;
-      }
-
-      zoomInteraction.index = index;
+    const beginPan = (pointId, point) => {
       zoomInteraction.panPointerId = pointId;
       zoomInteraction.panStartX = point.x;
       zoomInteraction.panStartY = point.y;
-      zoomInteraction.startX = state.x;
-      zoomInteraction.startY = state.y;
+      zoomInteraction.startX = zoomState.x;
+      zoomInteraction.startY = zoomState.y;
     };
 
     const getPointerPair = () => {
@@ -587,73 +584,41 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
       return values.length >= 2 ? [values[0], values[1]] : null;
     };
 
-    const getNearestViewerIndex = () => {
-      if (!(viewerTrack instanceof HTMLElement) || viewerSlides.length === 0) {
-        return viewerIndex;
+    const renderViewerImage = (index) => {
+      const data = getTileData(index);
+      updatePicture(viewerSource, viewerImage, data, "100vw");
+
+      if (viewerSlide instanceof HTMLElement) {
+        viewerSlide.dataset.index = `${index}`;
       }
 
-      const trackCenter = viewerTrack.scrollLeft + viewerTrack.clientWidth / 2;
-      let closestIndex = viewerIndex;
-      let closestDistance = Number.POSITIVE_INFINITY;
-
-      viewerSlides.forEach((slide, slideIndex) => {
-        if (!(slide instanceof HTMLElement)) {
-          return;
-        }
-
-        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-        const distance = Math.abs(trackCenter - slideCenter);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = slideIndex;
-        }
-      });
-
-      return closestIndex;
-    };
-
-    const scrollViewerToIndex = (index, behavior = "auto") => {
-      if (!(viewerTrack instanceof HTMLElement) || viewerSlides.length === 0) {
-        return;
+      if (viewerZoomFrame instanceof HTMLElement) {
+        viewerZoomFrame.dataset.index = `${index}`;
       }
-
-      const targetSlide = viewerSlides[index];
-
-      if (!(targetSlide instanceof HTMLElement)) {
-        return;
-      }
-
-      window.clearTimeout(viewerScrollSettleTimer);
-      viewerProgrammaticScroll = true;
-      window.clearTimeout(viewerProgrammaticReleaseTimer);
-      viewerTrack.scrollTo({ left: targetSlide.offsetLeft, behavior });
-      viewerProgrammaticReleaseTimer = window.setTimeout(() => {
-        viewerProgrammaticScroll = false;
-      }, behavior === "smooth" ? 220 : 80);
     };
 
     const setViewerIndex = (index, options = {}) => {
-      if (!mobileFullscreenEnabled || viewerImages.length === 0) {
+      if (!mobileFullscreenEnabled || tiles.length === 0) {
         return;
       }
 
-      const { syncScroll = false, behavior = "auto" } = options;
-      const nextIndex = clamp(index, 0, viewerImages.length - 1);
+      const { focusTrack = false } = options;
+      const nextIndex = clamp(index, 0, tiles.length - 1);
 
       if (nextIndex !== viewerIndex) {
-        resetZoomState(viewerIndex);
+        resetZoomState();
       }
 
       viewerIndex = nextIndex;
+      renderViewerImage(viewerIndex);
+      const data = getTileData(viewerIndex);
 
       if (viewerCount instanceof HTMLElement) {
-        viewerCount.textContent = `${viewerIndex + 1} / ${viewerImages.length}`;
+        viewerCount.textContent = `${viewerIndex + 1} / ${tiles.length}`;
       }
 
       if (viewerCaption instanceof HTMLElement) {
-        const image = viewerImages[viewerIndex];
-        viewerCaption.textContent = image instanceof HTMLImageElement ? image.alt : "";
+        viewerCaption.textContent = data?.alt || "";
       }
 
       if (viewerPrev instanceof HTMLButtonElement) {
@@ -661,17 +626,17 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
       }
 
       if (viewerNext instanceof HTMLButtonElement) {
-        viewerNext.disabled = viewerIndex === viewerImages.length - 1;
+        viewerNext.disabled = viewerIndex === tiles.length - 1;
       }
 
-      if (syncScroll) {
-        scrollViewerToIndex(nextIndex, behavior);
+      if (focusTrack && viewerTrack instanceof HTMLElement) {
+        viewerTrack.focus({ preventScroll: true });
       }
     };
 
     const stepViewer = (step) => {
-      resetZoomState(viewerIndex);
-      setViewerIndex(viewerIndex + step, { syncScroll: true, behavior: "instant" });
+      resetZoomState();
+      setViewerIndex(viewerIndex + step);
     };
 
     const closeViewer = () => {
@@ -684,13 +649,13 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
       if (
         !mobileFullscreenEnabled ||
         !mobileQuery.matches ||
-        !(viewerDialog instanceof HTMLDialogElement) ||
-        !(viewerTrack instanceof HTMLElement)
+        !(viewerDialog instanceof HTMLDialogElement)
       ) {
         return;
       }
 
       lastFocusedTile = tile;
+      resetZoomState();
       setViewerIndex(index);
 
       if (!viewerDialog.open) {
@@ -698,8 +663,7 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
       }
 
       window.requestAnimationFrame(() => {
-        setViewerIndex(index, { syncScroll: true, behavior: "instant" });
-        viewerTrack.focus({ preventScroll: true });
+        setViewerIndex(index, { focusTrack: true });
       });
     };
 
@@ -746,6 +710,12 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
 
     const updateLayout = () => {
       const width = layout.clientWidth;
+
+      if (!width) {
+        layout.style.height = `${tileSize}px`;
+        return;
+      }
+
       const columns = Math.max(1, Math.floor(width / tileStride));
       const rows = Math.ceil(tiles.length / columns);
       const gridWidth = columns * tileStride;
@@ -800,30 +770,79 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     });
 
     if (viewerTrack instanceof HTMLElement) {
-      viewerTrack.addEventListener("scroll", () => {
-        if (!isViewerOpen() || viewerProgrammaticScroll) {
+      viewerTrack.addEventListener("touchstart", (event) => {
+        if (!isViewerOpen() || zoomState.scale > 1.01 || event.touches.length !== 1) {
+          viewerSwipeStart = null;
           return;
         }
 
-        window.clearTimeout(viewerScrollSettleTimer);
-        viewerScrollSettleTimer = window.setTimeout(() => {
-          if (!viewerProgrammaticScroll) {
-            setViewerIndex(getNearestViewerIndex());
-          }
-        }, 90);
+        const touch = event.touches[0];
+        viewerSwipeStart = {
+          x: touch.clientX,
+          y: touch.clientY
+        };
       }, { passive: true });
+
+      viewerTrack.addEventListener("touchmove", (event) => {
+        if (event.touches.length > 1) {
+          viewerSwipeStart = null;
+        }
+      }, { passive: true });
+
+      viewerTrack.addEventListener("touchend", (event) => {
+        if (!viewerSwipeStart || zoomState.scale > 1.01 || event.changedTouches.length === 0) {
+          viewerSwipeStart = null;
+          return;
+        }
+
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - viewerSwipeStart.x;
+        const dy = touch.clientY - viewerSwipeStart.y;
+        viewerSwipeStart = null;
+
+        if (Math.abs(dx) >= 48 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+          stepViewer(dx < 0 ? 1 : -1);
+        }
+      }, { passive: true });
+
+      viewerTrack.addEventListener("pointerdown", (event) => {
+        if (!isViewerOpen() || zoomState.scale > 1.01 || event.pointerType === "touch") {
+          viewerPointerSwipeStart = null;
+          return;
+        }
+
+        viewerPointerSwipeStart = {
+          x: event.clientX,
+          y: event.clientY
+        };
+      });
+
+      viewerTrack.addEventListener("pointerup", (event) => {
+        if (!viewerPointerSwipeStart || zoomState.scale > 1.01 || event.pointerType === "touch") {
+          viewerPointerSwipeStart = null;
+          return;
+        }
+
+        const dx = event.clientX - viewerPointerSwipeStart.x;
+        const dy = event.clientY - viewerPointerSwipeStart.y;
+        viewerPointerSwipeStart = null;
+
+        if (Math.abs(dx) >= 48 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+          stepViewer(dx < 0 ? 1 : -1);
+        }
+      });
+
+      viewerTrack.addEventListener("pointercancel", () => {
+        viewerPointerSwipeStart = null;
+      });
     }
 
-    viewerZoomFrames.forEach((frame, frameIndex) => {
+    if (viewerZoomFrame instanceof HTMLElement) {
       const finishPointer = (event) => {
-        if (!(frame instanceof HTMLElement)) {
-          return;
-        }
-
         zoomInteraction.pointers.delete(event.pointerId);
 
-        if (frame.hasPointerCapture?.(event.pointerId)) {
-          frame.releasePointerCapture(event.pointerId);
+        if (viewerZoomFrame.hasPointerCapture?.(event.pointerId)) {
+          viewerZoomFrame.releasePointerCapture(event.pointerId);
         }
 
         if (zoomInteraction.pointers.size >= 2) {
@@ -832,44 +851,37 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
           if (pair) {
             const [first, second] = pair;
             zoomInteraction.pinchDistance = Math.hypot(second.x - first.x, second.y - first.y);
-            zoomInteraction.pinchScale = zoomStates[frameIndex]?.scale || 1;
-            zoomInteraction.pinchStartX = zoomStates[frameIndex]?.x || 0;
-            zoomInteraction.pinchStartY = zoomStates[frameIndex]?.y || 0;
+            zoomInteraction.pinchScale = zoomState.scale;
+            zoomInteraction.pinchStartX = zoomState.x;
+            zoomInteraction.pinchStartY = zoomState.y;
           }
 
           return;
         }
 
         zoomInteraction.pinchDistance = 0;
-        frame.classList.remove("is-dragging");
+        viewerZoomFrame.classList.remove("is-dragging");
 
-        if (zoomInteraction.pointers.size === 1 && (zoomStates[frameIndex]?.scale || 1) > 1.01) {
+        if (zoomInteraction.pointers.size === 1 && zoomState.scale > 1.01) {
           const [pointerId, point] = Array.from(zoomInteraction.pointers.entries())[0];
-          beginPan(frameIndex, pointerId, point);
+          beginPan(pointerId, point);
           return;
         }
 
         zoomInteraction.panPointerId = null;
 
-        if ((zoomStates[frameIndex]?.scale || 1) <= 1.01) {
-          resetZoomState(frameIndex);
+        if (zoomState.scale <= 1.01) {
+          resetZoomState();
         }
       };
 
-      frame.addEventListener("pointerdown", (event) => {
-        if (!isViewerOpen() || frameIndex !== viewerIndex) {
+      viewerZoomFrame.addEventListener("pointerdown", (event) => {
+        if (!isViewerOpen()) {
           return;
         }
 
-        const state = zoomStates[frameIndex];
-
-        if (!state) {
-          return;
-        }
-
-        zoomInteraction.index = frameIndex;
         zoomInteraction.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-        frame.setPointerCapture?.(event.pointerId);
+        viewerZoomFrame.setPointerCapture?.(event.pointerId);
 
         if (zoomInteraction.pointers.size >= 2) {
           const pair = getPointerPair();
@@ -880,29 +892,23 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
 
           const [first, second] = pair;
           zoomInteraction.pinchDistance = Math.max(1, Math.hypot(second.x - first.x, second.y - first.y));
-          zoomInteraction.pinchScale = state.scale;
-          zoomInteraction.pinchStartX = state.x;
-          zoomInteraction.pinchStartY = state.y;
+          zoomInteraction.pinchScale = zoomState.scale;
+          zoomInteraction.pinchStartX = zoomState.x;
+          zoomInteraction.pinchStartY = zoomState.y;
           zoomInteraction.panPointerId = null;
           event.preventDefault();
           return;
         }
 
-        if (state.scale > 1.01) {
-          beginPan(frameIndex, event.pointerId, { x: event.clientX, y: event.clientY });
-          frame.classList.add("is-dragging");
+        if (zoomState.scale > 1.01) {
+          beginPan(event.pointerId, { x: event.clientX, y: event.clientY });
+          viewerZoomFrame.classList.add("is-dragging");
           event.preventDefault();
         }
       });
 
-      frame.addEventListener("pointermove", (event) => {
-        if (!isViewerOpen() || frameIndex !== viewerIndex || !zoomInteraction.pointers.has(event.pointerId)) {
-          return;
-        }
-
-        const state = zoomStates[frameIndex];
-
-        if (!state) {
+      viewerZoomFrame.addEventListener("pointermove", (event) => {
+        if (!isViewerOpen() || !zoomInteraction.pointers.has(event.pointerId)) {
           return;
         }
 
@@ -923,44 +929,42 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
             4
           );
           const nextOffset = clampZoomOffset(
-            frameIndex,
             zoomInteraction.pinchStartX,
             zoomInteraction.pinchStartY,
             nextScale,
             zoomInteraction.pinchScale
           );
 
-          state.scale = nextScale;
-          state.x = nextOffset.x;
-          state.y = nextOffset.y;
-          applyZoomState(frameIndex);
+          zoomState.scale = nextScale;
+          zoomState.x = nextOffset.x;
+          zoomState.y = nextOffset.y;
+          applyZoomState();
           event.preventDefault();
           return;
         }
 
-        if (zoomInteraction.panPointerId === event.pointerId && state.scale > 1.01) {
+        if (zoomInteraction.panPointerId === event.pointerId && zoomState.scale > 1.01) {
           const nextOffset = clampZoomOffset(
-            frameIndex,
             zoomInteraction.startX + (event.clientX - zoomInteraction.panStartX),
             zoomInteraction.startY + (event.clientY - zoomInteraction.panStartY),
-            state.scale
+            zoomState.scale
           );
 
-          state.x = nextOffset.x;
-          state.y = nextOffset.y;
-          applyZoomState(frameIndex);
+          zoomState.x = nextOffset.x;
+          zoomState.y = nextOffset.y;
+          applyZoomState();
           event.preventDefault();
         }
       });
 
-      frame.addEventListener("pointerup", finishPointer);
-      frame.addEventListener("pointercancel", finishPointer);
-      frame.addEventListener("pointerleave", (event) => {
+      viewerZoomFrame.addEventListener("pointerup", finishPointer);
+      viewerZoomFrame.addEventListener("pointercancel", finishPointer);
+      viewerZoomFrame.addEventListener("pointerleave", (event) => {
         if (zoomInteraction.pointers.has(event.pointerId)) {
           finishPointer(event);
         }
       });
-    });
+    }
 
     viewerPrev?.addEventListener("click", (event) => {
       event.preventDefault();
@@ -989,11 +993,9 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
     });
 
     viewerDialog?.addEventListener("close", () => {
-      window.clearTimeout(viewerScrollSettleTimer);
-      window.clearTimeout(viewerProgrammaticReleaseTimer);
-      viewerProgrammaticScroll = false;
-
-      resetZoomState(viewerIndex);
+      viewerSwipeStart = null;
+      viewerPointerSwipeStart = null;
+      resetZoomState();
 
       if (lastFocusedTile instanceof HTMLElement) {
         lastFocusedTile.focus({ preventScroll: true });
@@ -1008,14 +1010,16 @@ const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
       updateLayout();
     };
 
-    // Debounced: was running at full frame rate before, causing continuous layout reads
     const debouncedUpdate = debounce(() => {
       updateLayout();
-
-      if (isViewerOpen()) {
-        setViewerIndex(viewerIndex, { syncScroll: true, behavior: "instant" });
-      }
     }, 120);
+
+    const containingDetails = root.closest("details");
+    containingDetails?.addEventListener("toggle", () => {
+      if (containingDetails.open) {
+        window.requestAnimationFrame(updateLayout);
+      }
+    });
 
     desktopQuery.addEventListener("change", handleBreakpointChange);
     window.addEventListener("resize", debouncedUpdate);

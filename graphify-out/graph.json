@@ -9,7 +9,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\astro.config.mjs",
       "source_location": "L1",
       "id": "d_codexgeneratedwebsite_astro_config_mjs",
-      "community": 7,
+      "community": 6,
       "norm_label": "astro.config.mjs"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\env.d.ts",
       "source_location": "L1",
       "id": "d_codexgeneratedwebsite_src_env_d_ts",
-      "community": 8,
+      "community": 7,
       "norm_label": "env.d.ts"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\content.ts",
       "source_location": "L21",
       "id": "content_resolveproductimage",
-      "community": 6,
+      "community": 0,
       "norm_label": "resolveproductimage()"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\content.ts",
       "source_location": "L30",
       "id": "content_resolveproductcolorcollectionitem",
-      "community": 6,
+      "community": 0,
       "norm_label": "resolveproductcolorcollectionitem()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\content.ts",
       "source_location": "L86",
       "id": "content_getsitedata",
-      "community": 1,
+      "community": 2,
       "norm_label": "getsitedata()"
     },
     {
@@ -142,10 +142,19 @@
       "label": "getImageAsset()",
       "file_type": "code",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\imageRegistry.ts",
-      "source_location": "L15",
+      "source_location": "L21",
       "id": "imageregistry_getimageasset",
       "community": 3,
       "norm_label": "getimageasset()"
+    },
+    {
+      "label": "getWebpVariantUrl()",
+      "file_type": "code",
+      "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\imageRegistry.ts",
+      "source_location": "L36",
+      "id": "imageregistry_getwebpvarianturl",
+      "community": 3,
+      "norm_label": "getwebpvarianturl()"
     },
     {
       "label": "mobileSwipeNavigation.ts",
@@ -180,7 +189,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\schema.ts",
       "source_location": "L1",
       "id": "d_codexgeneratedwebsite_src_lib_schema_ts",
-      "community": 2,
+      "community": 1,
       "norm_label": "schema.ts"
     },
     {
@@ -189,34 +198,34 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\schema.ts",
       "source_location": "L4",
       "id": "schema_createlocalbusinessschema",
-      "community": 2,
+      "community": 1,
       "norm_label": "createlocalbusinessschema()"
     },
     {
       "label": "createBreadcrumbSchema()",
       "file_type": "code",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\schema.ts",
-      "source_location": "L40",
+      "source_location": "L45",
       "id": "schema_createbreadcrumbschema",
-      "community": 2,
+      "community": 1,
       "norm_label": "createbreadcrumbschema()"
     },
     {
       "label": "createProductSchema()",
       "file_type": "code",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\schema.ts",
-      "source_location": "L53",
+      "source_location": "L58",
       "id": "schema_createproductschema",
-      "community": 2,
+      "community": 1,
       "norm_label": "createproductschema()"
     },
     {
       "label": "createFaqSchema()",
       "file_type": "code",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\schema.ts",
-      "source_location": "L82",
+      "source_location": "L89",
       "id": "schema_createfaqschema",
-      "community": 2,
+      "community": 1,
       "norm_label": "createfaqschema()"
     },
     {
@@ -225,7 +234,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
       "source_location": "L1",
       "id": "d_codexgeneratedwebsite_src_lib_seo_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "seo.ts"
     },
     {
@@ -234,7 +243,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
       "source_location": "L8",
       "id": "seo_toabsoluteurl",
-      "community": 2,
+      "community": 1,
       "norm_label": "toabsoluteurl()"
     },
     {
@@ -243,7 +252,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
       "source_location": "L13",
       "id": "seo_getcanonicalurl",
-      "community": 2,
+      "community": 1,
       "norm_label": "getcanonicalurl()"
     },
     {
@@ -252,26 +261,17 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
       "source_location": "L17",
       "id": "seo_getmetatitle",
-      "community": 1,
+      "community": 2,
       "norm_label": "getmetatitle()"
     },
     {
       "label": "getMetaDescription()",
       "file_type": "code",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
-      "source_location": "L25",
-      "id": "seo_getmetadescription",
-      "community": 1,
-      "norm_label": "getmetadescription()"
-    },
-    {
-      "label": "getMetaKeywords()",
-      "file_type": "code",
-      "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
       "source_location": "L30",
-      "id": "seo_getmetakeywords",
-      "community": 1,
-      "norm_label": "getmetakeywords()"
+      "id": "seo_getmetadescription",
+      "community": 2,
+      "norm_label": "getmetadescription()"
     },
     {
       "label": "robots.txt.ts",
@@ -279,16 +279,16 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\pages\\robots.txt.ts",
       "source_location": "L1",
       "id": "d_codexgeneratedwebsite_src_pages_robots_txt_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "robots.txt.ts"
     },
     {
       "label": "GET()",
       "file_type": "code",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\pages\\robots.txt.ts",
-      "source_location": "L14",
+      "source_location": "L5",
       "id": "robots_txt_get",
-      "community": 1,
+      "community": 2,
       "norm_label": "get()"
     },
     {
@@ -304,7 +304,7 @@
       "label": "buildUrl()",
       "file_type": "code",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\pages\\sitemap.xml.ts",
-      "source_location": "L42",
+      "source_location": "L44",
       "id": "sitemap_xml_buildurl",
       "community": 5,
       "norm_label": "buildurl()"
@@ -313,7 +313,7 @@
       "label": "GET()",
       "file_type": "code",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\pages\\sitemap.xml.ts",
-      "source_location": "L61",
+      "source_location": "L63",
       "id": "sitemap_xml_get",
       "community": 5,
       "norm_label": "get()"
@@ -324,7 +324,7 @@
       "source_file": "D:\\Codexgeneratedwebsite\\src\\types\\content.ts",
       "source_location": "L1",
       "id": "d_codexgeneratedwebsite_src_types_content_ts",
-      "community": 9,
+      "community": 8,
       "norm_label": "content.ts"
     }
   ],
@@ -525,18 +525,6 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
-      "source_location": "L31",
-      "weight": 1.0,
-      "_src": "content_getsitedata",
-      "_tgt": "seo_getmetakeywords",
-      "source": "content_getsitedata",
-      "target": "seo_getmetakeywords"
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
       "source_file": "D:\\Codexgeneratedwebsite\\src\\pages\\robots.txt.ts",
       "source_location": "L15",
       "weight": 1.0,
@@ -549,12 +537,24 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\imageRegistry.ts",
-      "source_location": "L15",
+      "source_location": "L21",
       "weight": 1.0,
       "_src": "d_codexgeneratedwebsite_src_lib_imageregistry_ts",
       "_tgt": "imageregistry_getimageasset",
       "source": "d_codexgeneratedwebsite_src_lib_imageregistry_ts",
       "target": "imageregistry_getimageasset",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\imageRegistry.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "d_codexgeneratedwebsite_src_lib_imageregistry_ts",
+      "_tgt": "imageregistry_getwebpvarianturl",
+      "source": "d_codexgeneratedwebsite_src_lib_imageregistry_ts",
+      "target": "imageregistry_getwebpvarianturl",
       "confidence_score": 1.0
     },
     {
@@ -597,7 +597,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\schema.ts",
-      "source_location": "L40",
+      "source_location": "L45",
       "weight": 1.0,
       "_src": "d_codexgeneratedwebsite_src_lib_schema_ts",
       "_tgt": "schema_createbreadcrumbschema",
@@ -609,7 +609,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\schema.ts",
-      "source_location": "L53",
+      "source_location": "L58",
       "weight": 1.0,
       "_src": "d_codexgeneratedwebsite_src_lib_schema_ts",
       "_tgt": "schema_createproductschema",
@@ -621,7 +621,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\schema.ts",
-      "source_location": "L82",
+      "source_location": "L89",
       "weight": 1.0,
       "_src": "d_codexgeneratedwebsite_src_lib_schema_ts",
       "_tgt": "schema_createfaqschema",
@@ -693,7 +693,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
-      "source_location": "L25",
+      "source_location": "L30",
       "weight": 1.0,
       "_src": "d_codexgeneratedwebsite_src_lib_seo_ts",
       "_tgt": "seo_getmetadescription",
@@ -704,20 +704,8 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "D:\\Codexgeneratedwebsite\\src\\lib\\seo.ts",
-      "source_location": "L30",
-      "weight": 1.0,
-      "_src": "d_codexgeneratedwebsite_src_lib_seo_ts",
-      "_tgt": "seo_getmetakeywords",
-      "source": "d_codexgeneratedwebsite_src_lib_seo_ts",
-      "target": "seo_getmetakeywords",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\pages\\robots.txt.ts",
-      "source_location": "L14",
+      "source_location": "L5",
       "weight": 1.0,
       "_src": "d_codexgeneratedwebsite_src_pages_robots_txt_ts",
       "_tgt": "robots_txt_get",
@@ -729,7 +717,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\pages\\sitemap.xml.ts",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0,
       "_src": "d_codexgeneratedwebsite_src_pages_sitemap_xml_ts",
       "_tgt": "sitemap_xml_buildurl",
@@ -741,7 +729,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "D:\\Codexgeneratedwebsite\\src\\pages\\sitemap.xml.ts",
-      "source_location": "L61",
+      "source_location": "L63",
       "weight": 1.0,
       "_src": "d_codexgeneratedwebsite_src_pages_sitemap_xml_ts",
       "_tgt": "sitemap_xml_get",

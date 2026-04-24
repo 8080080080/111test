@@ -146,12 +146,12 @@ const schemas = [
       <div class="container-shell">
         {hasMobileColorDropdown ? (
           <>
-            <details class="surface-card group p-6 md:hidden">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+            <details class="surface-card group p-6 md:p-8" data-responsive-color-section>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 md:block md:cursor-default [&::-webkit-details-marker]:hidden">
                 <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
                 <svg
                   aria-hidden="true"
-                  class="h-5 w-5 shrink-0 text-bronze transition-transform duration-200 group-open:rotate-180"
+                  class="h-5 w-5 shrink-0 text-bronze transition-transform duration-200 group-open:rotate-180 md:hidden"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -162,21 +162,13 @@ const schemas = [
                   <path d="M6 9l6 6 6-6"></path>
                 </svg>
               </summary>
-              <div class="mt-5">
-                {colorDescription && <p class="text-panel max-w-2xl">{colorDescription}</p>}
+              <div class="mt-5 md:mt-0" data-responsive-color-content>
+                {colorDescription && <p class="text-panel max-w-2xl md:mt-3">{colorDescription}</p>}
                 <div class={colorDescription ? "mt-6" : ""}>
-                  <ProductColorContent product={product} idSuffix="mobile" />
+                  <ProductColorContent product={product} />
                 </div>
               </div>
             </details>
-
-            <article class="surface-card hidden p-6 md:block md:p-8">
-              <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
-              {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
-              <div class="mt-6">
-                <ProductColorContent product={product} idSuffix="desktop" />
-              </div>
-            </article>
           </>
         ) : (
           <article class="surface-card p-6 sm:p-8">
@@ -189,6 +181,59 @@ const schemas = [
         )}
       </div>
     </section>
+  )}
+
+  {hasMobileColorDropdown && (
+    <>
+      <style>
+        @media (min-width: 768px) {
+          [data-responsive-color-section] > summary {
+            pointer-events: none;
+          }
+
+          [data-responsive-color-section]:not([open]) > [data-responsive-color-content] {
+            display: block;
+          }
+        }
+      </style>
+
+      <script>
+        const colorSectionDesktopQuery = window.matchMedia("(min-width: 768px)");
+
+        for (const section of document.querySelectorAll("[data-responsive-color-section]")) {
+          if (!(section instanceof HTMLDetailsElement) || section.dataset.responsiveColorReady) {
+            continue;
+          }
+
+          section.dataset.responsiveColorReady = "true";
+
+          const syncColorSection = () => {
+            if (colorSectionDesktopQuery.matches) {
+              section.open = true;
+              return;
+            }
+
+            if (!section.dataset.colorSectionTouched) {
+              section.open = false;
+            }
+          };
+
+          section.addEventListener("toggle", () => {
+            if (colorSectionDesktopQuery.matches && !section.open) {
+              section.open = true;
+              return;
+            }
+
+            if (!colorSectionDesktopQuery.matches) {
+              section.dataset.colorSectionTouched = "true";
+            }
+          });
+
+          colorSectionDesktopQuery.addEventListener("change", syncColorSection);
+          syncColorSection();
+        }
+      </script>
+    </>
   )}
 
   <FAQSection compact
