@@ -1,15 +1,26 @@
 ---
 import { getWebpVariantUrl } from "../lib/imageRegistry";
+import type { Locale } from "../lib/content";
 import type { ProductColorCollection } from "../types/content";
 
 interface Props {
   collections: ProductColorCollection[];
   id?: string;
+  locale?: Locale;
 }
 
-const { collections, id = "grouped-color-catalog" } = Astro.props;
+const { collections, id = "grouped-color-catalog", locale = "ka" } = Astro.props;
 const srcSetFor = (item: { src: string; width: number }) => `${item.src} ${item.width}w`;
 const gridSizes = "(min-width: 1280px) 22vw, (min-width: 640px) 33vw, 50vw";
+const labels = locale === "en" ? {
+  catalogPages: "Catalog pages",
+  colorSelection: "Color selection",
+  close: "Close"
+} : {
+  catalogPages: "კატალოგის გვერდები",
+  colorSelection: "ფერების არჩევანი",
+  close: "დახურვა"
+};
 ---
 
 <div id={id} class="space-y-8 sm:space-y-10" data-grouped-color-catalog>
@@ -33,7 +44,7 @@ const gridSizes = "(min-width: 1280px) 22vw, (min-width: 640px) 33vw, 50vw";
       <section class={sectionClasses}>
         <div class="space-y-2">
           <h3 class="text-panel inline-block text-3xl sm:text-4xl">{collection.name}</h3>
-          <p class="text-sm text-ink/60">{isSheet ? "კატალოგის გვერდები" : "ფერების არჩევანი"}</p>
+          <p class="text-sm text-ink/60">{isSheet ? labels.catalogPages : labels.colorSelection}</p>
         </div>
 
         <div class={gridClasses}>
@@ -84,7 +95,7 @@ const gridSizes = "(min-width: 1280px) 22vw, (min-width: 640px) 33vw, 50vw";
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-bronze" data-catalog-dialog-group></p>
           <p class="text-2xl text-ink" data-catalog-dialog-code></p>
         </div>
-        <button class="button-secondary !px-4 !py-2" type="button" data-catalog-dialog-close>დახურვა</button>
+        <button class="button-secondary !px-4 !py-2" type="button" data-catalog-dialog-close>{labels.close}</button>
       </div>
 
       <div class="overflow-hidden rounded-3xl border border-black/8 bg-shell/70 p-2 sm:p-3">

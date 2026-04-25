@@ -4,7 +4,6 @@ import siteData from "../data/site.json";
 export const prerender = true;
 
 const siteUrl = siteData.defaultSeo.siteUrl;
-const today = new Date().toISOString().split("T")[0];
 
 interface SitemapEntry {
   path: string;
@@ -46,7 +45,6 @@ function buildUrl(entry: SitemapEntry): string {
   return [
     "  <url>",
     `    <loc>${loc}</loc>`,
-    `    <lastmod>${today}</lastmod>`,
     `    <changefreq>${entry.changefreq}</changefreq>`,
     `    <priority>${entry.priority}</priority>`,
     "  </url>"

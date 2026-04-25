@@ -165,7 +165,7 @@ const schemas = [
               <div class="mt-5 md:mt-0" data-responsive-color-content>
                 {colorDescription && <p class="text-panel max-w-2xl md:mt-3">{colorDescription}</p>}
                 <div class={colorDescription ? "mt-6" : ""}>
-                  <ProductColorContent product={product} />
+                  <ProductColorContent product={product} locale="ka" />
                 </div>
               </div>
             </details>
@@ -175,7 +175,7 @@ const schemas = [
             <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
             {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
             <div class="mt-6">
-              <ProductColorContent product={product} />
+              <ProductColorContent product={product} locale="ka" />
             </div>
           </article>
         )}

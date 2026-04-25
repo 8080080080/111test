@@ -3,27 +3,30 @@ import ColorCatalog from "./ColorCatalog.astro";
 import ColorSwatches from "./ColorSwatches.astro";
 import GroupedColorCatalog from "./GroupedColorCatalog.astro";
 import ProductGallery from "./ProductGallery.astro";
+import type { Locale } from "../lib/content";
 import type { Product } from "../types/content";
 
 interface Props {
   product: Product;
   idSuffix?: string;
+  locale?: Locale;
 }
 
-const { product, idSuffix = "" } = Astro.props;
+const { product, idSuffix = "", locale = "ka" } = Astro.props;
 const suffix = idSuffix ? `-${idSuffix}` : "";
 ---
 
 {product.colorCollections?.length ? (
-  <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}${suffix}`} />
+  <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}${suffix}`} locale={locale} />
 ) : product.colorCatalog?.length ? (
   <ColorCatalog
     items={product.colorCatalog}
     id={`catalog-${product.slug}${suffix}`}
     mobileFullscreen={Boolean(product.colorCatalog?.length)}
+    locale={locale}
   />
 ) : product.colorGallery?.length ? (
-  <ProductGallery images={product.colorGallery} id={`colors-${product.slug}${suffix}`} compact zoomable />
+  <ProductGallery images={product.colorGallery} id={`colors-${product.slug}${suffix}`} compact zoomable locale={locale} />
 ) : (
   <ColorSwatches colors={product.colors} />
 )}

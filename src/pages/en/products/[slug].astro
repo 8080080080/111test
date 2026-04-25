@@ -87,7 +87,7 @@ const schemas = [
       </nav>
 
       <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-        <ProductGallery images={product.images} id={`gallery-${product.slug}`} />
+        <ProductGallery images={product.images} id={`gallery-${product.slug}`} locale="en" />
 
         <div class="space-y-6">
           <div class="space-y-4">
@@ -166,7 +166,7 @@ const schemas = [
               <div class="mt-5 md:mt-0" data-responsive-color-content>
                 {colorDescription && <p class="text-panel max-w-2xl md:mt-3">{colorDescription}</p>}
                 <div class={colorDescription ? "mt-6" : ""}>
-                  <ProductColorContent product={product} />
+                  <ProductColorContent product={product} locale="en" />
                 </div>
               </div>
             </details>
@@ -176,7 +176,7 @@ const schemas = [
             <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
             {colorDescription && <p class="text-panel mt-3 max-w-2xl">{colorDescription}</p>}
             <div class="mt-6">
-              <ProductColorContent product={product} />
+              <ProductColorContent product={product} locale="en" />
             </div>
           </article>
         )}

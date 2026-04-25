@@ -25,15 +25,15 @@
     ],
     "colors": [
       {
-        "name": "თეთრი",
+        "name": "White",
         "hex": "#F2EEE7"
       },
       {
-        "name": "ღია ბეჟი",
+        "name": "Light Beige",
         "hex": "#D9CFC0"
       },
       {
-        "name": "გრაფიტი",
+        "name": "Graphite",
         "hex": "#5B5A57"
       }
     ],
@@ -118,151 +118,151 @@
     "colorGallery": [
       {
         "src": "plise-catalog/0",
-        "alt": "პლისე ჟალუზის თეთრი ქსოვილის ნიმუში",
+        "alt": "Pleated Blinds fabric sample 0",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/1",
-        "alt": "პლისე ჟალუზის კრემისფერი ქსოვილის ტექსტურა",
+        "alt": "Pleated Blinds fabric sample 1",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/2",
-        "alt": "პლისე ჟალუზის ღია ნაცრისფერი ქსოვილის ნიმუში",
+        "alt": "Pleated Blinds fabric sample 2",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/3",
-        "alt": "პლისე ჟალუზის ბეჟი ტონის ქსოვილი კატალოგიდან",
+        "alt": "Pleated Blinds fabric sample 3",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/4",
-        "alt": "პლისე ჟალუზის მუქი ნაცრისფერი ტექსტურა",
+        "alt": "Pleated Blinds fabric sample 4",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/5",
-        "alt": "პლისე ჟალუზის ღია ყავისფერი ქსოვილის ნიმუში",
+        "alt": "Pleated Blinds fabric sample 5",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/6",
-        "alt": "პლისე ჟალუზის მუქი ყავისფერი ზედაპირი",
+        "alt": "Pleated Blinds fabric sample 6",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/7",
-        "alt": "პლისე ჟალუზის ანტრაციტის ფერის ქსოვილი",
+        "alt": "Pleated Blinds fabric sample 7",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/8",
-        "alt": "პლისე ჟალუზის სპილოს ძვლისფერი ნიმუში",
+        "alt": "Pleated Blinds fabric sample 8",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/9",
-        "alt": "პლისე ჟალუზის ქარვისფერი ზედაპირი და ტექსტურა",
+        "alt": "Pleated Blinds fabric sample 9",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/10",
-        "alt": "პლისე ჟალუზის ვარდისფერი ქსოვილი",
+        "alt": "Pleated Blinds fabric sample 10",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/11",
-        "alt": "პლისე ჟალუზის ცისფერი ქსოვილის ნიმუში",
+        "alt": "Pleated Blinds fabric sample 11",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/12",
-        "alt": "პლისე ჟალუზის მწვანე ტონის ტექსტურა",
+        "alt": "Pleated Blinds fabric sample 12",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/13",
-        "alt": "პლისე ჟალუზის ლურჯი ქსოვილი კატალოგიდან",
+        "alt": "Pleated Blinds fabric sample 13",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/14",
-        "alt": "პლისე ჟალუზის ტერაკოტის ფერის ნიმუში",
+        "alt": "Pleated Blinds fabric sample 14",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/15",
-        "alt": "პლისე ჟალუზის ნარინჯისფერი ქსოვილი",
+        "alt": "Pleated Blinds fabric sample 15",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/16",
-        "alt": "პლისე ჟალუზის ოქროსფერი ტექსტურის ნიმუში",
+        "alt": "Pleated Blinds fabric sample 16",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/17",
-        "alt": "პლისე ჟალუზის შავი ქსოვილის ტექსტურა",
+        "alt": "Pleated Blinds fabric sample 17",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/18",
-        "alt": "პლისე ჟალუზის ბორდოს ფერის ქსოვილი",
+        "alt": "Pleated Blinds fabric sample 18",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/19",
-        "alt": "პლისე ჟალუზის ზეთისხილისფერი ნიმუში",
+        "alt": "Pleated Blinds fabric sample 19",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/20",
-        "alt": "პლისე ჟალუზის ნეიტრალური ღია ტონის ქსოვილი",
+        "alt": "Pleated Blinds fabric sample 20",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/21",
-        "alt": "პლისე ჟალუზის ორმაგი honeycomb სტრუქტურის თეთრი ნიმუში",
+        "alt": "Pleated Blinds fabric sample 21",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/22",
-        "alt": "პლისე ჟალუზის დიმაუტ ტიპის მუქი ნაცრისფერი ქსოვილი",
+        "alt": "Pleated Blinds fabric sample 22",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/23",
-        "alt": "პლისე ჟალუზის პასტელური ბეჟის ტექსტურა",
+        "alt": "Pleated Blinds fabric sample 23",
         "width": 670,
         "height": 778
       },
       {
         "src": "plise-catalog/24",
-        "alt": "პლისე ჟალუზის მუქი მწვანე-ლურჯი ტონის ნიმუში",
+        "alt": "Pleated Blinds fabric sample 24",
         "width": 670,
         "height": 778
       }
@@ -294,15 +294,15 @@
     ],
     "colors": [
       {
-        "name": "აისვორი",
+        "name": "Ivory",
         "hex": "#E9E3D7"
       },
       {
-        "name": "ტაუპი",
+        "name": "Taupe",
         "hex": "#C8B8A6"
       },
       {
-        "name": "მუქი ნაცრისფერი",
+        "name": "Dark Gray",
         "hex": "#595857"
       }
     ],
@@ -375,439 +375,439 @@
     "colorCatalog": [
       {
         "src": "farda-roleti-catalog/001",
-        "alt": "ფარდა როლეტის თეთრი ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 001",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/002",
-        "alt": "ფარდა როლეტის კრემისფერი ქსოვილი",
+        "alt": "Roller Blinds fabric sample 002",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/003",
-        "alt": "ღია ბეჟი ტონის ფარდა როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 003",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/004",
-        "alt": "ბეჟი ნეიტრალური ტონის ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 004",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/005",
-        "alt": "ღია ნაცრისფერი ფარდა როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 005",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/006",
-        "alt": "მუქი ნაცრისფერი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 006",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/007",
-        "alt": "ღია ყავისფერი ტონის ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 007",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/008",
-        "alt": "მუქი ყავისფერი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 008",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/009",
-        "alt": "ანტრაციტის ტონის ფარდა როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 009",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/010",
-        "alt": "სპილოს ძვლისფერი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 010",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/011",
-        "alt": "ქარვისფერი ტექსტილი ფარდა როლეტისთვის — ნიმუში",
+        "alt": "Roller Blinds fabric sample 011",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/012",
-        "alt": "ვარდისფერი ტონის ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 012",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/013",
-        "alt": "ცისფერი ფარდა როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 013",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/014",
-        "alt": "მწვანე ტონის ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 014",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/015",
-        "alt": "ლურჯი ფარდა როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 015",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/016",
-        "alt": "ტერაკოტის ფერის ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 016",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/017",
-        "alt": "ბორდოს ტონის ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 017",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/018",
-        "alt": "ზეთისხილისფერი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 018",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/019",
-        "alt": "ოქროსფერი ტონის ფარდა როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 019",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/020",
-        "alt": "შავი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 020",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/021",
-        "alt": "თაფლისფერი ტონის ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 021",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/022",
-        "alt": "ლავანდისფერი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 022",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/023",
-        "alt": "პიტნისფერი ტონის ფარდა როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 023",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/024",
-        "alt": "შოკოლადისფერი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 024",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/025",
-        "alt": "მარსალას ტონის ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 025",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/026",
-        "alt": "ინდიგოს ფერის ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 026",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/027",
-        "alt": "თეთრი მატი ქსოვილი ფარდა როლეტის ნიმუშად",
+        "alt": "Roller Blinds fabric sample 027",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/028",
-        "alt": "კრემისფერი პასტელური ტონი — ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 028",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/029",
-        "alt": "ღია ბეჟი გლუვი ტექსტილი ფარდა როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 029",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/030",
-        "alt": "ბეჟი-კრემის შერეული ტონი ფარდა როლეტის ქსოვილში",
+        "alt": "Roller Blinds fabric sample 030",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/031",
-        "alt": "ღია ნაცრისფერი მატი ზედაპირი — როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 031",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/032",
-        "alt": "მუქი ნაცრისფერი ტექსტურირებული ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 032",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/033",
-        "alt": "ღია ყავისფერი ნეიტრალური ტონი ფარდა როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 033",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/034",
-        "alt": "მუქი ყავისფერი დაბნელების ეფექტის ქსოვილი როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 034",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/035",
-        "alt": "ანტრაციტი მკვეთრი ტონი — ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 035",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/036",
-        "alt": "სპილოს ძვლისფერი ნაზი ტონი ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 036",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/037",
-        "alt": "ქარვისფერი თბილი ტონი ფარდა როლეტის ქსოვილში",
+        "alt": "Roller Blinds fabric sample 037",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/038",
-        "alt": "ვარდისფერი პასტელი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 038",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/039",
-        "alt": "ცისფერი ღია ტონი როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 039",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/040",
-        "alt": "მწვანე ბუნებრივი ტონი ფარდა როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 040",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/041",
-        "alt": "ლურჯი ღრმა ტონი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 041",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/042",
-        "alt": "ტერაკოტა თბილი ფერი — ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 042",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/043",
-        "alt": "ბორდო სიღრმის ტონი ფარდა როლეტის ქსოვილში",
+        "alt": "Roller Blinds fabric sample 043",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/044",
-        "alt": "ზეთისხილისფერი მიწისეული ტონი როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 044",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/045",
-        "alt": "ოქროსფერი ნაზი ბრწყინვალე ეფექტის ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 045",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/046",
-        "alt": "შავი სრული დაბნელების ქსოვილი ფარდა როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 046",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/047",
-        "alt": "თაფლისფერი თბილი ტონი ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 047",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/048",
-        "alt": "ლავანდისფერი პასტელური ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 048",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/049",
-        "alt": "პიტნისფერი ნაზი მწვანე-ლურჯი ტონი როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 049",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/050",
-        "alt": "შოკოლადისფერი ღრმა ტონი ფარდა როლეტის ქსოვილში",
+        "alt": "Roller Blinds fabric sample 050",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/051",
-        "alt": "მარსალა ღვინისფერი ტონი ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 051",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/052",
-        "alt": "ინდიგო ღრმა ლურჯი ტონი როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 052",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/053",
-        "alt": "ფარდა როლეტის თეთრი ქსოვილი — სქრინ ტიპის ნიმუში",
+        "alt": "Roller Blinds fabric sample 053",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/054",
-        "alt": "კრემისფერი დიმაუტის ეფექტის ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 054",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/055",
-        "alt": "ღია ბეჟი ლინენის ეფექტის ტექსტილი როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 055",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/056",
-        "alt": "ბეჟი ქვიშისფერი ტონი ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 056",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/057",
-        "alt": "ღია ნაცრისფერი მეტალიკის ეფექტის ქსოვილი როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 057",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/058",
-        "alt": "მუქი ნაცრისფერი გრაფიტის ტონი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 058",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/059",
-        "alt": "ღია ყავისფერი კაპუჩინოს ტონი ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 059",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/060",
-        "alt": "მუქი ყავისფერი ესპრესოს ტონი როლეტის ქსოვილში",
+        "alt": "Roller Blinds fabric sample 060",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/061",
-        "alt": "ანტრაციტი მატი ზედაპირი ფარდა როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 061",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/062",
-        "alt": "სპილოს ძვლისფერი ნეიტრალური ბაზა როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 062",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/063",
-        "alt": "ქარვისფერი ტექსტურირებული ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 063",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/064",
-        "alt": "ვარდისფერი დელიკატური ტონი ფარდა როლეტის ქსოვილში",
+        "alt": "Roller Blinds fabric sample 064",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/065",
-        "alt": "ცისფერი ზაფხულის ტონი როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 065",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/066",
-        "alt": "მწვანე მოციკლამენის ტონი ფარდა როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 066",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/067",
-        "alt": "ლურჯი ზღვისფერი ტონი ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 067",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/068",
-        "alt": "ტერაკოტა ქონდრის ტონი როლეტის ქსოვილი",
+        "alt": "Roller Blinds fabric sample 068",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/069",
-        "alt": "ბორდო ღვინისფერი აქცენტი ფარდა როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 069",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/070",
-        "alt": "ზეთისხილისფერი ორგანული ტონი ფარდა როლეტის ნიმუში",
+        "alt": "Roller Blinds fabric sample 070",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/071",
-        "alt": "ოქროსფერი სანდრის ტონი როლეტის ქსოვილში",
+        "alt": "Roller Blinds fabric sample 071",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/072",
-        "alt": "შავი მატი ზედაპირი ფარდა როლეტის ქსოვილის ნიმუში",
+        "alt": "Roller Blinds fabric sample 072",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "farda-roleti-catalog/073",
-        "alt": "თაფლისფერი ქარვისთან ახლოს მდგომი ტონი ფარდა როლეტისთვის",
+        "alt": "Roller Blinds fabric sample 073",
         "width": 1200,
         "height": 1200
       }
@@ -839,15 +839,15 @@
     ],
     "colors": [
       {
-        "name": "პორცელანი",
+        "name": "Porcelain",
         "hex": "#F0ECE4"
       },
       {
-        "name": "გრეიჯი",
+        "name": "Greige",
         "hex": "#BCB2A8"
       },
       {
-        "name": "მოკა",
+        "name": "Mocha",
         "hex": "#7A6659"
       }
     ],
@@ -920,277 +920,277 @@
     "colorCatalog": [
       {
         "src": "zebra-catalog/001",
-        "alt": "ზებრა ჟალუზის თეთრი ორფენიანი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 001",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/002",
-        "alt": "დღე-ღამის ჟალუზის კრემისფერი ქსოვილის ნიმუში ზოლებიანი ტექსტურით",
+        "alt": "Zebra Blinds fabric sample 002",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/003",
-        "alt": "ზებრა ჟალუზის ღია ბეჟი ტონის ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 003",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/004",
-        "alt": "ზებრა ჟალუზის ღია ნაცრისფერი ქსოვილის ნიმუში დღე-ღამის სისტემისთვის",
+        "alt": "Zebra Blinds fabric sample 004",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/005",
-        "alt": "ზებრა ჟალუზის მუქი ნაცრისფერი ორფენიანი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 005",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/006",
-        "alt": "ზებრა ჟალუზის ღია ყავისფერი ტონის ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 006",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/007",
-        "alt": "დღე-ღამის ჟალუზის ანტრაციტისფერი ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 007",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/008",
-        "alt": "ზებრა ჟალუზის სპილოს ძვლისფერი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 008",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/009",
-        "alt": "ზებრა ჟალუზის ქარვისფერი ორფენიანი ქსოვილის ნიმუში ზოლებით",
+        "alt": "Zebra Blinds fabric sample 009",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/010",
-        "alt": "ზებრა ჟალუზის ცისფერი ტონის დღე-ღამის ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 010",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/011",
-        "alt": "დღე-ღამის ჟალუზის ლურჯი ორფენიანი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 011",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/012",
-        "alt": "ზებრა ჟალუზის მწვანე ქსოვილის ნიმუში ორ ფენად მოძრავი სისტემისთვის",
+        "alt": "Zebra Blinds fabric sample 012",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/013",
-        "alt": "ზებრა ჟალუზის ვარდისფერი ტონის ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 013",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/014",
-        "alt": "დღე-ღამის ჟალუზის ბორდოსფერი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 014",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/015",
-        "alt": "ზებრა ჟალუზის ტერაკოტისფერი ორფენიანი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 015",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/016",
-        "alt": "ზებრა ჟალუზის შავი ქსოვილის ნიმუში დღე-ღამის ტიპისთვის",
+        "alt": "Zebra Blinds fabric sample 016",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/017",
-        "alt": "ზებრა ჟალუზის ოქროსფერი ტონის ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 017",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/018",
-        "alt": "დღე-ღამის ჟალუზის ზეთისხილისფერი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 018",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/019",
-        "alt": "ზებრა ჟალუზის მუქი ყავისფერი ორფენიანი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 019",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/020",
-        "alt": "ზებრა ჟალუზის თაფლისფერი ტონის ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 020",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/021",
-        "alt": "დღე-ღამის ჟალუზის თეთრი და კრემისფერი შერეული ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 021",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/022",
-        "alt": "ზებრა ჟალუზის კრემისფერი ნაზი ტექსტურის ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 022",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/023",
-        "alt": "ზებრა ჟალუზის ღია ბეჟი გამჭვირვალი ზოლებით — ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 023",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/024",
-        "alt": "დღე-ღამის ჟალუზის ღია ნაცრისფერი ნეიტრალური ტონის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 024",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/025",
-        "alt": "ზებრა ჟალუზის მუქი ნაცრისფერი მატი ზოლებიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 025",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/026",
-        "alt": "ზებრა ჟალუზის ღია ყავისფერი ლატეს ტონის ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 026",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/027",
-        "alt": "დღე-ღამის ჟალუზის ანტრაციტისფერი მუქი ზოლების ნიმუში",
+        "alt": "Zebra Blinds fabric sample 027",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/028",
-        "alt": "ზებრა ჟალუზის სპილოს ძვლისფერი ნაზი ზოლებიანი ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 028",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/029",
-        "alt": "ზებრა ჟალუზის ქარვისფერი თბილი ტონის ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 029",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/030",
-        "alt": "დღე-ღამის ჟალუზის ცისფერი ღია ტონის ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 030",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/031",
-        "alt": "ზებრა ჟალუზის მუქი ლურჯი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 031",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/032",
-        "alt": "ზებრა ჟალუზის მწვანე ზოლებიანი ორფენიანი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 032",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/033",
-        "alt": "დღე-ღამის ჟალუზის ვარდისფერი პასტელური ტონის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 033",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/034",
-        "alt": "ზებრა ჟალუზის ბორდოსფერი სიღრმის ტონის ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 034",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/035",
-        "alt": "ზებრა ჟალუზის ტერაკოტისფერი თბილი ზოლების ნიმუში",
+        "alt": "Zebra Blinds fabric sample 035",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/036",
-        "alt": "დღე-ღამის ჟალუზის შავი მაქსიმალური სიბნელის ეფექტის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 036",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/037",
-        "alt": "ზებრა ჟალუზის ოქროსფერი მბზინავი ზოლების ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 037",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/038",
-        "alt": "ზებრა ჟალუზის ზეთისხილისფერი ნატურალური ტონის ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 038",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/039",
-        "alt": "დღე-ღამის ჟალუზის მუქი ყავისფერი ესპრესოს ტონის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 039",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/040",
-        "alt": "ზებრა ჟალუზის თაფლისფერი ნაზი გადასვლების ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 040",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/041",
-        "alt": "დღე-ღამის ჟალუზის თეთრი მატი ზოლებიანი ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 041",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/042",
-        "alt": "ზებრა ჟალუზის კრემისფერი და ღია ბეჟის შერეული ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 042",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/043",
-        "alt": "ზებრა ჟალუზის ღია ბეჟი ნეიტრალური ინტერიერისთვის — ქსოვილის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 043",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/044",
-        "alt": "დღე-ღამის ჟალუზის ღია ნაცრისფერი და თეთრი კონტრასტის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 044",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/045",
-        "alt": "ზებრა ჟალუზის მუქი ნაცრისფერი და შავი ზოლების ორფენიანი ნიმუში",
+        "alt": "Zebra Blinds fabric sample 045",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "zebra-catalog/046",
-        "alt": "დღე-ღამის ჟალუზის ნეიტრალური ბეჟი-კრემის შერეული ტონის ნიმუში",
+        "alt": "Zebra Blinds fabric sample 046",
         "width": 1200,
         "height": 1200
       }
@@ -1222,15 +1222,15 @@
     ],
     "colors": [
       {
-        "name": "ქვიშისფერი",
+        "name": "Sand",
         "hex": "#DDD0BF"
       },
       {
-        "name": "თიხის ბეჟი",
+        "name": "Clay Beige",
         "hex": "#BAA28A"
       },
       {
-        "name": "მოლურჯო-მწვანე ტონი",
+        "name": "Blue-Green Tone",
         "hex": "#6F7464"
       }
     ],
@@ -1328,15 +1328,15 @@
     ],
     "colors": [
       {
-        "name": "ღია ხის ტონი",
+        "name": "Light Wood Tone",
         "hex": "#CDAE88"
       },
       {
-        "name": "თაფლისფერი",
+        "name": "Honey",
         "hex": "#AF8458"
       },
       {
-        "name": "მუქი ხის ტონი",
+        "name": "Dark Wood Tone",
         "hex": "#6F553D"
       }
     ],
@@ -1348,13 +1348,13 @@
     "images": [
       {
         "src": "demo/venetian-white",
-        "alt": "ფიჭა ჟალუზის მსგავსი ჰორიზონტალური ლამელები ნათელ ფანჯარაზე",
+        "alt": "Faux Wood Blinds in a modern interior - view 1",
         "width": 1600,
         "height": 1200
       },
       {
         "src": "demo/plant-venetian",
-        "alt": "ხის ეფექტის ჟალუზის ატმოსფეროს მსგავსი ფანჯარა მცენარესთან",
+        "alt": "Faux Wood Blinds in a modern interior - view 2",
         "width": 1600,
         "height": 1200
       }
@@ -1403,15 +1403,15 @@
     ],
     "colors": [
       {
-        "name": "ქვა",
+        "name": "Stone",
         "hex": "#D8D4CF"
       },
       {
-        "name": "ფერფლი",
+        "name": "Ash",
         "hex": "#9C9A96"
       },
       {
-        "name": "ნახშირი",
+        "name": "Charcoal",
         "hex": "#4F4F4F"
       }
     ],
@@ -1514,15 +1514,15 @@
     ],
     "colors": [
       {
-        "name": "მატე თეთრი",
+        "name": "Matte White",
         "hex": "#F4F1EA"
       },
       {
-        "name": "ქვიშისფერი",
+        "name": "Sand",
         "hex": "#C9B8A2"
       },
       {
-        "name": "მუქი ბრინჯაო",
+        "name": "Dark Bronze",
         "hex": "#6B5745"
       }
     ],
@@ -1571,109 +1571,109 @@
     "colorCatalog": [
       {
         "src": "horizontaluri-catalog/001",
-        "alt": "ჰორიზონტალური ჟალუზის თეთრი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 001",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/002",
-        "alt": "ჰორიზონტალური ჟალუზის კრემისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 002",
         "width": 2559,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/003",
-        "alt": "ჰორიზონტალური ჟალუზის ბეჟი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 003",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/004",
-        "alt": "ჰორიზონტალური ჟალუზის ღია ნაცრისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 004",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/005",
-        "alt": "ჰორიზონტალური ჟალუზის მუქი ნაცრისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 005",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/006",
-        "alt": "ჰორიზონტალური ჟალუზის ღია ყავისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 006",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/007",
-        "alt": "ჰორიზონტალური ჟალუზის მუქი ყავისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 007",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/008",
-        "alt": "ჰორიზონტალური ჟალუზის ანტრაციტის ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 008",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/009",
-        "alt": "ჰორიზონტალური ჟალუზის სპილოს ძვლისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 009",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/010",
-        "alt": "ჰორიზონტალური ჟალუზის ქარვისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 010",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/011",
-        "alt": "ჰორიზონტალური ჟალუზის ვარდისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 011",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/012",
-        "alt": "ჰორიზონტალური ჟალუზის ცისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 012",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/013",
-        "alt": "ჰორიზონტალური ჟალუზის მწვანე ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 013",
         "width": 2560,
         "height": 2559
       },
       {
         "src": "horizontaluri-catalog/014",
-        "alt": "ჰორიზონტალური ჟალუზის ლურჯი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 014",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/015",
-        "alt": "ჰორიზონტალური ჟალუზის ტერაკოტის ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 015",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/016",
-        "alt": "ჰორიზონტალური ჟალუზის ბორდოს ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 016",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/017",
-        "alt": "ჰორიზონტალური ჟალუზის ზეთისხილისფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 017",
         "width": 2560,
         "height": 2560
       },
       {
         "src": "horizontaluri-catalog/018",
-        "alt": "ჰორიზონტალური ჟალუზის ოქროსფერი ლამელის ნიმუში",
+        "alt": "Horizontal Blinds slat sample 018",
         "width": 2560,
         "height": 2559
       }
@@ -1705,15 +1705,15 @@
     ],
     "colors": [
       {
-        "name": "თეთრი ჩარჩო",
+        "name": "White Frame",
         "hex": "#F1EEE8"
       },
       {
-        "name": "ანტრაციტი",
+        "name": "Anthracite",
         "hex": "#55585C"
       },
       {
-        "name": "ხისფერი პროფილი",
+        "name": "Wood-Look Profile",
         "hex": "#9C7857"
       }
     ],
@@ -1780,139 +1780,139 @@
     "colorCatalog": [
       {
         "src": "gofrirebuli-bade-catalog/001",
-        "alt": "გოფრირებული ბადის თეთრი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 001",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/002",
-        "alt": "გოფრირებული ბადის კრემისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 002",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/003",
-        "alt": "გოფრირებული ბადის ბეჟი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 003",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/004",
-        "alt": "გოფრირებული ბადის ღია ნაცრისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 004",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/005",
-        "alt": "გოფრირებული ბადის მუქი ნაცრისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 005",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/006",
-        "alt": "გოფრირებული ბადის ღია ყავისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 006",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/007",
-        "alt": "გოფრირებული ბადის მუქი ყავისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 007",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/008",
-        "alt": "გოფრირებული ბადის ანტრაციტის პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 008",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/009",
-        "alt": "გოფრირებული ბადის სპილოს ძვლისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 009",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/010",
-        "alt": "გოფრირებული ბადის ქარვისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 010",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/011",
-        "alt": "გოფრირებული ბადის ვარდისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 011",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/012",
-        "alt": "გოფრირებული ბადის ცისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 012",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/013",
-        "alt": "გოფრირებული ბადის მწვანე პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 013",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/014",
-        "alt": "გოფრირებული ბადის ლურჯი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 014",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/015",
-        "alt": "გოფრირებული ბადის ტერაკოტის პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 015",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/016",
-        "alt": "გოფრირებული ბადის ბორდოს პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 016",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/017",
-        "alt": "გოფრირებული ბადის ზეთისხილისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 017",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/018",
-        "alt": "გოფრირებული ბადის ოქროსფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 018",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/019",
-        "alt": "გოფრირებული ბადის შავი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 019",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/020",
-        "alt": "გოფრირებული ბადის თაფლისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 020",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/021",
-        "alt": "გოფრირებული ბადის ლავანდისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 021",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/022",
-        "alt": "გოფრირებული ბადის პიტნისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 022",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/023",
-        "alt": "გოფრირებული ბადის შოკოლადისფერი პროფილის ნიმუში",
+        "alt": "Pleated Insect Screen profile sample 023",
         "width": 1200,
         "height": 1200
       }
@@ -1944,15 +1944,15 @@
     ],
     "colors": [
       {
-        "name": "თეთრი",
+        "name": "White",
         "hex": "#F3F1EC"
       },
       {
-        "name": "ყავისფერი",
+        "name": "Brown",
         "hex": "#7B614B"
       },
       {
-        "name": "ანტრაციტი",
+        "name": "Anthracite",
         "hex": "#50555A"
       }
     ],
@@ -2019,139 +2019,139 @@
     "colorCatalog": [
       {
         "src": "gofrirebuli-bade-catalog/001",
-        "alt": "ანჯამებიანი ბადის მარსალას ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 001",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/002",
-        "alt": "ანჯამებიანი ბადის ინდიგოს ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 002",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/003",
-        "alt": "ანჯამებიანი ბადის თეთრი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 003",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/004",
-        "alt": "ანჯამებიანი ბადის კრემისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 004",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/005",
-        "alt": "ანჯამებიანი ბადის ბეჟი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 005",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/006",
-        "alt": "ანჯამებიანი ბადის ღია ნაცრისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 006",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/007",
-        "alt": "ანჯამებიანი ბადის მუქი ნაცრისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 007",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/008",
-        "alt": "ანჯამებიანი ბადის ღია ყავისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 008",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/009",
-        "alt": "ანჯამებიანი ბადის მუქი ყავისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 009",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/010",
-        "alt": "ანჯამებიანი ბადის ანტრაციტის ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 010",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/011",
-        "alt": "ანჯამებიანი ბადის სპილოს ძვლისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 011",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/012",
-        "alt": "ანჯამებიანი ბადის ქარვისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 012",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/013",
-        "alt": "ანჯამებიანი ბადის ვარდისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 013",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/014",
-        "alt": "ანჯამებიანი ბადის ცისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 014",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/015",
-        "alt": "ანჯამებიანი ბადის მწვანე ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 015",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/016",
-        "alt": "ანჯამებიანი ბადის ლურჯი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 016",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/017",
-        "alt": "ანჯამებიანი ბადის ტერაკოტის ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 017",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/018",
-        "alt": "ანჯამებიანი ბადის ბორდოს ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 018",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/019",
-        "alt": "ანჯამებიანი ბადის ზეთისხილისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 019",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/020",
-        "alt": "ანჯამებიანი ბადის ოქროსფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 020",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/021",
-        "alt": "ანჯამებიანი ბადის შავი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 021",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/022",
-        "alt": "ანჯამებიანი ბადის თაფლისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 022",
         "width": 1200,
         "height": 1200
       },
       {
         "src": "gofrirebuli-bade-catalog/023",
-        "alt": "ანჯამებიანი ბადის ლავანდისფერი ჩარჩოს ნიმუში",
+        "alt": "Hinged Insect Screen profile sample 023",
         "width": 1200,
         "height": 1200
       }

@@ -24,6 +24,15 @@ const kaPath = pathname.startsWith("/en/") ? pathname.replace(/^\/en\//, "/") : 
 const enPath = pathname.startsWith("/en/") ? pathname : `/en${pathname}`;
 const kaUrl = getCanonicalUrl(kaPath);
 const enUrl = getCanonicalUrl(enPath);
+
+function serializeJsonLd(schema: unknown): string {
+  return JSON.stringify(schema)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
+}
 ---
 
 <title>{metaTitle}</title>
@@ -45,4 +54,4 @@ const enUrl = getCanonicalUrl(enPath);
 <meta name="twitter:title" content={metaTitle} />
 <meta name="twitter:description" content={metaDescription} />
 <meta name="twitter:image" content={metaImage} />
-{schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+{schemas.map((schema) => <script type="application/ld+json" set:html={serializeJsonLd(schema)} />)}

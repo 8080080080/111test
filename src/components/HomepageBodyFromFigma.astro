@@ -4,6 +4,7 @@ import HeroSlider from "./HeroSlider.astro";
 import ProductCard from "./ProductCard.astro";
 import SectionHeading from "./SectionHeading.astro";
 import { getProducts } from "../lib/content";
+import { localizePath } from "../lib/routes";
 import type { Locale } from "../lib/content";
 import type { SiteData } from "../types/content";
 
@@ -16,6 +17,8 @@ interface Props {
 const { site, phoneHref, locale = "ka" } = Astro.props;
 const products = getProducts(locale);
 const prefix = locale === "en" ? "/en" : "";
+const primaryHref = localizePath(site.hero.primaryHref, locale);
+const secondaryHref = localizePath(site.hero.secondaryHref, locale);
 const t = locale === "en" ? {
   productsEyebrow: "Products",
   productsTitle: "Blinds and Insect Screen Systems",
@@ -62,10 +65,11 @@ const t = locale === "en" ? {
   title={site.hero.title}
   description={site.hero.description}
   primaryLabel={site.hero.primaryLabel}
-  primaryHref={site.hero.primaryHref}
+  primaryHref={primaryHref}
   secondaryLabel={site.hero.secondaryLabel}
-  secondaryHref={site.hero.secondaryHref}
+  secondaryHref={secondaryHref}
   slides={site.hero.slides}
+  locale={locale}
 />
 
 <section class="py-10 sm:py-12 lg:py-14">

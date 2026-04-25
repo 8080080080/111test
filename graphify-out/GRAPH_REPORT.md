@@ -1,12 +1,12 @@
-# Graph Report - D:\Codexgeneratedwebsite  (2026-04-24)
+# Graph Report - D:\Codexgeneratedwebsite  (2026-04-26)
 
 ## Corpus Check
-- 10 files · ~1,354,444 words
+- 11 files · ~1,354,471 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 36 nodes · 34 edges · 9 communities detected
-- Extraction: 79% EXTRACTED · 21% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.8)
+- 38 nodes · 35 edges · 10 communities detected
+- Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -19,6 +19,7 @@
 - [[_COMMUNITY_Community 6|Community 6]]
 - [[_COMMUNITY_Community 7|Community 7]]
 - [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `getSiteData()` - 4 edges
@@ -82,19 +83,25 @@ Nodes (0):
 Cohesion: 1.0
 Nodes (0): 
 
+### Community 9 - "Community 9"
+Cohesion: 1.0
+Nodes (0): 
+
 ## Knowledge Gaps
-- **Thin community `Community 6`** (1 nodes): `astro.config.mjs`
+- **Thin community `Community 6`** (2 nodes): `routes.ts`, `localizePath()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 7`** (1 nodes): `env.d.ts`
+- **Thin community `Community 7`** (1 nodes): `astro.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 8`** (1 nodes): `content.ts`
+- **Thin community `Community 8`** (1 nodes): `env.d.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 9`** (1 nodes): `content.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getSiteData()` connect `Community 2` to `Community 0`?**
-  _High betweenness centrality (0.317) - this node is a cross-community bridge._
+  _High betweenness centrality (0.283) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `getSiteData()` (e.g. with `getMetaTitle()` and `getMetaDescription()`) actually correct?**
   _`getSiteData()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `getImageAsset()` (e.g. with `resolveProductImage()` and `resolveSiteData()`) actually correct?**

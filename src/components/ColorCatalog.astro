@@ -1,14 +1,16 @@
 ---
 import { getWebpVariantUrl } from "../lib/imageRegistry";
+import type { Locale } from "../lib/content";
 import type { ProductImage } from "../types/content";
 
 interface Props {
   items: ProductImage[];
   id: string;
   mobileFullscreen?: boolean;
+  locale?: Locale;
 }
 
-const { items, id, mobileFullscreen = false } = Astro.props;
+const { items, id, mobileFullscreen = false, locale = "ka" } = Astro.props;
 const tileSize = 120;
 const tileMargin = 5;
 const previewSize = 240;
@@ -17,6 +19,19 @@ const previewSizesAttr = `${previewSize}px`;
 const srcSetFor = (item: ProductImage) => `${item.src} ${item.width}w`;
 const firstItem = items[0];
 const firstWebp = firstItem ? getWebpVariantUrl(firstItem.src) : "";
+const labels = locale === "en" ? {
+  viewer: "Full-screen color view",
+  closeViewer: "Close full-screen color view",
+  close: "Close",
+  previous: "Previous color",
+  next: "Next color"
+} : {
+  viewer: "ფერის სრული ეკრანის ხედი",
+  closeViewer: "დახურე ფერის სრული ეკრანის ხედი",
+  close: "დახურვა",
+  previous: "წინა ფერი",
+  next: "შემდეგი ფერი"
+};
 ---
 
 <div
@@ -83,12 +98,12 @@ const firstWebp = firstItem ? getWebpVariantUrl(firstItem.src) : "";
   </div>
 
   {mobileFullscreen && (
-    <dialog class="color-catalog__viewer" data-catalog-viewer aria-label="ფერის სრული ეკრანის ხედი">
+    <dialog class="color-catalog__viewer" data-catalog-viewer aria-label={labels.viewer}>
       <div class="color-catalog__viewer-shell">
         <div class="color-catalog__viewer-header">
           <p class="color-catalog__viewer-count" data-catalog-viewer-count>{`1 / ${items.length}`}</p>
-          <button type="button" class="color-catalog__viewer-close" data-catalog-viewer-close aria-label="დახურე ფერის სრული ეკრანის ხედი">
-            დახურვა
+          <button type="button" class="color-catalog__viewer-close" data-catalog-viewer-close aria-label={labels.closeViewer}>
+            {labels.close}
           </button>
         </div>
 
@@ -99,7 +114,7 @@ const firstWebp = firstItem ? getWebpVariantUrl(firstItem.src) : "";
                 type="button"
                 class="color-catalog__viewer-nav color-catalog__viewer-nav--prev"
                 data-catalog-viewer-prev
-                aria-label="წინა ფერი"
+                aria-label={labels.previous}
               >
                 <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M15 18l-6-6 6-6"></path>
@@ -109,7 +124,7 @@ const firstWebp = firstItem ? getWebpVariantUrl(firstItem.src) : "";
                 type="button"
                 class="color-catalog__viewer-nav color-catalog__viewer-nav--next"
                 data-catalog-viewer-next
-                aria-label="შემდეგი ფერი"
+                aria-label={labels.next}
               >
                 <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M9 18l6-6-6-6"></path>

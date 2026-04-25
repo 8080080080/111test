@@ -19,6 +19,7 @@ const mobileCtaLabel = locale === "en" ? "Request a Quote" : "მოითხო
 const altLangLabel = locale === "en" ? "ქარ" : "EN";
 const normalizedCurrentPath = currentPath.endsWith("/") ? currentPath : `${currentPath}/`;
 const isNotFoundPage = normalizedCurrentPath === "/404/" || normalizedCurrentPath === "/404.html/";
+const logoAlt = locale === "en" ? `${site.businessName} logo` : `${site.businessName} ლოგო`;
 const altLangHref = isNotFoundPage
   ? locale === "en" ? "/" : "/en/"
   : locale === "en"
@@ -46,7 +47,7 @@ const rightClusterGapClass = locale === "en" ? "gap-3" : "gap-2";
       <img
         class="h-auto w-[12rem] object-contain sm:w-[14rem] lg:w-[15.5rem]"
         src={site.logoImage}
-        alt={`${site.businessName} ლოგო`}
+        alt={logoAlt}
         width={375}
         height={148}
         loading="eager"

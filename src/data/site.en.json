@@ -8,12 +8,12 @@
   "businessDescription": "Winsome designs and installs custom window blinds and insect screen systems for apartments, houses, offices, and commercial spaces in Tbilisi and across Georgia.",
   "tagline": "Locally made blinds and protective insect screens for modern spaces.",
   "serviceAreas": [
-    "თბილისი",
-    "რუსთავი",
-    "მცხეთა",
-    "ბათუმი",
-    "ქუთაისი",
-    "გორი"
+    "Tbilisi",
+    "Rustavi",
+    "Mtskheta",
+    "Batumi",
+    "Kutaisi",
+    "Gori"
   ],
   "socialLinks": {
     "facebook": "https://www.facebook.com/profile.php?id=61555681775197",
@@ -194,7 +194,7 @@
     {
       "id": "gallery-2",
       "title": "Zebra blinds in a bright interior",
-      "location": "საბურთალო, თბილისი",
+      "location": "Saburtalo, Tbilisi",
       "category": "Residential",
       "image": "demo/warm-roller",
       "alt": "Modern window system with soft light control",
@@ -203,7 +203,7 @@
     {
       "id": "gallery-3",
       "title": "Vertical system on a wide window",
-      "location": "თბილისის ცენტრი",
+      "location": "Central Tbilisi",
       "category": "Commercial",
       "image": "demo/vertical-interior",
       "alt": "Vertical blinds on a large window in the interior",
@@ -212,7 +212,7 @@
     {
       "id": "gallery-4",
       "title": "Roman blinds and a soft textile corner",
-      "location": "ბათუმი",
+      "location": "Batumi",
       "category": "Hospitality",
       "image": "demo/plants-roller",
       "alt": "Soft textile window treatment in a plant-filled interior",
@@ -221,7 +221,7 @@
     {
       "id": "gallery-5",
       "title": "Pleated mesh door for everyday use",
-      "location": "მცხეთა",
+      "location": "Mtskheta",
       "category": "Residential",
       "image": "demo/screen-door",
       "alt": "Protective mesh door at a residential entrance",
@@ -230,7 +230,7 @@
     {
       "id": "gallery-6",
       "title": "Classic horizontal blind look",
-      "location": "რუსთავი",
+      "location": "Rustavi",
       "category": "Commercial",
       "image": "demo/venetian-white",
       "alt": "Horizontal slats on a bright window",
