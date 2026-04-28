@@ -41,16 +41,19 @@ const featuredRelatedHeaderSlugs = [
 ];
 const hasMobileColorDropdown = mobileColorDropdownSlugs.includes(product.slug);
 const hasFeaturedRelatedHeader = featuredRelatedHeaderSlugs.includes(product.slug);
-const showColorSection = !["plise-jaluzi", "romauli-jaluzi", "ficha-jaluzi", "vertikaluri-jaluzi"].includes(product.slug) && Boolean(
+const hasProjectViewerColorCarousel = product.slug === "plise-jaluzi" && Boolean(product.colorGallery?.length);
+const showColorSection = !["romauli-jaluzi", "ficha-jaluzi", "vertikaluri-jaluzi"].includes(product.slug) && Boolean(
   product.colorCollections?.length ||
   product.colorCatalog?.length ||
   product.colorGallery?.length ||
   product.colors?.length
 );
-const colorSectionTitle = "ფერები";
+const colorSectionTitle = product.slug === "plise-jaluzi" ? "ხელმისაწვდომი ფერები" : "ფერები";
 const colorDescription = product.colorCollections?.length
   ? "ფერები დაჯგუფებულია კოლექციებად, რათა სასურველი ნიმუშების მოძებნა და შემდგომში ახალი ჯგუფების დამატება მარტივი იყოს."
-  : product.colorCatalog?.length
+  : hasProjectViewerColorCarousel
+    ? "ქვემოთ გახსენით კარუსელი და დაათვალიერეთ პლისე ჟალუზის ქსოვილის ფერები."
+    : product.colorCatalog?.length
     ? "ფერის ვარიანტები იხილეთ ქვემოთ მოცემულ კატალოგში."
     : product.colorGallery?.length
       ? "ფერის არჩევანი შეგიძლიათ ნახოთ ქვემოთ მოცემულ სლაიდერში."
@@ -170,6 +173,14 @@ const schemas = [
               </div>
             </details>
           </>
+        ) : hasProjectViewerColorCarousel ? (
+          <div class="space-y-6">
+            <div class="space-y-3">
+              <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+              {colorDescription && <p class="text-panel max-w-2xl">{colorDescription}</p>}
+            </div>
+            <ProductColorContent product={product} locale="ka" />
+          </div>
         ) : (
           <article class="surface-card p-6 sm:p-8">
             <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>

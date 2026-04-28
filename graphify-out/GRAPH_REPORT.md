@@ -1,7 +1,7 @@
-# Graph Report - D:\Codexgeneratedwebsite  (2026-04-26)
+# Graph Report - D:\Codexgeneratedwebsite  (2026-04-29)
 
 ## Corpus Check
-- 11 files · ~1,354,471 words
+- 11 files · ~2,242,503 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

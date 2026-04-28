@@ -1,6 +1,7 @@
 ---
 import ColorCatalog from "./ColorCatalog.astro";
 import ColorSwatches from "./ColorSwatches.astro";
+import GalleryCarousel from "./GalleryCarousel.astro";
 import GroupedColorCatalog from "./GroupedColorCatalog.astro";
 import ProductGallery from "./ProductGallery.astro";
 import type { Locale } from "../lib/content";
@@ -14,9 +15,34 @@ interface Props {
 
 const { product, idSuffix = "", locale = "ka" } = Astro.props;
 const suffix = idSuffix ? `-${idSuffix}` : "";
+const useProjectViewerCarousel = product.slug === "plise-jaluzi" && Boolean(product.colorGallery?.length);
+const colorCarouselItem = useProjectViewerCarousel && product.colorGallery
+  ? {
+      id: `available-colors-${product.slug}${suffix}`,
+      title: locale === "en" ? `${product.name} Colors` : `${product.name} ფერები`,
+      location: locale === "en" ? "Available colors" : "ხელმისაწვდომი ფერები",
+      category: product.name,
+      image: product.colorGallery[0].src,
+      alt: product.colorGallery[0].alt,
+      images: product.colorGallery,
+      relatedProductSlug: product.slug
+    }
+  : undefined;
 ---
 
-{product.colorCollections?.length ? (
+{colorCarouselItem ? (
+  <article class="surface-card group mx-auto max-w-4xl overflow-hidden">
+    <GalleryCarousel item={colorCarouselItem} locale={locale} />
+    <div class="space-y-2 p-5 sm:p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink/75">
+        {locale === "en" ? "Color catalog" : "ფერების კატალოგი"}
+      </p>
+      <h3 class="text-2xl">
+        {locale === "en" ? "Open the available Pleated Blinds colors" : "გახსენით პლისე ჟალუზის ხელმისაწვდომი ფერები"}
+      </h3>
+    </div>
+  </article>
+) : product.colorCollections?.length ? (
   <GroupedColorCatalog collections={product.colorCollections} id={`catalog-groups-${product.slug}${suffix}`} locale={locale} />
 ) : product.colorCatalog?.length ? (
   <ColorCatalog

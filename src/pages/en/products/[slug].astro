@@ -41,16 +41,19 @@ const featuredRelatedHeaderSlugs = [
 ];
 const hasMobileColorDropdown = mobileColorDropdownSlugs.includes(product.slug);
 const hasFeaturedRelatedHeader = featuredRelatedHeaderSlugs.includes(product.slug);
-const showColorSection = !["plise-jaluzi", "romauli-jaluzi", "ficha-jaluzi", "vertikaluri-jaluzi"].includes(product.slug) && Boolean(
+const hasProjectViewerColorCarousel = product.slug === "plise-jaluzi" && Boolean(product.colorGallery?.length);
+const showColorSection = !["romauli-jaluzi", "ficha-jaluzi", "vertikaluri-jaluzi"].includes(product.slug) && Boolean(
   product.colorCollections?.length ||
   product.colorCatalog?.length ||
   product.colorGallery?.length ||
   product.colors?.length
 );
-const colorSectionTitle = "Colors";
+const colorSectionTitle = product.slug === "plise-jaluzi" ? "Available Colors" : "Colors";
 const colorDescription = product.colorCollections?.length
   ? "Colors are grouped into collections to make finding the desired samples and adding new groups easy."
-  : product.colorCatalog?.length
+  : hasProjectViewerColorCarousel
+    ? "Open the carousel below to browse the available Pleated Blinds fabric colors."
+    : product.colorCatalog?.length
     ? "See the color options in the catalog below."
     : product.colorGallery?.length
       ? "You can see the color selection in the slider below."
@@ -171,6 +174,14 @@ const schemas = [
               </div>
             </details>
           </>
+        ) : hasProjectViewerColorCarousel ? (
+          <div class="space-y-6">
+            <div class="space-y-3">
+              <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
+              {colorDescription && <p class="text-panel max-w-2xl">{colorDescription}</p>}
+            </div>
+            <ProductColorContent product={product} locale="en" />
+          </div>
         ) : (
           <article class="surface-card p-6 sm:p-8">
             <h2 class="text-panel inline-block text-3xl">{colorSectionTitle}</h2>
