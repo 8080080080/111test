@@ -15,6 +15,7 @@ const images =
 
 const hasMultiple = images.length > 1;
 const id = item.id;
+const transparentPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
 const labels =
   locale === "ka"
@@ -102,12 +103,14 @@ const titleId = `${id}-viewer-title`;
                 <div class="project-viewer-image-frame" data-project-viewer-zoom-frame>
                   <img
                     class="project-viewer-image"
+                    data-project-viewer-lazy-image
                     data-project-viewer-zoom-image
-                    src={img.src}
+                    data-src={img.src}
+                    src={transparentPixel}
                     alt={img.alt}
                     width={img.width}
                     height={img.height}
-                    loading={index === 0 ? "eager" : "lazy"}
+                    loading="lazy"
                     decoding="async"
                   />
                 </div>
@@ -850,6 +853,26 @@ const titleId = `${id}-viewer-title`;
     }
   }
 
+  function loadViewerImage(image: HTMLImageElement) {
+    const src = image.dataset.src;
+    if (!src) return;
+
+    image.src = src;
+    delete image.dataset.src;
+  }
+
+  function loadViewerImages(dialog: HTMLDialogElement, selected: number) {
+    const lazyImages = Array.from(
+      dialog.querySelectorAll<HTMLImageElement>("[data-project-viewer-lazy-image]")
+    );
+    const indexesToLoad = [selected, selected - 1, selected + 1];
+
+    indexesToLoad.forEach((index) => {
+      const image = lazyImages[index];
+      if (image) loadViewerImage(image);
+    });
+  }
+
   function initViewer(dialog: HTMLDialogElement, id: string): ViewerState | null {
     const cached = viewerMap.get(id);
     if (cached) return cached;
@@ -883,6 +906,7 @@ const titleId = `${id}-viewer-title`;
     function updateUi() {
       const selected = embla.selectedScrollSnap();
       const total = embla.scrollSnapList().length;
+      loadViewerImages(dialog, selected);
 
       if (prevButton) prevButton.disabled = !embla.canScrollPrev();
       if (nextButton) nextButton.disabled = !embla.canScrollNext();

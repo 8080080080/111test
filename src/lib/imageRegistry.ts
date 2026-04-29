@@ -8,7 +8,7 @@ const jpgAssetFolders = new Set([
   "zugdidi-hospital"
 ]);
 
-const pngAssetFolders = new Set(["pleated-colors"]);
+const webpAssetFolders = new Set(["pleated-colors"]);
 
 const assetExtensions: Record<string, string> = {
   /** Raster logo (pixel-accurate brand asset). Bump ?v= when the file changes. */
@@ -31,8 +31,8 @@ export function getImageAsset(key: string): string {
     return `/assets/images/${key}.jpg`;
   }
 
-  if (folder && pngAssetFolders.has(folder)) {
-    return `/assets/images/${key}.png`;
+  if (folder && webpAssetFolders.has(folder)) {
+    return `/assets/images/${key}.webp`;
   }
 
   throw new Error(`Unknown image asset key: ${key}`);

@@ -1,4 +1,8 @@
 node_modules
+.astro/
+dist/
+.omx/
+tmp/
 
 # wrangler files
 .wrangler
